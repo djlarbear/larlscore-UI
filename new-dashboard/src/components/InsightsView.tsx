@@ -41,6 +41,14 @@ interface Insights {
     min_edge: number;
     max_high_risk_pct: number;
   };
+
+  // Optional export-time instrumentation (static dashboard ops)
+  quality?: any;
+  export_meta?: {
+    exported_at?: string;
+    betting_repo_commit?: string | null;
+    cloudflare_pages?: string;
+  };
 }
 
 function winRateColor(rate: number): string {
@@ -121,6 +129,29 @@ const InsightsView: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Quality / pipeline KPIs (small chips) */}
+      {data?.quality && (
+        <div style={{ marginTop: 10, marginBottom: 10, display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+            <span className="app-chip" style={{ padding: '4px 8px', fontSize: 11, color: '#A0A0A0' }}>
+              Pinnacle cov: {data.quality?.last7?.pinnacle?.coverage_pct ?? 0}%
+            </span>
+            <span className="app-chip" style={{ padding: '4px 8px', fontSize: 11, color: '#A0A0A0' }}>
+              Pinnacle agree: {data.quality?.last7?.pinnacle?.agree_pct ?? 0}%
+            </span>
+            <span className="app-chip" style={{ padding: '4px 8px', fontSize: 11, color: '#A0A0A0' }}>
+              Consensus cov: {data.quality?.last7?.consensus?.coverage_pct ?? 0}%
+            </span>
+            <span className="app-chip" style={{ padding: '4px 8px', fontSize: 11, color: '#A0A0A0' }}>
+              CLV |avg|: {data.quality?.last7?.clv_proxy?.avg_abs ?? 0}
+            </span>
+          </div>
+          <span className="app-chip" style={{ padding: '4px 8px', fontSize: 11, color: '#8e8e93' }}>
+            Updated: {data?.export_meta?.exported_at ? new Date(data.export_meta.exported_at).toLocaleString() : 'n/a'}
+          </span>
+        </div>
+      )}
 
       <div
         className="insights-grid"
