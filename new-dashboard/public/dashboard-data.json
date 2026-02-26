@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-02-26T15:44:42.098038",
+  "generated_at": "2026-02-26T15:55:29.783038",
   "export_meta": {
-    "exported_at": "2026-02-26T15:44:42.091594",
+    "exported_at": "2026-02-26T15:55:29.777169",
     "cloudflare_pages": "https://larlscore.pages.dev/",
-    "betting_repo_commit": "e95de39"
+    "betting_repo_commit": "a5927c3"
   },
   "picks": [
     {
@@ -37,7 +37,7 @@
         "player": null,
         "player_team": null,
         "injury_role_shift_flag": false,
-        "american_odds": null,
+        "american_odds": -108,
         "pinnacle_agrees": null,
         "pinnacle_line": null,
         "pinnacle_gap": 0.0,
@@ -48,7 +48,7 @@
         "consensus_gap": 0.5,
         "consensus_books_count": 10,
         "market_alignment": "agree",
-        "snapshot_ts": "2026-02-26T20:44:39.207280+00:00",
+        "snapshot_ts": "2026-02-26T20:55:26.808319+00:00",
         "smart_edge": 6.3,
         "smart_edge_quality": "Excellent",
         "smart_edge_confidence": 85,
@@ -2526,9 +2526,9 @@
       }
     },
     "export_meta": {
-      "exported_at": "2026-02-26T15:44:42.091594",
+      "exported_at": "2026-02-26T15:55:29.777169",
       "cloudflare_pages": "https://larlscore.pages.dev/",
-      "betting_repo_commit": "e95de39"
+      "betting_repo_commit": "a5927c3"
     }
   },
   "bonus_bets": [],
