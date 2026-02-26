@@ -7,6 +7,9 @@ Site: https://larlscore.pages.dev/
 - Build command: `cd new-dashboard && npm ci && npm run build`
 - Output directory: `new-dashboard/dist`
 
+### Node version
+- Repo includes `.nvmrc` (Node 22). If Cloudflare build ever breaks, set Pages env var `NODE_VERSION=22`.
+
 ## What is allowed in this repo
 Allowed:
 - `new-dashboard/` source
