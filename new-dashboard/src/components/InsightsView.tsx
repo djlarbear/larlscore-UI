@@ -41,6 +41,9 @@ interface Insights {
     min_edge: number;
     max_high_risk_pct: number;
   };
+  optimal_thresholds_by_type?: any;
+  moneyline_status?: string;
+  moneyline_reason?: string;
 
   // Optional export-time instrumentation (static dashboard ops)
   quality?: any;
@@ -82,6 +85,7 @@ const CompactSection: React.FC<{ title: string; data: Record<string, { record: s
 
 const InsightsView: React.FC = () => {
   const [data, setData] = useState<Insights | null>(null);
+  const [status, setStatus] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [retry, setRetry] = useState(0);
@@ -89,9 +93,19 @@ const InsightsView: React.FC = () => {
   useEffect(() => {
     setLoading(true);
     setError(null);
-    BettingAPI.getInsights()
-      .then(d => { setData(d); setLoading(false); })
-      .catch(() => { setError('Could not load insights'); setLoading(false); });
+    Promise.all([
+      BettingAPI.getInsights(),
+      BettingAPI.getStatus().catch(() => null),
+    ])
+      .then(([d, s]) => {
+        setData(d);
+        setStatus(s);
+        setLoading(false);
+      })
+      .catch(() => {
+        setError('Could not load insights');
+        setLoading(false);
+      });
   }, [retry]);
 
   if (loading) return <div className="app-empty" style={{ color: '#8e8e93', marginTop: 12 }}>Loading insights...</div>;
@@ -126,26 +140,80 @@ const InsightsView: React.FC = () => {
             <span className="app-chip" style={{ padding: '4px 8px', fontSize: 11, color: data.roi.above_breakeven >= 0 ? '#30d158' : '#ff453a' }}>
               {data.roi.above_breakeven >= 0 ? '+' : ''}{data.roi.above_breakeven.toFixed(1)}% vs B/E
             </span>
+            {data.moneyline_status && (
+              <span className="app-chip" title={data.moneyline_reason || ''} style={{ padding: '4px 8px', fontSize: 11, color: data.moneyline_status === 'ENABLED' ? '#30d158' : '#ff453a' }}>
+                ML: {data.moneyline_status}
+              </span>
+            )}
           </div>
+          <span className="app-chip" title={data.moneyline_reason || ''} style={{ padding: '4px 8px', fontSize: 11, color: '#8e8e93' }}>
+            Thresholds: SP {data?.optimal_thresholds_by_type?.SPREAD?.min_confidence ?? data.optimal_thresholds.min_confidence}%/{data?.optimal_thresholds_by_type?.SPREAD?.min_edge ?? data.optimal_thresholds.min_edge} | TO {data?.optimal_thresholds_by_type?.TOTAL?.min_confidence ?? data.optimal_thresholds.min_confidence}%/{data?.optimal_thresholds_by_type?.TOTAL?.min_edge ?? data.optimal_thresholds.min_edge} | PR {data?.optimal_thresholds_by_type?.PROP?.min_confidence ?? data.optimal_thresholds.min_confidence}%/{data?.optimal_thresholds_by_type?.PROP?.min_edge ?? data.optimal_thresholds.min_edge}
+          </span>
         </div>
       </div>
 
       {/* Quality / pipeline KPIs (small chips) */}
-      {data?.quality && (
+      {(data?.quality || status?.health_strip) && (
         <div style={{ marginTop: 10, marginBottom: 10, display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-            <span className="app-chip" style={{ padding: '4px 8px', fontSize: 11, color: '#A0A0A0' }}>
-              Pinnacle cov: {data.quality?.last7?.pinnacle?.coverage_pct ?? 0}%
-            </span>
-            <span className="app-chip" style={{ padding: '4px 8px', fontSize: 11, color: '#A0A0A0' }}>
-              Pinnacle agree: {data.quality?.last7?.pinnacle?.agree_pct ?? 0}%
-            </span>
-            <span className="app-chip" style={{ padding: '4px 8px', fontSize: 11, color: '#A0A0A0' }}>
-              Consensus cov: {data.quality?.last7?.consensus?.coverage_pct ?? 0}%
-            </span>
-            <span className="app-chip" style={{ padding: '4px 8px', fontSize: 11, color: '#A0A0A0' }}>
-              CLV |avg|: {data.quality?.last7?.clv_proxy?.avg_abs ?? 0}
-            </span>
+            {/* Health strip */}
+            {status?.health_strip?.parlays && (
+              <>
+                <span className="app-chip" style={{ padding: '4px 8px', fontSize: 11, color: '#A0A0A0' }}>
+                  Parlays: {status.health_strip.parlays.count ?? 0}
+                </span>
+                {status.health_strip.parlays.primary_odds != null && (
+                  <span
+                    className="app-chip"
+                    style={{
+                      padding: '4px 8px',
+                      fontSize: 11,
+                      color: status.health_strip.parlays.primary_in_band ? '#30d158' : '#ffd60a',
+                    }}
+                  >
+                    Primary: {status.health_strip.parlays.primary_odds > 0 ? '+' : ''}{status.health_strip.parlays.primary_odds}
+                    {status.health_strip.parlays.primary_in_band ? ' (in band)' : ' (out of band)'}
+                  </span>
+                )}
+              </>
+            )}
+            {status?.health_strip?.odds_coverage_today && (
+              <span className="app-chip" style={{ padding: '4px 8px', fontSize: 11, color: '#A0A0A0' }}>
+                Odds cov: {status.health_strip.odds_coverage_today.pct != null ? status.health_strip.odds_coverage_today.pct.toFixed(0) : 'n/a'}%
+                ({status.health_strip.odds_coverage_today.with_odds ?? 0}/{status.health_strip.odds_coverage_today.total ?? 0})
+              </span>
+            )}
+            {status?.health_strip?.espn?.down_flag != null && (
+              <span
+                className="app-chip"
+                style={{
+                  padding: '4px 8px',
+                  fontSize: 11,
+                  color: status.health_strip.espn.down_flag ? '#ff453a' : '#30d158',
+                }}
+                title={status.health_strip.espn.down_flag_mtime || ''}
+              >
+                ESPN: {status.health_strip.espn.down_flag ? 'DOWN' : 'OK'}
+              </span>
+            )}
+
+            {/* Existing quality KPIs */}
+            {data?.quality && (
+              <>
+                <span className="app-chip" style={{ padding: '4px 8px', fontSize: 11, color: '#A0A0A0' }}>
+                  Pinnacle cov: {data.quality?.last7?.pinnacle?.coverage_pct ?? 0}%
+                </span>
+                <span className="app-chip" style={{ padding: '4px 8px', fontSize: 11, color: '#A0A0A0' }}>
+                  Pinnacle agree: {data.quality?.last7?.pinnacle?.agree_pct ?? 0}%
+                </span>
+                <span className="app-chip" style={{ padding: '4px 8px', fontSize: 11, color: '#A0A0A0' }}>
+                  Consensus cov: {data.quality?.last7?.consensus?.coverage_pct ?? 0}%
+                </span>
+                <span className="app-chip" style={{ padding: '4px 8px', fontSize: 11, color: '#A0A0A0' }}>
+                  CLV |avg|: {data.quality?.last7?.clv_proxy?.avg_abs ?? 0}
+                </span>
+              </>
+            )}
           </div>
           <span className="app-chip" style={{ padding: '4px 8px', fontSize: 11, color: '#8e8e93' }}>
             Updated: {data?.export_meta?.exported_at ? new Date(data.export_meta.exported_at).toLocaleString() : 'n/a'}

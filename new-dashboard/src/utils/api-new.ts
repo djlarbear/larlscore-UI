@@ -110,6 +110,9 @@ export interface BetSummary {
   losses: number;
   cancelled: number;
   win_rate: number;
+  decided?: number;
+  net_units?: number;
+  roi_pct?: number;
   by_sport: Record<string, number>;
   by_bet_type: Record<string, number>;
   by_result: Record<string, number>;
@@ -137,6 +140,10 @@ export interface Phase3Payload {
   weights?: any;
   observability?: any;
   comparison?: any;
+  thresholds?: any;
+
+  // allow extra fields from export
+  [key: string]: any;
 }
 
 export interface DashboardStatus {
@@ -146,18 +153,42 @@ export interface DashboardStatus {
     ranked_bets?: boolean;
     tracker?: boolean;
     active_bets?: boolean;
+    parlays?: boolean;
+    espn_down_flag?: boolean;
   };
   last_updates?: {
     ranked_bets?: string | null;
     tracker?: string | null;
     active_bets?: string | null;
+    parlays?: string | null;
+    espn_down_flag?: string | null;
+  };
+  health_strip?: {
+    parlays?: {
+      generated_at?: string | null;
+      count?: number;
+      primary_odds?: number | null;
+      primary_in_band?: boolean | null;
+    } | null;
+    odds_coverage_today?: {
+      date?: string;
+      total?: number;
+      with_odds?: number;
+      pct?: number | null;
+    } | null;
+    espn?: {
+      down_flag?: boolean;
+      down_flag_mtime?: string | null;
+    } | null;
   };
   uptime?: string;
 }
 
+
 export class BettingAPI {
   private static requestCache: Map<string, { data: any; timestamp: number }> = new Map();
   private static cacheTTL = 30000; // 30 seconds
+  private static inflight: Map<string, Promise<any>> = new Map();
 
   private static getCached<T>(key: string, ttlMs: number): T | null {
     const cached = this.requestCache.get(key);
@@ -169,6 +200,14 @@ export class BettingAPI {
 
   private static setCached(key: string, data: any): void {
     this.requestCache.set(key, { data, timestamp: Date.now() });
+  }
+
+  private static async dedupe<T>(key: string, fetcher: () => Promise<T>): Promise<T> {
+    const existing = this.inflight.get(key) as Promise<T> | undefined;
+    if (existing) return existing;
+    const p = fetcher().finally(() => this.inflight.delete(key));
+    this.inflight.set(key, p);
+    return p;
   }
 
   /**
@@ -456,6 +495,7 @@ export class BettingAPI {
         bets: data.picks || [],
         parlay_candidates: data.bonus_bets || [],
         bonus_bets: data.bonus_bets || [],
+        parlays: data.parlays || null,
         timestamp: data.generated_at
       };
     }
@@ -468,21 +508,34 @@ export class BettingAPI {
     const url = `${API_BASE}/api/ranked-bets`;
     debug(`Fetching today's picks from: ${url}`);
 
-    try {
-      const response = await fetch(url);
-      if (!response.ok) throw new Error('Failed to fetch today\'s picks');
-      const data = await response.json();
-      this.setCached(cacheKey, data);
-      return data;
-    } catch (err) {
-      debugError('Failed to fetch today\'s picks', err);
-      throw err;
-    }
+    return this.dedupe(cacheKey, async () => {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('Failed to fetch today\'s picks');
+        const data = await response.json();
+        this.setCached(cacheKey, data);
+        return data;
+      } catch (err) {
+        debugError('Failed to fetch today\'s picks', err);
+        throw err;
+      }
+    });
   }
 
   /**
    * Get learning insights
    */
+  static async getParlays(): Promise<any> {
+    if (STATIC_MODE) {
+      const data = await loadStaticData();
+      return data.parlays || null;
+    }
+    // In live mode, the backend serves dashboard public assets as static files.
+    const response = await fetch('/dashboard-parlays.json');
+    if (!response.ok) throw new Error('Failed to fetch parlays');
+    return response.json();
+  }
+
   static async getInsights(): Promise<any> {
     if (STATIC_MODE) {
       const data = await loadStaticData();
@@ -501,11 +554,13 @@ export class BettingAPI {
     const cached = this.getCached<Phase3Payload>(cacheKey, 30000);
     if (cached) return cached;
 
-    const response = await fetch('/dashboard-data-phase3.json');
-    if (!response.ok) throw new Error('Failed to fetch phase3 data');
-    const data = await response.json();
-    this.setCached(cacheKey, data);
-    return data;
+    return this.dedupe(cacheKey, async () => {
+      const response = await fetch('/dashboard-data-phase3.json');
+      if (!response.ok) throw new Error('Failed to fetch phase3 data');
+      const data = await response.json();
+      this.setCached(cacheKey, data);
+      return data;
+    });
   }
 
   /**
@@ -514,13 +569,36 @@ export class BettingAPI {
   static async getStatus(): Promise<DashboardStatus> {
     if (STATIC_MODE) {
       const data = await loadStaticData();
+      const parlaysPayload = data.parlays || null;
+      const parlaysList = parlaysPayload && Array.isArray(parlaysPayload.parlays) ? parlaysPayload.parlays : [];
+      const primary = parlaysList.find((p: any) => String(p?.name || '').toLowerCase().startsWith('daily high-probability parlay'));
+      const primaryOdds = primary?.est_odds != null ? Number(primary.est_odds) : null;
+      const inBand = primaryOdds != null ? (primaryOdds >= 250 && primaryOdds <= 600) : null;
+
       return {
         status: 'ok',
         timestamp: data.generated_at || new Date().toISOString(),
+        files: {
+          ranked_bets: true,
+          active_bets: true,
+          tracker: true,
+          parlays: !!parlaysPayload,
+        },
         last_updates: {
           ranked_bets: data.generated_at || null,
           active_bets: data.generated_at || null,
           tracker: data.generated_at || null,
+          parlays: parlaysPayload?.generated_at || data.generated_at || null,
+        },
+        health_strip: {
+          parlays: {
+            generated_at: parlaysPayload?.generated_at || null,
+            count: parlaysList.length,
+            primary_odds: primaryOdds,
+            primary_in_band: inBand,
+          },
+          odds_coverage_today: null,
+          espn: null,
         },
         uptime: 'static'
       };
@@ -530,11 +608,13 @@ export class BettingAPI {
     const cached = this.getCached<DashboardStatus>(cacheKey, 15000);
     if (cached) return cached;
 
-    const response = await fetch(`${API_BASE}/api/status`);
-    if (!response.ok) throw new Error('Failed to fetch dashboard status');
-    const data = await response.json();
-    this.setCached(cacheKey, data);
-    return data;
+    return this.dedupe(cacheKey, async () => {
+      const response = await fetch(`${API_BASE}/api/status`);
+      if (!response.ok) throw new Error('Failed to fetch dashboard status');
+      const data = await response.json();
+      this.setCached(cacheKey, data);
+      return data;
+    });
   }
 
   /**
