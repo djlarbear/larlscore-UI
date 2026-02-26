@@ -95,6 +95,7 @@ const Dashboard: React.FC = () => {
   const [bets, setBets] = useState<Bet[]>([]);
   const [todaysPicks, setTodaysPicks] = useState<Bet[]>([]);
   const [parlayPool, setParlayPool] = useState<Bet[]>([]);
+  const [parlayRecs, setParlayRecs] = useState<any>(null);
   const [summary, setSummary] = useState<BetSummary | null>(null);
   const [dates, setDates] = useState<DateStat[]>([]);
   const [sports, setSports] = useState<string[]>([]);
@@ -118,6 +119,13 @@ const Dashboard: React.FC = () => {
     bet_type?: string;
   }>({});
   const [isMobile, setIsMobile] = useState<boolean>(typeof window !== 'undefined' ? window.innerWidth <= 640 : false);
+  const [homeRenderCount, setHomeRenderCount] = useState(12);
+  const [phase3RenderCount, setPhase3RenderCount] = useState(12);
+
+  const betKey = useCallback((bet: Bet, idx: number) => {
+    const base = bet.id || `${bet.game}|${bet.bet_type}|${bet.recommendation}|${bet.date || bet.game_time || ''}`;
+    return base || `bet-${idx}`;
+  }, []);
   const [viewAnim, setViewAnim] = useState<number>(1);
   const [historyRenderCount, setHistoryRenderCount] = useState<number>(24);
   const [parlaysExpanded, setParlaysExpanded] = useState<Record<string, boolean>>({});
@@ -241,6 +249,17 @@ const Dashboard: React.FC = () => {
     };
 
     loadTodaysPicks();
+
+    // Load separate parlay generator output (static snapshot or /dashboard-parlays.json)
+    // Guard for older deployed bundles where getParlays may not exist yet.
+    const anyAPI: any = BettingAPI as any;
+    if (anyAPI && typeof anyAPI.getParlays === 'function') {
+      anyAPI.getParlays()
+        .then((p: any) => setParlayRecs(p))
+        .catch(() => setParlayRecs(null));
+    } else {
+      setParlayRecs(null);
+    }
   }, []);
 
   useEffect(() => {
@@ -293,6 +312,14 @@ const Dashboard: React.FC = () => {
     setHistoryRenderCount(24);
   }, [bets, currentPage, sort, debouncedFilters]);
 
+  useEffect(() => {
+    setHomeRenderCount(12);
+  }, [todaysPicks.length]);
+
+  useEffect(() => {
+    setPhase3RenderCount(12);
+  }, [phase3Data?.active?.bets?.length]);
+
   const winRate = summary ? Math.round((summary.wins / summary.total_bets) * 100) : 0;
   const mainDecided = summary ? (summary.wins + summary.losses) : 0;
   const phase3WR = Number(phase3Data?.observability?.overall_win_rate_pct ?? 0);
@@ -300,6 +327,8 @@ const Dashboard: React.FC = () => {
   const wrDelta = phase3Decided > 0 && mainDecided > 0 ? Number((phase3WR - winRate).toFixed(1)) : null;
   const overlapCount = Number(phase3Data?.comparison?.head_to_head_overlap?.overlap_count ?? 0);
   const overlapDelta = Number(phase3Data?.comparison?.head_to_head_overlap?.delta_wr_pp ?? 0);
+  const phase3GeneratedAt = phase3Data?.generated_at ? new Date(phase3Data.generated_at).getTime() : null;
+  const phase3Stale = phase3GeneratedAt ? (Date.now() - phase3GeneratedAt) > (24 * 60 * 60 * 1000) : false;
 
   const formatAge = (iso?: string | null): string => {
     if (!iso) return 'unknown';
@@ -358,15 +387,28 @@ const Dashboard: React.FC = () => {
     i === arr.findIndex((x) => x.game === b.game && x.recommendation === b.recommendation && x.bet_type === b.bet_type)
   );
 
+  // Parlay leg pool (broader than "safe favorites"):
+  // - allow heavy favorites down to -500
+  // - allow plus legs up to +1000 (or more if provided)
+  // - rely primarily on confidence/edge to keep hit-rate high
   const parlayCandidates = uniqueParlaySource
     .filter((b) => {
       const conf = Number(b.confidence || 0);
       const edge = Number(b.edge || 0);
       const odds = inferLegOdds(b);
-      const inSafeOddsBand = odds <= -130 && odds >= -350;
-      return conf >= 58 && edge >= 2 && inSafeOddsBand;
+      const inOddsBand = odds >= -500 && odds <= 1000;
+      // Keep quality high: confidence + minimum edge where meaningful.
+      // Props often have smaller "edge" scales, so edge gate is softer.
+      const bt = String(b.bet_type || '').toUpperCase();
+      const minEdge = bt === 'PROP' ? 1.5 : 2;
+      return conf >= 60 && edge >= minEdge && inOddsBand;
     })
-    .sort((a, b) => Number(b.confidence || 0) - Number(a.confidence || 0));
+    .sort((a, b) => {
+      const ca = Number(a.confidence || 0);
+      const cb = Number(b.confidence || 0);
+      if (cb !== ca) return cb - ca;
+      return Number(b.edge || 0) - Number(a.edge || 0);
+    });
 
   const comboOdds = (legs: Bet[]) => {
     const dec = legs.reduce((acc, b) => acc * americanToDecimal(inferLegOdds(b)), 1);
@@ -376,28 +418,96 @@ const Dashboard: React.FC = () => {
     return Number.isFinite(amer) ? amer : 100;
   };
 
-  const buildParlays = (): { name: string; legs: Bet[]; odds: number }[] => {
+  const impliedProbFromOdds = (odds: number): number => {
+    if (!Number.isFinite(odds) || odds === 0) return 0.55;
+    if (odds < 0) {
+      const a = Math.abs(odds);
+      return a / (a + 100);
+    }
+    return 100 / (odds + 100);
+  };
+
+  const legHitProb = (bet: Bet): number => {
+    const confP = Math.max(0.52, Math.min(0.92, Number(bet.confidence || 55) / 100));
+    const oddsP = Math.max(0.45, Math.min(0.85, impliedProbFromOdds(inferLegOdds(bet))));
+    // Blend: confidence drives, odds sanity-checks
+    return Math.max(0.50, Math.min(0.92, 0.72 * confP + 0.28 * oddsP));
+  };
+
+  const buildParlays = (): { name: string; legs: Bet[]; odds: number; est_hit?: number }[] => {
+    // Avoid same-game correlation for the *recommended* parlay.
     const uniqueByGame: Bet[] = [];
     const seen = new Set<string>();
     for (const b of parlayCandidates) {
       const g = b.game || '';
-      if (seen.has(g)) continue; // avoid same-game correlation
+      if (seen.has(g)) continue;
       seen.add(g);
       uniqueByGame.push(b);
     }
 
-    const core = uniqueByGame.slice(0, 3);
-    const balanced = uniqueByGame.slice(0, 4);
-    const conservative = uniqueByGame.filter((b) => Number(b.confidence || 0) >= 66).slice(0, 3);
+    // We want 1 strong daily parlay + 1–2 alternates.
+    // Brute-force combos over a small top-N set (fast, deterministic).
+    const topN = uniqueByGame.slice(0, 14);
 
-    const out: { name: string; legs: Bet[]; odds: number }[] = [];
-    if (core.length >= 3) out.push({ name: 'Core Safe Parlay (3-leg)', legs: core, odds: comboOdds(core) });
-    if (balanced.length >= 4) out.push({ name: 'Balanced Parlay (4-leg)', legs: balanced, odds: comboOdds(balanced) });
-    if (conservative.length >= 3) out.push({ name: 'Conservative Alt (3-leg)', legs: conservative, odds: comboOdds(conservative) });
-    return out;
+    const scoreCombo = (legs: Bet[]) => {
+      const hit = legs.reduce((acc, b) => acc * legHitProb(b), 1);
+      const odds = comboOdds(legs);
+      // Prefer plus-money but don't chase huge odds.
+      const target = 420; // roughly the user's +400 example
+      const oddsPenalty = Math.abs(Math.min(1200, Math.max(-200, odds)) - target) / 500;
+      // Slight penalty for longer parlays (keep it realistic)
+      const lenPenalty = (legs.length - 3) * 0.06;
+      return { hit, odds, score: Math.log(Math.max(hit, 1e-9)) - oddsPenalty - lenPenalty };
+    };
+
+    const bestByLen: Record<number, { legs: Bet[]; hit: number; odds: number; score: number } | null> = { 3: null, 4: null, 5: null };
+
+    const rec = (start: number, k: number, chosen: Bet[]) => {
+      if (chosen.length === k) {
+        const s = scoreCombo(chosen);
+        const cur = bestByLen[k];
+        if (!cur || s.score > cur.score) bestByLen[k] = { legs: [...chosen], ...s };
+        return;
+      }
+      for (let i = start; i < topN.length; i++) {
+        chosen.push(topN[i]);
+        rec(i + 1, k, chosen);
+        chosen.pop();
+      }
+    };
+
+    rec(0, 3, []);
+    rec(0, 4, []);
+    rec(0, 5, []);
+
+    const out: { name: string; legs: Bet[]; odds: number; est_hit?: number }[] = [];
+    const primary = bestByLen[4] || bestByLen[3] || bestByLen[5];
+    if (primary) out.push({ name: 'Daily High-Probability Parlay', legs: primary.legs, odds: primary.odds, est_hit: primary.hit });
+
+    // Alternates: a shorter "safer" version and a longer "booster".
+    const safe = bestByLen[3];
+    if (safe && (!primary || safe.legs.join !== primary.legs.join)) out.push({ name: 'Safer (3-leg) Alt', legs: safe.legs, odds: safe.odds, est_hit: safe.hit });
+
+    const booster = bestByLen[5];
+    if (booster && (!primary || booster.legs.join !== primary.legs.join)) out.push({ name: 'Booster (5-leg) Alt', legs: booster.legs, odds: booster.odds, est_hit: booster.hit });
+
+    return out.filter((p) => p.legs.length >= 3);
   };
 
-  const parlays = buildParlays();
+  const computedParlays = buildParlays();
+
+  const todayISO = new Date().toISOString().split('T')[0];
+  const exportedParlays = (parlayRecs && Array.isArray(parlayRecs.parlays))
+    ? parlayRecs.parlays.map((p: any, idx: number) => ({
+        name: p.name || `Parlay ${idx + 1}`,
+        odds: Number(p.est_odds ?? p.odds ?? 100),
+        est_hit: typeof p.est_hit === 'number' ? p.est_hit : undefined,
+        legs: Array.isArray(p.legs) ? p.legs.map((leg: any) => transformPick(leg as any, todayISO)) : [],
+        notes: p.notes,
+      }))
+    : [];
+
+  const parlays = exportedParlays.length ? exportedParlays : computedParlays;
 
   const isExpanded = (map: Record<string, boolean>, key: string) => map[key] !== false;
   const toggleParlaySection = (key: string) => setParlaysExpanded((prev) => ({ ...prev, [key]: !isExpanded(prev, key) }));
@@ -501,11 +611,13 @@ const Dashboard: React.FC = () => {
                 textAlign: 'center',
               }}>
                 <div style={{ fontSize: '10px', fontWeight: '700', color: '#555', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '10px' }}>Record</div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '8px' }}>
                   <SummaryBubble label="Total Bets" value={summary.total_bets} color="#0A84FF" />
                   <SummaryBubble label="Wins" value={summary.wins} color="#34C759" />
                   <SummaryBubble label="Losses" value={summary.losses} color="#FF3B30" />
                   <SummaryBubble label="Win Rate" value={`${winRate}%`} color="#FF9500" />
+                  <SummaryBubble label="ROI" value={`${(summary.roi_pct ?? 0).toFixed(1)}%`} color="#34C759" />
+                  <SummaryBubble label="Net" value={`${(summary.net_units ?? 0).toFixed(2)}u`} color="#0A84FF" />
                 </div>
               </div>
               {/* Group 2: Bet Types */}
@@ -741,12 +853,22 @@ const Dashboard: React.FC = () => {
                 <span className="app-chip" style={{ padding: '4px 8px', fontSize: 11, color: '#A0A0A0' }}>
                   Generated: {phase3Data?.generated_at ? formatAge(phase3Data.generated_at) : 'unknown'}
                 </span>
+                {phase3Stale && (
+                  <span className="app-chip" style={{ padding: '4px 8px', fontSize: 11, color: '#FF9F0A', borderColor: 'rgba(255,159,10,0.35)', background: 'rgba(255,159,10,0.12)' }}>
+                    Stale &gt;24h
+                  </span>
+                )}
                 <span className="app-chip" style={{ padding: '4px 8px', fontSize: 11, color: '#A0A0A0' }}>
                   Phase3 Decided: {phase3Decided}
                 </span>
                 <span className="app-chip" style={{ padding: '4px 8px', fontSize: 11, color: '#34C759' }}>
                   Phase3 WR: {phase3WR}%
                 </span>
+                {phase3Data?.thresholds?.MONEYLINE && (
+                  <span className="app-chip" title="Phase3 ML thresholds" style={{ padding: '4px 8px', fontSize: 11, color: '#A0A0A0' }}>
+                    P3 ML gate: {phase3Data.thresholds.MONEYLINE.min_confidence}%/{phase3Data.thresholds.MONEYLINE.min_edge}
+                  </span>
+                )}
                 <span className="app-chip" style={{ padding: '4px 8px', fontSize: 11, color: '#A0A0A0' }}>
                   Main Decided: {mainDecided}
                 </span>
@@ -781,19 +903,24 @@ const Dashboard: React.FC = () => {
             ) : (
               <>
                 {(phase3Data?.active?.bets || []).length > 0 ? (
-                  <div className="bet-grid" style={{ marginBottom: '30px' }}>
-                    {(phase3Data?.active?.bets || []).map((bet: Bet, idx: number) => {
-                      const norm = (s: any) => String(s || '').replace(/Points\s+Rebounds\s+Assists/gi, 'PRA');
-                      const b2: any = { ...bet, recommendation: norm((bet as any).recommendation), why_this_pick: norm((bet as any).why_this_pick) };
-                      return <BetCard key={`p3-${idx}`} bet={b2} onClick={() => setSelectedBet(b2)} showScore={false} />;
-                    })}
-                  </div>
+                  <>
+                    <div className="bet-grid" style={{ marginBottom: '10px' }}>
+                      {(phase3Data?.active?.bets || []).slice(0, phase3RenderCount).map((bet: Bet, idx: number) => {
+                        const norm = (s: any) => String(s || '').replace(/Points\s+Rebounds\s+Assists/gi, 'PRA');
+                        const b2: any = { ...bet, recommendation: norm((bet as any).recommendation), why_this_pick: norm((bet as any).why_this_pick) };
+                        return <BetCard key={`p3-${betKey(b2, idx)}`} bet={b2} onClick={() => setSelectedBet(b2)} showScore={false} />;
+                      })}
+                    </div>
+                    {phase3RenderCount < (phase3Data?.active?.bets || []).length && (
+                      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '6px' }}>
+                        <button className="app-chip" onClick={() => setPhase3RenderCount((c) => c + 12)} style={{ padding: '8px 14px', fontSize: '12px', color: '#BFC8D6', border: '1px solid rgba(255,255,255,0.12)', background: 'rgba(255,255,255,0.04)', cursor: 'pointer' }}>
+                          Load more Phase3 picks ({(phase3Data?.active?.bets || []).length - phase3RenderCount} left)
+                        </button>
+                      </div>
+                    )}
+                  </>
                 ) : (
-                  <div className="app-empty" style={{ color: '#A0A0A0' }}>
-                    <div style={{ fontSize: '28px', marginBottom: '8px' }}>•</div>
-                    <p style={{ fontSize: '16px', fontWeight: '600', color: '#E0E0E0', margin: '0 0 4px 0' }}>No Phase 3 picks yet</p>
-                    <p style={{ fontSize: '12px', margin: 0 }}>Run phase3 init/export pipeline to populate this tab.</p>
-                  </div>
+                  <EmptyState title="No Phase 3 picks yet" subtitle="Run phase3 init/export pipeline to populate this tab." />
                 )}
               </>
             )}
@@ -817,10 +944,12 @@ const Dashboard: React.FC = () => {
                 <div style={{ fontSize: '24px', fontWeight: '800', color: '#FFFFFF', letterSpacing: '-0.01em' }}>
                   Parlay Builder
                 </div>
-                <div style={{ fontSize: 12, color: '#9aa3b2', marginTop: 2 }}>Lower-odds legs (favorites) combined to plus money</div>
+                <div style={{ fontSize: 12, color: '#9aa3b2', marginTop: 2 }}>
+                  Daily 3–5 leg parlay suggestions (ML / spreads / totals / props) optimized for hit-rate + reasonable payout
+                </div>
               </div>
               <span className="app-chip" style={{ padding: '6px 10px', fontSize: 12, fontWeight: 700, color: '#D7DFEA', border: '1px solid rgba(255,255,255,0.16)', background: 'rgba(255,255,255,0.06)' }}>
-                {parlayCandidates.length} safe-leg candidates
+                {parlayCandidates.length} leg candidates
               </span>
             </div>
 
@@ -832,7 +961,7 @@ const Dashboard: React.FC = () => {
               </div>
             ) : (
               <>
-                {parlays.map((p, idx) => {
+                {parlays.map((p: any, idx: number) => {
                   const key = `${p.name}-${idx}`;
                   const expanded = isExpanded(parlaysExpanded, key);
                   return (
@@ -858,13 +987,23 @@ const Dashboard: React.FC = () => {
                           <span style={{ fontSize: 18 }}>{expanded ? '▾' : '▸'}</span>
                           <span style={{ fontSize: 18, fontWeight: 800, color: '#fff' }}>{p.name}</span>
                         </div>
-                        <span className="app-chip" style={{ padding: '4px 8px', fontSize: 12, color: '#9FE3B3', border: '1px solid rgba(159,227,179,0.28)', background: 'rgba(159,227,179,0.08)' }}>
-                          Est. odds {formatAmerican(p.odds)}
+                        <span style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                          <span className="app-chip" style={{ padding: '4px 8px', fontSize: 12, color: '#9FE3B3', border: '1px solid rgba(159,227,179,0.28)', background: 'rgba(159,227,179,0.08)' }}>
+                            Est. odds {formatAmerican(p.odds)}
+                          </span>
+                          {typeof (p as any).est_hit === 'number' && (
+                            <span className="app-chip" title="Estimated parlay hit probability (confidence-weighted; not a guarantee)" style={{ padding: '4px 8px', fontSize: 12, color: '#D7DFEA', border: '1px solid rgba(255,255,255,0.16)', background: 'rgba(255,255,255,0.06)' }}>
+                              Est. hit {Math.round(((p as any).est_hit as number) * 100)}%
+                            </span>
+                          )}
                         </span>
                       </button>
                       {expanded && (
                         <div className="bet-grid" style={{ marginBottom: 0 }}>
-                          {p.legs.map((bet, legIdx) => (
+                          {p.notes && (
+                            <div style={{ marginBottom: 10, fontSize: 12, color: '#8E8E93' }}>{p.notes}</div>
+                          )}
+                          {p.legs.map((bet: Bet, legIdx: number) => (
                             <div key={`parlay-leg-${idx}-${legIdx}`}>
                               <BetCard bet={bet} onClick={() => setSelectedBet(bet)} showScore={false} />
                               <div style={{ marginTop: 6, marginBottom: 8, fontSize: 12, color: '#A0A0A0' }}>
@@ -878,7 +1017,7 @@ const Dashboard: React.FC = () => {
                   );
                 })}
                 <p style={{ fontSize: 12, color: '#8E8E93', marginTop: 6 }}>
-                  Note: parlay odds here are model-estimated from confidence, not live FanDuel quote.
+                  Note: parlay odds here are model-estimated (from stored odds when available, else inferred), not a live FanDuel quote.
                 </p>
               </>
             )}
@@ -911,18 +1050,21 @@ const Dashboard: React.FC = () => {
                     {todaysPicks.length} active
                   </span>
                 </div>
-                <div className="bet-grid" style={{ marginBottom: 0 }}>
-                  {todaysPicks.map((bet, idx) => (
-                    <BetCard key={`today-${idx}`} bet={bet} onClick={() => setSelectedBet(bet)} showScore={false} />
+                <div className="bet-grid" style={{ marginBottom: 10 }}>
+                  {todaysPicks.slice(0, homeRenderCount).map((bet, idx) => (
+                    <BetCard key={`today-${betKey(bet, idx)}`} bet={bet} onClick={() => setSelectedBet(bet)} showScore={false} />
                   ))}
                 </div>
+                {homeRenderCount < todaysPicks.length && (
+                  <div style={{ display: 'flex', justifyContent: 'center', marginTop: '6px' }}>
+                    <button className="app-chip" onClick={() => setHomeRenderCount((c) => c + 12)} style={{ padding: '8px 14px', fontSize: '12px', color: '#BFC8D6', border: '1px solid rgba(255,255,255,0.12)', background: 'rgba(255,255,255,0.04)', cursor: 'pointer' }}>
+                      Load more picks ({todaysPicks.length - homeRenderCount} left)
+                    </button>
+                  </div>
+                )}
               </div>
             ) : (
-              <div className="app-empty" style={{ color: '#A0A0A0' }}>
-                <div style={{ fontSize: '28px', marginBottom: '8px' }}>•</div>
-                <p style={{ fontSize: '16px', fontWeight: '600', color: '#E0E0E0', margin: '0 0 4px 0' }}>No picks for today</p>
-                <p style={{ fontSize: '12px', margin: 0 }}>Check back after the 5:00 AM generation cron.</p>
-              </div>
+              <EmptyState title="No picks for today" subtitle="Check back after the 5:00 AM generation cron." />
             )}
 
 {/* Historical bets section removed - use History tab instead */}
@@ -1030,6 +1172,14 @@ const Dashboard: React.FC = () => {
     </div>
   );
 };
+
+const EmptyState: React.FC<{ title: string; subtitle: string }> = ({ title, subtitle }) => (
+  <div className="app-empty" style={{ color: '#A0A0A0' }}>
+    <div style={{ fontSize: '28px', marginBottom: '8px' }}>•</div>
+    <p style={{ fontSize: '16px', fontWeight: '600', color: '#E0E0E0', margin: '0 0 4px 0' }}>{title}</p>
+    <p style={{ fontSize: '12px', margin: 0 }}>{subtitle}</p>
+  </div>
+);
 
 const SummaryBubble: React.FC<{ label: string; value: string | number; color: string }> = ({ label, value, color }) => (
   <div className="app-card app-surface" style={{
