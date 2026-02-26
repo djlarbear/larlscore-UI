@@ -19,6 +19,7 @@ DISALLOWED=(
   "**/*.db"
   "**/*.sqlite"
   "**/*.log"
+  "**/vite.log"
   "betting"
   "memory"
   ".openclaw"
