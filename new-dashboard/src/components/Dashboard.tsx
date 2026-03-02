@@ -9,6 +9,7 @@ import FilterBar from './FilterBar';
 import BetDetail from './BetDetail';
 import InsightsView from './InsightsView';
 import { HomeIcon, HistoryIcon, InsightsIcon } from './NavIcons';
+import LarlScoreLogo from './LarlScoreLogo';
 import { useDebounce } from '../hooks/useDebounce';
 
 type ViewType = 'home' | 'history' | 'insights' | 'hershel';
@@ -353,7 +354,7 @@ const Dashboard: React.FC = () => {
           gap: isMobile ? '6px' : '8px',
           alignItems: 'center',
         }}>
-          <span style={{ color: '#FFFFFF', fontWeight: 800, fontSize: isMobile ? '32px' : '48px', lineHeight: 1.1 }}>LarlScore</span>
+          <LarlScoreLogo size={isMobile ? 'medium' : 'large'} />
 
           {overdue24h && (
             <div style={{
