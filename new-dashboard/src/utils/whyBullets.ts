@@ -9,22 +9,31 @@
  *
  * Always discarded:
  *   - Bare section headers with no data ("Edge Breakdown:", "Edge Components:")
+ *   - Lines containing emojis
  *
  * Returns exactly `max` bullets when the raw string has enough content,
  * fewer only if the raw string truly has nothing useful.
  */
+
+// Regex to match any emoji
+const EMOJI_REGEX = /[\p{Emoji_Presentation}\p{Extended_Pictographic}]/gu;
+
 export function buildWhyBullets(raw: string, max = 3): string[] {
   const lines = raw
     .split('\n')
     .map(l => l.trim().replace(/^[•\-]\s*/, '').trim())
-    .filter(Boolean);
+    .filter(Boolean)
+    .filter(l => !EMOJI_REGEX.test(l)); // Remove lines containing emojis
+
+  // Clean emojis from each line
+  const cleanedLines = lines.map(line => line.replace(EMOJI_REGEX, '').trim()).filter(Boolean);
 
   const modelLines: string[] = [];  // highest priority
   const dataLines:  string[] = [];  // pace / team strength
   const edgeLines:  string[] = [];  // "X.X point edge identified…"
   const generic:    string[] = [];  // filler — only used to pad to `max`
 
-  for (const line of lines) {
+  for (const line of cleanedLines) {
     // Always discard bare section headers
     if (/^Edge (Breakdown|Components):\s*$/.test(line)) continue;
 
