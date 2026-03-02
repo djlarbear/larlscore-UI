@@ -365,7 +365,7 @@ const Dashboard: React.FC = () => {
               fontSize: '12px',
               fontWeight: 600
             }}>
-              Update overdue (>24h)
+              Update overdue (24h+)
             </div>
           )}
 
