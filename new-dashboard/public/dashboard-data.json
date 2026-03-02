@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-03-01T05:00:20.672604",
+  "generated_at": "2026-03-02T05:00:17.375564",
   "export_meta": {
-    "exported_at": "2026-03-01T05:00:20.666343",
+    "exported_at": "2026-03-02T05:00:17.369771",
     "cloudflare_pages": "https://larlscore.pages.dev/",
-    "betting_repo_commit": "79f67ba"
+    "betting_repo_commit": "e7d9fb1"
   },
   "picks": [],
   "stats": {
@@ -36,34 +36,36 @@
     }
   },
   "summary": {
-    "total_bets": 109,
-    "wins": 52,
-    "losses": 55,
+    "total_bets": 126,
+    "wins": 62,
+    "losses": 61,
     "cancelled": 1,
-    "win_rate": 48.6,
-    "decided": 107,
-    "net_units": -7.68,
-    "roi_pct": -7.2,
+    "win_rate": 50.4,
+    "decided": 123,
+    "net_units": -4.63,
+    "roi_pct": -3.8,
     "by_sport": {
+      "NBA": 38,
       "\ud83c\udfc0 NCAA Basketball": 86,
-      "NBA": 21,
       "\ud83c\udfc0 NBA": 2
     },
     "by_bet_type": {
+      "PROP": 38,
       "TOTAL": 29,
       "SPREAD": 51,
-      "PROP": 21,
       "MONEYLINE": 8
     },
     "by_result": {
-      "WIN": 52,
-      "LOSS": 55,
+      "WIN": 62,
+      "LOSS": 61,
+      "PUSH": 1,
       "CANCELLED": 1,
-      "UNKNOWN": 1
+      "VOID": 1
     },
     "by_date": {
-      "2026-02-27": 1,
-      "2026-02-26": 3,
+      "2026-03-01": 5,
+      "2026-02-27": 6,
+      "2026-02-26": 10,
       "2026-02-25": 8,
       "2026-02-24": 12,
       "2026-02-23": 7,
@@ -77,9 +79,104 @@
     "spread_count": 51,
     "total_count": 29,
     "moneyline_count": 8,
-    "prop_count": 21
+    "prop_count": 38
   },
   "bets": [
+    {
+      "id": "de4bc501af02f55f",
+      "date": "2026-03-01",
+      "game": "Detroit Pistons @ Orlando Magic",
+      "sport": "NBA",
+      "bet_type": "PROP",
+      "recommendation": "Jalen Suggs OVER 18.5 Points Rebounds Assists",
+      "edge": 6.065714319999998,
+      "confidence": 75.0,
+      "larlscore": 3.58,
+      "result": "WIN",
+      "actual_score": "Jalen Suggs: PTS=14 REB=3 AST=4 (PRA=21 vs line 18.5)",
+      "game_result": "Jalen Suggs: PTS=14 REB=3 AST=4 (PRA=21 vs line 18.5)",
+      "american_odds": -110.0,
+      "fanduel_line": "OVER 18.5",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "d6562b9516b3d65c",
+      "date": "2026-03-01",
+      "game": "San Antonio Spurs @ New York Knicks",
+      "sport": "NBA",
+      "bet_type": "PROP",
+      "recommendation": "Karl-Anthony Towns OVER 31.5 Points Rebounds Assists",
+      "edge": 5.256666519999996,
+      "confidence": 64.0,
+      "larlscore": 2.55,
+      "result": "LOSS",
+      "actual_score": "Karl-Anthony Towns: PTS=12 REB=14 AST=1 (PRA=27 vs line 31.5)",
+      "game_result": "Karl-Anthony Towns: PTS=12 REB=14 AST=1 (PRA=27 vs line 31.5)",
+      "american_odds": -120.0,
+      "fanduel_line": "OVER 31.5",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "e93cac41f83f8847",
+      "date": "2026-03-01",
+      "game": "Milwaukee Bucks @ Chicago Bulls",
+      "sport": "NBA",
+      "bet_type": "PROP",
+      "recommendation": "Bobby Portis OVER 17.5 Points Rebounds Assists",
+      "edge": 4.915102000000001,
+      "confidence": 73.0,
+      "larlscore": 1.39,
+      "result": "WIN",
+      "actual_score": "Bobby Portis: PTS=18 REB=5 AST=0 (PRA=23 vs line 17.5)",
+      "game_result": "Bobby Portis: PTS=18 REB=5 AST=0 (PRA=23 vs line 17.5)",
+      "american_odds": -113.0,
+      "fanduel_line": "OVER 17.5",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "c4c54b1ea6f78219",
+      "date": "2026-03-01",
+      "game": "Sacramento Kings @ Los Angeles Lakers",
+      "sport": "NBA",
+      "bet_type": "PROP",
+      "recommendation": "DeMar DeRozan OVER 21.5 Points Rebounds Assists",
+      "edge": 4.147792080000002,
+      "confidence": 55.0,
+      "larlscore": 0.88,
+      "result": "LOSS",
+      "actual_score": "DeMar DeRozan: PTS=9 REB=4 AST=8 (PRA=21 vs line 21.5)",
+      "game_result": "DeMar DeRozan: PTS=9 REB=4 AST=8 (PRA=21 vs line 21.5)",
+      "american_odds": -118.0,
+      "fanduel_line": "OVER 21.5",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "f71cf24e5a2e95b6",
+      "date": "2026-03-01",
+      "game": "Oklahoma City Thunder @ Dallas Mavericks",
+      "sport": "NBA",
+      "bet_type": "PROP",
+      "recommendation": "Jared McCain OVER 9.5 Points",
+      "edge": 3.4017392000000015,
+      "confidence": 53.0,
+      "larlscore": 0.72,
+      "result": "WIN",
+      "actual_score": "Jared McCain: PTS=11 REB=1 AST=1 (PTS=11 vs line 9.5)",
+      "game_result": "Jared McCain: PTS=11 REB=1 AST=1 (PTS=11 vs line 9.5)",
+      "american_odds": -112.0,
+      "fanduel_line": "OVER 9.5",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
     {
       "id": "80d34a17bb10473d",
       "date": "2026-02-27",
@@ -95,6 +192,101 @@
       "game_result": "81-73",
       "american_odds": -106.0,
       "fanduel_line": "Over 135.5 (-106) / Under 135.5 (-114)",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "f5ec21b57f2c5c8c",
+      "date": "2026-02-27",
+      "game": "Cleveland Cavaliers @ Detroit Pistons",
+      "sport": "NBA",
+      "bet_type": "PROP",
+      "recommendation": "Evan Mobley OVER 25.5 Points Rebounds Assists",
+      "edge": 5.5000016000000045,
+      "confidence": 74.0,
+      "larlscore": 2.74,
+      "result": "WIN",
+      "actual_score": "36",
+      "game_result": "36",
+      "american_odds": -112.0,
+      "fanduel_line": "OVER 25.5",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "00d3f7c64a075dac",
+      "date": "2026-02-27",
+      "game": "Denver Nuggets @ Oklahoma City Thunder",
+      "sport": "NBA",
+      "bet_type": "PROP",
+      "recommendation": "Shai Gilgeous-Alexander OVER 39.5 Points Rebounds Assists",
+      "edge": 4.565789000000002,
+      "confidence": 72.0,
+      "larlscore": 1.14,
+      "result": "WIN",
+      "actual_score": "48",
+      "game_result": "48",
+      "american_odds": -104.0,
+      "fanduel_line": "OVER 39.5",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "c80547efcd5136fd",
+      "date": "2026-02-27",
+      "game": "New York Knicks @ Milwaukee Bucks",
+      "sport": "NBA",
+      "bet_type": "PROP",
+      "recommendation": "Kyle Kuzma OVER 18.5 Points Rebounds Assists",
+      "edge": 4.4446156399999985,
+      "confidence": 71.0,
+      "larlscore": 1.06,
+      "result": "WIN",
+      "actual_score": "23",
+      "game_result": "23",
+      "american_odds": -112.0,
+      "fanduel_line": "OVER 18.5",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "c1d7f6f044b64518",
+      "date": "2026-02-27",
+      "game": "New York Knicks @ Milwaukee Bucks",
+      "sport": "NBA",
+      "bet_type": "PROP",
+      "recommendation": "Karl-Anthony Towns OVER 32.5 Points Rebounds Assists",
+      "edge": 4.256666519999996,
+      "confidence": 71.0,
+      "larlscore": 1.04,
+      "result": "LOSS",
+      "actual_score": "31",
+      "game_result": "31",
+      "american_odds": -106.0,
+      "fanduel_line": "OVER 32.5",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "c3858019f7e5c905",
+      "date": "2026-02-27",
+      "game": "Brooklyn Nets @ Boston Celtics",
+      "sport": "NBA",
+      "bet_type": "PROP",
+      "recommendation": "Nikola Vucevic OVER 22.5 Points Rebounds Assists",
+      "edge": 3.2819177200000027,
+      "confidence": 64.0,
+      "larlscore": 0.72,
+      "result": "WIN",
+      "actual_score": "43",
+      "game_result": "43",
+      "american_odds": -114.0,
+      "fanduel_line": "OVER 22.5",
       "why_this_pick": null,
       "game_time": null,
       "risk_tier": null
@@ -152,6 +344,139 @@
       "game_result": "58-70",
       "american_odds": null,
       "fanduel_line": null,
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "b2e1e43e3d56ad64",
+      "date": "2026-02-26",
+      "game": "Miami Heat @ Philadelphia 76ers",
+      "sport": "NBA",
+      "bet_type": "PROP",
+      "recommendation": "Tyler Herro OVER 25.5 Points Rebounds Assists",
+      "edge": 9.084416599999997,
+      "confidence": 66.0,
+      "larlscore": 4.73,
+      "result": "WIN",
+      "actual_score": "36",
+      "game_result": "36",
+      "american_odds": null,
+      "fanduel_line": null,
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "d164b828562a5840",
+      "date": "2026-02-26",
+      "game": "New Orleans Pelicans @ Utah Jazz",
+      "sport": "NBA",
+      "bet_type": "PROP",
+      "recommendation": "Dejounte Murray OVER 24.5 Points Rebounds Assists",
+      "edge": 6.790323000000001,
+      "confidence": 74.0,
+      "larlscore": 3.79,
+      "result": "LOSS",
+      "actual_score": "29",
+      "game_result": "29",
+      "american_odds": -112.0,
+      "fanduel_line": "OVER 24.5",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "80bbfef8cdea3e7d",
+      "date": "2026-02-26",
+      "game": "Los Angeles Lakers @ Phoenix Suns",
+      "sport": "NBA",
+      "bet_type": "PROP",
+      "recommendation": "LeBron James OVER 30.5 Points Rebounds Assists",
+      "edge": 6.257143200000002,
+      "confidence": 73.0,
+      "larlscore": 3.47,
+      "result": "LOSS",
+      "actual_score": "26",
+      "game_result": "26",
+      "american_odds": null,
+      "fanduel_line": null,
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "be4b436821ccd2b5",
+      "date": "2026-02-26",
+      "game": "Washington Wizards @ Atlanta Hawks",
+      "sport": "NBA",
+      "bet_type": "PROP",
+      "recommendation": "Nickeil Alexander-Walker UNDER 27.5 Points Rebounds Assists",
+      "edge": 5.0887806,
+      "confidence": 50.0,
+      "larlscore": 2.31,
+      "result": "PUSH",
+      "actual_score": "DNP",
+      "game_result": "DNP",
+      "american_odds": null,
+      "fanduel_line": null,
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "aa7b2268cf408bc4",
+      "date": "2026-02-26",
+      "game": "Houston Rockets @ Orlando Magic",
+      "sport": "NBA",
+      "bet_type": "PROP",
+      "recommendation": "Desmond Bane OVER 26.5 Points Rebounds Assists",
+      "edge": 4.295072400000002,
+      "confidence": 68.0,
+      "larlscore": 1.14,
+      "result": "WIN",
+      "actual_score": "40",
+      "game_result": "40",
+      "american_odds": -111.0,
+      "fanduel_line": "OVER 26.5",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "5241533e0019530b",
+      "date": "2026-02-26",
+      "game": "Sacramento Kings @ Dallas Mavericks",
+      "sport": "NBA",
+      "bet_type": "PROP",
+      "recommendation": "Malik Monk OVER 11.5 Points",
+      "edge": 3.3538464,
+      "confidence": 66.0,
+      "larlscore": 0.87,
+      "result": "LOSS",
+      "actual_score": "8",
+      "game_result": "8",
+      "american_odds": null,
+      "fanduel_line": null,
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "03da44b230160397",
+      "date": "2026-02-26",
+      "game": "Charlotte Hornets @ Indiana Pacers",
+      "sport": "NBA",
+      "bet_type": "PROP",
+      "recommendation": "LaMelo Ball OVER 19.5 Points",
+      "edge": 3.2365960000000022,
+      "confidence": 66.0,
+      "larlscore": 0.84,
+      "result": "WIN",
+      "actual_score": "20",
+      "game_result": "20",
+      "american_odds": -108.0,
+      "fanduel_line": "OVER 19.5",
       "why_this_pick": null,
       "game_time": null,
       "risk_tier": null
@@ -831,9 +1156,9 @@
       "edge": 10.809523199999997,
       "confidence": 63.0,
       "larlscore": null,
-      "result": "UNKNOWN",
-      "actual_score": "DNP / Not found in box scores",
-      "game_result": "DNP / Not found in box scores",
+      "result": "VOID",
+      "actual_score": "DNP-ILLNESS",
+      "game_result": "DNP-ILLNESS",
       "american_odds": null,
       "fanduel_line": null,
       "why_this_pick": null,
@@ -2154,18 +2479,25 @@
   ],
   "dates": [
     {
+      "date": "2026-03-01",
+      "total": 5,
+      "wins": 3,
+      "losses": 2,
+      "win_rate": 60.0
+    },
+    {
       "date": "2026-02-27",
-      "total": 1,
-      "wins": 1,
-      "losses": 0,
-      "win_rate": 100.0
+      "total": 6,
+      "wins": 5,
+      "losses": 1,
+      "win_rate": 83.3
     },
     {
       "date": "2026-02-26",
-      "total": 3,
-      "wins": 2,
-      "losses": 1,
-      "win_rate": 66.7
+      "total": 10,
+      "wins": 5,
+      "losses": 4,
+      "win_rate": 55.6
     },
     {
       "date": "2026-02-25",
@@ -2243,19 +2575,19 @@
     "TOTAL"
   ],
   "insights": {
-    "generated_at": "2026-03-01T04:00:04.598046",
-    "total_bets_analyzed": 178,
-    "overall_win_rate": 46.6,
+    "generated_at": "2026-03-02T04:00:07.976795",
+    "total_bets_analyzed": 199,
+    "overall_win_rate": 48.2,
     "roi": {
       "juice": -110,
-      "units_wagered": 178.0,
-      "units_returned": 158.51,
-      "net_units": -19.49,
-      "roi_pct": -10.95,
-      "win_rate_pct": 46.6,
+      "units_wagered": 199.0,
+      "units_returned": 183.24,
+      "net_units": -15.76,
+      "roi_pct": -7.92,
+      "win_rate_pct": 48.2,
       "breakeven_win_rate_pct": 52.4,
-      "above_breakeven": -5.8,
-      "record": "83W-95L-0P",
+      "above_breakeven": -4.1,
+      "record": "96W-103L-0P",
       "note": "Flat betting 1 unit per bet at stated juice"
     },
     "by_sport": {
@@ -2267,11 +2599,11 @@
         "record": "62-71"
       },
       "NBA": {
-        "wins": 21,
-        "losses": 24,
-        "total": 45,
-        "win_rate": 46.7,
-        "record": "21-24"
+        "wins": 34,
+        "losses": 32,
+        "total": 66,
+        "win_rate": 51.5,
+        "record": "34-32"
       }
     },
     "by_bet_type": {
@@ -2297,22 +2629,22 @@
         "record": "28-18"
       },
       "PROP": {
-        "wins": 17,
-        "losses": 19,
-        "total": 36,
-        "win_rate": 47.2,
-        "record": "17-19"
+        "wins": 30,
+        "losses": 27,
+        "total": 57,
+        "win_rate": 52.6,
+        "record": "30-27"
       }
     },
     "moneyline_status": "DISABLED",
     "moneyline_reason": "ml_bad_or_insufficient: n=13 wr=15.4%",
     "by_risk_tier": {
       "Unknown": {
-        "wins": 52,
-        "losses": 55,
-        "total": 107,
-        "win_rate": 48.6,
-        "record": "52-55"
+        "wins": 62,
+        "losses": 61,
+        "total": 123,
+        "win_rate": 50.4,
+        "record": "62-61"
       },
       "MODERATE RISK": {
         "wins": 9,
@@ -2322,18 +2654,18 @@
         "record": "9-8"
       },
       "HIGH RISK": {
-        "wins": 8,
-        "losses": 10,
-        "total": 18,
-        "win_rate": 44.4,
-        "record": "8-10"
+        "wins": 9,
+        "losses": 12,
+        "total": 21,
+        "win_rate": 42.9,
+        "record": "9-12"
       },
       "LOW RISK": {
-        "wins": 14,
+        "wins": 16,
         "losses": 22,
-        "total": 36,
-        "win_rate": 38.9,
-        "record": "14-22"
+        "total": 38,
+        "win_rate": 42.1,
+        "record": "16-22"
       }
     },
     "by_confidence": {
@@ -2354,28 +2686,28 @@
         "record": "13-21"
       },
       "70-79%": {
-        "wins": 37,
-        "losses": 37,
-        "total": 74,
-        "win_rate": 50.0,
-        "avg_confidence": 75.0,
-        "record": "37-37"
+        "wins": 44,
+        "losses": 40,
+        "total": 84,
+        "win_rate": 52.4,
+        "avg_confidence": 74.8,
+        "record": "44-40"
       },
       "60-69%": {
-        "wins": 19,
-        "losses": 19,
-        "total": 38,
-        "win_rate": 50.0,
-        "avg_confidence": 63.9,
-        "record": "19-19"
+        "wins": 23,
+        "losses": 22,
+        "total": 45,
+        "win_rate": 51.1,
+        "avg_confidence": 64.2,
+        "record": "23-22"
       },
       "50-59%": {
-        "wins": 11,
-        "losses": 11,
-        "total": 22,
+        "wins": 13,
+        "losses": 13,
+        "total": 26,
         "win_rate": 50.0,
-        "avg_confidence": 54.8,
-        "record": "11-11"
+        "avg_confidence": 54.7,
+        "record": "13-13"
       }
     },
     "by_edge": {
@@ -2388,20 +2720,20 @@
         "record": "42-32"
       },
       "5-9.9 pts": {
-        "wins": 15,
-        "losses": 23,
-        "total": 38,
-        "win_rate": 39.5,
-        "avg_edge": 7.2,
-        "record": "15-23"
+        "wins": 19,
+        "losses": 27,
+        "total": 46,
+        "win_rate": 41.3,
+        "avg_edge": 7.1,
+        "record": "19-27"
       },
       "3-4.9 pts": {
-        "wins": 18,
-        "losses": 21,
-        "total": 39,
-        "win_rate": 46.2,
+        "wins": 27,
+        "losses": 25,
+        "total": 52,
+        "win_rate": 51.9,
         "avg_edge": 3.9,
-        "record": "18-21"
+        "record": "27-25"
       },
       "1-2.9 pts": {
         "wins": 6,
@@ -2450,12 +2782,6 @@
         "reason": "Below 50% threshold with 13 bets"
       },
       {
-        "type": "REDUCE",
-        "priority": "MEDIUM",
-        "action": "Reduce PROP bets (win rate: 47.2%)",
-        "reason": "Below 50% threshold with 36 bets"
-      },
-      {
         "type": "CALIBRATE",
         "priority": "HIGH",
         "action": "Lower confidence for 90-100% bucket (actual: 30.0% vs expected: 90%+)",
@@ -2470,20 +2796,20 @@
       {
         "type": "CALIBRATE",
         "priority": "HIGH",
-        "action": "Lower confidence for 70-79% bucket (actual: 50.0% vs expected: 70%+)",
-        "reason": "Model is overconfident by 20.0%"
+        "action": "Lower confidence for 70-79% bucket (actual: 52.4% vs expected: 70%+)",
+        "reason": "Model is overconfident by 17.6%"
       },
       {
         "type": "THRESHOLD",
         "priority": "MEDIUM",
         "action": "Raise minimum edge threshold for 5-9.9 pts range",
-        "reason": "Only 39.5% win rate with edge range 5-9.9 pts"
+        "reason": "Only 41.3% win rate with edge range 5-9.9 pts"
       },
       {
         "type": "THRESHOLD",
         "priority": "MEDIUM",
         "action": "Raise minimum edge threshold for 3-4.9 pts range",
-        "reason": "Only 46.2% win rate with edge range 3-4.9 pts"
+        "reason": "Only 51.9% win rate with edge range 3-4.9 pts"
       },
       {
         "type": "THRESHOLD",
@@ -2500,7 +2826,7 @@
       {
         "type": "REDUCE",
         "priority": "HIGH",
-        "action": "Reduce HIGH RISK bets (win rate: 44.4%)",
+        "action": "Reduce HIGH RISK bets (win rate: 42.9%)",
         "reason": "High risk should exceed 65% to justify variance"
       }
     ],
@@ -2560,13 +2886,13 @@
       },
       "PROP": {
         "assumed": 0.5,
-        "actual": 0.4737,
-        "actual_pct": 47.4,
+        "actual": 0.5429,
+        "actual_pct": 54.3,
         "assumed_pct": 50.0,
-        "deviation_pp": -2.63,
-        "status": "GREEN",
-        "n_bets": 19,
-        "record": "9W-10L"
+        "deviation_pp": 4.29,
+        "status": "YELLOW",
+        "n_bets": 35,
+        "record": "19W-16L"
       }
     },
     "deviation_alerts": [
@@ -2578,10 +2904,20 @@
         "actual_wr_pct": 12.5,
         "n_bets_sampled": 8,
         "recommendation": "Keep DISABLED \u2014 actual WR too low",
-        "generated_at": "2026-03-01T04:00:04.600333"
+        "generated_at": "2026-03-02T04:00:07.979114"
+      },
+      {
+        "bet_type": "PROP",
+        "severity": "YELLOW",
+        "deviation_pp": 4.29,
+        "assumed_wr_pct": 50.0,
+        "actual_wr_pct": 54.3,
+        "n_bets_sampled": 35,
+        "recommendation": "Consider increasing assumed WR for PROP (actual 54.3% > assumed 50.0%)",
+        "generated_at": "2026-03-02T04:00:07.979123"
       }
     ],
-    "assumption_audit_at": "2026-03-01T04:00:04.600519",
+    "assumption_audit_at": "2026-03-02T04:00:07.979282",
     "quality": {
       "overall": {
         "window_days": null,
@@ -2610,18 +2946,18 @@
       "last7": {
         "window_days": 7,
         "pinnacle": {
-          "n": 20,
-          "coverage_pct": 15.0,
-          "agree_known_pct": 15.0,
+          "n": 16,
+          "coverage_pct": 18.8,
+          "agree_known_pct": 18.8,
           "agree_pct": 33.3
         },
         "consensus": {
-          "n": 20,
-          "coverage_pct": 65.0,
-          "books_avg": 4.3
+          "n": 16,
+          "coverage_pct": 81.2,
+          "books_avg": 5.4
         },
         "injury_nba_spread": {
-          "n": 1,
+          "n": 0,
           "coverage_pct": 0.0,
           "freshness_known_pct": 0.0
         },
@@ -2633,14 +2969,14 @@
       }
     },
     "export_meta": {
-      "exported_at": "2026-03-01T05:00:20.666343",
+      "exported_at": "2026-03-02T05:00:17.369771",
       "cloudflare_pages": "https://larlscore.pages.dev/",
-      "betting_repo_commit": "79f67ba"
+      "betting_repo_commit": "e7d9fb1"
     }
   },
   "bonus_bets": [],
   "weights": {
-    "generated_at": "2026-03-01T04:00:04.631065",
+    "generated_at": "2026-03-02T04:00:08.011345",
     "source": "learning_insights.json",
     "weights": {
       "SPREAD": {
@@ -2668,10 +3004,10 @@
         "confidence_level": "HIGH"
       },
       "PROP": {
-        "weight": 0.8,
-        "win_rate": 47.5,
-        "sample_count": 36,
-        "adjustment": -0.196,
+        "weight": 1.0,
+        "win_rate": 52.46,
+        "sample_count": 57,
+        "adjustment": 0.002,
         "stability_factor": 1.0,
         "confidence_level": "HIGH"
       }
