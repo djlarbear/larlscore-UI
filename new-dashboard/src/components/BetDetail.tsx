@@ -145,7 +145,7 @@ const BetDetail: React.FC<BetDetailProps> = ({ bet, onClose }) => {
           {/* Game & Date */}
           <div style={{ marginBottom: '24px' }}>
             <h3 style={{ fontSize: '16px', fontWeight: '600', color: '#FFFFFF', margin: '0 0 6px 0' }}>
-              {bet.sport?.split(' ')[0] || '🏀'} {bet.game}
+              {bet.game}
             </h3>
             <p style={{ fontSize: '13px', color: '#A0A0A0', margin: 0 }}>
               {cleanSportName(bet.sport)} • {bet.date}

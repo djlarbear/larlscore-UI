@@ -66,7 +66,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         aria-disabled={disabled}
         {...props}
       >
-        {isLoading && <span>⏳</span>}
         {children}
       </button>
     );

@@ -34,7 +34,7 @@ const APIStatus: React.FC = () => {
 
   if (status === 'ok') {
     // Show different message for static mode
-    const message = STATIC_MODE ? '📦 Static Mode' : '✅ API Connected';
+    const message = STATIC_MODE ? 'Static Mode' : 'API Connected';
     const color = STATIC_MODE ? '#007AFF' : '#34C759';
     
     return (
@@ -72,7 +72,7 @@ const APIStatus: React.FC = () => {
       backdropFilter: 'blur(8px)',
     }}
     onClick={() => window.location.reload()}>
-    ⚠️ API Issue - Click to retry
+    API Issue - Click to retry
     </div>
   );
 };

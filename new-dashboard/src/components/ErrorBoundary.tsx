@@ -28,7 +28,7 @@ class ErrorBoundary extends React.Component<Props, State> {
       return (
         <div style={{ backgroundColor: '#0d0d0d', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px', color: '#fff' }}>
           <div style={{ maxWidth: '560px', backgroundColor: '#1a1a1a', border: '1px solid #2a2a2a', borderRadius: '12px', padding: '24px' }}>
-            <h2 style={{ fontSize: '24px', fontWeight: 700, color: '#FF3B30', marginBottom: '12px' }}>⚠️ Dashboard crashed</h2>
+            <h2 style={{ fontSize: '24px', fontWeight: 700, color: '#FF3B30', marginBottom: '12px' }}>Dashboard Error</h2>
             <p style={{ color: '#A0A0A0', marginBottom: '8px' }}>A runtime error occurred in the UI. Backend data may still be healthy.</p>
             <p style={{ color: '#777', fontSize: '12px', marginBottom: '16px' }}>{this.state.message || 'No error message available'}</p>
             <button

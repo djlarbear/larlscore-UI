@@ -91,7 +91,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
           padding: '8px 12px',
         }}>
           <p style={{ fontSize: '12px', fontWeight: '600', color: '#0A84FF', margin: 0 }}>
-            🔍 {activeCount} filter{activeCount !== 1 ? 's' : ''} active
+            {activeCount} filter{activeCount !== 1 ? 's' : ''} active
           </p>
           <button
             onClick={clearAll}
@@ -164,7 +164,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
           textTransform: 'uppercase', 
           letterSpacing: '0.5px' 
         }}>
-          🏀 Sport {sport && <span style={{ color: '#0A84FF', fontSize: '10px' }}>✓</span>}
+          Sport {sport && <span style={{ color: '#0A84FF', fontSize: '10px' }}>●</span>}
         </label>
         <select
           value={sport}
