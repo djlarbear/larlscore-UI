@@ -9,6 +9,50 @@ const SPORT_EMOJI_RE = /🏀|🏈|⚾|🏒/g;
 const cleanSportName = (sport: string | undefined): string =>
   (sport ?? '').replace(SPORT_EMOJI_RE, '').trim();
 
+// Format why_this_pick text: split by newlines, periods, or semicolons into readable lines
+const formatWhyThisPick = (text: string): React.ReactNode => {
+  if (!text) return null;
+  
+  const cleaned = String(text).replace(/Points\s+Rebounds\s+Assists/gi, 'PRA');
+  
+  // Try to split by common delimiters
+  let lines = [];
+  
+  // First, try splitting by newlines
+  if (cleaned.includes('\n')) {
+    lines = cleaned.split('\n').filter(line => line.trim().length > 0);
+  } 
+  // Then try splitting by sentences (period + space + capital letter)
+  else if (cleaned.match(/\.\s+[A-Z]/)) {
+    lines = cleaned.split(/\.\s+/).filter(line => line.trim().length > 0)
+      .map((line, idx) => idx < cleaned.split(/\.\s+/).length - 1 ? line + '.' : line);
+  }
+  // Try splitting by semicolons
+  else if (cleaned.includes(';')) {
+    lines = cleaned.split(';').filter(line => line.trim().length > 0);
+  }
+  // If no delimiters, wrap the whole text
+  else {
+    lines = [cleaned];
+  }
+  
+  // If only one line, return as is (not a paragraph situation)
+  if (lines.length === 1) {
+    return <span>{lines[0]}</span>;
+  }
+  
+  // Multiple lines: render as bullet points
+  return (
+    <ul style={{ margin: '0', paddingLeft: '20px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+      {lines.map((line, idx) => (
+        <li key={idx} style={{ color: '#E0E0E0', fontSize: '13px', lineHeight: '1.6' }}>
+          {line.trim()}
+        </li>
+      ))}
+    </ul>
+  );
+};
+
 interface BetDetailProps {
   bet: Bet;
   onClose: () => void;
@@ -182,7 +226,7 @@ const BetDetail: React.FC<BetDetailProps> = ({ bet, onClose }) => {
                 color: '#E0E0E0',
                 lineHeight: '1.6',
               }}>
-                {String(bet.why_this_pick).replace(/Points\s+Rebounds\s+Assists/gi, 'PRA')}
+                {formatWhyThisPick(String(bet.why_this_pick))}
               </div>
             </div>
           )}
