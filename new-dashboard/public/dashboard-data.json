@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-03-02T05:00:17.375564",
+  "generated_at": "2026-03-02T10:18:23.378560",
   "export_meta": {
-    "exported_at": "2026-03-02T05:00:17.369771",
+    "exported_at": "2026-03-02T10:18:23.372899",
     "cloudflare_pages": "https://larlscore.pages.dev/",
-    "betting_repo_commit": "e7d9fb1"
+    "betting_repo_commit": "727285e"
   },
   "picks": [],
   "stats": {
@@ -2575,7 +2575,7 @@
     "TOTAL"
   ],
   "insights": {
-    "generated_at": "2026-03-02T04:00:07.976795",
+    "generated_at": "2026-03-02T06:15:01.123394",
     "total_bets_analyzed": 199,
     "overall_win_rate": 48.2,
     "roi": {
@@ -2904,7 +2904,7 @@
         "actual_wr_pct": 12.5,
         "n_bets_sampled": 8,
         "recommendation": "Keep DISABLED \u2014 actual WR too low",
-        "generated_at": "2026-03-02T04:00:07.979114"
+        "generated_at": "2026-03-02T06:15:01.125708"
       },
       {
         "bet_type": "PROP",
@@ -2914,10 +2914,10 @@
         "actual_wr_pct": 54.3,
         "n_bets_sampled": 35,
         "recommendation": "Consider increasing assumed WR for PROP (actual 54.3% > assumed 50.0%)",
-        "generated_at": "2026-03-02T04:00:07.979123"
+        "generated_at": "2026-03-02T06:15:01.125717"
       }
     ],
-    "assumption_audit_at": "2026-03-02T04:00:07.979282",
+    "assumption_audit_at": "2026-03-02T06:15:01.125891",
     "quality": {
       "overall": {
         "window_days": null,
@@ -2969,9 +2969,9 @@
       }
     },
     "export_meta": {
-      "exported_at": "2026-03-02T05:00:17.369771",
+      "exported_at": "2026-03-02T10:18:23.372899",
       "cloudflare_pages": "https://larlscore.pages.dev/",
-      "betting_repo_commit": "e7d9fb1"
+      "betting_repo_commit": "727285e"
     }
   },
   "bonus_bets": [],
