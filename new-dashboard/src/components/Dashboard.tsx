@@ -53,7 +53,7 @@ const transformPick = (pick: RawPick, today: string): Bet => {
     return {
       id: pick.full_bet.id || `pick-${Math.random()}`,
       game: pick.full_bet.game || pick.game || 'N/A',
-      sport: pick.full_bet.sport || pick.sport || '🏀 NCAA Basketball',
+      sport: pick.full_bet.sport || pick.sport || 'NCAA Basketball',
       bet_type: pick.bet_type || pick.full_bet.bet_type || 'UNKNOWN',
       recommendation: (pick.full_bet.recommendation || pick.recommendation || 'N/A').replace(/Points\s+Rebounds\s+Assists/gi, 'PRA'),
       edge: pick.edge ?? pick.full_bet.edge ?? 0,
@@ -72,7 +72,7 @@ const transformPick = (pick: RawPick, today: string): Bet => {
   return {
     id: pick.id || `pick-${Math.random()}`,
     game: pick.game || 'N/A',
-    sport: pick.sport || '🏀 NCAA Basketball',
+    sport: pick.sport || 'NCAA Basketball',
     bet_type: pick.bet_type || 'UNKNOWN',
     recommendation: (pick.recommendation || 'N/A').replace(/Points\s+Rebounds\s+Assists/gi, 'PRA'),
     edge: pick.edge ?? 0,
@@ -312,7 +312,7 @@ const Dashboard: React.FC = () => {
     return (
       <div style={{ backgroundColor: '#0d0d0d', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px' }}>
         <div className="app-surface" style={{ maxWidth: '520px', backgroundColor: '#1a1a1a', border: '1px solid #2a2a2a', borderRadius: '12px', padding: '24px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: '700', color: '#FF3B30', marginBottom: '10px' }}>⚠️ Connection Error</h2>
+          <h2 style={{ fontSize: '24px', fontWeight: '700', color: '#FF3B30', marginBottom: '10px' }}>Connection Error</h2>
           <p style={{ color: '#A0A0A0', marginBottom: '10px', lineHeight: '1.6' }}>Unable to connect to the betting API.</p>
           <p style={{ color: '#8E8E93', marginBottom: '16px', fontSize: '12px' }}>
             Last successful update: {formatAge(mergedUpdated)} · Expected cron refresh around 4:00–5:15 AM EST.

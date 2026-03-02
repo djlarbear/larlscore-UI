@@ -176,7 +176,7 @@ const StaleBetsManager: React.FC = () => {
 
           {/* Instructions */}
           <div className="instructions bg-yellow-50 p-4 rounded border-l-4 border-yellow-400">
-            <h4 className="font-bold mb-2">📋 How to use:</h4>
+            <h4 className="font-bold mb-2">How to use:</h4>
             <ol className="text-sm space-y-1 list-decimal list-inside">
               <li>Click a bet to select it</li>
               <li>Look up the player's actual stats (ESPN box score)</li>

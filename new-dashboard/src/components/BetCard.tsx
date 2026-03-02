@@ -55,7 +55,7 @@ const BetCard: React.FC<BetCardProps> = ({ bet, onClick, showScore = true }) => 
   const larlscore      = bet.larlscore      ?? 0;
   const bet_type       = bet.bet_type       || 'UNKNOWN';
   const result         = bet.result         || null;
-  const sport          = bet.sport          || '🏀';
+  const sport          = bet.sport          || 'Basketball';
   const game_time      = bet.game_time      || '';
   const fanduel_line   = bet.fanduel_line   || '';
   const why_this_pick  = bet.why_this_pick  || '';

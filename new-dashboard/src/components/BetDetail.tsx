@@ -9,11 +9,17 @@ const SPORT_EMOJI_RE = /🏀|🏈|⚾|🏒/g;
 const cleanSportName = (sport: string | undefined): string =>
   (sport ?? '').replace(SPORT_EMOJI_RE, '').trim();
 
+// Regex to match any emoji
+const EMOJI_REGEX = /[\p{Emoji_Presentation}\p{Extended_Pictographic}]/gu;
+
 // Format why_this_pick text: split by newlines, periods, or semicolons into readable lines
+// Also removes all emojis for professional appearance
 const formatWhyThisPick = (text: string): React.ReactNode => {
   if (!text) return null;
   
-  const cleaned = String(text).replace(/Points\s+Rebounds\s+Assists/gi, 'PRA');
+  let cleaned = String(text)
+    .replace(/Points\s+Rebounds\s+Assists/gi, 'PRA')
+    .replace(EMOJI_REGEX, ''); // Remove all emojis
   
   // Try to split by common delimiters
   let lines = [];
@@ -35,6 +41,9 @@ const formatWhyThisPick = (text: string): React.ReactNode => {
   else {
     lines = [cleaned];
   }
+  
+  // Filter out lines that are now empty after emoji removal
+  lines = lines.filter(line => line.trim().length > 0);
   
   // If only one line, return as is (not a paragraph situation)
   if (lines.length === 1) {

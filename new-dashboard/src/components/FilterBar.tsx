@@ -125,7 +125,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
           textTransform: 'uppercase', 
           letterSpacing: '0.5px' 
         }}>
-          📅 Date {date && <span style={{ color: '#0A84FF', fontSize: '10px' }}>✓</span>}
+          Date {date && <span style={{ color: '#0A84FF', fontSize: '10px' }}>✓</span>}
         </label>
         <select
           value={date}
@@ -203,7 +203,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
           textTransform: 'uppercase', 
           letterSpacing: '0.5px' 
         }}>
-          🎲 Bet Type {betType && <span style={{ color: '#0A84FF', fontSize: '10px' }}>✓</span>}
+          Bet Type {betType && <span style={{ color: '#0A84FF', fontSize: '10px' }}>✓</span>}
         </label>
         <select
           value={betType}
@@ -242,7 +242,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
           textTransform: 'uppercase', 
           letterSpacing: '0.5px' 
         }}>
-          🔄 Sort By {sort !== 'date-desc' && <span style={{ color: '#FF9500', fontSize: '10px' }}>✓</span>}
+          Sort By {sort !== 'date-desc' && <span style={{ color: '#FF9500', fontSize: '10px' }}>✓</span>}
         </label>
         <select
           value={sort}
