@@ -400,7 +400,7 @@ const Dashboard: React.FC = () => {
                 textAlign: 'center',
               }}>
                 <div style={{ fontSize: '10px', fontWeight: '700', color: '#555', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '10px' }}>Record</div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '8px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px' }}>
                   <SummaryBubble label="Total Bets" value={summary.total_bets} color="#0A84FF" />
                   <SummaryBubble label="Wins" value={summary.wins} color="#34C759" />
                   <SummaryBubble label="Losses" value={summary.losses} color="#FF3B30" />
