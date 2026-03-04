@@ -785,6 +785,49 @@ const Dashboard: React.FC = () => {
         )}
       </div>
 
+      {/* LARLScore Legend Footer */}
+      <div style={{ padding: '24px clamp(16px, 3vw, 80px) 120px' }}>
+        <div className="app-surface" style={{
+          background: 'rgba(255,255,255,0.03)',
+          border: '1px solid #2a2a2a',
+          borderRadius: '12px',
+          padding: '14px 16px',
+        }}>
+          <div style={{ fontSize: '10px', fontWeight: '700', color: '#555', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '12px' }}>
+            LarlScore Grade Guide
+          </div>
+          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+            {[
+              { grade: 'S', color: '#30d158', range: '2.0+',     label: 'Elite' },
+              { grade: 'A', color: '#a3e635', range: '1.5–2.0',  label: 'Strong' },
+              { grade: 'B', color: '#ffd60a', range: '1.0–1.5',  label: 'Solid' },
+              { grade: 'C', color: '#ff9f0a', range: '0.5–1.0',  label: 'Marginal' },
+              { grade: 'D', color: '#ff453a', range: '< 0.5',    label: 'Weak' },
+            ].map(({ grade, color, range, label }) => (
+              <div key={grade} style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                background: `${color}12`,
+                border: `1px solid ${color}44`,
+                borderRadius: '8px',
+                padding: '6px 12px',
+                flex: '1 1 140px',
+              }}>
+                <span style={{ fontSize: '16px', fontWeight: '900', color, fontFamily: 'monospace', minWidth: '16px' }}>{grade}</span>
+                <div>
+                  <div style={{ fontSize: '11px', fontWeight: '700', color: '#ddd' }}>{label}</div>
+                  <div style={{ fontSize: '10px', color: '#666' }}>{range}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div style={{ fontSize: '10px', color: '#444', marginTop: '10px', lineHeight: 1.5 }}>
+            LarlScore = (confidence) × edge × (historical WR / break-even) × adaptive weight. Higher = better expected value per unit risk.
+          </div>
+        </div>
+      </div>
+
       {/* Modal */}
       {selectedBet && <BetDetail bet={selectedBet} onClose={() => setSelectedBet(null)} />}
     </div>

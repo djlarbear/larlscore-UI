@@ -115,7 +115,17 @@ const BetCard: React.FC<BetCardProps> = ({ bet, onClick, showScore = true }) => 
 
   const edgeColor   = edge >= 20 ? '#30d158' : edge >= 10 ? '#a3e635' : '#ffd60a';
   const confColor   = confidence >= 75 ? '#30d158' : confidence >= 65 ? '#a3e635' : '#ffd60a';
-  const larlColor   = larlscore >= 50 ? '#30d158' : larlscore >= 20 ? '#a3e635' : '#ffd60a';
+
+  // LARLScore grade: S=2.0+ A=1.5-2.0 B=1.0-1.5 C=0.5-1.0 D=<0.5
+  const getLarlGrade = (s: number): { grade: string; color: string } => {
+    if (s >= 2.0) return { grade: 'S', color: '#30d158' };   // elite green
+    if (s >= 1.5) return { grade: 'A', color: '#a3e635' };   // strong lime
+    if (s >= 1.0) return { grade: 'B', color: '#ffd60a' };   // solid yellow
+    if (s >= 0.5) return { grade: 'C', color: '#ff9f0a' };   // marginal orange
+    return           { grade: 'D', color: '#ff453a' };        // weak red
+  };
+  const larlGrade = getLarlGrade(larlscore);
+  const larlColor = larlGrade.color;
 
   return (
     <div
@@ -242,7 +252,7 @@ const BetCard: React.FC<BetCardProps> = ({ bet, onClick, showScore = true }) => 
       <div style={{ display: 'flex', gap: 8 }}>
         <Squircle label="Confidence" value={`${Math.round(confidence)}%`} color={confColor} />
         <Squircle label="Edge"       value={`${typeof edge === 'number' ? edge.toFixed(1) : '0.0'}`} color={edgeColor} />
-        <Squircle label="LarlScore"  value={typeof larlscore === 'number' ? larlscore.toFixed(1) : '0.0'} color={larlColor} />
+        <Squircle label="LarlScore"  value={typeof larlscore === 'number' ? `${larlscore.toFixed(2)} (${larlGrade.grade})` : '— (D)'} color={larlColor} />
       </div>
 
       {/* ── Row 6: Why This Pick ── */}
