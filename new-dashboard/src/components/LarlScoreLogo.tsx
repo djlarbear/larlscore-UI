@@ -25,7 +25,7 @@ export const LarlScoreLogo: React.FC<LarlScoreLogoProps> = ({ size = 'large', on
         if (onClick) (e.currentTarget as HTMLElement).style.transform = 'scale(1.05)';
       }}
       onMouseLeave={(e) => {
-        if (onClick) (e.currentTarget as HTMLElement).style.style.transform = 'scale(1)';
+        if (onClick) (e.currentTarget as HTMLElement).style.transform = 'scale(1)';
       }}
     >
       <div

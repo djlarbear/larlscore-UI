@@ -127,7 +127,7 @@ const StaleBetsManager: React.FC = () => {
                   required
                 />
                 <p className="text-xs text-gray-600 mt-1">
-                  Market line: {selectedBet.market_line} | Hit if: {formData.actual_score > selectedBet.market_line ? 'WIN' : 'LOSS'}
+                  Market line: {selectedBet.market_line} | Hit if: {Number(formData.actual_score) > selectedBet.market_line ? 'WIN' : 'LOSS'}
                 </p>
               </div>
 

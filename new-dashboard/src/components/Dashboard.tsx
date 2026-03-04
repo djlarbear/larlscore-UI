@@ -109,7 +109,7 @@ const Dashboard: React.FC = () => {
   const [pageSize, setPageSize] = useState(10);
   const [showMenu, setShowMenu] = useState(false);
   const [sort, setSort] = useState('date-desc');
-  const [apiStatus, setApiStatus] = useState<'checking' | 'ok' | 'error'>('checking');
+  const [_apiStatus, setApiStatus] = useState<'checking' | 'ok' | 'error'>('checking');
   const [dashboardStatus, setDashboardStatus] = useState<DashboardStatus | null>(null);
 
   const [filters, setFilters] = useState<{
