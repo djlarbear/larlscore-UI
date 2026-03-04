@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-03-03T21:52:33.142691",
+  "generated_at": "2026-03-03T21:54:41.797282",
   "export_meta": {
-    "exported_at": "2026-03-03T21:52:33.136508",
+    "exported_at": "2026-03-03T21:54:41.791274",
     "cloudflare_pages": "https://larlscore.pages.dev/",
-    "betting_repo_commit": "c4a7ac0"
+    "betting_repo_commit": "07a5b60"
   },
   "picks": [
     {
@@ -3086,104 +3086,90 @@
     "TOTAL"
   ],
   "insights": {
-    "generated_at": "2026-03-03T06:15:01.087698",
-    "total_bets_analyzed": 203,
-    "overall_win_rate": 49.3,
+    "generated_at": "2026-03-03T21:54:27.696460",
+    "total_bets_analyzed": 131,
+    "overall_win_rate": 51.9,
     "roi": {
       "juice": -110,
-      "units_wagered": 203.0,
-      "units_returned": 189.22,
-      "net_units": -13.78,
-      "roi_pct": -6.79,
-      "win_rate_pct": 49.3,
+      "units_wagered": 131.0,
+      "units_returned": 128.13,
+      "net_units": -2.87,
+      "roi_pct": -2.19,
+      "win_rate_pct": 51.9,
       "breakeven_win_rate_pct": 52.4,
-      "above_breakeven": -3.1,
-      "record": "100W-103L-0P",
+      "above_breakeven": -0.5,
+      "record": "68W-63L-0P",
       "note": "Flat betting 1 unit per bet at stated juice"
     },
     "by_sport": {
       "NCAA Basketball": {
-        "wins": 62,
-        "losses": 71,
-        "total": 133,
-        "win_rate": 46.6,
-        "record": "62-71"
+        "wins": 42,
+        "losses": 44,
+        "total": 86,
+        "win_rate": 48.8,
+        "record": "42-44"
       },
       "NBA": {
-        "wins": 37,
-        "losses": 32,
-        "total": 69,
-        "win_rate": 53.6,
-        "record": "37-32"
-      },
-      "NCAAB": {
-        "wins": 1,
-        "losses": 0,
-        "total": 1,
-        "win_rate": 100.0,
-        "record": "1-0"
+        "wins": 26,
+        "losses": 19,
+        "total": 45,
+        "win_rate": 57.8,
+        "record": "26-19"
       }
     },
     "by_bet_type": {
       "SPREAD": {
-        "wins": 37,
-        "losses": 47,
-        "total": 84,
-        "win_rate": 44.0,
-        "record": "37-47"
+        "wins": 23,
+        "losses": 28,
+        "total": 51,
+        "win_rate": 45.1,
+        "record": "23-28"
       },
       "MONEYLINE": {
-        "wins": 2,
-        "losses": 11,
-        "total": 13,
-        "win_rate": 15.4,
-        "record": "2-11"
+        "wins": 1,
+        "losses": 7,
+        "total": 8,
+        "win_rate": 12.5,
+        "record": "1-7"
       },
       "TOTAL": {
-        "wins": 28,
-        "losses": 18,
-        "total": 46,
-        "win_rate": 60.9,
-        "record": "28-18"
+        "wins": 19,
+        "losses": 10,
+        "total": 29,
+        "win_rate": 65.5,
+        "record": "19-10"
       },
       "PROP": {
-        "wins": 33,
-        "losses": 27,
-        "total": 60,
-        "win_rate": 55.0,
-        "record": "33-27"
+        "wins": 25,
+        "losses": 18,
+        "total": 43,
+        "win_rate": 58.1,
+        "record": "25-18"
       }
     },
     "moneyline_status": "DISABLED",
-    "moneyline_reason": "ml_bad_or_insufficient: n=13 wr=15.4%",
+    "moneyline_reason": "ml_bad_or_insufficient: n=8 wr=12.5%",
     "by_risk_tier": {
       "Unknown": {
-        "wins": 66,
+        "wins": 65,
         "losses": 61,
-        "total": 127,
-        "win_rate": 52.0,
-        "record": "66-61"
-      },
-      "MODERATE RISK": {
-        "wins": 9,
-        "losses": 8,
-        "total": 17,
-        "win_rate": 52.9,
-        "record": "9-8"
-      },
-      "HIGH RISK": {
-        "wins": 9,
-        "losses": 12,
-        "total": 21,
-        "win_rate": 42.9,
-        "record": "9-12"
+        "total": 126,
+        "win_rate": 51.6,
+        "record": "65-61"
       },
       "LOW RISK": {
-        "wins": 16,
-        "losses": 22,
-        "total": 38,
-        "win_rate": 42.1,
-        "record": "16-22"
+        "wins": 2,
+        "losses": 0,
+        "total": 2,
+        "win_rate": 100.0,
+        "record": "2-0"
+      },
+      "HIGH RISK": {
+        "wins": 1,
+        "losses": 2,
+        "total": 3,
+        "win_rate": 33.3,
+        "record": "1-2"
       }
     },
     "by_confidence": {
@@ -3196,62 +3182,62 @@
         "record": "3-7"
       },
       "80-89%": {
-        "wins": 13,
-        "losses": 21,
-        "total": 34,
-        "win_rate": 38.2,
-        "avg_confidence": 81.6,
-        "record": "13-21"
+        "wins": 10,
+        "losses": 11,
+        "total": 21,
+        "win_rate": 47.6,
+        "avg_confidence": 82.1,
+        "record": "10-11"
       },
       "70-79%": {
-        "wins": 45,
-        "losses": 40,
-        "total": 85,
-        "win_rate": 52.9,
-        "avg_confidence": 74.7,
-        "record": "45-40"
+        "wins": 30,
+        "losses": 24,
+        "total": 54,
+        "win_rate": 55.6,
+        "avg_confidence": 74.6,
+        "record": "30-24"
       },
       "60-69%": {
-        "wins": 24,
-        "losses": 22,
-        "total": 46,
-        "win_rate": 52.2,
-        "avg_confidence": 64.2,
-        "record": "24-22"
+        "wins": 15,
+        "losses": 14,
+        "total": 29,
+        "win_rate": 51.7,
+        "avg_confidence": 64.3,
+        "record": "15-14"
       },
       "50-59%": {
-        "wins": 15,
-        "losses": 13,
-        "total": 28,
-        "win_rate": 53.6,
-        "avg_confidence": 54.2,
-        "record": "15-13"
+        "wins": 10,
+        "losses": 7,
+        "total": 17,
+        "win_rate": 58.8,
+        "avg_confidence": 54.8,
+        "record": "10-7"
       }
     },
     "by_edge": {
       "10+ pts": {
-        "wins": 43,
-        "losses": 32,
-        "total": 75,
-        "win_rate": 57.3,
-        "avg_edge": 17.7,
-        "record": "43-32"
+        "wins": 26,
+        "losses": 16,
+        "total": 42,
+        "win_rate": 61.9,
+        "avg_edge": 16.1,
+        "record": "26-16"
       },
       "5-9.9 pts": {
-        "wins": 20,
-        "losses": 27,
-        "total": 47,
-        "win_rate": 42.6,
-        "avg_edge": 7.1,
-        "record": "20-27"
+        "wins": 14,
+        "losses": 16,
+        "total": 30,
+        "win_rate": 46.7,
+        "avg_edge": 6.9,
+        "record": "14-16"
       },
       "3-4.9 pts": {
-        "wins": 29,
-        "losses": 25,
-        "total": 54,
-        "win_rate": 53.7,
+        "wins": 21,
+        "losses": 16,
+        "total": 37,
+        "win_rate": 56.8,
         "avg_edge": 3.9,
-        "record": "29-25"
+        "record": "21-16"
       },
       "1-2.9 pts": {
         "wins": 6,
@@ -3262,12 +3248,12 @@
         "record": "6-8"
       },
       "0-0.9 pts": {
-        "wins": 2,
-        "losses": 11,
-        "total": 13,
-        "win_rate": 15.4,
+        "wins": 1,
+        "losses": 7,
+        "total": 8,
+        "win_rate": 12.5,
         "avg_edge": 0.5,
-        "record": "2-11"
+        "record": "1-7"
       }
     },
     "by_pinnacle": {
@@ -3288,22 +3274,16 @@
     },
     "recommendations": [
       {
-        "type": "FOCUS",
-        "priority": "HIGH",
-        "action": "Increase bet frequency on NCAAB (win rate: 100.0%)",
-        "reason": "50.7% above overall average"
+        "type": "REDUCE",
+        "priority": "MEDIUM",
+        "action": "Reduce SPREAD bets (win rate: 45.1%)",
+        "reason": "Below 50% threshold with 51 bets"
       },
       {
         "type": "REDUCE",
         "priority": "MEDIUM",
-        "action": "Reduce SPREAD bets (win rate: 44.0%)",
-        "reason": "Below 50% threshold with 84 bets"
-      },
-      {
-        "type": "REDUCE",
-        "priority": "MEDIUM",
-        "action": "Reduce MONEYLINE bets (win rate: 15.4%)",
-        "reason": "Below 50% threshold with 13 bets"
+        "action": "Reduce MONEYLINE bets (win rate: 12.5%)",
+        "reason": "Below 50% threshold with 8 bets"
       },
       {
         "type": "CALIBRATE",
@@ -3314,26 +3294,20 @@
       {
         "type": "CALIBRATE",
         "priority": "HIGH",
-        "action": "Lower confidence for 80-89% bucket (actual: 38.2% vs expected: 80%+)",
-        "reason": "Model is overconfident by 41.8%"
+        "action": "Lower confidence for 80-89% bucket (actual: 47.6% vs expected: 80%+)",
+        "reason": "Model is overconfident by 32.4%"
       },
       {
         "type": "CALIBRATE",
         "priority": "HIGH",
-        "action": "Lower confidence for 70-79% bucket (actual: 52.9% vs expected: 70%+)",
-        "reason": "Model is overconfident by 17.1%"
+        "action": "Lower confidence for 70-79% bucket (actual: 55.6% vs expected: 70%+)",
+        "reason": "Model is overconfident by 14.4%"
       },
       {
         "type": "THRESHOLD",
         "priority": "MEDIUM",
         "action": "Raise minimum edge threshold for 5-9.9 pts range",
-        "reason": "Only 42.6% win rate with edge range 5-9.9 pts"
-      },
-      {
-        "type": "THRESHOLD",
-        "priority": "MEDIUM",
-        "action": "Raise minimum edge threshold for 3-4.9 pts range",
-        "reason": "Only 53.7% win rate with edge range 3-4.9 pts"
+        "reason": "Only 46.7% win rate with edge range 5-9.9 pts"
       },
       {
         "type": "THRESHOLD",
@@ -3345,12 +3319,12 @@
         "type": "THRESHOLD",
         "priority": "MEDIUM",
         "action": "Raise minimum edge threshold for 0-0.9 pts range",
-        "reason": "Only 15.4% win rate with edge range 0-0.9 pts"
+        "reason": "Only 12.5% win rate with edge range 0-0.9 pts"
       },
       {
         "type": "REDUCE",
         "priority": "HIGH",
-        "action": "Reduce HIGH RISK bets (win rate: 42.9%)",
+        "action": "Reduce HIGH RISK bets (win rate: 33.3%)",
         "reason": "High risk should exceed 65% to justify variance"
       }
     ],
@@ -3365,7 +3339,7 @@
         "min_edge": 2.0
       },
       "TOTAL": {
-        "min_confidence": 60,
+        "min_confidence": 80,
         "min_edge": 2.0
       },
       "PROP": {
@@ -3380,13 +3354,13 @@
     "assumption_health": {
       "SPREAD": {
         "assumed": 0.44,
-        "actual": 0.4615,
-        "actual_pct": 46.2,
+        "actual": 0.451,
+        "actual_pct": 45.1,
         "assumed_pct": 44.0,
-        "deviation_pp": 2.15,
+        "deviation_pp": 1.1,
         "status": "GREEN",
-        "n_bets": 52,
-        "record": "24W-28L"
+        "n_bets": 51,
+        "record": "23W-28L"
       },
       "TOTAL": {
         "assumed": 0.64,
@@ -3428,7 +3402,7 @@
         "actual_wr_pct": 12.5,
         "n_bets_sampled": 8,
         "recommendation": "Keep DISABLED \u2014 actual WR too low",
-        "generated_at": "2026-03-03T06:15:01.090011"
+        "generated_at": "2026-03-03T21:54:27.698783"
       },
       {
         "bet_type": "PROP",
@@ -3438,10 +3412,10 @@
         "actual_wr_pct": 57.9,
         "n_bets_sampled": 38,
         "recommendation": "Consider increasing assumed WR for PROP (actual 57.9% > assumed 50.0%)",
-        "generated_at": "2026-03-03T06:15:01.090021"
+        "generated_at": "2026-03-03T21:54:27.698791"
       }
     ],
-    "assumption_audit_at": "2026-03-03T06:15:01.090187",
+    "assumption_audit_at": "2026-03-03T21:54:27.698954",
     "quality": {
       "overall": {
         "window_days": null,
@@ -3493,9 +3467,9 @@
       }
     },
     "export_meta": {
-      "exported_at": "2026-03-03T21:52:33.136508",
+      "exported_at": "2026-03-03T21:54:41.791274",
       "cloudflare_pages": "https://larlscore.pages.dev/",
-      "betting_repo_commit": "c4a7ac0"
+      "betting_repo_commit": "07a5b60"
     }
   },
   "bonus_bets": [],
