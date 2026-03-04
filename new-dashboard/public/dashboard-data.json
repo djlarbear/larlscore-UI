@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-03-03T21:54:41.797282",
+  "generated_at": "2026-03-03T22:00:20.885573",
   "export_meta": {
-    "exported_at": "2026-03-03T21:54:41.791274",
+    "exported_at": "2026-03-03T22:00:20.879375",
     "cloudflare_pages": "https://larlscore.pages.dev/",
-    "betting_repo_commit": "07a5b60"
+    "betting_repo_commit": "240375b"
   },
   "picks": [
     {
@@ -3086,19 +3086,19 @@
     "TOTAL"
   ],
   "insights": {
-    "generated_at": "2026-03-03T21:54:27.696460",
-    "total_bets_analyzed": 131,
-    "overall_win_rate": 51.9,
+    "generated_at": "2026-03-03T22:00:15.728782",
+    "total_bets_analyzed": 126,
+    "overall_win_rate": 51.6,
     "roi": {
       "juice": -110,
-      "units_wagered": 131.0,
-      "units_returned": 128.13,
-      "net_units": -2.87,
-      "roi_pct": -2.19,
-      "win_rate_pct": 51.9,
+      "units_wagered": 126.0,
+      "units_returned": 122.44,
+      "net_units": -3.56,
+      "roi_pct": -2.82,
+      "win_rate_pct": 51.6,
       "breakeven_win_rate_pct": 52.4,
-      "above_breakeven": -0.5,
-      "record": "68W-63L-0P",
+      "above_breakeven": -0.8,
+      "record": "65W-61L-0P",
       "note": "Flat betting 1 unit per bet at stated juice"
     },
     "by_sport": {
@@ -3110,11 +3110,11 @@
         "record": "42-44"
       },
       "NBA": {
-        "wins": 26,
-        "losses": 19,
-        "total": 45,
-        "win_rate": 57.8,
-        "record": "26-19"
+        "wins": 23,
+        "losses": 17,
+        "total": 40,
+        "win_rate": 57.5,
+        "record": "23-17"
       }
     },
     "by_bet_type": {
@@ -3140,11 +3140,11 @@
         "record": "19-10"
       },
       "PROP": {
-        "wins": 25,
-        "losses": 18,
-        "total": 43,
-        "win_rate": 58.1,
-        "record": "25-18"
+        "wins": 22,
+        "losses": 16,
+        "total": 38,
+        "win_rate": 57.9,
+        "record": "22-16"
       }
     },
     "moneyline_status": "DISABLED",
@@ -3156,20 +3156,6 @@
         "total": 126,
         "win_rate": 51.6,
         "record": "65-61"
-      },
-      "LOW RISK": {
-        "wins": 2,
-        "losses": 0,
-        "total": 2,
-        "win_rate": 100.0,
-        "record": "2-0"
-      },
-      "HIGH RISK": {
-        "wins": 1,
-        "losses": 2,
-        "total": 3,
-        "win_rate": 33.3,
-        "record": "1-2"
       }
     },
     "by_confidence": {
@@ -3190,28 +3176,28 @@
         "record": "10-11"
       },
       "70-79%": {
-        "wins": 30,
+        "wins": 28,
         "losses": 24,
-        "total": 54,
-        "win_rate": 55.6,
+        "total": 52,
+        "win_rate": 53.8,
         "avg_confidence": 74.6,
-        "record": "30-24"
+        "record": "28-24"
       },
       "60-69%": {
         "wins": 15,
-        "losses": 14,
-        "total": 29,
-        "win_rate": 51.7,
+        "losses": 13,
+        "total": 28,
+        "win_rate": 53.6,
         "avg_confidence": 64.3,
-        "record": "15-14"
+        "record": "15-13"
       },
       "50-59%": {
-        "wins": 10,
-        "losses": 7,
-        "total": 17,
-        "win_rate": 58.8,
-        "avg_confidence": 54.8,
-        "record": "10-7"
+        "wins": 9,
+        "losses": 6,
+        "total": 15,
+        "win_rate": 60.0,
+        "avg_confidence": 54.9,
+        "record": "9-6"
       }
     },
     "by_edge": {
@@ -3224,20 +3210,20 @@
         "record": "26-16"
       },
       "5-9.9 pts": {
-        "wins": 14,
-        "losses": 16,
-        "total": 30,
-        "win_rate": 46.7,
-        "avg_edge": 6.9,
-        "record": "14-16"
+        "wins": 13,
+        "losses": 15,
+        "total": 28,
+        "win_rate": 46.4,
+        "avg_edge": 7.0,
+        "record": "13-15"
       },
       "3-4.9 pts": {
-        "wins": 21,
-        "losses": 16,
-        "total": 37,
-        "win_rate": 56.8,
+        "wins": 19,
+        "losses": 15,
+        "total": 34,
+        "win_rate": 55.9,
         "avg_edge": 3.9,
-        "record": "21-16"
+        "record": "19-15"
       },
       "1-2.9 pts": {
         "wins": 6,
@@ -3300,14 +3286,14 @@
       {
         "type": "CALIBRATE",
         "priority": "HIGH",
-        "action": "Lower confidence for 70-79% bucket (actual: 55.6% vs expected: 70%+)",
-        "reason": "Model is overconfident by 14.4%"
+        "action": "Lower confidence for 70-79% bucket (actual: 53.8% vs expected: 70%+)",
+        "reason": "Model is overconfident by 16.2%"
       },
       {
         "type": "THRESHOLD",
         "priority": "MEDIUM",
         "action": "Raise minimum edge threshold for 5-9.9 pts range",
-        "reason": "Only 46.7% win rate with edge range 5-9.9 pts"
+        "reason": "Only 46.4% win rate with edge range 5-9.9 pts"
       },
       {
         "type": "THRESHOLD",
@@ -3320,18 +3306,12 @@
         "priority": "MEDIUM",
         "action": "Raise minimum edge threshold for 0-0.9 pts range",
         "reason": "Only 12.5% win rate with edge range 0-0.9 pts"
-      },
-      {
-        "type": "REDUCE",
-        "priority": "HIGH",
-        "action": "Reduce HIGH RISK bets (win rate: 33.3%)",
-        "reason": "High risk should exceed 65% to justify variance"
       }
     ],
     "optimal_thresholds": {
       "min_confidence": 70,
       "min_edge": 2.0,
-      "max_high_risk_pct": 10
+      "max_high_risk_pct": 20
     },
     "optimal_thresholds_by_type": {
       "SPREAD": {
@@ -3402,7 +3382,7 @@
         "actual_wr_pct": 12.5,
         "n_bets_sampled": 8,
         "recommendation": "Keep DISABLED \u2014 actual WR too low",
-        "generated_at": "2026-03-03T21:54:27.698783"
+        "generated_at": "2026-03-03T22:00:15.731049"
       },
       {
         "bet_type": "PROP",
@@ -3412,10 +3392,10 @@
         "actual_wr_pct": 57.9,
         "n_bets_sampled": 38,
         "recommendation": "Consider increasing assumed WR for PROP (actual 57.9% > assumed 50.0%)",
-        "generated_at": "2026-03-03T21:54:27.698791"
+        "generated_at": "2026-03-03T22:00:15.731059"
       }
     ],
-    "assumption_audit_at": "2026-03-03T21:54:27.698954",
+    "assumption_audit_at": "2026-03-03T22:00:15.731217",
     "quality": {
       "overall": {
         "window_days": null,
@@ -3467,9 +3447,9 @@
       }
     },
     "export_meta": {
-      "exported_at": "2026-03-03T21:54:41.791274",
+      "exported_at": "2026-03-03T22:00:20.879375",
       "cloudflare_pages": "https://larlscore.pages.dev/",
-      "betting_repo_commit": "07a5b60"
+      "betting_repo_commit": "240375b"
     }
   },
   "bonus_bets": [],
