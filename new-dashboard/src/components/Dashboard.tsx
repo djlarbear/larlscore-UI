@@ -405,8 +405,6 @@ const Dashboard: React.FC = () => {
                   <SummaryBubble label="Wins" value={summary.wins} color="#34C759" />
                   <SummaryBubble label="Losses" value={summary.losses} color="#FF3B30" />
                   <SummaryBubble label="Win Rate" value={`${winRate}%`} color="#FF9500" />
-                  <SummaryBubble label="ROI" value={`${(summary.roi_pct ?? 0).toFixed(1)}%`} color="#34C759" />
-                  <SummaryBubble label="Net" value={`${(summary.net_units ?? 0).toFixed(2)}u`} color="#0A84FF" />
                 </div>
               </div>
               {/* Group 2: Bet Types */}
