@@ -536,6 +536,16 @@ export class BettingAPI {
     return response.json();
   }
 
+  static async getSpecials(): Promise<any> {
+    if (STATIC_MODE) {
+      const data = await loadStaticData();
+      return data.specials || {};
+    }
+    const response = await fetch(`${API_BASE}/api/specials`);
+    if (!response.ok) return {};
+    return response.json();
+  }
+
   static async getInsights(): Promise<any> {
     if (STATIC_MODE) {
       const data = await loadStaticData();

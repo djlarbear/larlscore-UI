@@ -8,11 +8,12 @@ import BetCard from './BetCard';
 import FilterBar from './FilterBar';
 import BetDetail from './BetDetail';
 import InsightsView from './InsightsView';
+import SpecialsView from './SpecialsView';
 import { HomeIcon, HistoryIcon, InsightsIcon } from './NavIcons';
 import LarlScoreLogo from './LarlScoreLogo';
 import { useDebounce } from '../hooks/useDebounce';
 
-type ViewType = 'home' | 'history' | 'insights' | 'hershel';
+type ViewType = 'home' | 'history' | 'insights' | 'hershel' | 'specials';
 
 // Typed interface for the raw API pick shape (avoids `any` in transform logic)
 interface RawPick {
@@ -111,6 +112,7 @@ const Dashboard: React.FC = () => {
   const [sort, setSort] = useState('date-desc');
   const [_apiStatus, setApiStatus] = useState<'checking' | 'ok' | 'error'>('checking');
   const [dashboardStatus, setDashboardStatus] = useState<DashboardStatus | null>(null);
+  const [specialsData, setSpecialsData] = useState<any>(null);
 
   const [filters, setFilters] = useState<{
     date?: string;
@@ -176,6 +178,15 @@ const Dashboard: React.FC = () => {
 
     loadHistoryMeta();
   }, [view, dates.length, sports.length, betTypes.length]);
+
+  // Lazy-load specials when Specials tab is opened
+  useEffect(() => {
+    if (view !== 'specials') return;
+    if (specialsData) return;
+    BettingAPI.getSpecials()
+      .then(setSpecialsData)
+      .catch(() => setSpecialsData({}));
+  }, [view, specialsData]);
 
   // API connection status check
   useEffect(() => {
@@ -488,6 +499,16 @@ const Dashboard: React.FC = () => {
               setShowMenu(false);
             }}
           />
+          <ViewButton
+            className="nav-btn"
+            label="Specials"
+            icon={<span style={{ fontSize: '18px' }}>⚡</span>}
+            active={view === 'specials'}
+            onClick={() => {
+              setView('specials');
+              setShowMenu(false);
+            }}
+          />
 
         </div>
 
@@ -618,6 +639,10 @@ const Dashboard: React.FC = () => {
                 }}
               />
             </div>
+          </div>
+        ) : view === 'specials' ? (
+          <div className="app-surface" style={{ borderRadius: 16, padding: '14px', border: '1px solid rgba(168,85,247,0.24)', background: 'linear-gradient(145deg, rgba(26,26,26,0.96), rgba(22,22,22,0.92))' }}>
+            <SpecialsView specials={specialsData} />
           </div>
         ) : view === 'home' ? (
           <>
