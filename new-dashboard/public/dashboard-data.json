@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-03-03T22:36:55.678980",
+  "generated_at": "2026-03-04T06:00:04.704594",
   "export_meta": {
-    "exported_at": "2026-03-03T22:36:55.673204",
+    "exported_at": "2026-03-04T06:00:04.698646",
     "cloudflare_pages": "https://larlscore.pages.dev/",
-    "betting_repo_commit": "8264adb"
+    "betting_repo_commit": "0db6d5a"
   },
   "picks": [
     {
@@ -3424,15 +3424,15 @@
       "last7": {
         "window_days": 7,
         "pinnacle": {
-          "n": 15,
-          "coverage_pct": 20.0,
-          "agree_known_pct": 20.0,
+          "n": 6,
+          "coverage_pct": 50.0,
+          "agree_known_pct": 50.0,
           "agree_pct": 33.3
         },
         "consensus": {
-          "n": 15,
-          "coverage_pct": 86.7,
-          "books_avg": 5.8
+          "n": 6,
+          "coverage_pct": 100.0,
+          "books_avg": 9.2
         },
         "injury_nba_spread": {
           "n": 0,
@@ -3447,9 +3447,9 @@
       }
     },
     "export_meta": {
-      "exported_at": "2026-03-03T22:36:55.673204",
+      "exported_at": "2026-03-04T06:00:04.698646",
       "cloudflare_pages": "https://larlscore.pages.dev/",
-      "betting_repo_commit": "8264adb"
+      "betting_repo_commit": "0db6d5a"
     }
   },
   "bonus_bets": [],
