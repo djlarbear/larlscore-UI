@@ -621,7 +621,7 @@ const Dashboard: React.FC = () => {
         ) : view === 'hershel' ? (
           <div className="app-surface" style={{ borderRadius: 16, padding: '14px', border: '1px solid rgba(255,255,255,0.14)', background: 'linear-gradient(145deg, rgba(26,26,26,0.96), rgba(22,22,22,0.92))' }}>
             <div style={{ border: '1px solid rgba(255,255,255,0.14)', borderRadius: 12, padding: '12px 12px', marginBottom: 12, background: 'linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03))' }}>
-              <div style={{ fontSize: 28, fontWeight: 900, color: '#5DADE2', letterSpacing: '-0.02em' }}>Putting the W in Walter</div>
+              <div style={{ fontSize: 28, fontWeight: 900, color: '#5DADE2', letterSpacing: '-0.02em' }}>Why so Furious?</div>
             </div>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
               <img
