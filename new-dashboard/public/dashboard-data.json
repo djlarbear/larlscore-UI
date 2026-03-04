@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-03-03T21:38:29.317738",
+  "generated_at": "2026-03-03T21:40:00.989364",
   "export_meta": {
-    "exported_at": "2026-03-03T21:38:29.311710",
+    "exported_at": "2026-03-03T21:40:00.983100",
     "cloudflare_pages": "https://larlscore.pages.dev/",
-    "betting_repo_commit": "6343cdb"
+    "betting_repo_commit": "62873d8"
   },
   "picks": [
     {
@@ -490,28 +490,28 @@
   ],
   "stats": {},
   "summary": {
-    "total_bets": 138,
+    "total_bets": 144,
     "wins": 65,
     "losses": 61,
-    "cancelled": 10,
+    "cancelled": 16,
     "win_rate": 51.6,
     "decided": 126,
     "net_units": -3.56,
     "roi_pct": -2.8,
     "by_sport": {
-      "\ud83c\udfd2 NHL": 9,
+      "\ud83c\udfd2 NHL": 15,
       "NBA": 41,
       "\ud83c\udfc0 NCAA Basketball": 86,
       "\ud83c\udfc0 NBA": 2
     },
     "by_bet_type": {
-      "MONEYLINE": 17,
+      "MONEYLINE": 23,
       "PROP": 41,
       "TOTAL": 29,
       "SPREAD": 51
     },
     "by_result": {
-      "CANCELLED": 10,
+      "CANCELLED": 16,
       "WIN": 65,
       "LOSS": 61,
       "PUSH": 1,
@@ -519,6 +519,7 @@
     },
     "by_date": {
       "2026-03-03": 9,
+      "2026-03-02": 6,
       "2026-03-01": 8,
       "2026-02-27": 6,
       "2026-02-26": 10,
@@ -534,7 +535,7 @@
     },
     "spread_count": 51,
     "total_count": 29,
-    "moneyline_count": 17,
+    "moneyline_count": 23,
     "prop_count": 41
   },
   "bets": [
@@ -705,6 +706,120 @@
       "game_result": null,
       "american_odds": -115.0,
       "fanduel_line": "Boston Bruins (-115) / Pittsburgh Penguins (-104)",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "582d7fe88e09df05",
+      "date": "2026-03-02",
+      "game": "Colorado Avalanche @ Los Angeles Kings",
+      "sport": "\ud83c\udfd2 NHL",
+      "bet_type": "MONEYLINE",
+      "recommendation": "Los Angeles Kings (Moneyline)",
+      "edge": 0.5,
+      "confidence": 60.0,
+      "larlscore": 0.0,
+      "result": "CANCELLED",
+      "actual_score": null,
+      "game_result": null,
+      "american_odds": 142.0,
+      "fanduel_line": "Los Angeles Kings (142) / Colorado Avalanche (-172)",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "300367045b007d0b",
+      "date": "2026-03-02",
+      "game": "Dallas Stars @ Vancouver Canucks",
+      "sport": "\ud83c\udfd2 NHL",
+      "bet_type": "MONEYLINE",
+      "recommendation": "Vancouver Canucks (Moneyline)",
+      "edge": 0.5,
+      "confidence": 60.0,
+      "larlscore": 0.0,
+      "result": "CANCELLED",
+      "actual_score": null,
+      "game_result": null,
+      "american_odds": 158.0,
+      "fanduel_line": "Vancouver Canucks (158) / Dallas Stars (-192)",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "8a7ea91c2d19e6c2",
+      "date": "2026-03-02",
+      "game": "Carolina Hurricanes @ Seattle Kraken",
+      "sport": "\ud83c\udfd2 NHL",
+      "bet_type": "MONEYLINE",
+      "recommendation": "Seattle Kraken (Moneyline)",
+      "edge": 0.5,
+      "confidence": 60.0,
+      "larlscore": 0.0,
+      "result": "CANCELLED",
+      "actual_score": null,
+      "game_result": null,
+      "american_odds": 152.0,
+      "fanduel_line": "Seattle Kraken (152) / Carolina Hurricanes (-184)",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "a5ce274581ff5cbc",
+      "date": "2026-03-02",
+      "game": "Philadelphia Flyers @ Toronto Maple Leafs",
+      "sport": "\ud83c\udfd2 NHL",
+      "bet_type": "MONEYLINE",
+      "recommendation": "Philadelphia Flyers (Moneyline)",
+      "edge": 0.5,
+      "confidence": 60.0,
+      "larlscore": 0.0,
+      "result": "CANCELLED",
+      "actual_score": null,
+      "game_result": null,
+      "american_odds": -132.0,
+      "fanduel_line": "Toronto Maple Leafs (-132) / Philadelphia Flyers (110)",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "e77fac4b870a6797",
+      "date": "2026-03-02",
+      "game": "Columbus Blue Jackets @ New York Rangers",
+      "sport": "\ud83c\udfd2 NHL",
+      "bet_type": "MONEYLINE",
+      "recommendation": "New York Rangers (Moneyline)",
+      "edge": 0.5,
+      "confidence": 60.0,
+      "larlscore": 0.0,
+      "result": "CANCELLED",
+      "actual_score": null,
+      "game_result": null,
+      "american_odds": 102.0,
+      "fanduel_line": "New York Rangers (102) / Columbus Blue Jackets (-122)",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "349248b2fa19bc9c",
+      "date": "2026-03-02",
+      "game": "Detroit Red Wings @ Nashville Predators",
+      "sport": "\ud83c\udfd2 NHL",
+      "bet_type": "MONEYLINE",
+      "recommendation": "Detroit Red Wings (Moneyline)",
+      "edge": 0.5,
+      "confidence": 60.0,
+      "larlscore": 0.0,
+      "result": "CANCELLED",
+      "actual_score": null,
+      "game_result": null,
+      "american_odds": -110.0,
+      "fanduel_line": "Nashville Predators (-110) / Detroit Red Wings (-110)",
       "why_this_pick": null,
       "game_time": null,
       "risk_tier": null
@@ -3170,6 +3285,13 @@
       "win_rate": 0
     },
     {
+      "date": "2026-03-02",
+      "total": 6,
+      "wins": 0,
+      "losses": 0,
+      "win_rate": 0
+    },
+    {
       "date": "2026-03-01",
       "total": 8,
       "wins": 6,
@@ -3674,9 +3796,9 @@
       }
     },
     "export_meta": {
-      "exported_at": "2026-03-03T21:38:29.311710",
+      "exported_at": "2026-03-03T21:40:00.983100",
       "cloudflare_pages": "https://larlscore.pages.dev/",
-      "betting_repo_commit": "6343cdb"
+      "betting_repo_commit": "62873d8"
     }
   },
   "bonus_bets": [],
