@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-03-03T22:00:20.885573",
+  "generated_at": "2026-03-03T22:34:16.243213",
   "export_meta": {
-    "exported_at": "2026-03-03T22:00:20.879375",
+    "exported_at": "2026-03-03T22:34:16.237183",
     "cloudflare_pages": "https://larlscore.pages.dev/",
-    "betting_repo_commit": "240375b"
+    "betting_repo_commit": "074c8ce"
   },
   "picks": [
     {
@@ -3447,9 +3447,9 @@
       }
     },
     "export_meta": {
-      "exported_at": "2026-03-03T22:00:20.879375",
+      "exported_at": "2026-03-03T22:34:16.237183",
       "cloudflare_pages": "https://larlscore.pages.dev/",
-      "betting_repo_commit": "240375b"
+      "betting_repo_commit": "074c8ce"
     }
   },
   "bonus_bets": [],
@@ -3501,5 +3501,28 @@
       "penalty_status": "INSUFFICIENT"
     },
     "instructions": "Use these weights in bet_ranker.py when calculating LARLScore"
+  },
+  "specials": {
+    "q3_100": {
+      "date": "2026-03-03",
+      "generated_at": "2026-03-04T03:25:58.653843Z",
+      "league_context": {
+        "avg_q1q3": 86.53,
+        "base_hit_rate_100": 0.127
+      },
+      "games_analyzed": 4,
+      "picks": [],
+      "parlays": [],
+      "model_params": {
+        "blend_weights": {
+          "season": 0.35,
+          "recent": 0.65
+        },
+        "opp_defense_weight": 0.35,
+        "home_boost": 2.5,
+        "min_prob_single": 0.28,
+        "min_prob_parlay": 0.35
+      }
+    }
   }
 }
