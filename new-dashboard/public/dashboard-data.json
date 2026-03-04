@@ -1,13 +1,60 @@
 {
-  "generated_at": "2026-03-04T06:48:32.823182",
+  "generated_at": "2026-03-04T07:09:48.865551",
   "export_meta": {
-    "exported_at": "2026-03-04T06:48:32.817219",
+    "exported_at": "2026-03-04T07:09:48.859761",
     "cloudflare_pages": "https://larlscore.pages.dev/",
-    "betting_repo_commit": "9df3b97"
+    "betting_repo_commit": "7785490"
   },
   "picks": [
     {
       "rank": 1,
+      "score": 2.3999,
+      "game": "Vegas Golden Knights @ Detroit Red Wings",
+      "bet_type": "MONEYLINE",
+      "recommendation": "Vegas Golden Knights (Moneyline)",
+      "confidence": 61,
+      "edge": 15.8,
+      "risk_tier": "\ud83d\udd34 HIGH RISK",
+      "game_time": "07:00 PM EST",
+      "reason": "\u2022 Model confidence: Vegas Golden Knights has 71% win probability\n\u2022 Direct win bet with strong value at current odds\n\u2022 15.8 point edge identified\u2014market inefficiency",
+      "full_bet": {
+        "game": "Vegas Golden Knights @ Detroit Red Wings",
+        "sport": "\ud83c\udfd2 NHL",
+        "bet_type": "MONEYLINE",
+        "recommendation": "Vegas Golden Knights (Moneyline)",
+        "fanduel_line": "Detroit Red Wings (-132) / Vegas Golden Knights (110)",
+        "edge": 15.8,
+        "confidence": 61,
+        "risk_tier": "\ud83d\udd34 HIGH RISK",
+        "game_time": "07:00 PM EST",
+        "reason": "\u2022 Model confidence: Vegas Golden Knights has 71% win probability\n\u2022 Direct win bet with strong value at current odds\n\u2022 15.8 point edge identified\u2014market inefficiency",
+        "model_version": "REAL v1.0 (Live OddsAPI)",
+        "data_source": "OddsAPI",
+        "bet_instructions": "\ud83d\udccd PLACE BET ON FanDuel: Vegas Golden Knights (Moneyline) | Model win prob vs market: 15.8pp edge (odds: 110) | Confidence: 61%",
+        "bet_explanation": "Model win prob vs market: 15.8pp edge (odds: 110)",
+        "bookmaker_source": "FanDuel",
+        "prop_type": null,
+        "player": null,
+        "player_team": null,
+        "injury_role_shift_flag": false,
+        "american_odds": 110,
+        "pinnacle_agrees": null,
+        "pinnacle_line": null,
+        "pinnacle_gap": null,
+        "injury_impact_score": null,
+        "injury_freshness_minutes": null,
+        "injury_confidence": null,
+        "consensus_line": null,
+        "consensus_gap": null,
+        "consensus_books_count": null,
+        "market_alignment": null,
+        "snapshot_ts": null,
+        "calibrated_confidence": 56.6,
+        "larlscore": 2.4
+      }
+    },
+    {
+      "rank": 2,
       "score": 2.0361,
       "game": "Oklahoma City Thunder @ New York Knicks",
       "bet_type": "PROP",
@@ -54,7 +101,7 @@
       }
     },
     {
-      "rank": 2,
+      "rank": 3,
       "score": 1.9524,
       "game": "Atlanta Hawks @ Milwaukee Bucks",
       "bet_type": "PROP",
@@ -101,7 +148,7 @@
       }
     },
     {
-      "rank": 3,
+      "rank": 4,
       "score": 1.8723,
       "game": "Charlotte Hornets @ Boston Celtics",
       "bet_type": "PROP",
@@ -148,7 +195,7 @@
       }
     },
     {
-      "rank": 4,
+      "rank": 5,
       "score": 1.8332,
       "game": "Oklahoma City Thunder @ New York Knicks",
       "bet_type": "PROP",
@@ -195,7 +242,7 @@
       }
     },
     {
-      "rank": 5,
+      "rank": 6,
       "score": 1.5513,
       "game": "Charlotte Hornets @ Boston Celtics",
       "bet_type": "PROP",
@@ -239,53 +286,6 @@
         "snapshot_ts": null,
         "calibrated_confidence": 56.4,
         "larlscore": 1.55
-      }
-    },
-    {
-      "rank": 6,
-      "score": 1.5299,
-      "game": "Oklahoma City Thunder @ New York Knicks",
-      "bet_type": "PROP",
-      "recommendation": "Cason Wallace OVER 15.5 Points Rebounds Assists",
-      "confidence": 58,
-      "edge": 3.5858825600000017,
-      "risk_tier": "\ud83d\udd34 HIGH RISK",
-      "game_time": "Wed 07:10 PM",
-      "reason": "\u2022 \ud83d\udcca Recent 10G avg: 22.3 | Season avg: 14.3 | Blended (60/40): 19.1\n\u2022 \u23f1\ufe0f Minutes: Recent 30.9 MPG vs Season 27.6 MPG\n\u2022 \ud83d\udcc8 Efficiency: 0.722 PRA/min (recent) vs 0.517 PRA/min (season) \u2014 improving\n\u2022 \ud83c\udfaf Recent hit rate: 3/5 (60%) over last 5 games\n\u2022 \ud83d\udd2e Projected: 19.1 vs line 15.5 \u2192 3.6 pt over edge\n\u2022 \ud83d\udcb0 Juice: -132 odds | break-even 56.9% | confidence -9pts\n\u2022 27.6 MPG in 68 games",
-      "full_bet": {
-        "game": "Oklahoma City Thunder @ New York Knicks",
-        "sport": "NBA",
-        "bet_type": "PROP",
-        "recommendation": "Cason Wallace OVER 15.5 Points Rebounds Assists",
-        "fanduel_line": "OVER 15.5",
-        "edge": 3.5858825600000017,
-        "confidence": 58,
-        "risk_tier": "\ud83d\udd34 HIGH RISK",
-        "game_time": "Wed 07:10 PM",
-        "reason": "\u2022 \ud83d\udcca Recent 10G avg: 22.3 | Season avg: 14.3 | Blended (60/40): 19.1\n\u2022 \u23f1\ufe0f Minutes: Recent 30.9 MPG vs Season 27.6 MPG\n\u2022 \ud83d\udcc8 Efficiency: 0.722 PRA/min (recent) vs 0.517 PRA/min (season) \u2014 improving\n\u2022 \ud83c\udfaf Recent hit rate: 3/5 (60%) over last 5 games\n\u2022 \ud83d\udd2e Projected: 19.1 vs line 15.5 \u2192 3.6 pt over edge\n\u2022 \ud83d\udcb0 Juice: -132 odds | break-even 56.9% | confidence -9pts\n\u2022 27.6 MPG in 68 games",
-        "model_version": "REAL v1.0 (Live OddsAPI)",
-        "data_source": "OddsAPI",
-        "bet_instructions": "\ud83d\udccd BET: Cason Wallace OVER 15.5 Points Rebounds Assists",
-        "bet_explanation": "Bet Cason Wallace OVER 15.5 Points Rebounds Assists on FanDuel",
-        "bookmaker_source": "FanDuel",
-        "prop_type": "player_points_rebounds_assists",
-        "player": "Cason Wallace",
-        "player_team": "Oklahoma City Thunder",
-        "injury_role_shift_flag": false,
-        "american_odds": -132,
-        "pinnacle_agrees": null,
-        "pinnacle_line": null,
-        "pinnacle_gap": null,
-        "injury_impact_score": null,
-        "injury_freshness_minutes": null,
-        "injury_confidence": null,
-        "consensus_line": null,
-        "consensus_gap": null,
-        "consensus_books_count": null,
-        "market_alignment": null,
-        "snapshot_ts": null,
-        "calibrated_confidence": 59.2,
-        "larlscore": 1.53
       }
     },
     {
@@ -333,6 +333,100 @@
         "snapshot_ts": null,
         "calibrated_confidence": 58.4,
         "larlscore": 1.42
+      }
+    },
+    {
+      "rank": 8,
+      "score": 1.3901,
+      "game": "Oklahoma City Thunder @ New York Knicks",
+      "bet_type": "PROP",
+      "recommendation": "Cason Wallace OVER 15.5 Points Rebounds Assists",
+      "confidence": 60,
+      "edge": 3.5858825600000017,
+      "risk_tier": "\ud83d\udd34 HIGH RISK",
+      "game_time": "Wed 07:10 PM",
+      "reason": "\u2022 \ud83d\udcca Recent 10G avg: 22.3 | Season avg: 14.3 | Blended (60/40): 19.1\n\u2022 \u23f1\ufe0f Minutes: Recent 30.9 MPG vs Season 27.6 MPG\n\u2022 \ud83d\udcc8 Efficiency: 0.722 PRA/min (recent) vs 0.517 PRA/min (season) \u2014 improving\n\u2022 \ud83c\udfaf Recent hit rate: 3/5 (60%) over last 5 games\n\u2022 \ud83d\udd2e Projected: 19.1 vs line 15.5 \u2192 3.6 pt over edge\n\u2022 \ud83d\udcb0 Juice: -128 odds | break-even 56.1% | confidence -7pts\n\u2022 27.6 MPG in 68 games",
+      "full_bet": {
+        "game": "Oklahoma City Thunder @ New York Knicks",
+        "sport": "NBA",
+        "bet_type": "PROP",
+        "recommendation": "Cason Wallace OVER 15.5 Points Rebounds Assists",
+        "fanduel_line": "OVER 15.5",
+        "edge": 3.5858825600000017,
+        "confidence": 60,
+        "risk_tier": "\ud83d\udd34 HIGH RISK",
+        "game_time": "Wed 07:10 PM",
+        "reason": "\u2022 \ud83d\udcca Recent 10G avg: 22.3 | Season avg: 14.3 | Blended (60/40): 19.1\n\u2022 \u23f1\ufe0f Minutes: Recent 30.9 MPG vs Season 27.6 MPG\n\u2022 \ud83d\udcc8 Efficiency: 0.722 PRA/min (recent) vs 0.517 PRA/min (season) \u2014 improving\n\u2022 \ud83c\udfaf Recent hit rate: 3/5 (60%) over last 5 games\n\u2022 \ud83d\udd2e Projected: 19.1 vs line 15.5 \u2192 3.6 pt over edge\n\u2022 \ud83d\udcb0 Juice: -128 odds | break-even 56.1% | confidence -7pts\n\u2022 27.6 MPG in 68 games",
+        "model_version": "REAL v1.0 (Live OddsAPI)",
+        "data_source": "OddsAPI",
+        "bet_instructions": "\ud83d\udccd BET: Cason Wallace OVER 15.5 Points Rebounds Assists",
+        "bet_explanation": "Bet Cason Wallace OVER 15.5 Points Rebounds Assists on FanDuel",
+        "bookmaker_source": "FanDuel",
+        "prop_type": "player_points_rebounds_assists",
+        "player": "Cason Wallace",
+        "player_team": "Oklahoma City Thunder",
+        "injury_role_shift_flag": false,
+        "american_odds": -128,
+        "pinnacle_agrees": null,
+        "pinnacle_line": null,
+        "pinnacle_gap": null,
+        "injury_impact_score": null,
+        "injury_freshness_minutes": null,
+        "injury_confidence": null,
+        "consensus_line": null,
+        "consensus_gap": null,
+        "consensus_books_count": null,
+        "market_alignment": null,
+        "snapshot_ts": null,
+        "calibrated_confidence": 56.2,
+        "larlscore": 1.39
+      }
+    },
+    {
+      "rank": 9,
+      "score": 1.2839,
+      "game": "Oklahoma City Thunder @ New York Knicks",
+      "bet_type": "PROP",
+      "recommendation": "Jalen Brunson OVER 32.5 Points Rebounds Assists",
+      "confidence": 60,
+      "edge": 3.2738462000000013,
+      "risk_tier": "\ud83d\udd34 HIGH RISK",
+      "game_time": "Wed 07:10 PM",
+      "reason": "\u2022 \ud83d\udcca Recent 10G avg: 35.5 | Season avg: 36.2 | Blended (60/40): 35.8\n\u2022 \u23f1\ufe0f Minutes: Recent 35.1 MPG vs Season 35.4 MPG\n\u2022 \u27a1\ufe0f Efficiency: 1.011 PRA/min (recent) vs 1.022 PRA/min (season) \u2014 stable\n\u2022 \ud83c\udfaf Recent hit rate: 3/5 (60%) over last 5 games\n\u2022 \ud83d\udd2e Projected: 35.8 vs line 32.5 \u2192 3.3 pt over edge\n\u2022 \ud83d\udcb0 Juice: -125 odds | break-even 55.6% | confidence -6pts\n\u2022 35.4 MPG in 65 games",
+      "full_bet": {
+        "game": "Oklahoma City Thunder @ New York Knicks",
+        "sport": "NBA",
+        "bet_type": "PROP",
+        "recommendation": "Jalen Brunson OVER 32.5 Points Rebounds Assists",
+        "fanduel_line": "OVER 32.5",
+        "edge": 3.2738462000000013,
+        "confidence": 60,
+        "risk_tier": "\ud83d\udd34 HIGH RISK",
+        "game_time": "Wed 07:10 PM",
+        "reason": "\u2022 \ud83d\udcca Recent 10G avg: 35.5 | Season avg: 36.2 | Blended (60/40): 35.8\n\u2022 \u23f1\ufe0f Minutes: Recent 35.1 MPG vs Season 35.4 MPG\n\u2022 \u27a1\ufe0f Efficiency: 1.011 PRA/min (recent) vs 1.022 PRA/min (season) \u2014 stable\n\u2022 \ud83c\udfaf Recent hit rate: 3/5 (60%) over last 5 games\n\u2022 \ud83d\udd2e Projected: 35.8 vs line 32.5 \u2192 3.3 pt over edge\n\u2022 \ud83d\udcb0 Juice: -125 odds | break-even 55.6% | confidence -6pts\n\u2022 35.4 MPG in 65 games",
+        "model_version": "REAL v1.0 (Live OddsAPI)",
+        "data_source": "OddsAPI",
+        "bet_instructions": "\ud83d\udccd BET: Jalen Brunson OVER 32.5 Points Rebounds Assists",
+        "bet_explanation": "Bet Jalen Brunson OVER 32.5 Points Rebounds Assists on FanDuel",
+        "bookmaker_source": "FanDuel",
+        "prop_type": "player_points_rebounds_assists",
+        "player": "Jalen Brunson",
+        "player_team": "New York Knicks",
+        "injury_role_shift_flag": false,
+        "american_odds": -125,
+        "pinnacle_agrees": null,
+        "pinnacle_line": null,
+        "pinnacle_gap": null,
+        "injury_impact_score": null,
+        "injury_freshness_minutes": null,
+        "injury_confidence": null,
+        "consensus_line": null,
+        "consensus_gap": null,
+        "consensus_books_count": null,
+        "market_alignment": null,
+        "snapshot_ts": null,
+        "calibrated_confidence": 56.2,
+        "larlscore": 1.28
       }
     }
   ],
@@ -3175,8 +3269,8 @@
         "min_edge": 3
       },
       "MONEYLINE": {
-        "min_confidence": 55,
-        "min_edge": 2.0
+        "min_confidence": 60,
+        "min_edge": 8.0
       }
     },
     "assumption_health": {
@@ -3295,9 +3389,9 @@
       }
     },
     "export_meta": {
-      "exported_at": "2026-03-04T06:48:32.817219",
+      "exported_at": "2026-03-04T07:09:48.859761",
       "cloudflare_pages": "https://larlscore.pages.dev/",
-      "betting_repo_commit": "9df3b97"
+      "betting_repo_commit": "7785490"
     }
   },
   "bonus_bets": [],
@@ -3314,12 +3408,13 @@
         "confidence_level": "HIGH"
       },
       "MONEYLINE": {
-        "weight": 0.0,
-        "win_rate": 12.5,
-        "sample_count": 8,
+        "weight": 0.7,
+        "win_rate": 0.0,
+        "sample_count": 0,
         "adjustment": 0.0,
-        "stability_factor": 0.0,
-        "confidence_level": "REJECT"
+        "stability_factor": 0.3,
+        "confidence_level": "LIMITED",
+        "note": "RESET 2026-03-04: prev 8 bets used broken hardcoded model (confidence=60, edge=0.5) \u2014 not valid historical data. New win-probability model deployed. Starting fresh."
       },
       "TOTAL": {
         "weight": 1.3,
