@@ -56,3 +56,9 @@ export const Phase3Icon: React.FC<IconProps> = ({ size = 18, className }) => (
     <path d="M12 9v6" />
   </svg>
 );
+
+export const SpecialsIcon: React.FC<IconProps> = ({ size = 18, className }) => (
+  <svg {...base(size)} className={className} aria-hidden="true">
+    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+  </svg>
+);

@@ -9,7 +9,7 @@ import FilterBar from './FilterBar';
 import BetDetail from './BetDetail';
 import InsightsView from './InsightsView';
 import SpecialsView from './SpecialsView';
-import { HomeIcon, HistoryIcon, InsightsIcon } from './NavIcons';
+import { HomeIcon, HistoryIcon, InsightsIcon, SpecialsIcon } from './NavIcons';
 import LarlScoreLogo from './LarlScoreLogo';
 import { useDebounce } from '../hooks/useDebounce';
 
@@ -470,7 +470,7 @@ const Dashboard: React.FC = () => {
           <ViewButton
             className="nav-btn"
             label="Specials"
-            icon={<span style={{ fontSize: '18px' }}>⚡</span>}
+            icon={<SpecialsIcon size={18} />}
             active={view === 'specials'}
             onClick={() => {
               setView('specials');
