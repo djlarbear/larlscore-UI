@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-03-04T07:18:24.742733",
+  "generated_at": "2026-03-04T07:32:06.698795",
   "export_meta": {
-    "exported_at": "2026-03-04T07:18:24.736976",
+    "exported_at": "2026-03-04T07:32:06.692998",
     "cloudflare_pages": "https://larlscore.pages.dev/",
-    "betting_repo_commit": "4b031bc"
+    "betting_repo_commit": "ab87fe6"
   },
   "picks": [
     {
@@ -3028,7 +3028,7 @@
     "TOTAL"
   ],
   "insights": {
-    "generated_at": "2026-03-04T06:47:52.376706",
+    "generated_at": "2026-03-04T07:26:43.416273",
     "total_bets_analyzed": 126,
     "overall_win_rate": 51.6,
     "roi": {
@@ -3269,8 +3269,8 @@
         "min_edge": 3
       },
       "MONEYLINE": {
-        "min_confidence": 60,
-        "min_edge": 8.0
+        "min_confidence": 55,
+        "min_edge": 2.0
       }
     },
     "assumption_health": {
@@ -3324,7 +3324,7 @@
         "actual_wr_pct": 12.5,
         "n_bets_sampled": 8,
         "recommendation": "Keep DISABLED \u2014 actual WR too low",
-        "generated_at": "2026-03-04T06:47:52.378988"
+        "generated_at": "2026-03-04T07:26:43.428594"
       },
       {
         "bet_type": "PROP",
@@ -3334,10 +3334,10 @@
         "actual_wr_pct": 57.9,
         "n_bets_sampled": 38,
         "recommendation": "Consider increasing assumed WR for PROP (actual 57.9% > assumed 50.0%)",
-        "generated_at": "2026-03-04T06:47:52.378997"
+        "generated_at": "2026-03-04T07:26:43.428618"
       }
     ],
-    "assumption_audit_at": "2026-03-04T06:47:52.379158",
+    "assumption_audit_at": "2026-03-04T07:26:43.428975",
     "quality": {
       "overall": {
         "window_days": null,
@@ -3389,14 +3389,14 @@
       }
     },
     "export_meta": {
-      "exported_at": "2026-03-04T07:18:24.736976",
+      "exported_at": "2026-03-04T07:32:06.692998",
       "cloudflare_pages": "https://larlscore.pages.dev/",
-      "betting_repo_commit": "4b031bc"
+      "betting_repo_commit": "ab87fe6"
     }
   },
   "bonus_bets": [],
   "weights": {
-    "generated_at": "2026-03-04T06:47:52.409936",
+    "generated_at": "2026-03-04T07:26:43.497116",
     "source": "learning_insights.json",
     "weights": {
       "SPREAD": {
@@ -3409,12 +3409,11 @@
       },
       "MONEYLINE": {
         "weight": 0.7,
-        "win_rate": 0.0,
-        "sample_count": 0,
+        "win_rate": 12.5,
+        "sample_count": 8,
         "adjustment": 0.0,
-        "stability_factor": 0.3,
-        "confidence_level": "LIMITED",
-        "note": "RESET 2026-03-04: prev 8 bets used broken hardcoded model (confidence=60, edge=0.5) \u2014 not valid historical data. New win-probability model deployed. Starting fresh."
+        "stability_factor": 0.0,
+        "confidence_level": "LIMITED"
       },
       "TOTAL": {
         "weight": 1.3,
