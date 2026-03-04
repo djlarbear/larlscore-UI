@@ -3,7 +3,7 @@
  */
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import BettingAPI, { Bet, BetSummary, DateStat, DashboardStatus, STATIC_MODE } from '../utils/api-new';
+import BettingAPI, { Bet, BetSummary, DateStat, DashboardStatus } from '../utils/api-new';
 import BetCard from './BetCard';
 import FilterBar from './FilterBar';
 import BetDetail from './BetDetail';
@@ -469,6 +469,26 @@ const Dashboard: React.FC = () => {
           />
           <ViewButton
             className="nav-btn"
+            label="Specials"
+            icon={<span style={{ fontSize: '18px' }}>⚡</span>}
+            active={view === 'specials'}
+            onClick={() => {
+              setView('specials');
+              setShowMenu(false);
+            }}
+          />
+          <ViewButton
+            className="nav-btn"
+            label="Insights"
+            icon={<InsightsIcon size={18} />}
+            active={view === 'insights'}
+            onClick={() => {
+              setView('insights');
+              setShowMenu(false);
+            }}
+          />
+          <ViewButton
+            className="nav-btn"
             label="History"
             icon={<HistoryIcon size={18} />}
             active={view === 'history'}
@@ -477,18 +497,6 @@ const Dashboard: React.FC = () => {
               setShowMenu(false);
             }}
           />
-          {!STATIC_MODE && (
-            <ViewButton
-              className="nav-btn"
-              label="Insights"
-              icon={<InsightsIcon size={18} />}
-              active={view === 'insights'}
-              onClick={() => {
-                setView('insights');
-                setShowMenu(false);
-              }}
-            />
-          )}
           <ViewButton
             className="nav-btn"
             label="Hershel"
@@ -496,16 +504,6 @@ const Dashboard: React.FC = () => {
             active={view === 'hershel'}
             onClick={() => {
               setView('hershel');
-              setShowMenu(false);
-            }}
-          />
-          <ViewButton
-            className="nav-btn"
-            label="Specials"
-            icon={<span style={{ fontSize: '18px' }}>⚡</span>}
-            active={view === 'specials'}
-            onClick={() => {
-              setView('specials');
               setShowMenu(false);
             }}
           />
@@ -614,7 +612,7 @@ const Dashboard: React.FC = () => {
               ))}
             </div>
           </div>
-        ) : view === 'insights' && !STATIC_MODE ? (
+        ) : view === 'insights' ? (
           <div className="app-surface" style={{ borderRadius: 16, padding: '14px', border: '1px solid rgba(255,255,255,0.14)', background: 'linear-gradient(145deg, rgba(26,26,26,0.96), rgba(22,22,22,0.92))' }}>
             <div style={{ border: '1px solid rgba(255,255,255,0.14)', borderRadius: 12, padding: '10px 12px', marginBottom: 12, background: 'linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03))' }}>
               <div style={{ fontSize: '24px', fontWeight: 800, color: '#fff' }}>Insights</div>
