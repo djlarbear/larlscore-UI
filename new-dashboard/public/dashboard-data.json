@@ -1,19 +1,205 @@
 {
-  "generated_at": "2026-03-05T12:08:02.960197",
+  "generated_at": "2026-03-05T12:49:57.622659",
   "export_meta": {
-    "exported_at": "2026-03-05T12:08:02.954660",
+    "exported_at": "2026-03-05T12:49:57.616886",
     "cloudflare_pages": "https://larlscore.pages.dev/",
-    "betting_repo_commit": "17edd91"
+    "betting_repo_commit": "21d1da8"
   },
   "picks": [
     {
       "rank": 1,
-      "score": 1.4643,
-      "larlscore": 1.4643,
+      "score": 7.8718,
+      "larlscore": 7.8718,
+      "game": "Chicago Bulls @ Phoenix Suns",
+      "bet_type": "TOTAL",
+      "recommendation": "UNDER 224.5",
+      "confidence": 66,
+      "edge": -6.9,
+      "risk_tier": "\ud83d\udd34 HIGH RISK",
+      "game_time": "09:10 PM EST",
+      "reason": "\u2022 Injury adjustments: Patrick Williams OUT (-2.7 pts, Williams (quadriceps) is doubtful for Th)\n\u2022 Projected: ~217 points (under 224.5)\n\u2022 Slower pace favors under",
+      "full_bet": {
+        "game": "Chicago Bulls @ Phoenix Suns",
+        "sport": "\ud83c\udfc0 NBA",
+        "bet_type": "TOTAL",
+        "recommendation": "UNDER 224.5",
+        "fanduel_line": "Over 224.5 (-114) / Under 224.5 (-106)",
+        "edge": -6.9,
+        "confidence": 66,
+        "risk_tier": "\ud83d\udd34 HIGH RISK",
+        "game_time": "09:10 PM EST",
+        "reason": "\u2022 Injury adjustments: Patrick Williams OUT (-2.7 pts, Williams (quadriceps) is doubtful for Th)\n\u2022 Projected: ~217 points (under 224.5)\n\u2022 Slower pace favors under",
+        "model_version": "REAL v1.0 (Live OddsAPI)",
+        "data_source": "OddsAPI",
+        "bet_instructions": "\ud83d\udccd PLACE BET ON FanDuel: UNDER 224.5 (O/U 224.5) | Model predicts ~217 combined points; UNDER favored vs market 224.5 | Confidence: 63%",
+        "bet_explanation": "Model predicts ~217 combined points; UNDER favored vs market 224.5",
+        "bookmaker_source": "FanDuel",
+        "prop_type": null,
+        "player": null,
+        "player_team": null,
+        "injury_role_shift_flag": false,
+        "american_odds": -106,
+        "pinnacle_agrees": null,
+        "pinnacle_line": null,
+        "pinnacle_gap": 0.0,
+        "injury_impact_score": 7,
+        "injury_freshness_minutes": 0,
+        "injury_confidence": "medium",
+        "consensus_line": 224.5,
+        "consensus_gap": 0.0,
+        "consensus_books_count": 11,
+        "market_alignment": "agree",
+        "snapshot_ts": "2026-03-05T17:49:39.518337+00:00",
+        "why_this_pick_full": null,
+        "smart_edge": 38.7,
+        "smart_edge_quality": "Excellent",
+        "smart_edge_confidence": 85,
+        "smart_edge_reasoning": "Edge Assessment: Excellent edge detected | Pace-adjusted total favors: UNDER | Multiple factors support this edge",
+        "edge_components": {
+          "pace_edge": -38.400000000000006,
+          "data_quality": "HIGH",
+          "weather_edge": 0,
+          "historical_edge": -0.24999999999999994
+        },
+        "data_quality": "HIGH",
+        "calibrated_confidence": 58.6,
+        "larlscore": 7.87,
+        "larlscore_grade": "S",
+        "larlscore_flag": "MANUAL_REVIEW"
+      }
+    },
+    {
+      "rank": 2,
+      "score": 1.8985,
+      "larlscore": 1.8985,
+      "game": "Michigan Wolverines @ Iowa Hawkeyes",
+      "bet_type": "TOTAL",
+      "recommendation": "UNDER 145.5",
+      "confidence": 63,
+      "edge": -3.5,
+      "risk_tier": "\ud83d\udd34 HIGH RISK",
+      "game_time": "08:00 PM EST",
+      "reason": "\u2022 Model finds 3.5 pt under signal vs market line 145.5\n\u2022 Recent form trending under season avg \u2014 pace leans slow\n\u2022 3.5 points edge vs market",
+      "full_bet": {
+        "game": "Michigan Wolverines @ Iowa Hawkeyes",
+        "sport": "\ud83c\udfc0 NCAA Basketball",
+        "bet_type": "TOTAL",
+        "recommendation": "UNDER 145.5",
+        "fanduel_line": "Over 145.5 (-112) / Under 145.5 (-108)",
+        "edge": -3.5,
+        "confidence": 63,
+        "risk_tier": "\ud83d\udd34 HIGH RISK",
+        "game_time": "08:00 PM EST",
+        "reason": "\u2022 Model finds 3.5 pt under signal vs market line 145.5\n\u2022 Recent form trending under season avg \u2014 pace leans slow\n\u2022 3.5 points edge vs market",
+        "model_version": "REAL v1.0 (Live OddsAPI)",
+        "data_source": "OddsAPI",
+        "bet_instructions": "\ud83d\udccd PLACE BET ON FanDuel: UNDER 145.5 (O/U 145.5) | Model predicts ~142 combined points; UNDER favored vs market 145.5 | Confidence: 63%",
+        "bet_explanation": "Model predicts ~142 combined points; UNDER favored vs market 145.5",
+        "bookmaker_source": "FanDuel",
+        "prop_type": null,
+        "player": null,
+        "player_team": null,
+        "injury_role_shift_flag": false,
+        "american_odds": -108,
+        "pinnacle_agrees": null,
+        "pinnacle_line": null,
+        "pinnacle_gap": 0.0,
+        "injury_impact_score": 0,
+        "injury_freshness_minutes": 0,
+        "injury_confidence": "low",
+        "consensus_line": 145.5,
+        "consensus_gap": 0.0,
+        "consensus_books_count": 10,
+        "market_alignment": "agree",
+        "snapshot_ts": "2026-03-05T17:49:39.273209+00:00",
+        "why_this_pick_full": null,
+        "smart_edge": 0.8,
+        "smart_edge_quality": "Marginal",
+        "smart_edge_confidence": 55,
+        "smart_edge_reasoning": "Edge Assessment: Marginal edge detected | Pace-adjusted total favors: OVER | Multiple factors support this edge",
+        "edge_components": {
+          "pace_edge": 1.0999999999999943,
+          "data_quality": "HIGH",
+          "weather_edge": 0,
+          "historical_edge": -0.24999999999999994
+        },
+        "data_quality": "HIGH",
+        "calibrated_confidence": 57.4,
+        "larlscore": 1.9,
+        "larlscore_grade": "A",
+        "larlscore_flag": null
+      }
+    },
+    {
+      "rank": 3,
+      "score": 1.6003,
+      "larlscore": 1.6003,
+      "game": "Tulane Green Wave @ Temple Owls",
+      "bet_type": "TOTAL",
+      "recommendation": "UNDER 144.5",
+      "confidence": 59,
+      "edge": -2.7,
+      "risk_tier": "\ud83d\udd34 HIGH RISK",
+      "game_time": "07:00 PM EST",
+      "reason": "\u2022 Model finds 2.7 pt under signal vs market line 144.5\n\u2022 Recent form trending under season avg \u2014 pace leans slow\n\u2022 2.7 points edge vs market",
+      "full_bet": {
+        "game": "Tulane Green Wave @ Temple Owls",
+        "sport": "\ud83c\udfc0 NCAA Basketball",
+        "bet_type": "TOTAL",
+        "recommendation": "UNDER 144.5",
+        "fanduel_line": "Over 144.5 (-115) / Under 144.5 (-105)",
+        "edge": -2.7,
+        "confidence": 59,
+        "risk_tier": "\ud83d\udd34 HIGH RISK",
+        "game_time": "07:00 PM EST",
+        "reason": "\u2022 Model finds 2.7 pt under signal vs market line 144.5\n\u2022 Recent form trending under season avg \u2014 pace leans slow\n\u2022 2.7 points edge vs market",
+        "model_version": "REAL v1.0 (Live OddsAPI)",
+        "data_source": "OddsAPI",
+        "bet_instructions": "\ud83d\udccd PLACE BET ON FanDuel: UNDER 144.5 (O/U 144.5) | Model predicts ~141 combined points; UNDER favored vs market 144.5 | Confidence: 59%",
+        "bet_explanation": "Model predicts ~141 combined points; UNDER favored vs market 144.5",
+        "bookmaker_source": "FanDuel",
+        "prop_type": null,
+        "player": null,
+        "player_team": null,
+        "injury_role_shift_flag": false,
+        "american_odds": -105,
+        "pinnacle_agrees": null,
+        "pinnacle_line": null,
+        "pinnacle_gap": 0.0,
+        "injury_impact_score": 0,
+        "injury_freshness_minutes": 0,
+        "injury_confidence": "low",
+        "consensus_line": 144.5,
+        "consensus_gap": 0.0,
+        "consensus_books_count": 10,
+        "market_alignment": "agree",
+        "snapshot_ts": "2026-03-05T17:49:39.259453+00:00",
+        "why_this_pick_full": null,
+        "smart_edge": 1.3,
+        "smart_edge_quality": "Fair",
+        "smart_edge_confidence": 65,
+        "smart_edge_reasoning": "Edge Assessment: Fair edge detected | Pace-adjusted total favors: OVER | Multiple factors support this edge",
+        "edge_components": {
+          "pace_edge": 1.5999999999999943,
+          "data_quality": "HIGH",
+          "weather_edge": 0,
+          "historical_edge": -0.24999999999999994
+        },
+        "data_quality": "HIGH",
+        "calibrated_confidence": 59.6,
+        "larlscore": 1.6,
+        "larlscore_grade": "A",
+        "larlscore_flag": null
+      }
+    },
+    {
+      "rank": 4,
+      "score": 1.4057,
+      "larlscore": 1.4057,
       "game": "Brooklyn Nets @ Miami Heat",
       "bet_type": "PROP",
       "recommendation": "Andrew Wiggins OVER 22.5 Points Rebounds Assists",
-      "confidence": 64,
+      "confidence": 62,
       "edge": 3.8533333600000006,
       "risk_tier": "\ud83d\udd34 HIGH RISK",
       "game_time": "Thu 07:40 PM",
@@ -25,7 +211,7 @@
         "recommendation": "Andrew Wiggins OVER 22.5 Points Rebounds Assists",
         "fanduel_line": "OVER 22.5",
         "edge": 3.8533333600000006,
-        "confidence": 64,
+        "confidence": 62,
         "risk_tier": "\ud83d\udd34 HIGH RISK",
         "game_time": "Thu 07:40 PM",
         "reason": "\u2022 Projected: 26.4 Points Rebounds Assists (line 22.5)\n\u2022 Minutes stable \u2014 stable\n\u2022 Recent hit rate: 4/5 (80%) over last 5 games",
@@ -38,7 +224,7 @@
         "player": "Andrew Wiggins",
         "player_team": "Miami Heat",
         "injury_role_shift_flag": false,
-        "american_odds": -122,
+        "american_odds": -125,
         "pinnacle_agrees": null,
         "pinnacle_line": null,
         "pinnacle_gap": null,
@@ -50,68 +236,21 @@
         "consensus_books_count": null,
         "market_alignment": null,
         "snapshot_ts": null,
-        "why_this_pick_full": "\u2022 Recent 9G avg: 27.2 | Season avg: 25.1 | Blended (60/40): 26.4\n\u2022 Minutes: 30.6 MPG recently vs 30.7 season avg\n\u2022 \u27a1\ufe0f Efficiency: 0.889/min recent vs 0.817/min season \u2014 stable\n\u2022 Recent hit rate: 4/5 (80%) over last 5 games\n\u2022 Projected: 26.4 vs line 22.5 \u2192 3.9 pt over edge\n\u2022 Juice: -122 odds | break-even 55.0% | confidence penalty -5pts",
-        "calibrated_confidence": 57.8,
-        "larlscore": 1.46
+        "why_this_pick_full": "\u2022 Recent 9G avg: 27.2 | Season avg: 25.1 | Blended (60/40): 26.4\n\u2022 Minutes: 30.6 MPG recently vs 30.7 season avg\n\u2022 \u27a1\ufe0f Efficiency: 0.889/min recent vs 0.817/min season \u2014 stable\n\u2022 Recent hit rate: 4/5 (80%) over last 5 games\n\u2022 Projected: 26.4 vs line 22.5 \u2192 3.9 pt over edge\n\u2022 Juice: -125 odds | break-even 55.6% | confidence penalty -6pts",
+        "calibrated_confidence": 57.0,
+        "larlscore": 1.41,
+        "larlscore_grade": "B",
+        "larlscore_flag": null
       }
     },
     {
-      "rank": 2,
-      "score": 1.4243,
-      "larlscore": 1.4243,
-      "game": "New Orleans Pelicans @ Sacramento Kings",
-      "bet_type": "PROP",
-      "recommendation": "DeMar DeRozan OVER 20.5 Points Rebounds Assists",
-      "confidence": 52,
-      "edge": 3.887792080000004,
-      "risk_tier": "\ud83d\udd34 HIGH RISK",
-      "game_time": "Thu 10:10 PM",
-      "reason": "\u2022 Projected: 24.4 Points Rebounds Assists (line 20.5)\n\u2022 Minutes \u219326% recently\n\u2022 Recent hit rate: 3/5 (60%) over last 5 games",
-      "full_bet": {
-        "game": "New Orleans Pelicans @ Sacramento Kings",
-        "sport": "NBA",
-        "bet_type": "PROP",
-        "recommendation": "DeMar DeRozan OVER 20.5 Points Rebounds Assists",
-        "fanduel_line": "OVER 20.5",
-        "edge": 3.887792080000004,
-        "confidence": 52,
-        "risk_tier": "\ud83d\udd34 HIGH RISK",
-        "game_time": "Thu 10:10 PM",
-        "reason": "\u2022 Projected: 24.4 Points Rebounds Assists (line 20.5)\n\u2022 Minutes \u219326% recently\n\u2022 Recent hit rate: 3/5 (60%) over last 5 games",
-        "model_version": "REAL v1.0 (Live OddsAPI)",
-        "data_source": "OddsAPI",
-        "bet_instructions": "\ud83d\udccd BET: DeMar DeRozan OVER 20.5 Points Rebounds Assists",
-        "bet_explanation": "Bet DeMar DeRozan OVER 20.5 Points Rebounds Assists on FanDuel",
-        "bookmaker_source": "FanDuel",
-        "prop_type": "player_points_rebounds_assists",
-        "player": "DeMar DeRozan",
-        "player_team": "Sacramento Kings",
-        "injury_role_shift_flag": false,
-        "american_odds": -122,
-        "pinnacle_agrees": null,
-        "pinnacle_line": null,
-        "pinnacle_gap": null,
-        "injury_impact_score": null,
-        "injury_freshness_minutes": null,
-        "injury_confidence": null,
-        "consensus_line": null,
-        "consensus_gap": null,
-        "consensus_books_count": null,
-        "market_alignment": null,
-        "snapshot_ts": null,
-        "why_this_pick_full": "\u2022 Recent 10G avg: 20.3 | Season avg: 30.5 | Blended (60/40): 24.4\n\u2022 Minutes: 26.7 MPG recently vs 35.9 season avg \u2014 \u26a0\ufe0f DOWN 26%\n\u2022 \u27a1\ufe0f Efficiency: 0.760/min recent vs 0.849/min season \u2014 stable\n\u2022 Recent hit rate: 3/5 (60%) over last 5 games\n\u2022 Projected: 24.4 vs line 20.5 \u2192 3.9 pt over edge\n\u2022 \u26a0\ufe0f MPG DROP: Recent 26.7 MPG = 74% of season 35.9 MPG \u2014 reduced role/injury risk\n\u2022 Juice: -122 odds | break-even 55.0% | confidence penalty -5pts",
-        "calibrated_confidence": 56.8,
-        "larlscore": 1.42
-      }
-    },
-    {
-      "rank": 3,
-      "score": 1.2587,
-      "larlscore": 1.2587,
+      "rank": 5,
+      "score": 1.2318,
+      "larlscore": 1.2318,
       "game": "Los Angeles Lakers @ Denver Nuggets",
       "bet_type": "PROP",
       "recommendation": "Christian Braun OVER 19.5 Points Rebounds Assists",
-      "confidence": 58,
+      "confidence": 57,
       "edge": 3.221012639999998,
       "risk_tier": "\ud83d\udd34 HIGH RISK",
       "game_time": "Thu 10:10 PM",
@@ -123,7 +262,7 @@
         "recommendation": "Christian Braun OVER 19.5 Points Rebounds Assists",
         "fanduel_line": "OVER 19.5",
         "edge": 3.221012639999998,
-        "confidence": 58,
+        "confidence": 57,
         "risk_tier": "\ud83d\udd34 HIGH RISK",
         "game_time": "Thu 10:10 PM",
         "reason": "\u2022 Projected: 22.7 Points Rebounds Assists (line 19.5)\n\u2022 Minutes stable \u2014 stable\n\u2022 Recent hit rate: 3/5 (60%) over last 5 games",
@@ -136,7 +275,7 @@
         "player": "Christian Braun",
         "player_team": "Denver Nuggets",
         "injury_role_shift_flag": false,
-        "american_odds": -128,
+        "american_odds": -130,
         "pinnacle_agrees": null,
         "pinnacle_line": null,
         "pinnacle_gap": null,
@@ -148,19 +287,21 @@
         "consensus_books_count": null,
         "market_alignment": null,
         "snapshot_ts": null,
-        "why_this_pick_full": "\u2022 Recent 10G avg: 22.4 | Season avg: 23.2 | Blended (60/40): 22.7\n\u2022 Minutes: 34.2 MPG recently vs 33.9 season avg\n\u2022 \u27a1\ufe0f Efficiency: 0.655/min recent vs 0.685/min season \u2014 stable\n\u2022 Recent hit rate: 3/5 (60%) over last 5 games\n\u2022 Projected: 22.7 vs line 19.5 \u2192 3.2 pt over edge\n\u2022 Juice: -128 odds | break-even 56.1% | confidence penalty -7pts",
-        "calibrated_confidence": 59.2,
-        "larlscore": 1.26
+        "why_this_pick_full": "\u2022 Recent 10G avg: 22.4 | Season avg: 23.2 | Blended (60/40): 22.7\n\u2022 Minutes: 34.2 MPG recently vs 33.9 season avg\n\u2022 \u27a1\ufe0f Efficiency: 0.655/min recent vs 0.685/min season \u2014 stable\n\u2022 Recent hit rate: 3/5 (60%) over last 5 games\n\u2022 Projected: 22.7 vs line 19.5 \u2192 3.2 pt over edge\n\u2022 Juice: -130 odds | break-even 56.5% | confidence penalty -8pts",
+        "calibrated_confidence": 58.8,
+        "larlscore": 1.23,
+        "larlscore_grade": "B",
+        "larlscore_flag": null
       }
     },
     {
-      "rank": 4,
-      "score": 0.4099,
-      "larlscore": 0.4099,
+      "rank": 6,
+      "score": 0.4281,
+      "larlscore": 0.4281,
       "game": "Utah Mammoth @ Philadelphia Flyers",
       "bet_type": "TOTAL",
       "recommendation": "OVER 5.5",
-      "confidence": 55,
+      "confidence": 58,
       "edge": 0.8,
       "risk_tier": "\ud83d\udd34 HIGH RISK",
       "game_time": "07:10 PM EST",
@@ -172,7 +313,7 @@
         "recommendation": "OVER 5.5",
         "fanduel_line": "Over 5.5 / Under 5.5",
         "edge": 0.8,
-        "confidence": 55,
+        "confidence": 58,
         "risk_tier": "\ud83d\udd34 HIGH RISK",
         "game_time": "07:10 PM EST",
         "reason": "\u2022 Projected: ~6.3 goals (over 5.5)\n\u2022 Offensive matchup \u2014 goal rates support over\n\u2022 0.8 goals edge vs market",
@@ -208,18 +349,21 @@
           "weather_edge": 0,
           "historical_edge": -0.24999999999999994
         },
-        "calibrated_confidence": 58.0,
-        "larlscore": 0.41
+        "data_quality": "HIGH",
+        "calibrated_confidence": 59.2,
+        "larlscore": 0.43,
+        "larlscore_grade": "D",
+        "larlscore_flag": "LOW_QUALITY"
       }
     },
     {
-      "rank": 5,
-      "score": 0.2435,
-      "larlscore": 0.2435,
+      "rank": 7,
+      "score": 0.2545,
+      "larlscore": 0.2545,
       "game": "Boston Bruins @ Nashville Predators",
       "bet_type": "TOTAL",
       "recommendation": "UNDER 6.5",
-      "confidence": 50,
+      "confidence": 53,
       "edge": 0.5,
       "risk_tier": "\ud83d\udd34 HIGH RISK",
       "game_time": "08:10 PM EST",
@@ -231,7 +375,7 @@
         "recommendation": "UNDER 6.5",
         "fanduel_line": "Over 6.5 / Under 6.5",
         "edge": 0.5,
-        "confidence": 50,
+        "confidence": 53,
         "risk_tier": "\ud83d\udd34 HIGH RISK",
         "game_time": "08:10 PM EST",
         "reason": "\u2022 Projected: ~6.0 goals (under 6.5)\n\u2022 Defensive matchup \u2014 goal rates support under\n\u2022 0.5 goals edge vs market",
@@ -267,8 +411,11 @@
           "weather_edge": 0,
           "historical_edge": -0.24999999999999994
         },
-        "calibrated_confidence": 56.0,
-        "larlscore": 0.24
+        "data_quality": "HIGH",
+        "calibrated_confidence": 57.2,
+        "larlscore": 0.25,
+        "larlscore_grade": "D",
+        "larlscore_flag": "LOW_QUALITY"
       }
     }
   ],
@@ -2992,7 +3139,7 @@
     "TOTAL"
   ],
   "insights": {
-    "generated_at": "2026-03-05T11:57:18.252533",
+    "generated_at": "2026-03-05T12:09:00.814236",
     "total_bets_analyzed": 132,
     "overall_win_rate": 50.0,
     "roi": {
@@ -3228,29 +3375,29 @@
     "optimal_thresholds_by_type": {
       "SPREAD": {
         "min_confidence": 55,
-        "min_edge": 2.0
+        "min_edge": 3.0
       },
       "TOTAL": {
         "min_confidence": 50,
+        "min_edge": 2.5
+      },
+      "PROP": {
+        "min_confidence": 45,
         "min_edge": 3.0
+      },
+      "MONEYLINE": {
+        "min_confidence": 55,
+        "min_edge": 5.0
       },
       "NHL_TOTAL": {
         "min_confidence": 50,
         "min_edge": 0.5,
         "unit": "goals",
         "note": "Hockey edges are smaller by nature (avg game total ~6.5 goals vs ~220 pts in basketball)"
-      },
-      "PROP": {
-        "min_confidence": 55,
-        "min_edge": 3
-      },
-      "MONEYLINE": {
-        "min_confidence": 55,
-        "min_edge": 2.0
       }
     },
     "result_attribution": {
-      "generated_at": "2026-03-05T11:57:18.252521",
+      "generated_at": "2026-03-05T12:09:00.814101",
       "sample_size": 132,
       "confidence_attribution": {
         "SPREAD": {
@@ -3467,23 +3614,23 @@
         "actual_wr_pct": 12.5,
         "n_bets_sampled": 8,
         "recommendation": "Keep DISABLED \u2014 actual WR too low",
-        "generated_at": "2026-03-05T11:57:18.254972"
+        "generated_at": "2026-03-05T12:09:00.816738"
       }
     ],
-    "assumption_audit_at": "2026-03-05T11:57:18.255152",
+    "assumption_audit_at": "2026-03-05T12:09:00.816924",
     "quality": {
       "overall": {
         "window_days": null,
         "pinnacle": {
-          "n": 82,
-          "coverage_pct": 3.7,
-          "agree_known_pct": 3.7,
+          "n": 85,
+          "coverage_pct": 3.5,
+          "agree_known_pct": 3.5,
           "agree_pct": 33.3
         },
         "consensus": {
-          "n": 82,
-          "coverage_pct": 15.9,
-          "books_avg": 1.1
+          "n": 85,
+          "coverage_pct": 18.8,
+          "books_avg": 1.4
         },
         "injury_nba_spread": {
           "n": 2,
@@ -3499,15 +3646,15 @@
       "last7": {
         "window_days": 7,
         "pinnacle": {
-          "n": 6,
-          "coverage_pct": 50.0,
-          "agree_known_pct": 50.0,
+          "n": 9,
+          "coverage_pct": 33.3,
+          "agree_known_pct": 33.3,
           "agree_pct": 33.3
         },
         "consensus": {
-          "n": 6,
-          "coverage_pct": 66.7,
-          "books_avg": 6.2
+          "n": 9,
+          "coverage_pct": 77.8,
+          "books_avg": 7.6
         },
         "injury_nba_spread": {
           "n": 0,
@@ -3522,9 +3669,9 @@
       }
     },
     "export_meta": {
-      "exported_at": "2026-03-05T12:08:02.954660",
+      "exported_at": "2026-03-05T12:49:57.616886",
       "cloudflare_pages": "https://larlscore.pages.dev/",
-      "betting_repo_commit": "17edd91"
+      "betting_repo_commit": "21d1da8"
     }
   },
   "bonus_bets": [],
