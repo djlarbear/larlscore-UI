@@ -87,11 +87,21 @@ export interface Bet {
   result: 'WIN' | 'LOSS' | 'CANCELLED' | 'PENDING' | null;
   actual_score: string | null;
   why_this_pick?: string;
+  why_this_pick_full?: string;
+  reason?: string;
+  full_bet?: {
+    why_this_pick_full?: string;
+    reason?: string;
+    [key: string]: unknown;
+  };
   game_result?: string;
   game_time?: string;
   fanduel_line?: string;
   risk_tier?: string;
   american_odds?: number;
+  larlscore_grade?: string;
+  larlscore_flag?: string;
+  score?: number;
 }
 
 export interface BetFilters {
