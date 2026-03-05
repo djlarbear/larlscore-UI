@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-03-05T12:49:57.622659",
+  "generated_at": "2026-03-05T12:56:49.589496",
   "export_meta": {
-    "exported_at": "2026-03-05T12:49:57.616886",
+    "exported_at": "2026-03-05T12:56:49.583642",
     "cloudflare_pages": "https://larlscore.pages.dev/",
-    "betting_repo_commit": "21d1da8"
+    "betting_repo_commit": "c74ebec"
   },
   "picks": [
     {
@@ -49,7 +49,7 @@
         "consensus_gap": 0.0,
         "consensus_books_count": 11,
         "market_alignment": "agree",
-        "snapshot_ts": "2026-03-05T17:49:39.518337+00:00",
+        "snapshot_ts": "2026-03-05T17:56:47.239471+00:00",
         "why_this_pick_full": null,
         "smart_edge": 38.7,
         "smart_edge_quality": "Excellent",
@@ -111,7 +111,7 @@
         "consensus_gap": 0.0,
         "consensus_books_count": 10,
         "market_alignment": "agree",
-        "snapshot_ts": "2026-03-05T17:49:39.273209+00:00",
+        "snapshot_ts": "2026-03-05T17:56:46.981045+00:00",
         "why_this_pick_full": null,
         "smart_edge": 0.8,
         "smart_edge_quality": "Marginal",
@@ -173,7 +173,7 @@
         "consensus_gap": 0.0,
         "consensus_books_count": 10,
         "market_alignment": "agree",
-        "snapshot_ts": "2026-03-05T17:49:39.259453+00:00",
+        "snapshot_ts": "2026-03-05T17:56:46.967310+00:00",
         "why_this_pick_full": null,
         "smart_edge": 1.3,
         "smart_edge_quality": "Fair",
@@ -3669,9 +3669,9 @@
       }
     },
     "export_meta": {
-      "exported_at": "2026-03-05T12:49:57.616886",
+      "exported_at": "2026-03-05T12:56:49.583642",
       "cloudflare_pages": "https://larlscore.pages.dev/",
-      "betting_repo_commit": "21d1da8"
+      "betting_repo_commit": "c74ebec"
     }
   },
   "bonus_bets": [],
