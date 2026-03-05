@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-03-05T06:00:04.626058",
+  "generated_at": "2026-03-05T12:08:02.960197",
   "export_meta": {
-    "exported_at": "2026-03-05T06:00:04.620118",
+    "exported_at": "2026-03-05T12:08:02.954660",
     "cloudflare_pages": "https://larlscore.pages.dev/",
-    "betting_repo_commit": "62bb20c"
+    "betting_repo_commit": "17edd91"
   },
   "picks": [
     {
       "rank": 1,
-      "score": 1.6218,
-      "larlscore": 1.6218,
+      "score": 1.4643,
+      "larlscore": 1.4643,
       "game": "Brooklyn Nets @ Miami Heat",
       "bet_type": "PROP",
       "recommendation": "Andrew Wiggins OVER 22.5 Points Rebounds Assists",
@@ -52,17 +52,66 @@
         "snapshot_ts": null,
         "why_this_pick_full": "\u2022 Recent 9G avg: 27.2 | Season avg: 25.1 | Blended (60/40): 26.4\n\u2022 Minutes: 30.6 MPG recently vs 30.7 season avg\n\u2022 \u27a1\ufe0f Efficiency: 0.889/min recent vs 0.817/min season \u2014 stable\n\u2022 Recent hit rate: 4/5 (80%) over last 5 games\n\u2022 Projected: 26.4 vs line 22.5 \u2192 3.9 pt over edge\n\u2022 Juice: -122 odds | break-even 55.0% | confidence penalty -5pts",
         "calibrated_confidence": 57.8,
-        "larlscore": 1.62
+        "larlscore": 1.46
       }
     },
     {
       "rank": 2,
-      "score": 1.3545,
-      "larlscore": 1.3545,
+      "score": 1.4243,
+      "larlscore": 1.4243,
+      "game": "New Orleans Pelicans @ Sacramento Kings",
+      "bet_type": "PROP",
+      "recommendation": "DeMar DeRozan OVER 20.5 Points Rebounds Assists",
+      "confidence": 52,
+      "edge": 3.887792080000004,
+      "risk_tier": "\ud83d\udd34 HIGH RISK",
+      "game_time": "Thu 10:10 PM",
+      "reason": "\u2022 Projected: 24.4 Points Rebounds Assists (line 20.5)\n\u2022 Minutes \u219326% recently\n\u2022 Recent hit rate: 3/5 (60%) over last 5 games",
+      "full_bet": {
+        "game": "New Orleans Pelicans @ Sacramento Kings",
+        "sport": "NBA",
+        "bet_type": "PROP",
+        "recommendation": "DeMar DeRozan OVER 20.5 Points Rebounds Assists",
+        "fanduel_line": "OVER 20.5",
+        "edge": 3.887792080000004,
+        "confidence": 52,
+        "risk_tier": "\ud83d\udd34 HIGH RISK",
+        "game_time": "Thu 10:10 PM",
+        "reason": "\u2022 Projected: 24.4 Points Rebounds Assists (line 20.5)\n\u2022 Minutes \u219326% recently\n\u2022 Recent hit rate: 3/5 (60%) over last 5 games",
+        "model_version": "REAL v1.0 (Live OddsAPI)",
+        "data_source": "OddsAPI",
+        "bet_instructions": "\ud83d\udccd BET: DeMar DeRozan OVER 20.5 Points Rebounds Assists",
+        "bet_explanation": "Bet DeMar DeRozan OVER 20.5 Points Rebounds Assists on FanDuel",
+        "bookmaker_source": "FanDuel",
+        "prop_type": "player_points_rebounds_assists",
+        "player": "DeMar DeRozan",
+        "player_team": "Sacramento Kings",
+        "injury_role_shift_flag": false,
+        "american_odds": -122,
+        "pinnacle_agrees": null,
+        "pinnacle_line": null,
+        "pinnacle_gap": null,
+        "injury_impact_score": null,
+        "injury_freshness_minutes": null,
+        "injury_confidence": null,
+        "consensus_line": null,
+        "consensus_gap": null,
+        "consensus_books_count": null,
+        "market_alignment": null,
+        "snapshot_ts": null,
+        "why_this_pick_full": "\u2022 Recent 10G avg: 20.3 | Season avg: 30.5 | Blended (60/40): 24.4\n\u2022 Minutes: 26.7 MPG recently vs 35.9 season avg \u2014 \u26a0\ufe0f DOWN 26%\n\u2022 \u27a1\ufe0f Efficiency: 0.760/min recent vs 0.849/min season \u2014 stable\n\u2022 Recent hit rate: 3/5 (60%) over last 5 games\n\u2022 Projected: 24.4 vs line 20.5 \u2192 3.9 pt over edge\n\u2022 \u26a0\ufe0f MPG DROP: Recent 26.7 MPG = 74% of season 35.9 MPG \u2014 reduced role/injury risk\n\u2022 Juice: -122 odds | break-even 55.0% | confidence penalty -5pts",
+        "calibrated_confidence": 56.8,
+        "larlscore": 1.42
+      }
+    },
+    {
+      "rank": 3,
+      "score": 1.2587,
+      "larlscore": 1.2587,
       "game": "Los Angeles Lakers @ Denver Nuggets",
       "bet_type": "PROP",
       "recommendation": "Christian Braun OVER 19.5 Points Rebounds Assists",
-      "confidence": 57,
+      "confidence": 58,
       "edge": 3.221012639999998,
       "risk_tier": "\ud83d\udd34 HIGH RISK",
       "game_time": "Thu 10:10 PM",
@@ -74,7 +123,7 @@
         "recommendation": "Christian Braun OVER 19.5 Points Rebounds Assists",
         "fanduel_line": "OVER 19.5",
         "edge": 3.221012639999998,
-        "confidence": 57,
+        "confidence": 58,
         "risk_tier": "\ud83d\udd34 HIGH RISK",
         "game_time": "Thu 10:10 PM",
         "reason": "\u2022 Projected: 22.7 Points Rebounds Assists (line 19.5)\n\u2022 Minutes stable \u2014 stable\n\u2022 Recent hit rate: 3/5 (60%) over last 5 games",
@@ -87,7 +136,7 @@
         "player": "Christian Braun",
         "player_team": "Denver Nuggets",
         "injury_role_shift_flag": false,
-        "american_odds": -132,
+        "american_odds": -128,
         "pinnacle_agrees": null,
         "pinnacle_line": null,
         "pinnacle_gap": null,
@@ -99,22 +148,22 @@
         "consensus_books_count": null,
         "market_alignment": null,
         "snapshot_ts": null,
-        "why_this_pick_full": "\u2022 Recent 10G avg: 22.4 | Season avg: 23.2 | Blended (60/40): 22.7\n\u2022 Minutes: 34.2 MPG recently vs 33.9 season avg\n\u2022 \u27a1\ufe0f Efficiency: 0.655/min recent vs 0.685/min season \u2014 stable\n\u2022 Recent hit rate: 3/5 (60%) over last 5 games\n\u2022 Projected: 22.7 vs line 19.5 \u2192 3.2 pt over edge\n\u2022 Juice: -132 odds | break-even 56.9% | confidence penalty -9pts",
-        "calibrated_confidence": 58.8,
-        "larlscore": 1.35
+        "why_this_pick_full": "\u2022 Recent 10G avg: 22.4 | Season avg: 23.2 | Blended (60/40): 22.7\n\u2022 Minutes: 34.2 MPG recently vs 33.9 season avg\n\u2022 \u27a1\ufe0f Efficiency: 0.655/min recent vs 0.685/min season \u2014 stable\n\u2022 Recent hit rate: 3/5 (60%) over last 5 games\n\u2022 Projected: 22.7 vs line 19.5 \u2192 3.2 pt over edge\n\u2022 Juice: -128 odds | break-even 56.1% | confidence penalty -7pts",
+        "calibrated_confidence": 59.2,
+        "larlscore": 1.26
       }
     },
     {
-      "rank": 3,
-      "score": 0.4161,
-      "larlscore": 0.4161,
+      "rank": 4,
+      "score": 0.4099,
+      "larlscore": 0.4099,
       "game": "Utah Mammoth @ Philadelphia Flyers",
       "bet_type": "TOTAL",
       "recommendation": "OVER 5.5",
       "confidence": 55,
       "edge": 0.8,
       "risk_tier": "\ud83d\udd34 HIGH RISK",
-      "game_time": "07:00 PM EST",
+      "game_time": "07:10 PM EST",
       "reason": "\u2022 Projected: ~6.3 goals (over 5.5)\n\u2022 Offensive matchup \u2014 goal rates support over\n\u2022 0.8 goals edge vs market",
       "full_bet": {
         "game": "Utah Mammoth @ Philadelphia Flyers",
@@ -125,7 +174,7 @@
         "edge": 0.8,
         "confidence": 55,
         "risk_tier": "\ud83d\udd34 HIGH RISK",
-        "game_time": "07:00 PM EST",
+        "game_time": "07:10 PM EST",
         "reason": "\u2022 Projected: ~6.3 goals (over 5.5)\n\u2022 Offensive matchup \u2014 goal rates support over\n\u2022 0.8 goals edge vs market",
         "model_version": "REAL v1.0 (Live OddsAPI)",
         "data_source": "OddsAPI",
@@ -136,7 +185,7 @@
         "player": null,
         "player_team": null,
         "injury_role_shift_flag": false,
-        "american_odds": -124,
+        "american_odds": -128,
         "pinnacle_agrees": null,
         "pinnacle_line": null,
         "pinnacle_gap": null,
@@ -160,11 +209,11 @@
           "historical_edge": -0.24999999999999994
         },
         "calibrated_confidence": 58.0,
-        "larlscore": 0.42
+        "larlscore": 0.41
       }
     },
     {
-      "rank": 4,
+      "rank": 5,
       "score": 0.2435,
       "larlscore": 0.2435,
       "game": "Boston Bruins @ Nashville Predators",
@@ -173,7 +222,7 @@
       "confidence": 50,
       "edge": 0.5,
       "risk_tier": "\ud83d\udd34 HIGH RISK",
-      "game_time": "08:00 PM EST",
+      "game_time": "08:10 PM EST",
       "reason": "\u2022 Projected: ~6.0 goals (under 6.5)\n\u2022 Defensive matchup \u2014 goal rates support under\n\u2022 0.5 goals edge vs market",
       "full_bet": {
         "game": "Boston Bruins @ Nashville Predators",
@@ -184,7 +233,7 @@
         "edge": 0.5,
         "confidence": 50,
         "risk_tier": "\ud83d\udd34 HIGH RISK",
-        "game_time": "08:00 PM EST",
+        "game_time": "08:10 PM EST",
         "reason": "\u2022 Projected: ~6.0 goals (under 6.5)\n\u2022 Defensive matchup \u2014 goal rates support under\n\u2022 0.5 goals edge vs market",
         "model_version": "REAL v1.0 (Live OddsAPI)",
         "data_source": "OddsAPI",
@@ -225,33 +274,34 @@
   ],
   "stats": {},
   "summary": {
-    "total_bets": 129,
-    "wins": 65,
-    "losses": 61,
+    "total_bets": 135,
+    "wins": 66,
+    "losses": 66,
     "cancelled": 1,
-    "win_rate": 51.6,
-    "decided": 126,
-    "net_units": -3.56,
-    "roi_pct": -2.8,
+    "win_rate": 50.0,
+    "decided": 132,
+    "net_units": -7.67,
+    "roi_pct": -5.8,
     "by_sport": {
-      "NBA": 41,
+      "NBA": 47,
       "\ud83c\udfc0 NCAA Basketball": 86,
       "\ud83c\udfc0 NBA": 2
     },
     "by_bet_type": {
-      "PROP": 41,
+      "PROP": 47,
       "TOTAL": 29,
       "SPREAD": 51,
       "MONEYLINE": 8
     },
     "by_result": {
-      "WIN": 65,
-      "LOSS": 61,
+      "WIN": 66,
+      "LOSS": 66,
       "PUSH": 1,
       "CANCELLED": 1,
       "VOID": 1
     },
     "by_date": {
+      "2026-03-04": 6,
       "2026-03-01": 8,
       "2026-02-27": 6,
       "2026-02-26": 10,
@@ -268,9 +318,123 @@
     "spread_count": 51,
     "total_count": 29,
     "moneyline_count": 8,
-    "prop_count": 41
+    "prop_count": 47
   },
   "bets": [
+    {
+      "id": "bd2f2d8ab5dd9662",
+      "date": "2026-03-04",
+      "game": "Atlanta Hawks @ Milwaukee Bucks",
+      "sport": "NBA",
+      "bet_type": "PROP",
+      "recommendation": "Kyle Kuzma OVER 8.5 Points",
+      "edge": 4.872308,
+      "confidence": 65.0,
+      "larlscore": 2.15,
+      "result": "WIN",
+      "actual_score": "Kyle Kuzma: PTS=16 REB=2 AST=2 (PTS=16 vs line 8.5)",
+      "game_result": "Kyle Kuzma: PTS=16 REB=2 AST=2 (PTS=16 vs line 8.5)",
+      "american_odds": -113.0,
+      "fanduel_line": "OVER 8.5",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "7e590cb57d4d6034",
+      "date": "2026-03-04",
+      "game": "Atlanta Hawks @ Milwaukee Bucks",
+      "sport": "NBA",
+      "bet_type": "PROP",
+      "recommendation": "Cam Thomas OVER 12.5 Points",
+      "edge": 4.824000000000002,
+      "confidence": 52.0,
+      "larlscore": 2.03,
+      "result": "LOSS",
+      "actual_score": "Cam Thomas: PTS=11 REB=2 AST=3 (PTS=11 vs line 12.5)",
+      "game_result": "Cam Thomas: PTS=11 REB=2 AST=3 (PTS=11 vs line 12.5)",
+      "american_odds": -113.0,
+      "fanduel_line": "OVER 12.5",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "f2bb84a150288713",
+      "date": "2026-03-04",
+      "game": "Charlotte Hornets @ Boston Celtics",
+      "sport": "NBA",
+      "bet_type": "PROP",
+      "recommendation": "Jaylen Brown OVER 20.5 Points",
+      "edge": 4.27619,
+      "confidence": 68.0,
+      "larlscore": 2.01,
+      "result": "LOSS",
+      "actual_score": "Jaylen Brown: PTS=20 REB=11 AST=7 (PTS=20 vs line 20.5)",
+      "game_result": "Jaylen Brown: PTS=20 REB=11 AST=7 (PTS=20 vs line 20.5)",
+      "american_odds": -108.0,
+      "fanduel_line": "OVER 20.5",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "eeb7f10261689288",
+      "date": "2026-03-04",
+      "game": "Atlanta Hawks @ Milwaukee Bucks",
+      "sport": "NBA",
+      "bet_type": "PROP",
+      "recommendation": "Giannis Antetokounmpo OVER 26.5 Points",
+      "edge": 3.8880599999999994,
+      "confidence": 56.0,
+      "larlscore": 1.81,
+      "result": "LOSS",
+      "actual_score": "Giannis Antetokounmpo: PTS=24 REB=5 AST=4 (PTS=24 vs line 26.5)",
+      "game_result": "Giannis Antetokounmpo: PTS=24 REB=5 AST=4 (PTS=24 vs line 26.5)",
+      "american_odds": -102.0,
+      "fanduel_line": "OVER 26.5",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "b4e398d1584627ff",
+      "date": "2026-03-04",
+      "game": "Atlanta Hawks @ Milwaukee Bucks",
+      "sport": "NBA",
+      "bet_type": "PROP",
+      "recommendation": "Corey Kispert OVER 7.5 Points",
+      "edge": 4.0229508,
+      "confidence": 58.0,
+      "larlscore": 1.78,
+      "result": "LOSS",
+      "actual_score": "Corey Kispert: PTS=7 REB=1 AST=7 (PTS=7 vs line 7.5)",
+      "game_result": "Corey Kispert: PTS=7 REB=1 AST=7 (PTS=7 vs line 7.5)",
+      "american_odds": -122.0,
+      "fanduel_line": "OVER 7.5",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "c9ed78377a743009",
+      "date": "2026-03-04",
+      "game": "Oklahoma City Thunder @ New York Knicks",
+      "sport": "NBA",
+      "bet_type": "PROP",
+      "recommendation": "Shai Gilgeous-Alexander OVER 29.5 Points",
+      "edge": 3.18421,
+      "confidence": 64.0,
+      "larlscore": 1.38,
+      "result": "LOSS",
+      "actual_score": "Shai Gilgeous-Alexander: PTS=26 REB=3 AST=8 (PTS=26 vs line 29.5)",
+      "game_result": "Shai Gilgeous-Alexander: PTS=26 REB=3 AST=8 (PTS=26 vs line 29.5)",
+      "american_odds": -114.0,
+      "fanduel_line": "OVER 29.5",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
     {
       "id": "6606fa552708d3d8",
       "date": "2026-03-01",
@@ -2725,6 +2889,13 @@
   ],
   "dates": [
     {
+      "date": "2026-03-04",
+      "total": 6,
+      "wins": 1,
+      "losses": 5,
+      "win_rate": 16.7
+    },
+    {
       "date": "2026-03-01",
       "total": 8,
       "wins": 6,
@@ -2821,19 +2992,19 @@
     "TOTAL"
   ],
   "insights": {
-    "generated_at": "2026-03-04T20:59:51.110942",
-    "total_bets_analyzed": 126,
-    "overall_win_rate": 51.6,
+    "generated_at": "2026-03-05T11:57:18.252533",
+    "total_bets_analyzed": 132,
+    "overall_win_rate": 50.0,
     "roi": {
       "juice": -110,
-      "units_wagered": 126.0,
-      "units_returned": 122.44,
-      "net_units": -3.56,
-      "roi_pct": -2.82,
-      "win_rate_pct": 51.6,
+      "units_wagered": 132.0,
+      "units_returned": 124.33,
+      "net_units": -7.67,
+      "roi_pct": -5.81,
+      "win_rate_pct": 50.0,
       "breakeven_win_rate_pct": 52.4,
-      "above_breakeven": -0.8,
-      "record": "65W-61L-0P",
+      "above_breakeven": -2.4,
+      "record": "66W-66L-0P",
       "note": "Flat betting 1 unit per bet at stated juice"
     },
     "by_sport": {
@@ -2845,11 +3016,11 @@
         "record": "42-44"
       },
       "NBA": {
-        "wins": 23,
-        "losses": 17,
-        "total": 40,
-        "win_rate": 57.5,
-        "record": "23-17"
+        "wins": 24,
+        "losses": 22,
+        "total": 46,
+        "win_rate": 52.2,
+        "record": "24-22"
       }
     },
     "by_bet_type": {
@@ -2875,22 +3046,22 @@
         "record": "19-10"
       },
       "PROP": {
-        "wins": 22,
-        "losses": 16,
-        "total": 38,
-        "win_rate": 57.9,
-        "record": "22-16"
+        "wins": 23,
+        "losses": 21,
+        "total": 44,
+        "win_rate": 52.3,
+        "record": "23-21"
       }
     },
     "moneyline_status": "DISABLED",
     "moneyline_reason": "ml_bad_or_insufficient: n=8 wr=12.5%",
     "by_risk_tier": {
       "Unknown": {
-        "wins": 65,
-        "losses": 61,
-        "total": 126,
-        "win_rate": 51.6,
-        "record": "65-61"
+        "wins": 66,
+        "losses": 66,
+        "total": 132,
+        "win_rate": 50.0,
+        "record": "66-66"
       }
     },
     "by_confidence": {
@@ -2919,20 +3090,20 @@
         "record": "28-24"
       },
       "60-69%": {
-        "wins": 15,
-        "losses": 13,
-        "total": 28,
-        "win_rate": 53.6,
-        "avg_confidence": 64.3,
-        "record": "15-13"
+        "wins": 16,
+        "losses": 15,
+        "total": 31,
+        "win_rate": 51.6,
+        "avg_confidence": 64.4,
+        "record": "16-15"
       },
       "50-59%": {
         "wins": 9,
-        "losses": 6,
-        "total": 15,
-        "win_rate": 60.0,
+        "losses": 9,
+        "total": 18,
+        "win_rate": 50.0,
         "avg_confidence": 54.9,
-        "record": "9-6"
+        "record": "9-9"
       }
     },
     "by_edge": {
@@ -2953,12 +3124,12 @@
         "record": "13-15"
       },
       "3-4.9 pts": {
-        "wins": 19,
-        "losses": 15,
-        "total": 34,
-        "win_rate": 55.9,
-        "avg_edge": 3.9,
-        "record": "19-15"
+        "wins": 20,
+        "losses": 20,
+        "total": 40,
+        "win_rate": 50.0,
+        "avg_edge": 4.0,
+        "record": "20-20"
       },
       "1-2.9 pts": {
         "wins": 6,
@@ -3033,6 +3204,12 @@
       {
         "type": "THRESHOLD",
         "priority": "MEDIUM",
+        "action": "Raise minimum edge threshold for 3-4.9 pts range",
+        "reason": "Only 50.0% win rate with edge range 3-4.9 pts"
+      },
+      {
+        "type": "THRESHOLD",
+        "priority": "MEDIUM",
         "action": "Raise minimum edge threshold for 1-2.9 pts range",
         "reason": "Only 42.9% win rate with edge range 1-2.9 pts"
       },
@@ -3055,10 +3232,16 @@
       },
       "TOTAL": {
         "min_confidence": 50,
-        "min_edge": 10
+        "min_edge": 3.0
+      },
+      "NHL_TOTAL": {
+        "min_confidence": 50,
+        "min_edge": 0.5,
+        "unit": "goals",
+        "note": "Hockey edges are smaller by nature (avg game total ~6.5 goals vs ~220 pts in basketball)"
       },
       "PROP": {
-        "min_confidence": 50,
+        "min_confidence": 55,
         "min_edge": 3
       },
       "MONEYLINE": {
@@ -3067,8 +3250,8 @@
       }
     },
     "result_attribution": {
-      "generated_at": "2026-03-04T20:59:51.110926",
-      "sample_size": 126,
+      "generated_at": "2026-03-05T11:57:18.252521",
+      "sample_size": 132,
       "confidence_attribution": {
         "SPREAD": {
           "50-59": {
@@ -3113,14 +3296,14 @@
         "PROP": {
           "50-59": {
             "wins": 2,
-            "losses": 2,
-            "wr": 0.5,
-            "flag": false
+            "losses": 5,
+            "wr": 0.286,
+            "flag": true
           },
           "60-69": {
-            "wins": 9,
-            "losses": 4,
-            "wr": 0.692,
+            "wins": 10,
+            "losses": 6,
+            "wr": 0.625,
             "flag": false
           },
           "70+": {
@@ -3192,9 +3375,9 @@
             "flag": false
           },
           "3-4.9": {
-            "wins": 12,
-            "losses": 4,
-            "wr": 0.75,
+            "wins": 13,
+            "losses": 9,
+            "wr": 0.591,
             "flag": false
           },
           "5-9.9": {
@@ -3226,6 +3409,7 @@
       "key_findings": [
         "SPREAD 60-69% conf has 42.9% WR (3-4) \u2014 confidence bucket underperforming",
         "SPREAD 70+% conf has 43.9% WR (18-23) \u2014 high confidence is INVERSE signal",
+        "PROP 50-59% conf has 28.6% WR (2-5) \u2014 confidence bucket underperforming",
         "SPREAD edge 0-2.9 has 42.9% WR (6-8) \u2014 below break-even 52.4%",
         "SPREAD edge 3-4.9 has 38.9% WR (7-11) \u2014 below break-even 52.4%",
         "SPREAD edge 5-9.9 has 50.0% WR (4-4) \u2014 below break-even 52.4%",
@@ -3265,13 +3449,13 @@
       },
       "PROP": {
         "assumed": 0.5,
-        "actual": 0.5789,
-        "actual_pct": 57.9,
+        "actual": 0.5227,
+        "actual_pct": 52.3,
         "assumed_pct": 50.0,
-        "deviation_pp": 7.89,
-        "status": "RED",
-        "n_bets": 38,
-        "record": "22W-16L"
+        "deviation_pp": 2.27,
+        "status": "GREEN",
+        "n_bets": 44,
+        "record": "23W-21L"
       }
     },
     "deviation_alerts": [
@@ -3283,20 +3467,10 @@
         "actual_wr_pct": 12.5,
         "n_bets_sampled": 8,
         "recommendation": "Keep DISABLED \u2014 actual WR too low",
-        "generated_at": "2026-03-04T20:59:51.113830"
-      },
-      {
-        "bet_type": "PROP",
-        "severity": "RED",
-        "deviation_pp": 7.89,
-        "assumed_wr_pct": 50.0,
-        "actual_wr_pct": 57.9,
-        "n_bets_sampled": 38,
-        "recommendation": "Consider increasing assumed WR for PROP (actual 57.9% > assumed 50.0%)",
-        "generated_at": "2026-03-04T20:59:51.113841"
+        "generated_at": "2026-03-05T11:57:18.254972"
       }
     ],
-    "assumption_audit_at": "2026-03-04T20:59:51.114047",
+    "assumption_audit_at": "2026-03-05T11:57:18.255152",
     "quality": {
       "overall": {
         "window_days": null,
@@ -3348,9 +3522,9 @@
       }
     },
     "export_meta": {
-      "exported_at": "2026-03-05T06:00:04.620118",
+      "exported_at": "2026-03-05T12:08:02.954660",
       "cloudflare_pages": "https://larlscore.pages.dev/",
-      "betting_repo_commit": "62bb20c"
+      "betting_repo_commit": "17edd91"
     }
   },
   "bonus_bets": [],
