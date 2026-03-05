@@ -19,36 +19,36 @@
 const EMOJI_REGEX = /[\p{Emoji_Presentation}\p{Extended_Pictographic}]/gu;
 
 export function buildWhyBullets(raw: string, max = 3): string[] {
-  const lines = raw
+  // Strip bullet prefix, then strip emojis from the text — keep the line even if it had emojis
+  const cleanedLines = raw
     .split('\n')
-    .map(l => l.trim().replace(/^[•\-]\s*/, '').trim())
-    .filter(Boolean)
-    .filter(l => !EMOJI_REGEX.test(l)); // Remove lines containing emojis
+    .map(l => l.trim().replace(/^[•\-]\s*/, '').trim())   // strip bullet prefix
+    .map(l => l.replace(EMOJI_REGEX, '').trim())           // strip emojis from content
+    .filter(Boolean);                                       // drop empty
 
-  // Clean emojis from each line
-  const cleanedLines = lines.map(line => line.replace(EMOJI_REGEX, '').trim()).filter(Boolean);
-
-  const modelLines: string[] = [];  // highest priority
-  const dataLines:  string[] = [];  // pace / team strength
-  const edgeLines:  string[] = [];  // "X.X point edge identified…"
-  const generic:    string[] = [];  // filler — only used to pad to `max`
+  const injuryLines: string[] = []; // injury adjustments — always shown first
+  const modelLines:  string[] = []; // "Model predicts/favors …"
+  const dataLines:   string[] = []; // "Pace-adjusted:", "Team strength:"
+  const edgeLines:   string[] = []; // "X.X point edge identified…"
+  const generic:     string[] = []; // filler — only used to pad to `max`
 
   for (const line of cleanedLines) {
     // Always discard bare section headers
     if (/^Edge (Breakdown|Components):\s*$/.test(line)) continue;
 
-    if (/^Model (predicts|favors)/i.test(line)) {
+    if (/^Injur/i.test(line)) {
+      // Injury adjustment lines (after emoji strip: "Injuries: Williams out (-4.3) → -4.3 pt adjustment")
+      injuryLines.push(line);
+    } else if (/^Model (predicts|favors)/i.test(line)) {
       modelLines.push(line);
     } else if (/^(Pace.adjusted|Team strength)/i.test(line)) {
       dataLines.push(line);
     } else if (/point edge identified/i.test(line)) {
       edgeLines.push(line);
     } else {
-      // Generic lines (confidence restatements, matchup descriptions).
-      // Only shown when higher-priority content doesn't fill the quota.
       generic.push(line);
     }
   }
 
-  return [...modelLines, ...dataLines, ...edgeLines, ...generic].slice(0, max);
+  return [...injuryLines, ...modelLines, ...dataLines, ...edgeLines, ...generic].slice(0, max);
 }
