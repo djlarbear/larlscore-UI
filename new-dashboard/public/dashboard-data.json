@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-03-05T13:21:25.257653",
+  "generated_at": "2026-03-05T13:46:50.095089",
   "export_meta": {
-    "exported_at": "2026-03-05T13:21:25.252062",
+    "exported_at": "2026-03-05T13:46:50.089417",
     "cloudflare_pages": "https://larlscore.pages.dev/",
-    "betting_repo_commit": "bf34011"
+    "betting_repo_commit": "e13f5e5"
   },
   "picks": [
     {
@@ -17,7 +17,7 @@
       "edge": -6.9,
       "risk_tier": "\ud83d\udd34 HIGH RISK",
       "game_time": "09:10 PM EST",
-      "reason": "\u2022 Injury adjustments: Patrick Williams OUT (-2.7 pts, Williams (quadriceps) is doubtful for Th)\n\u2022 Projected: ~217 points (under 224.5)\n\u2022 Slower pace favors under",
+      "reason": "\u2022 \u2695\ufe0f Injuries: Williams out (-4.3) \u2192 -4.3 pt adjustment\n\u2022 Projected: ~217 points (under 224.5)\n\u2022 Slower pace favors under",
       "full_bet": {
         "game": "Chicago Bulls @ Phoenix Suns",
         "sport": "\ud83c\udfc0 NBA",
@@ -28,7 +28,7 @@
         "confidence": 66,
         "risk_tier": "\ud83d\udd34 HIGH RISK",
         "game_time": "09:10 PM EST",
-        "reason": "\u2022 Injury adjustments: Patrick Williams OUT (-2.7 pts, Williams (quadriceps) is doubtful for Th)\n\u2022 Projected: ~217 points (under 224.5)\n\u2022 Slower pace favors under",
+        "reason": "\u2022 \u2695\ufe0f Injuries: Williams out (-4.3) \u2192 -4.3 pt adjustment\n\u2022 Projected: ~217 points (under 224.5)\n\u2022 Slower pace favors under",
         "model_version": "REAL v1.0 (Live OddsAPI)",
         "data_source": "OddsAPI",
         "bet_instructions": "\ud83d\udccd PLACE BET ON FanDuel: UNDER 224.5 (O/U 224.5) | Model predicts ~217 combined points; UNDER favored vs market 224.5 | Confidence: 63%",
@@ -3720,9 +3720,9 @@
       }
     },
     "export_meta": {
-      "exported_at": "2026-03-05T13:21:25.252062",
+      "exported_at": "2026-03-05T13:46:50.089417",
       "cloudflare_pages": "https://larlscore.pages.dev/",
-      "betting_repo_commit": "bf34011"
+      "betting_repo_commit": "e13f5e5"
     }
   },
   "bonus_bets": [],
