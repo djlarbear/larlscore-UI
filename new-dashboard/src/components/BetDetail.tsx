@@ -221,7 +221,7 @@ const BetDetail: React.FC<BetDetailProps> = ({ bet, onClose }) => {
           </div>
 
           {/* Why This Pick */}
-          {bet.why_this_pick && (
+          {(bet.why_this_pick_full || bet.full_bet?.why_this_pick_full || bet.why_this_pick || bet.reason) && (
             <div style={{ marginBottom: '24px' }}>
               <p style={{ fontSize: '11px', fontWeight: '700', color: '#A0A0A0', margin: '0 0 8px 0', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                 Why This Pick
@@ -235,7 +235,7 @@ const BetDetail: React.FC<BetDetailProps> = ({ bet, onClose }) => {
                 color: '#E0E0E0',
                 lineHeight: '1.6',
               }}>
-                {formatWhyThisPick(String(bet.why_this_pick))}
+                {formatWhyThisPick(String(bet.why_this_pick_full || bet.full_bet?.why_this_pick_full || bet.why_this_pick || bet.reason || ''))}
               </div>
             </div>
           )}

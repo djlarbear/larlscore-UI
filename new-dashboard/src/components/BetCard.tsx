@@ -58,7 +58,8 @@ const BetCard: React.FC<BetCardProps> = ({ bet, onClick, showScore = true }) => 
   const sport          = bet.sport          || 'Basketball';
   const game_time      = bet.game_time      || '';
   const fanduel_line   = bet.fanduel_line   || '';
-  const why_this_pick  = bet.why_this_pick  || '';
+  const why_this_pick      = bet.why_this_pick      || bet.reason || '';
+  const why_this_pick_full = bet.why_this_pick_full || bet.full_bet?.why_this_pick_full || why_this_pick;
 
   const scheduleText = (() => {
     const displayDate = (() => {
