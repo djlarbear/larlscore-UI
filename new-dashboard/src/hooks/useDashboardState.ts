@@ -287,7 +287,9 @@ export function useDashboardState() {
 
   // ── Derived values ──────────────────────────────────────────────────────────
 
-  const winRate = summary ? Math.round((summary.wins / summary.total_bets) * 100) : 0;
+  // Win rate over decided bets only (pending bets excluded — they haven't resolved yet)
+  const decidedBets = summary ? (summary.wins + summary.losses) : 0;
+  const winRate = decidedBets > 0 ? Math.round((summary!.wins / decidedBets) * 100) : 0;
 
   const formatAge = (iso?: string | null): string => {
     if (!iso) return 'unknown';
