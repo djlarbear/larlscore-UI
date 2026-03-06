@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-06T11:22:30.123393",
+  "generated_at": "2026-03-06T11:26:56.204810",
   "export_meta": {
-    "exported_at": "2026-03-06T11:22:30.117489",
+    "exported_at": "2026-03-06T11:26:56.199183",
     "cloudflare_pages": "https://larlscore.pages.dev/",
     "betting_repo_commit": "586ac74"
   },
@@ -3815,7 +3815,7 @@
       }
     },
     "export_meta": {
-      "exported_at": "2026-03-06T11:22:30.117489",
+      "exported_at": "2026-03-06T11:26:56.199183",
       "cloudflare_pages": "https://larlscore.pages.dev/",
       "betting_repo_commit": "586ac74"
     }
@@ -3895,7 +3895,7 @@
   "specials": {
     "q3_100": {
       "date": "2026-03-06",
-      "generated_at": "2026-03-06T16:22:25.279422Z",
+      "generated_at": "2026-03-06T16:26:49.288955Z",
       "league_context": {
         "avg_q1q3": 86.42,
         "base_hit_rate_100": 0.118
@@ -3910,9 +3910,11 @@
           "expected_q1q3": 93.67,
           "hit_probability": 0.3257,
           "confidence": 63,
-          "historical_hit_rate": 0.385,
+          "season_q1q3_avg": 96.92,
+          "recent_q1q3_avg": 91.4,
+          "hit_rate_100": 0.385,
+          "recent_hit_rate": 0.4,
           "trend": "cold",
-          "recent_avg": 91.4,
           "stdev": 14.01,
           "recommendation": "San Antonio Spurs to score 100+ in Q1-Q3"
         }
