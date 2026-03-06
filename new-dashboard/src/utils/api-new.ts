@@ -363,8 +363,10 @@ export class BettingAPI {
       }
 
       const data = await response.json();
-      debug(`Got ${data.dates?.length || 0} dates`);
-      return data.dates;
+      // API returns a raw array
+      const list: DateStat[] = Array.isArray(data) ? data : (data.dates ?? []);
+      debug(`Got ${list.length} dates`);
+      return list;
     } catch (err) {
       debugError('Failed to fetch dates', err);
       throw new Error(`Failed to fetch dates: ${err instanceof Error ? err.message : String(err)}`);
@@ -389,8 +391,10 @@ export class BettingAPI {
       const response = await fetch(url);
       if (!response.ok) throw new Error('Failed to fetch sports');
       const data = await response.json();
-      debug(`Got ${data.sports?.length || 0} sports`);
-      return data.sports;
+      // API returns a raw array
+      const list: string[] = Array.isArray(data) ? data : (data.sports ?? []);
+      debug(`Got ${list.length} sports`);
+      return list;
     } catch (err) {
       debugError('Failed to fetch sports', err);
       throw err;
@@ -415,8 +419,10 @@ export class BettingAPI {
       const response = await fetch(url);
       if (!response.ok) throw new Error('Failed to fetch bet types');
       const data = await response.json();
-      debug(`Got ${data.bet_types?.length || 0} bet types`);
-      return data.bet_types;
+      // API returns a raw array
+      const list: string[] = Array.isArray(data) ? data : (data.bet_types ?? []);
+      debug(`Got ${list.length} bet types`);
+      return list;
     } catch (err) {
       debugError('Failed to fetch bet types', err);
       throw err;
