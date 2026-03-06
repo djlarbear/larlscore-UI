@@ -5,20 +5,30 @@
 
 import React from 'react';
 import { Bet } from '../utils/api-new';
-import { buildWhyBullets } from '../utils/whyBullets';
 
 // Card chrome (border/shadow) is result-driven — tells you at a glance if it won or lost
 // Bet type color is preserved inside the card (badge, pick label, footer)
-const RESULT_COLOR_RGB: Record<string, string> = {
-  '#34C759': '52, 199, 89',   // WIN   — green
-  '#FF3B30': '255, 59, 48',   // LOSS  — red
-  '#FF9500': '255, 149, 0',   // PENDING — orange
-  '#8E8E93': '142, 142, 147', // UNKNOWN / CANCELLED — grey
-};
 
-const SPORT_EMOJI_RE = /🏀|🏈|⚾|🏒/g;
+
 const cleanSportName = (sport: string | undefined): string =>
-  (sport ?? '').replace(SPORT_EMOJI_RE, '').trim();
+  (sport ?? '').trim();
+
+// Condensed score for card view — just "Player: 20 PTS" or short game score
+const formatScoreCard = (raw: string | null): string => {
+  if (!raw) return '';
+  // Prop bet: "Player: Pts=20 Reb=11 Ast=7 (Pts=20 vs line 20.5)" → "Player: 20 PTS"
+  const propMatch = raw.match(/^(.+?):\s*.+\((\w+)=([\d.]+)\s+vs\s+line/);
+  if (propMatch) {
+    const [, player, statKey, statVal] = propMatch;
+    const labels: Record<string, string> = {
+      Pts: 'PTS', Reb: 'REB', Ast: 'AST', PRA: 'PRA',
+      PR: 'P+R', PA: 'P+A', RA: 'R+A', Stl: 'STL', Blk: 'BLK', Tov: 'TOV',
+    };
+    return `${player.trim()}: ${statVal} ${labels[statKey] ?? statKey.toUpperCase()}`;
+  }
+  // Fallback: trim long strings
+  return raw.length > 44 ? raw.slice(0, 41) + '…' : raw;
+};
 
 const Squircle: React.FC<{ label: string; value: string; color: string }> = ({ label, value, color }) => (
   <div style={{
@@ -31,10 +41,10 @@ const Squircle: React.FC<{ label: string; value: string; color: string }> = ({ l
     padding: '8px 6px',
     flex: 1,
   }}>
-    <div style={{ fontSize: '10px', color: '#8e8e93', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.3px' }}>
+    <div style={{ fontSize: '10px', color: 'var(--color-text-tertiary)', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.3px' }}>
       {label}
     </div>
-    <div style={{ fontSize: '15px', fontWeight: '700', color }}>
+    <div style={{ fontSize: '15px', fontWeight: '700', color, fontFamily: 'var(--font-mono)', fontVariantNumeric: 'tabular-nums' }}>
       {value}
     </div>
   </div>
@@ -58,7 +68,6 @@ const BetCard: React.FC<BetCardProps> = ({ bet, onClick, showScore = true }) => 
   const sport          = bet.sport          || 'Basketball';
   const game_time      = bet.game_time      || '';
   const fanduel_line   = bet.fanduel_line   || '';
-  const why_this_pick = bet.why_this_pick || bet.reason || '';
 
   const scheduleText = (() => {
     const displayDate = (() => {
@@ -90,39 +99,37 @@ const BetCard: React.FC<BetCardProps> = ({ bet, onClick, showScore = true }) => 
 
   const getBetTypeColor = (type: string): string => {
     switch (type?.toUpperCase()) {
-      case 'TOTAL':     return '#8B5CF6';
-      case 'SPREAD':    return '#06B6D4';
-      case 'MONEYLINE': return '#F59E0B';
-      default:          return '#0A84FF';
+      case 'TOTAL':     return 'var(--color-total)';
+      case 'SPREAD':    return 'var(--color-spread)';
+      case 'MONEYLINE': return 'var(--color-moneyline)';
+      default:          return 'var(--color-primary)';
     }
   };
 
   const getResultDisplay = (r: string | null) => {
     switch (r) {
-      case 'WIN':       return { text: 'WIN',       color: '#34C759', bg: 'rgba(52,199,89,0.15)' };
-      case 'LOSS':      return { text: 'LOSS',      color: '#FF3B30', bg: 'rgba(255,59,48,0.15)' };
-      case 'PUSH':      return { text: 'PUSH',      color: '#8E8E93', bg: 'rgba(142,142,147,0.15)' };
-      case 'CANCELLED': return { text: 'CANCELLED', color: '#8E8E93', bg: 'rgba(142,142,147,0.15)' };
-      default:          return { text: 'PENDING',   color: '#FF9500', bg: 'rgba(255,149,0,0.15)' };
+      case 'WIN':       return { text: 'WIN',       color: 'var(--color-success)',      rgbVar: '--color-success-rgb',      bg: 'rgba(var(--color-success-rgb),0.15)' };
+      case 'LOSS':      return { text: 'LOSS',      color: 'var(--color-destructive)',  rgbVar: '--color-destructive-rgb',  bg: 'rgba(var(--color-destructive-rgb),0.15)' };
+      case 'PUSH':      return { text: 'PUSH',      color: 'var(--color-caution)',      rgbVar: '--color-caution-rgb',      bg: 'rgba(var(--color-caution-rgb),0.15)' };
+      case 'CANCELLED': return { text: 'CANCELLED', color: 'var(--color-text-tertiary)',rgbVar: '--color-pending-rgb',      bg: 'rgba(var(--color-pending-rgb),0.15)' };
+      default:          return { text: 'PENDING',   color: 'var(--color-pending)',      rgbVar: '--color-pending-rgb',      bg: 'rgba(var(--color-pending-rgb),0.15)' };
     }
   };
 
   const betTypeColor = getBetTypeColor(bet_type);
   const resultInfo   = getResultDisplay(result);
+  const resultRgb = resultInfo.rgbVar;
 
-  // Card chrome color: result-driven (green=WIN, red=LOSS, orange=PENDING, grey=other)
-  const resultColor = resultInfo.color;
-
-  const edgeColor   = edge >= 20 ? '#30d158' : edge >= 10 ? '#a3e635' : '#ffd60a';
-  const confColor   = confidence >= 75 ? '#30d158' : confidence >= 65 ? '#a3e635' : '#ffd60a';
+  const edgeColor   = edge >= 20 ? 'var(--color-success)' : edge >= 10 ? 'var(--color-caution)' : 'var(--color-pending)';
+  const confColor   = confidence >= 75 ? 'var(--color-confidence-high)' : confidence >= 65 ? 'var(--color-caution)' : 'var(--color-pending)';
 
   // LARLScore grade: S=2.0+ A=1.5-2.0 B=1.0-1.5 C=0.5-1.0 D=<0.5
   const getLarlGrade = (s: number): { grade: string; color: string } => {
-    if (s >= 2.0) return { grade: 'S', color: '#30d158' };   // elite green
-    if (s >= 1.5) return { grade: 'A', color: '#a3e635' };   // strong lime
-    if (s >= 1.0) return { grade: 'B', color: '#ffd60a' };   // solid yellow
-    if (s >= 0.5) return { grade: 'C', color: '#ff9f0a' };   // marginal orange
-    return           { grade: 'D', color: '#ff453a' };        // weak red
+    if (s >= 2.0) return { grade: 'S', color: 'var(--color-success)' };          // green
+    if (s >= 1.5) return { grade: 'A', color: 'var(--color-confidence-high)' };  // sky blue
+    if (s >= 1.0) return { grade: 'B', color: 'var(--color-grade-b)' };          // yellow
+    if (s >= 0.5) return { grade: 'C', color: 'var(--color-caution)' };          // orange
+    return           { grade: 'D', color: 'var(--color-destructive)' };          // red
   };
   const larlGrade = getLarlGrade(larlscore);
   const larlColor = larlGrade.color;
@@ -135,8 +142,8 @@ const BetCard: React.FC<BetCardProps> = ({ bet, onClick, showScore = true }) => 
         background: 'linear-gradient(155deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03))',
         borderRadius: 18,
         padding: '16px',
-        border: `1px solid ${resultColor}2e`,
-        borderLeft: `2px solid ${resultColor}AA`,
+        border: `1px solid rgba(var(${resultRgb}), 0.18)`,
+        borderLeft: `3px solid rgba(var(${resultRgb}), 0.7)`,
         cursor: onClick ? 'pointer' : 'default',
         transition: 'transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease',
         display: 'flex',
@@ -146,17 +153,16 @@ const BetCard: React.FC<BetCardProps> = ({ bet, onClick, showScore = true }) => 
       onMouseEnter={(e) => {
         if (!onClick) return;
         const el = e.currentTarget as HTMLDivElement;
-        const rgb = RESULT_COLOR_RGB[resultColor] || '255, 149, 0';
-        el.style.transform = 'translateY(-3px)';
-        el.style.boxShadow = `0 8px 24px rgba(${rgb},0.25)`;
-        el.style.borderColor = `${resultColor}55`;
+        el.style.transform = 'translateY(-1px)';
+        el.style.boxShadow = `0 8px 24px rgba(var(${resultRgb}),0.25)`;
+        el.style.borderColor = `rgba(var(${resultRgb}),0.4)`;
       }}
       onMouseLeave={(e) => {
         if (!onClick) return;
         const el = e.currentTarget as HTMLDivElement;
         el.style.transform = 'translateY(0)';
         el.style.boxShadow = 'none';
-        el.style.borderColor = `${resultColor}26`;
+        el.style.borderColor = `rgba(var(${resultRgb}),0.18)`;
       }}
     >
       {/* ── Row 1: Sport chip + status/bet-type chip ── */}
@@ -168,7 +174,7 @@ const BetCard: React.FC<BetCardProps> = ({ bet, onClick, showScore = true }) => 
           padding: '4px 10px',
           fontSize: 11,
           fontWeight: 650,
-          color: '#A0A0A0',
+          color: 'var(--color-text-tertiary)',
           letterSpacing: '0.2px',
         }}>
           {cleanSportName(sport) || 'Basketball'}
@@ -207,10 +213,10 @@ const BetCard: React.FC<BetCardProps> = ({ bet, onClick, showScore = true }) => 
 
       {/* ── Row 2: Game + Time (centered) ── */}
       <div style={{ textAlign: 'center' }}>
-        <div style={{ fontSize: 17, fontWeight: 750, color: '#fff', lineHeight: 1.28, marginBottom: 5, letterSpacing: '-0.01em' }}>
+        <div style={{ fontSize: 17, fontWeight: 750, color: 'var(--color-text-primary)', lineHeight: 1.28, marginBottom: 5, letterSpacing: '-0.01em' }}>
           {game}
         </div>
-        <div style={{ fontSize: 12, color: '#8e8e93' }}>
+        <div style={{ fontSize: 12, color: 'var(--color-text-tertiary)' }}>
           {scheduleText}
         </div>
       </div>
@@ -224,11 +230,11 @@ const BetCard: React.FC<BetCardProps> = ({ bet, onClick, showScore = true }) => 
         <div style={{ fontSize: 10, color: betTypeColor, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.4px', marginBottom: 6 }}>
           Pick
         </div>
-        <div className="clamp-2" style={{ fontSize: 15, fontWeight: 700, color: '#fff', marginBottom: fanduel_line ? 6 : 0 }}>
+        <div className="clamp-2" style={{ fontSize: 15, fontWeight: 700, color: 'var(--color-text-primary)', marginBottom: fanduel_line ? 6 : 0 }}>
           {recommendation}
         </div>
         {fanduel_line && (
-          <div style={{ fontSize: 12, color: '#8e8e93' }}>
+          <div style={{ fontSize: 12, color: 'var(--color-text-tertiary)' }}>
             {fanduel_line}
           </div>
         )}
@@ -241,9 +247,9 @@ const BetCard: React.FC<BetCardProps> = ({ bet, onClick, showScore = true }) => 
           borderRadius: 10,
           padding: '8px 14px',
         }}>
-          <div style={{ fontSize: 10, color: '#8e8e93', textTransform: 'uppercase', letterSpacing: '0.3px', marginBottom: 4 }}>Final Score</div>
-          <div style={{ fontSize: 13, color: bet.actual_score ? '#fff' : '#8e8e93', fontWeight: 600, fontFamily: 'monospace' }}>
-            {bet.actual_score || (result === 'PENDING' ? 'In progress' : 'Not available')}
+          <div style={{ fontSize: 10, color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.3px', marginBottom: 4 }}>Final Score</div>
+          <div style={{ fontSize: 13, color: bet.actual_score ? 'var(--color-text-primary)' : 'var(--color-text-tertiary)', fontWeight: 600, fontFamily: 'var(--font-mono)', fontVariantNumeric: 'tabular-nums' }}>
+            {bet.actual_score ? formatScoreCard(bet.actual_score) : (result === 'PENDING' ? 'In progress' : 'Not available')}
           </div>
         </div>
       )}
@@ -255,26 +261,7 @@ const BetCard: React.FC<BetCardProps> = ({ bet, onClick, showScore = true }) => 
         <Squircle label="LarlScore"  value={typeof larlscore === 'number' ? `${larlscore.toFixed(2)} (${larlGrade.grade})` : '— (D)'} color={larlColor} />
       </div>
 
-      {/* ── Row 6: Why This Pick ── */}
-      {why_this_pick && (() => {
-        const bullets = buildWhyBullets(why_this_pick);
-        if (!bullets.length) return null;
-        return (
-          <div style={{
-            background: 'rgba(255,255,255,0.04)',
-            borderRadius: 10,
-            padding: '10px 14px',
-            borderLeft: '2px solid #333',
-          }}>
-            <div style={{ fontSize: 10, color: '#8e8e93', textTransform: 'uppercase', letterSpacing: '0.3px', marginBottom: 6 }}>Why This Pick</div>
-            <div className="clamp-3" style={{ fontSize: 12, color: '#ccc', lineHeight: 1.6 }}>
-              {bullets.slice(0, 3).map((line, idx) => (
-                <div key={idx} style={{ marginBottom: 4 }}>• {line}</div>
-              ))}
-            </div>
-          </div>
-        );
-      })()}
+      {/* Why This Pick moved to detail modal — cards stay compact */}
 
       {/* ── Footer CTA ── */}
       {onClick && (
@@ -282,12 +269,18 @@ const BetCard: React.FC<BetCardProps> = ({ bet, onClick, showScore = true }) => 
           paddingTop: 8,
           borderTop: '1px solid rgba(255,255,255,0.08)',
           fontSize: 11,
-          color: betTypeColor,
+          color: 'var(--color-text-tertiary)',
           fontWeight: 700,
           textAlign: 'center',
           letterSpacing: '0.5px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: 6,
         }}>
-          TAP FOR DETAILS →
+          <span style={{ color: betTypeColor }}>TAP FOR FULL DETAILS</span>
+          <span style={{ opacity: 0.5 }}>·</span>
+          <span>why this pick, stats</span>
         </div>
       )}
     </div>

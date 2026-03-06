@@ -5,21 +5,34 @@
 import React, { useEffect } from 'react';
 import { Bet } from '../utils/api-new';
 
-const SPORT_EMOJI_RE = /🏀|🏈|⚾|🏒/g;
 const cleanSportName = (sport: string | undefined): string =>
-  (sport ?? '').replace(SPORT_EMOJI_RE, '').trim();
+  (sport ?? '').trim();
 
-// Regex to match any emoji
-const EMOJI_REGEX = /[\p{Emoji_Presentation}\p{Extended_Pictographic}]/gu;
+// Shorten verbose actual_score prop bet formats
+// "Jaylen Brown: Pts=20 Reb=11 Ast=7 (Pts=20 vs line 20.5)" → "Jaylen Brown: 20 pts (line 20.5)"
+const formatActualScore = (raw: string | null): string => {
+  if (!raw) return '';
+  // Try to detect prop bet format: "Player Name: Stat=X ... (Stat=Y vs line Z)"
+  const propMatch = raw.match(/^(.+?):\s*.+\((\w+)=([\d.]+)\s+vs\s+line\s+([\d.]+)\)/);
+  if (propMatch) {
+    const [, player, statKey, statVal, line] = propMatch;
+    const statLabel: Record<string, string> = {
+      Pts: 'pts', Reb: 'reb', Ast: 'ast', PRA: 'PRA',
+      PR: 'P+R', PA: 'P+A', RA: 'R+A', Stl: 'stl', Blk: 'blk', Tov: 'tov',
+    };
+    const label = statLabel[statKey] || statKey.toLowerCase();
+    return `${player.trim()}: ${statVal} ${label} (line ${line})`;
+  }
+  // Fallback: truncate at 60 chars
+  return raw.length > 60 ? raw.slice(0, 57) + '…' : raw;
+};
 
 // Format why_this_pick text: split by newlines, periods, or semicolons into readable lines
-// Also removes all emojis for professional appearance
 const formatWhyThisPick = (text: string): React.ReactNode => {
   if (!text) return null;
   
   let cleaned = String(text)
-    .replace(/Points\s+Rebounds\s+Assists/gi, 'PRA')
-    .replace(EMOJI_REGEX, ''); // Remove all emojis
+    .replace(/Points\s+Rebounds\s+Assists/gi, 'PRA');
   
   // Try to split by common delimiters
   let lines = [];
@@ -42,7 +55,7 @@ const formatWhyThisPick = (text: string): React.ReactNode => {
     lines = [cleaned];
   }
   
-  // Filter out lines that are now empty after emoji removal
+  // Filter out empty lines
   lines = lines.filter(line => line.trim().length > 0);
   
   // If only one line, return as is (not a paragraph situation)
@@ -54,7 +67,7 @@ const formatWhyThisPick = (text: string): React.ReactNode => {
   return (
     <ul style={{ margin: '0', paddingLeft: '20px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
       {lines.map((line, idx) => (
-        <li key={idx} style={{ color: '#E0E0E0', fontSize: '13px', lineHeight: '1.6' }}>
+        <li key={idx} style={{ color: 'var(--color-text-secondary)', fontSize: '13px', lineHeight: '1.6' }}>
           {line.trim()}
         </li>
       ))}
@@ -77,12 +90,12 @@ const BetDetail: React.FC<BetDetailProps> = ({ bet, onClose }) => {
 
   const getResultInfo = (result: string | null) => {
     switch (result) {
-      case 'WIN': return { bg: 'rgba(52, 199, 89, 0.15)', color: '#34C759', text: 'WIN' };
-      case 'LOSS': return { bg: 'rgba(255, 59, 48, 0.15)', color: '#FF3B30', text: 'LOSS' };
-      case 'PUSH': return { bg: 'rgba(142, 142, 147, 0.15)', color: '#8E8E93', text: 'PUSH' };
-      case 'CANCELLED': return { bg: 'rgba(142, 142, 147, 0.15)', color: '#8E8E93', text: 'CANCELLED' };
-      case 'PENDING': return { bg: 'rgba(255, 149, 0, 0.15)', color: '#FF9500', text: 'PENDING' };
-      default: return { bg: 'rgba(255, 149, 0, 0.15)', color: '#FF9500', text: 'PENDING' };
+      case 'WIN': return { bg: 'rgba(var(--color-success-rgb), 0.15)', color: 'var(--color-success)', text: 'WIN' };
+      case 'LOSS': return { bg: 'rgba(var(--color-destructive-rgb), 0.15)', color: 'var(--color-destructive)', text: 'LOSS' };
+      case 'PUSH': return { bg: 'rgba(var(--color-caution-rgb), 0.15)', color: 'var(--color-caution)', text: 'PUSH' };
+      case 'CANCELLED': return { bg: 'rgba(var(--color-pending-rgb), 0.15)', color: 'var(--color-text-tertiary)', text: 'CANCELLED' };
+      case 'PENDING': return { bg: 'rgba(var(--color-pending-rgb), 0.15)', color: 'var(--color-pending)', text: 'PENDING' };
+      default: return { bg: 'rgba(var(--color-pending-rgb), 0.15)', color: 'var(--color-pending)', text: 'PENDING' };
     }
   };
 
@@ -111,9 +124,9 @@ const BetDetail: React.FC<BetDetailProps> = ({ bet, onClose }) => {
           width: '100%',
           maxWidth: '600px',
           maxHeight: '90vh',
-          backgroundColor: '#1a1a1a',
+          backgroundColor: 'var(--color-surface)',
           borderRadius: '16px',
-          border: '1px solid #2a2a2a',
+          border: '1px solid var(--color-border)',
           overflow: 'auto',
         }}
         onClick={(e) => e.stopPropagation()}
@@ -124,9 +137,9 @@ const BetDetail: React.FC<BetDetailProps> = ({ bet, onClose }) => {
           justifyContent: 'space-between',
           alignItems: 'center',
           padding: '20px',
-          borderBottom: '1px solid #2a2a2a',
+          borderBottom: '1px solid var(--color-border)',
         }}>
-          <h2 style={{ fontSize: '20px', fontWeight: '700', color: '#FFFFFF', margin: 0 }}>
+          <h2 style={{ fontSize: '20px', fontWeight: '700', color: 'var(--color-text-primary)', margin: 0 }}>
             Bet Details
           </h2>
           <button
@@ -135,7 +148,7 @@ const BetDetail: React.FC<BetDetailProps> = ({ bet, onClose }) => {
               background: 'none',
               border: 'none',
               fontSize: '24px',
-              color: '#A0A0A0',
+              color: 'var(--color-text-tertiary)',
               cursor: 'pointer',
               padding: '0',
               width: '32px',
@@ -153,10 +166,10 @@ const BetDetail: React.FC<BetDetailProps> = ({ bet, onClose }) => {
         <div style={{ padding: '24px' }}>
           {/* Game & Date */}
           <div style={{ marginBottom: '24px' }}>
-            <h3 style={{ fontSize: '16px', fontWeight: '600', color: '#FFFFFF', margin: '0 0 6px 0' }}>
+            <h3 style={{ fontSize: '16px', fontWeight: '600', color: 'var(--color-text-primary)', margin: '0 0 6px 0' }}>
               {bet.game}
             </h3>
-            <p style={{ fontSize: '13px', color: '#A0A0A0', margin: 0 }}>
+            <p style={{ fontSize: '13px', color: 'var(--color-text-tertiary)', margin: 0 }}>
               {cleanSportName(bet.sport)} • {bet.date}
             </p>
           </div>
@@ -166,11 +179,11 @@ const BetDetail: React.FC<BetDetailProps> = ({ bet, onClose }) => {
             display: 'flex',
             alignItems: 'center',
             gap: '16px',
-            backgroundColor: '#0d0d0d',
+            backgroundColor: 'var(--color-background)',
             padding: '16px',
             borderRadius: '12px',
             marginBottom: '24px',
-            border: '1px solid #2a2a2a',
+            border: '1px solid var(--color-border)',
           }}>
             <div style={{
               display: 'flex',
@@ -190,12 +203,12 @@ const BetDetail: React.FC<BetDetailProps> = ({ bet, onClose }) => {
               {resultInfo.text}
             </div>
             <div>
-              <p style={{ fontSize: '12px', color: '#A0A0A0', margin: '0 0 4px 0' }}>Status</p>
-              <p style={{ fontSize: '18px', fontWeight: '700', color: resultInfo.color, margin: 0 }}>
+              <p style={{ fontSize: '12px', color: 'var(--color-text-tertiary)', margin: '0 0 4px 0' }}>Status</p>
+              <p style={{ fontSize: '18px', fontWeight: '700', color: resultInfo.color, margin: 0, fontFamily: 'var(--font-mono)', fontVariantNumeric: 'tabular-nums' }}>
                 {bet.result || 'PENDING'}
               </p>
               {bet.result && bet.larlscore != null && (
-                <p style={{ fontSize: '12px', color: '#8E8E93', margin: '4px 0 0 0' }}>
+                <p style={{ fontSize: '12px', color: 'var(--color-text-tertiary)', margin: '4px 0 0 0', fontFamily: 'var(--font-mono)', fontVariantNumeric: 'tabular-nums' }}>
                   LarlScore: {bet.larlscore.toFixed(2)}
                 </p>
               )}
@@ -204,87 +217,95 @@ const BetDetail: React.FC<BetDetailProps> = ({ bet, onClose }) => {
 
           {/* Pick */}
           <div style={{ marginBottom: '24px' }}>
-            <p style={{ fontSize: '11px', fontWeight: '700', color: '#A0A0A0', margin: '0 0 8px 0', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+            <p style={{ fontSize: '11px', fontWeight: '700', color: 'var(--color-text-tertiary)', margin: '0 0 8px 0', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
               Pick
             </p>
             <div style={{
-              backgroundColor: '#0d0d0d',
-              border: '1px solid #2a2a2a',
+              backgroundColor: 'var(--color-background)',
+              border: '1px solid var(--color-border)',
               padding: '12px',
               borderRadius: '8px',
               fontSize: '14px',
               fontWeight: '600',
-              color: '#FFFFFF',
+              color: 'var(--color-text-primary)',
             }}>
               {bet.recommendation}
             </div>
           </div>
 
           {/* Why This Pick */}
-          {(bet.why_this_pick_full || bet.full_bet?.why_this_pick_full || bet.why_this_pick || bet.reason) && (
+          {bet.why_this_pick && (
             <div style={{ marginBottom: '24px' }}>
-              <p style={{ fontSize: '11px', fontWeight: '700', color: '#A0A0A0', margin: '0 0 8px 0', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+              <p style={{ fontSize: '11px', fontWeight: '700', color: 'var(--color-text-tertiary)', margin: '0 0 8px 0', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                 Why This Pick
               </p>
               <div style={{
-                backgroundColor: '#0d0d0d',
-                border: '1px solid #2a2a2a',
+                backgroundColor: 'var(--color-background)',
+                border: '1px solid var(--color-border)',
                 padding: '12px',
                 borderRadius: '8px',
                 fontSize: '13px',
-                color: '#E0E0E0',
+                color: 'var(--color-text-secondary)',
                 lineHeight: '1.6',
               }}>
-                {formatWhyThisPick(String(bet.why_this_pick_full || bet.full_bet?.why_this_pick_full || bet.why_this_pick || bet.reason || ''))}
+                {formatWhyThisPick(bet.why_this_pick || '')}
               </div>
             </div>
           )}
 
           {/* Key Stats Grid */}
           <div style={{ marginBottom: '24px' }}>
-            <p style={{ fontSize: '11px', fontWeight: '700', color: '#A0A0A0', margin: '0 0 12px 0', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+            <p style={{ fontSize: '11px', fontWeight: '700', color: 'var(--color-text-tertiary)', margin: '0 0 12px 0', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
               Key Stats
             </p>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-              <StatBox label="Confidence" value={bet.confidence != null ? `${Math.round(bet.confidence)}%` : '—'} color="#0A84FF" />
-              <StatBox label="Edge" value={bet.edge != null ? `${bet.edge.toFixed(1)}pt` : '—'} color="#34C759" />
-              <StatBox label="Bet Type" value={bet.bet_type} color="#FF9500" />
-              <StatBox label="LarlScore" value={bet.larlscore != null ? bet.larlscore.toFixed(2) : '—'} color="#8E8E93" />
+              <StatBox label="Confidence" value={bet.confidence != null ? `${Math.round(bet.confidence)}%` : '—'}
+                color={bet.confidence >= 75 ? 'var(--color-confidence-high)' : bet.confidence >= 65 ? 'var(--color-caution)' : 'var(--color-pending)'} />
+              <StatBox label="Edge" value={bet.edge != null ? `${bet.edge.toFixed(1)}pt` : '—'}
+                color={bet.edge >= 20 ? 'var(--color-success)' : bet.edge >= 10 ? 'var(--color-caution)' : 'var(--color-pending)'} />
+              <StatBox label="Bet Type" value={bet.bet_type}
+                color={bet.bet_type === 'TOTAL' ? 'var(--color-total)' : bet.bet_type === 'SPREAD' ? 'var(--color-spread)' : bet.bet_type === 'MONEYLINE' ? 'var(--color-moneyline)' : 'var(--color-primary)'} />
+              <StatBox label="LarlScore" value={bet.larlscore != null ? bet.larlscore.toFixed(2) : '—'}
+                color={bet.larlscore >= 2.0 ? 'var(--color-success)' : bet.larlscore >= 1.5 ? 'var(--color-confidence-high)' : bet.larlscore >= 1.0 ? 'var(--color-grade-b)' : bet.larlscore >= 0.5 ? 'var(--color-caution)' : 'var(--color-destructive)'} />
             </div>
           </div>
 
           {/* Final Score */}
           <div style={{ marginBottom: '24px' }}>
-            <p style={{ fontSize: '11px', fontWeight: '700', color: '#A0A0A0', margin: '0 0 8px 0', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+            <p style={{ fontSize: '11px', fontWeight: '700', color: 'var(--color-text-tertiary)', margin: '0 0 8px 0', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
               Final Score
             </p>
             <div style={{
-              backgroundColor: '#0d0d0d',
-              border: '1px solid #2a2a2a',
-              padding: '12px',
+              backgroundColor: 'var(--color-surface)',
+              border: '1px solid var(--color-border)',
+              padding: '12px 16px',
               borderRadius: '8px',
-              fontSize: '14px',
+              fontSize: '15px',
               fontWeight: '600',
-              color: '#FFFFFF',
-              fontFamily: 'monospace',
+              color: 'var(--color-text-primary)',
+              fontFamily: 'var(--font-mono)',
+              fontVariantNumeric: 'tabular-nums',
+              letterSpacing: '0.01em',
             }}>
-              {bet.actual_score || (bet.result === 'PENDING' ? 'In progress' : 'Not available')}
+              {bet.actual_score
+                ? formatActualScore(bet.actual_score)
+                : (bet.result === 'PENDING' ? 'In progress' : 'Not available')}
             </div>
           </div>
 
           {/* Game Result */}
           {bet.game_result && (
             <div style={{ marginBottom: '24px' }}>
-              <p style={{ fontSize: '11px', fontWeight: '700', color: '#A0A0A0', margin: '0 0 8px 0', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+              <p style={{ fontSize: '11px', fontWeight: '700', color: 'var(--color-text-tertiary)', margin: '0 0 8px 0', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                 Game Result
               </p>
               <div style={{
-                backgroundColor: '#0d0d0d',
-                border: '1px solid #2a2a2a',
+                backgroundColor: 'var(--color-background)',
+                border: '1px solid var(--color-border)',
                 padding: '12px',
                 borderRadius: '8px',
                 fontSize: '13px',
-                color: '#FFFFFF',
+                color: 'var(--color-text-primary)',
                 lineHeight: '1.6',
               }}>
                 {bet.game_result}
@@ -294,7 +315,7 @@ const BetDetail: React.FC<BetDetailProps> = ({ bet, onClose }) => {
 
           {/* Additional Info */}
           <div>
-            <p style={{ fontSize: '11px', fontWeight: '700', color: '#A0A0A0', margin: '0 0 12px 0', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+            <p style={{ fontSize: '11px', fontWeight: '700', color: 'var(--color-text-tertiary)', margin: '0 0 12px 0', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
               Additional Info
             </p>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '12px' }}>
@@ -312,26 +333,26 @@ const BetDetail: React.FC<BetDetailProps> = ({ bet, onClose }) => {
 
 const StatBox: React.FC<{ label: string; value: string; color: string }> = ({ label, value, color }) => (
   <div style={{
-    backgroundColor: '#0d0d0d',
-    border: '1px solid #2a2a2a',
+    backgroundColor: 'var(--color-background)',
+    border: '1px solid var(--color-border)',
     borderRadius: '8px',
     padding: '12px',
     textAlign: 'center',
   }}>
-    <p style={{ fontSize: '11px', color: '#A0A0A0', margin: '0 0 4px 0', fontWeight: '600' }}>{label}</p>
-    <p style={{ fontSize: '16px', fontWeight: '700', color, margin: 0 }}>{value}</p>
+    <p style={{ fontSize: '11px', color: 'var(--color-text-tertiary)', margin: '0 0 4px 0', fontWeight: '600' }}>{label}</p>
+    <p style={{ fontSize: '16px', fontWeight: '700', color, margin: 0, fontFamily: 'var(--font-mono)', fontVariantNumeric: 'tabular-nums' }}>{value}</p>
   </div>
 );
 
 const InfoBox: React.FC<{ label: string; value: string }> = ({ label, value }) => (
   <div style={{
-    backgroundColor: '#0d0d0d',
-    border: '1px solid #2a2a2a',
+    backgroundColor: 'var(--color-background)',
+    border: '1px solid var(--color-border)',
     borderRadius: '8px',
     padding: '12px',
   }}>
-    <p style={{ fontSize: '10px', color: '#A0A0A0', margin: '0 0 4px 0', fontWeight: '600' }}>{label}</p>
-    <p style={{ fontSize: '12px', color: '#FFFFFF', margin: 0, wordBreak: 'break-all', fontFamily: 'monospace' }}>{value}</p>
+    <p style={{ fontSize: '10px', color: 'var(--color-text-tertiary)', margin: '0 0 4px 0', fontWeight: '600' }}>{label}</p>
+    <p style={{ fontSize: '12px', color: 'var(--color-text-primary)', margin: 0, wordBreak: 'break-all', fontFamily: 'var(--font-mono)' }}>{value}</p>
   </div>
 );
 

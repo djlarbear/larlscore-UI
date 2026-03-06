@@ -96,6 +96,8 @@ const Dashboard: React.FC = () => {
   const hasFetchedPicks = useRef(false); // guard: only fetch today's picks once
   const [bets, setBets] = useState<Bet[]>([]);
   const [todaysPicks, setTodaysPicks] = useState<Bet[]>([]);
+  const [fallbackPicks, setFallbackPicks] = useState<Bet[]>([]);
+  const [fallbackPicksDate, setFallbackPicksDate] = useState<string>('');
 
   const [summary, setSummary] = useState<BetSummary | null>(null);
   const [dates, setDates] = useState<DateStat[]>([]);
@@ -242,6 +244,20 @@ const Dashboard: React.FC = () => {
     loadTodaysPicks();
   }, []);
 
+  // When today's picks are empty, load the most recent picks from history as fallback
+  useEffect(() => {
+    if (todaysPicks.length > 0) return;
+    BettingAPI.getAllBets({ sort: 'date-desc', page: 1, limit: 10 })
+      .then(result => {
+        const recent = (result.bets || []);
+        if (recent.length > 0) {
+          setFallbackPicks(recent);
+          setFallbackPicksDate(recent[0]?.date || '');
+        }
+      })
+      .catch(() => {});
+  }, [todaysPicks.length]);
+
   useEffect(() => {
     if (view === 'history') {
       const loadBets = async () => {
@@ -322,21 +338,21 @@ const Dashboard: React.FC = () => {
 
   if (error && !bets.length && !todaysPicks.length) {
     return (
-      <div style={{ backgroundColor: '#0d0d0d', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px' }}>
-        <div className="app-surface" style={{ maxWidth: '520px', backgroundColor: '#1a1a1a', border: '1px solid #2a2a2a', borderRadius: '12px', padding: '24px' }}>
-          <h2 style={{ fontSize: '24px', fontWeight: '700', color: '#FF3B30', marginBottom: '10px' }}>Connection Error</h2>
-          <p style={{ color: '#A0A0A0', marginBottom: '10px', lineHeight: '1.6' }}>Unable to connect to the betting API.</p>
-          <p style={{ color: '#8E8E93', marginBottom: '16px', fontSize: '12px' }}>
+      <div style={{ backgroundColor: 'var(--color-background)', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px' }}>
+        <div className="app-surface" style={{ maxWidth: '520px', backgroundColor: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: '12px', padding: '24px' }}>
+          <h2 style={{ fontSize: '24px', fontWeight: '700', color: 'var(--color-destructive)', marginBottom: '10px' }}>Connection Error</h2>
+          <p style={{ color: 'var(--color-text-tertiary)', marginBottom: '10px', lineHeight: '1.6' }}>Unable to connect to the betting API.</p>
+          <p style={{ color: 'var(--color-text-tertiary)', marginBottom: '16px', fontSize: '12px' }}>
             Last successful update: {formatAge(mergedUpdated)} · Expected cron refresh around 4:00–5:15 AM EST.
           </p>
-          <button onClick={() => { setError(null); window.location.reload(); }} style={{ width: '100%', padding: '12px', backgroundColor: '#0A84FF', color: '#FFFFFF', border: 'none', borderRadius: '8px', fontSize: '16px', fontWeight: '600', cursor: 'pointer' }}>Retry</button>
+          <button onClick={() => { setError(null); window.location.reload(); }} style={{ width: '100%', padding: '12px', backgroundColor: 'var(--color-primary)', color: 'var(--color-text-primary)', border: 'none', borderRadius: '8px', fontSize: '16px', fontWeight: '600', cursor: 'pointer' }}>Retry</button>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="main-content" style={{ backgroundColor: '#0d0d0d', minHeight: '100vh', color: '#FFFFFF', position: 'relative' }}>
+    <div className="main-content" style={{ backgroundColor: 'var(--color-background)', minHeight: '100vh', color: 'var(--color-text-primary)', position: 'relative' }}>
 
       {/* Ambient app glow */}
       <div style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 0, opacity: 0.55 }}>
@@ -357,7 +373,7 @@ const Dashboard: React.FC = () => {
           backgroundColor: 'rgba(26, 26, 26, 0.96)',
           backdropFilter: 'blur(20px)',
           borderRadius: isMobile ? '12px' : '16px',
-          border: `1.5px solid ${overdue24h ? 'rgba(255, 59, 48, 0.55)' : 'rgba(10, 132, 255, 0.35)'}`,
+          border: `1.5px solid ${overdue24h ? 'rgba(var(--color-destructive-rgb), 0.55)' : 'rgba(var(--color-primary-rgb), 0.35)'}`,
           boxShadow: '0 10px 30px rgba(0, 0, 0, 0.45)',
           padding: isMobile ? '8px 10px' : '10px 12px',
           display: 'flex',
@@ -373,7 +389,7 @@ const Dashboard: React.FC = () => {
               borderRadius: '8px',
               backgroundColor: 'rgba(255,59,48,0.14)',
               border: '1px solid rgba(255,59,48,0.55)',
-              color: '#FF3B30',
+              color: 'var(--color-destructive)',
               fontSize: '12px',
               fontWeight: 600
             }}>
@@ -385,7 +401,7 @@ const Dashboard: React.FC = () => {
       </div>
 
       {/* Header */}
-      <div style={{ position: 'relative', zIndex: 1, backgroundColor: '#0d0d0d', paddingTop: isMobile ? '132px' : '126px', paddingBottom: '24px', borderBottom: '1px solid #2a2a2a' }}>
+      <div style={{ position: 'relative', zIndex: 1, backgroundColor: 'var(--color-background)', paddingTop: isMobile ? '132px' : '126px', paddingBottom: '24px', borderBottom: '1px solid var(--color-border)' }}>
         <div style={{ padding: '0 clamp(16px, 3vw, 80px)' }}>
           {/* Summary Stats - Two grouped sections */}
           {summary && (
@@ -394,34 +410,34 @@ const Dashboard: React.FC = () => {
               <div className="app-surface" style={{
                 flex: '1 1 300px',
                 background: 'rgba(255,255,255,0.03)',
-                border: '1px solid #2a2a2a',
+                border: '1px solid var(--color-border)',
                 borderRadius: '12px',
                 padding: '12px',
                 textAlign: 'center',
               }}>
-                <div style={{ fontSize: '10px', fontWeight: '700', color: '#555', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '10px' }}>Record</div>
+                <div style={{ fontSize: '12px', fontWeight: '700', color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '10px' }}>Record</div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px' }}>
-                  <SummaryBubble label="Total Bets" value={summary.total_bets} color="#0A84FF" />
-                  <SummaryBubble label="Wins" value={summary.wins} color="#34C759" />
-                  <SummaryBubble label="Losses" value={summary.losses} color="#FF3B30" />
-                  <SummaryBubble label="Win Rate" value={`${winRate}%`} color="#FF9500" />
+                  <SummaryBubble label="Total Bets" value={summary.total_bets} color="var(--color-primary)" />
+                  <SummaryBubble label="Wins" value={summary.wins} color="var(--color-success)" />
+                  <SummaryBubble label="Losses" value={summary.losses} color="var(--color-destructive)" />
+                  <SummaryBubble label="Win Rate" value={`${winRate}%`} color="var(--color-caution)" />
                 </div>
               </div>
               {/* Group 2: Bet Types */}
               <div className="app-surface" style={{
                 flex: '1 1 300px',
                 background: 'rgba(255,255,255,0.03)',
-                border: '1px solid #2a2a2a',
+                border: '1px solid var(--color-border)',
                 borderRadius: '12px',
                 padding: '12px',
                 textAlign: 'center',
               }}>
-                <div style={{ fontSize: '10px', fontWeight: '700', color: '#555', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '10px' }}>Bet Types</div>
+                <div style={{ fontSize: '12px', fontWeight: '700', color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '10px' }}>Bet Types</div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px' }}>
-                  <SummaryBubble label="SPREAD"    value={summary.spread_count    || 0} color="#8B5CF6" />
-                  <SummaryBubble label="TOTAL"     value={summary.total_count     || 0} color="#06B6D4" />
-                  <SummaryBubble label="MONEYLINE" value={summary.moneyline_count || 0} color="#F59E0B" />
-                  <SummaryBubble label="PROP"      value={summary.prop_count      || 0} color="#0A84FF" />
+                  <SummaryBubble label="SPREAD"    value={summary.spread_count    || 0} color="var(--color-spread)" />
+                  <SummaryBubble label="TOTAL"     value={summary.total_count     || 0} color="var(--color-total)" />
+                  <SummaryBubble label="MONEYLINE" value={summary.moneyline_count || 0} color="var(--color-moneyline)" />
+                  <SummaryBubble label="PROP"      value={summary.prop_count      || 0} color="var(--color-primary)" />
                 </div>
               </div>
             </div>
@@ -555,8 +571,8 @@ const Dashboard: React.FC = () => {
               />
 
               {/* Page Size */}
-              <div style={{ marginTop: '20px', paddingTop: '20px', borderTop: '1px solid #2a2a2a' }}>
-                <label style={{ fontSize: '12px', fontWeight: '600', color: '#A0A0A0', display: 'block', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+              <div style={{ marginTop: '20px', paddingTop: '20px', borderTop: '1px solid var(--color-border)' }}>
+                <label style={{ fontSize: '12px', fontWeight: '600', color: 'var(--color-text-tertiary)', display: 'block', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                   Bets Per Page
                 </label>
                 <select
@@ -568,9 +584,9 @@ const Dashboard: React.FC = () => {
                   style={{
                     width: '100%',
                     padding: '8px 12px',
-                    backgroundColor: '#0d0d0d',
-                    color: '#FFFFFF',
-                    border: '1px solid #2a2a2a',
+                    backgroundColor: 'var(--color-background)',
+                    color: 'var(--color-text-primary)',
+                    border: '1px solid var(--color-border)',
                     borderRadius: '8px',
                     fontSize: '14px',
                     fontWeight: '500',
@@ -601,27 +617,27 @@ const Dashboard: React.FC = () => {
           <div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, minmax(120px,1fr))', gap: '10px', marginBottom: '18px' }}>
               {[...Array(4)].map((_, i) => (
-                <div key={`s-${i}`} className="skeleton-shimmer" style={{ height: '78px', borderRadius: '12px', border: '1px solid #2a2a2a' }} />
+                <div key={`s-${i}`} className="skeleton-shimmer" style={{ height: '78px', borderRadius: '12px', border: '1px solid var(--color-border)' }} />
               ))}
             </div>
             <div className="bet-grid" style={{ marginBottom: '40px' }}>
               {[...Array(6)].map((_, i) => (
-                <div key={`sk-${i}`} className="skeleton-shimmer" style={{ height: '180px', borderRadius: '14px', border: '1px solid #2a2a2a' }} />
+                <div key={`sk-${i}`} className="skeleton-shimmer" style={{ height: '180px', borderRadius: '14px', border: '1px solid var(--color-border)' }} />
               ))}
             </div>
           </div>
         ) : view === 'insights' ? (
           <div className="app-surface" style={{ borderRadius: 16, padding: '14px', border: '1px solid rgba(255,255,255,0.14)', background: 'linear-gradient(145deg, rgba(26,26,26,0.96), rgba(22,22,22,0.92))' }}>
             <div style={{ border: '1px solid rgba(255,255,255,0.14)', borderRadius: 12, padding: '10px 12px', marginBottom: 12, background: 'linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03))' }}>
-              <div style={{ fontSize: '24px', fontWeight: 800, color: '#fff' }}>Insights</div>
-              <div style={{ fontSize: 12, color: '#9aa3b2', marginTop: 2 }}>Model learning, trends, and diagnostics</div>
+              <div style={{ fontSize: '24px', fontWeight: 800, color: 'var(--color-text-primary)' }}>Insights</div>
+              <div style={{ fontSize: 12, color: 'var(--color-text-secondary)', marginTop: 2 }}>Model learning, trends, and diagnostics</div>
             </div>
             <InsightsView key="insights" />
           </div>
         ) : view === 'hershel' ? (
           <div className="app-surface" style={{ borderRadius: 16, padding: '14px', border: '1px solid rgba(255,255,255,0.14)', background: 'linear-gradient(145deg, rgba(26,26,26,0.96), rgba(22,22,22,0.92))' }}>
             <div style={{ border: '1px solid rgba(255,255,255,0.14)', borderRadius: 12, padding: '12px 12px', marginBottom: 12, background: 'linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03))' }}>
-              <div style={{ fontSize: 28, fontWeight: 900, color: '#5DADE2', letterSpacing: '-0.02em' }}>Why so Furious?</div>
+              <div style={{ fontSize: 28, fontWeight: 900, color: 'var(--color-primary)', letterSpacing: '-0.02em' }}>Why so Furious?</div>
             </div>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
               <img
@@ -659,12 +675,12 @@ const Dashboard: React.FC = () => {
                   background: 'linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03))'
                 }}>
                   <div>
-                    <div style={{ fontSize: '24px', fontWeight: '800', color: '#FFFFFF', letterSpacing: '-0.01em' }}>
+                    <div style={{ fontSize: '24px', fontWeight: '800', color: 'var(--color-text-primary)', letterSpacing: '-0.01em' }}>
                       Today's Recommended Picks
                     </div>
-                    <div style={{ fontSize: 12, color: '#9aa3b2', marginTop: 2 }}>Top plays across all bet types</div>
+                    <div style={{ fontSize: 12, color: 'var(--color-text-secondary)', marginTop: 2 }}>Top plays across all bet types</div>
                   </div>
-                  <span className="app-chip" style={{ padding: '6px 10px', fontSize: 12, fontWeight: 700, color: '#D7DFEA', border: '1px solid rgba(255,255,255,0.16)', background: 'rgba(255,255,255,0.06)' }}>
+                  <span className="app-chip" style={{ padding: '6px 10px', fontSize: 12, fontWeight: 700, color: 'var(--color-text-primary)', border: '1px solid rgba(255,255,255,0.16)', background: 'rgba(255,255,255,0.06)' }}>
                     {todaysPicks.length} active
                   </span>
                 </div>
@@ -675,14 +691,55 @@ const Dashboard: React.FC = () => {
                 </div>
                 {homeRenderCount < todaysPicks.length && (
                   <div style={{ display: 'flex', justifyContent: 'center', marginTop: '6px' }}>
-                    <button className="app-chip" onClick={() => setHomeRenderCount((c) => c + 12)} style={{ padding: '8px 14px', fontSize: '12px', color: '#BFC8D6', border: '1px solid rgba(255,255,255,0.12)', background: 'rgba(255,255,255,0.04)', cursor: 'pointer' }}>
+                    <button className="app-chip" onClick={() => setHomeRenderCount((c) => c + 12)} style={{ padding: '8px 14px', fontSize: '12px', color: 'var(--color-text-secondary)', border: '1px solid rgba(255,255,255,0.12)', background: 'rgba(255,255,255,0.04)', cursor: 'pointer' }}>
                       Load more picks ({todaysPicks.length - homeRenderCount} left)
                     </button>
                   </div>
                 )}
               </div>
+            ) : fallbackPicks.length > 0 ? (
+              /* No today's picks — show last available batch until next cron */
+              <div className="app-surface" style={{ borderRadius: 16, padding: '14px', border: '1px solid rgba(255,149,0,0.24)', background: 'linear-gradient(145deg, rgba(26,26,26,0.96), rgba(28,24,18,0.92))' }}>
+                <div style={{
+                  border: '1px solid rgba(255,255,255,0.14)',
+                  borderRadius: 12,
+                  padding: '10px 12px',
+                  marginBottom: 12,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: isMobile ? 'center' : 'space-between',
+                  textAlign: isMobile ? 'center' : 'left',
+                  gap: 10,
+                  flexWrap: 'wrap',
+                  background: 'linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03))'
+                }}>
+                  <div>
+                    <div style={{ fontSize: '24px', fontWeight: '800', color: 'var(--color-text-primary)', letterSpacing: '-0.01em' }}>
+                      Last Available Picks
+                    </div>
+                    <div style={{ fontSize: 12, color: 'var(--color-caution)', marginTop: 2 }}>
+                      {fallbackPicksDate ? `From ${fallbackPicksDate} · ` : ''}New picks generate at 7:00 AM EST
+                    </div>
+                  </div>
+                  <span className="app-chip" style={{ padding: '6px 10px', fontSize: 12, fontWeight: 700, color: 'var(--color-caution)', border: '1px solid rgba(255,149,0,0.35)', background: 'rgba(255,149,0,0.08)' }}>
+                    {fallbackPicks.length} picks
+                  </span>
+                </div>
+                <div className="bet-grid" style={{ marginBottom: 10 }}>
+                  {fallbackPicks.slice(0, homeRenderCount).map((bet, idx) => (
+                    <BetCard key={`fallback-${betKey(bet, idx)}`} bet={bet} onClick={() => setSelectedBet(bet)} />
+                  ))}
+                </div>
+                {homeRenderCount < fallbackPicks.length && (
+                  <div style={{ display: 'flex', justifyContent: 'center', marginTop: '6px' }}>
+                    <button className="app-chip" onClick={() => setHomeRenderCount((c) => c + 12)} style={{ padding: '8px 14px', fontSize: '12px', color: 'var(--color-text-secondary)', border: '1px solid rgba(255,255,255,0.12)', background: 'rgba(255,255,255,0.04)', cursor: 'pointer' }}>
+                      Load more ({fallbackPicks.length - homeRenderCount} left)
+                    </button>
+                  </div>
+                )}
+              </div>
             ) : (
-              <EmptyState title="No picks for today" subtitle="Check back after the 5:00 AM generation cron." />
+              <EmptyState title="No picks available" subtitle="Check back after the 7:00 AM generation cron." />
             )}
 
 {/* Historical bets section removed - use History tab instead */}
@@ -710,18 +767,18 @@ const Dashboard: React.FC = () => {
                 minHeight: 40,
               }}>
                 <div>
-                  <div style={{ fontSize: 24, fontWeight: 800, color: '#fff' }}>History</div>
-                  <div style={{ fontSize: 12, color: '#9aa3b2', marginTop: 2 }}>All results here</div>
+                  <div style={{ fontSize: 24, fontWeight: 800, color: 'var(--color-text-primary)' }}>History</div>
+                  <div style={{ fontSize: 12, color: 'var(--color-text-secondary)', marginTop: 2 }}>All results here</div>
                 </div>
                 <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap', justifyContent: 'flex-end', paddingTop: 2 }}>
-                  <span className="app-chip ctl" style={{ padding: '4px 8px', fontSize: 11, color: '#A0A0A0' }}>Sort: {sort}</span>
+                  <span className="app-chip ctl" style={{ padding: '4px 8px', fontSize: 11, color: 'var(--color-text-tertiary)' }}>Sort: {sort}</span>
                   <button
                     onClick={() => setShowMenu(!showMenu)}
                     className="ctl"
                     style={{
                       background: showMenu ? 'linear-gradient(145deg, rgba(10,132,255,0.95), rgba(10,132,255,0.78))' : 'linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03))',
                       border: showMenu ? '1px solid rgba(10,132,255,0.85)' : '1px solid rgba(255,255,255,0.12)',
-                      color: showMenu ? '#fff' : '#B8C0CC',
+                      color: showMenu ? 'var(--color-text-primary)' : 'var(--color-text-secondary)',
                       fontWeight: 700,
                       cursor: 'pointer'
                     }}
@@ -732,22 +789,22 @@ const Dashboard: React.FC = () => {
               </div>
 
               <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: isMobile ? 'center' : 'flex-start' }}>
-                {filters.date && <span className="app-chip" style={{ padding: '4px 8px', fontSize: 11, color: '#8EC5FF' }}>Date: {filters.date}</span>}
-                {filters.sport && <span className="app-chip" style={{ padding: '4px 8px', fontSize: 11, color: '#8EC5FF' }}>{filters.sport}</span>}
-                {filters.bet_type && <span className="app-chip" style={{ padding: '4px 8px', fontSize: 11, color: '#8EC5FF' }}>{filters.bet_type}</span>}
+                {filters.date && <span className="app-chip" style={{ padding: '4px 8px', fontSize: 11, color: 'var(--color-primary)' }}>Date: {filters.date}</span>}
+                {filters.sport && <span className="app-chip" style={{ padding: '4px 8px', fontSize: 11, color: 'var(--color-primary)' }}>{filters.sport}</span>}
+                {filters.bet_type && <span className="app-chip" style={{ padding: '4px 8px', fontSize: 11, color: 'var(--color-primary)' }}>{filters.bet_type}</span>}
               </div>
             </div>
 
             {betsLoading && bets.length === 0 ? (
-              <div className="app-empty" style={{ color: '#A0A0A0' }}>
+              <div className="app-empty" style={{ color: 'var(--color-text-tertiary)' }}>
                 <div style={{ fontSize: '28px', marginBottom: '8px' }}>•</div>
-                <p style={{ fontSize: '16px', fontWeight: '600', color: '#E0E0E0', margin: '0 0 4px 0' }}>Loading history…</p>
+                <p style={{ fontSize: '16px', fontWeight: '600', color: 'var(--color-text-secondary)', margin: '0 0 4px 0' }}>Loading history…</p>
                 <p style={{ fontSize: '12px', margin: 0 }}>Fetching graded bets and pagination metadata.</p>
               </div>
             ) : bets.length === 0 ? (
-              <div className="app-empty" style={{ color: '#A0A0A0' }}>
+              <div className="app-empty" style={{ color: 'var(--color-text-tertiary)' }}>
                 <div style={{ fontSize: '28px', marginBottom: '8px' }}>•</div>
-                <p style={{ fontSize: '16px', fontWeight: '600', color: '#E0E0E0', margin: '0 0 4px 0' }}>No bets found</p>
+                <p style={{ fontSize: '16px', fontWeight: '600', color: 'var(--color-text-secondary)', margin: '0 0 4px 0' }}>No bets found</p>
                 <p style={{ fontSize: '12px', margin: 0 }}>Try clearing filters or selecting a different date range.</p>
               </div>
             ) : (
@@ -763,7 +820,7 @@ const Dashboard: React.FC = () => {
 
                 {displayedHistoryBets.length < bets.length && (
                   <div style={{ display: 'flex', justifyContent: 'center', marginTop: '4px' }}>
-                    <button className="app-chip" onClick={() => setHistoryRenderCount((c) => c + 24)} style={{ padding: '8px 14px', fontSize: '12px', color: '#BFC8D6', border: '1px solid rgba(255,255,255,0.12)', background: 'rgba(255,255,255,0.04)', cursor: 'pointer' }}>
+                    <button className="app-chip" onClick={() => setHistoryRenderCount((c) => c + 24)} style={{ padding: '8px 14px', fontSize: '12px', color: 'var(--color-text-secondary)', border: '1px solid rgba(255,255,255,0.12)', background: 'rgba(255,255,255,0.04)', cursor: 'pointer' }}>
                       Load more cards ({bets.length - displayedHistoryBets.length} left)
                     </button>
                   </div>
@@ -773,7 +830,7 @@ const Dashboard: React.FC = () => {
                 {totalPages > 1 && (
                   <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '12px', marginTop: '32px' }}>
                     <PaginationButton label="← Previous" disabled={currentPage === 1} onClick={() => setCurrentPage(Math.max(1, currentPage - 1))} />
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#A0A0A0', fontSize: '14px', fontWeight: '500', minWidth: '120px', justifyContent: 'center' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--color-text-tertiary)', fontSize: '14px', fontWeight: '500', minWidth: '120px', justifyContent: 'center' }}>
                       Page {currentPage} of {totalPages}
                     </div>
                     <PaginationButton label="Next →" disabled={currentPage === totalPages} onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))} />
@@ -789,40 +846,40 @@ const Dashboard: React.FC = () => {
       <div style={{ padding: '24px clamp(16px, 3vw, 80px) 120px' }}>
         <div className="app-surface" style={{
           background: 'rgba(255,255,255,0.03)',
-          border: '1px solid #2a2a2a',
+          border: '1px solid var(--color-border)',
           borderRadius: '12px',
           padding: '14px 16px',
         }}>
-          <div style={{ fontSize: '10px', fontWeight: '700', color: '#555', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '12px' }}>
+          <div style={{ fontSize: '13px', fontWeight: '700', color: 'var(--color-text-secondary)', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '14px' }}>
             LarlScore Grade Guide
           </div>
-          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
             {[
-              { grade: 'S', color: '#30d158', range: '2.0+',     label: 'Elite' },
-              { grade: 'A', color: '#a3e635', range: '1.5–2.0',  label: 'Strong' },
-              { grade: 'B', color: '#ffd60a', range: '1.0–1.5',  label: 'Solid' },
-              { grade: 'C', color: '#ff9f0a', range: '0.5–1.0',  label: 'Marginal' },
-              { grade: 'D', color: '#ff453a', range: '< 0.5',    label: 'Weak' },
-            ].map(({ grade, color, range, label }) => (
+              { grade: 'S', color: 'var(--color-success)',         rgb: '52, 199, 89',    range: '2.0+',    label: 'Elite' },
+              { grade: 'A', color: 'var(--color-confidence-high)', rgb: '90, 200, 250',   range: '1.5–2.0', label: 'Strong' },
+              { grade: 'B', color: 'var(--color-grade-b)',         rgb: '255, 214, 10',   range: '1.0–1.5', label: 'Solid' },
+              { grade: 'C', color: 'var(--color-caution)',         rgb: '255, 149, 0',    range: '0.5–1.0', label: 'Marginal' },
+              { grade: 'D', color: 'var(--color-destructive)',     rgb: '255, 59, 48',    range: '< 0.5',   label: 'Weak' },
+            ].map(({ grade, color, rgb, range, label }) => (
               <div key={grade} style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '8px',
-                background: `${color}12`,
-                border: `1px solid ${color}44`,
-                borderRadius: '8px',
-                padding: '6px 12px',
-                flex: '1 1 140px',
+                gap: '12px',
+                background: `rgba(${rgb}, 0.08)`,
+                border: `1px solid rgba(${rgb}, 0.30)`,
+                borderRadius: '12px',
+                padding: '10px 16px',
+                flex: '1 1 150px',
               }}>
-                <span style={{ fontSize: '16px', fontWeight: '900', color, fontFamily: 'monospace', minWidth: '16px' }}>{grade}</span>
+                <span style={{ fontSize: '28px', fontWeight: '900', color, fontFamily: 'var(--font-mono)', minWidth: '22px', lineHeight: 1 }}>{grade}</span>
                 <div>
-                  <div style={{ fontSize: '11px', fontWeight: '700', color: '#ddd' }}>{label}</div>
-                  <div style={{ fontSize: '10px', color: '#666' }}>{range}</div>
+                  <div style={{ fontSize: '15px', fontWeight: '700', color: 'var(--color-text-primary)' }}>{label}</div>
+                  <div style={{ fontSize: '13px', color: 'var(--color-text-tertiary)', fontFamily: 'var(--font-mono)', marginTop: '2px' }}>{range}</div>
                 </div>
               </div>
             ))}
           </div>
-          <div style={{ fontSize: '10px', color: '#444', marginTop: '10px', lineHeight: 1.5 }}>
+          <div style={{ fontSize: '12px', color: 'var(--color-text-tertiary)', marginTop: '12px', lineHeight: 1.6 }}>
             LarlScore = (confidence) × edge × (historical WR / break-even) × adaptive weight. Higher = better expected value per unit risk.
           </div>
         </div>
@@ -835,9 +892,9 @@ const Dashboard: React.FC = () => {
 };
 
 const EmptyState: React.FC<{ title: string; subtitle: string }> = ({ title, subtitle }) => (
-  <div className="app-empty" style={{ color: '#A0A0A0' }}>
+  <div className="app-empty" style={{ color: 'var(--color-text-tertiary)' }}>
     <div style={{ fontSize: '28px', marginBottom: '8px' }}>•</div>
-    <p style={{ fontSize: '16px', fontWeight: '600', color: '#E0E0E0', margin: '0 0 4px 0' }}>{title}</p>
+    <p style={{ fontSize: '16px', fontWeight: '600', color: 'var(--color-text-secondary)', margin: '0 0 4px 0' }}>{title}</p>
     <p style={{ fontSize: '12px', margin: 0 }}>{subtitle}</p>
   </div>
 );
@@ -848,17 +905,17 @@ const SummaryBubble: React.FC<{ label: string; value: string | number; color: st
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#1a1a1a',
-    border: '1px solid #2a2a2a',
+    backgroundColor: 'var(--color-surface)',
+    border: '1px solid var(--color-border)',
     borderRadius: '12px',
     padding: '12px 8px',
     minHeight: '90px',
     width: '100%',
   }}>
-    <p style={{ fontSize: '10px', fontWeight: '600', color: '#A0A0A0', margin: '0 0 6px 0', textTransform: 'uppercase', letterSpacing: '0.4px' }}>
+    <p style={{ fontSize: '11px', fontWeight: '700', color: 'var(--color-text-tertiary)', margin: '0 0 6px 0', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
       {label}
     </p>
-    <p style={{ fontSize: '22px', fontWeight: '700', color, margin: 0 }}>
+    <p style={{ fontSize: '24px', fontWeight: '800', color, margin: 0, fontFamily: 'var(--font-mono)', fontVariantNumeric: 'tabular-nums' }}>
       {value}
     </p>
   </div>
@@ -873,7 +930,7 @@ const ViewButton: React.FC<{ label: string; icon: React.ReactNode; active: boole
       minWidth: 70,
       background: active ? 'linear-gradient(145deg, rgba(10,132,255,0.95), rgba(10,132,255,0.78))' : 'linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03))',
       boxShadow: active ? '0 12px 30px rgba(10,132,255,0.20)' : 'none',
-      color: active ? '#FFFFFF' : '#B8C0CC',
+      color: active ? 'var(--color-text-primary)' : 'var(--color-text-secondary)',
       border: active ? '1px solid rgba(10,132,255,0.85)' : '1px solid rgba(255,255,255,0.12)',
       borderRadius: '12px',
       cursor: 'pointer',
@@ -886,7 +943,7 @@ const ViewButton: React.FC<{ label: string; icon: React.ReactNode; active: boole
     }}
     onMouseEnter={(e) => {
       if (!active) {
-        (e.currentTarget as HTMLButtonElement).style.borderColor = '#6EA8FF';
+        (e.currentTarget as HTMLButtonElement).style.borderColor = 'var(--color-primary)';
       }
     }}
     onMouseLeave={(e) => {
@@ -902,7 +959,7 @@ const ViewButton: React.FC<{ label: string; icon: React.ReactNode; active: boole
       alignItems: 'center',
       justifyContent: 'center',
       borderRadius: 9,
-      color: active ? '#fff' : '#D7DFEA',
+      color: active ? 'var(--color-text-primary)' : 'var(--color-text-primary)',
       background: active
         ? 'linear-gradient(145deg, rgba(255,255,255,0.34), rgba(255,255,255,0.16))'
         : 'linear-gradient(145deg, rgba(255,255,255,0.14), rgba(255,255,255,0.06))',
@@ -921,9 +978,9 @@ const PaginationButton: React.FC<{ label: string; disabled: boolean; onClick: ()
     disabled={disabled}
     className="ctl"
     style={{
-      backgroundColor: disabled ? '#1a1a1a' : '#0A84FF',
-      color: disabled ? '#8E8E93' : '#FFFFFF',
-      border: disabled ? '1px solid #2a2a2a' : '1px solid #0A84FF',
+      backgroundColor: disabled ? 'var(--color-surface)' : 'var(--color-primary)',
+      color: disabled ? 'var(--color-text-tertiary)' : 'var(--color-text-primary)',
+      border: disabled ? '1px solid var(--color-border)' : '1px solid var(--color-primary)',
       fontWeight: '700',
       cursor: disabled ? 'default' : 'pointer',
       transition: 'all 0.2s ease-out',
