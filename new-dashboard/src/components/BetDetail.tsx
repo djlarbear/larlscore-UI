@@ -4,9 +4,7 @@
 
 import React, { useEffect } from 'react';
 import { Bet } from '../utils/api-new';
-
-const cleanSportName = (sport: string | undefined): string =>
-  (sport ?? '').trim();
+import { cleanSportName } from '../utils/format';
 
 // Shorten verbose actual_score prop bet formats
 // "Jaylen Brown: Pts=20 Reb=11 Ast=7 (Pts=20 vs line 20.5)" → "Jaylen Brown: 20 pts (line 20.5)"

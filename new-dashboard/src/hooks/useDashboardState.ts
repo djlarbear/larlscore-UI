@@ -5,6 +5,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import BettingAPI, { Bet, BetSummary, DateStat, DashboardStatus } from '../utils/api-new';
+import { SpecialsData } from '../components/SpecialsView';
 import { useDebounce } from './useDebounce';
 
 // ─── Shared Types ────────────────────────────────────────────────────────────
@@ -43,11 +44,6 @@ export interface RawPick {
   fanduel_line?: string;
   risk_tier?: string;
   american_odds?: number;
-}
-
-export interface SpecialsPayload {
-  q3_100?: Record<string, unknown>;
-  [key: string]: unknown;
 }
 
 export interface FilterState {
@@ -119,7 +115,6 @@ export function useDashboardState() {
 
   const [bets, setBets] = useState<Bet[]>([]);
   const [todaysPicks, setTodaysPicks] = useState<Bet[]>([]);
-  const [todaysPicksDate, setTodaysPicksDate] = useState<string>('');
   const [summary, setSummary] = useState<BetSummary | null>(null);
   const [dates, setDates] = useState<DateStat[]>([]);
   const [sports, setSports] = useState<string[]>([]);
@@ -133,9 +128,9 @@ export function useDashboardState() {
   const [pageSize, setPageSize] = useState(10);
   const [showMenu, setShowMenu] = useState(false);
   const [sort, setSort] = useState('date-desc');
-  const [_apiStatus, setApiStatus] = useState<'checking' | 'ok' | 'error'>('checking');
+
   const [dashboardStatus, setDashboardStatus] = useState<DashboardStatus | null>(null);
-  const [specialsData, setSpecialsData] = useState<SpecialsPayload | null>(null);
+  const [specialsData, setSpecialsData] = useState<SpecialsData | undefined>(undefined);
   const [filters, setFilters] = useState<{ date?: string; sport?: string; bet_type?: string }>({});
   const [isMobile, setIsMobile] = useState<boolean>(
     typeof window !== 'undefined' ? window.innerWidth <= 640 : false
@@ -199,16 +194,9 @@ export function useDashboardState() {
   useEffect(() => {
     if (view !== 'specials' || specialsData) return;
     BettingAPI.getSpecials()
-      .then(setSpecialsData)
+      .then((d: SpecialsData) => setSpecialsData(d))
       .catch(() => setSpecialsData({}));
   }, [view, specialsData]);
-
-  // API connection status
-  useEffect(() => {
-    BettingAPI.testConnection()
-      .then(ok => setApiStatus(ok ? 'ok' : 'error'))
-      .catch(() => setApiStatus('error'));
-  }, []);
 
   // Data freshness metadata
   useEffect(() => {
@@ -244,7 +232,6 @@ export function useDashboardState() {
           ? pickArray.slice(0, 10).map((pick) => transformPick(pick, picksDate))
           : [];
         setTodaysPicks(transformedPicks);
-        setTodaysPicksDate(picksDate);
       } catch {
         hasFetchedPicks.current = false;
         setTodaysPicks([]);
@@ -336,7 +323,6 @@ export function useDashboardState() {
     error, setError,
     // Picks (home)
     todaysPicks,
-    todaysPicksDate,
     homeRenderCount, setHomeRenderCount,
     // History
     bets,
@@ -345,8 +331,8 @@ export function useDashboardState() {
     totalPages,
     currentPage, setCurrentPage,
     pageSize, setPageSize,
-    sort, setSort,
-    filters, setFilters,
+    sort,
+    filters,
     showMenu, setShowMenu,
     dates, sports, betTypes,
     handleFilterChange,
@@ -358,7 +344,6 @@ export function useDashboardState() {
     isMobile,
     selectedBet, setSelectedBet,
     betKey,
-    debouncedFilters,
     formatAge,
     mergedUpdated,
     overdue24h,

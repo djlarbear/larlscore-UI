@@ -208,33 +208,6 @@ html {
     min-width: 0 !important;
   }
 
-  /* Hide API status & its separator — saves space */
-  .nav-api-status,
-  .nav-api-sep {
-    display: none !important;
-  }
-
-  /* Filter button stays but compact */
-  .nav-filter-sep {
-    display: none !important;
-  }
-  .nav-filter-btn {
-    padding: 7px 10px !important;
-    font-size: 12px !important;
-    flex: 0 0 auto !important;
-    min-width: 48px !important;
-    justify-content: center !important;
-  }
-
-  .nav-filter-btn .filter-label {
-    display: none !important;
-  }
-
-  .nav-filter-btn .filter-icon {
-    font-size: 14px !important;
-    line-height: 1 !important;
-  }
-
   /* Filter panel: full width, above the bottom nav bar */
   .nav-filter-panel {
     left: 8px !important;
@@ -288,41 +261,17 @@ html {
   background: var(--surface-chip);
 }
 
-/* Numeric data display — monospace, tabular, right-aligned */
-.data-num {
-  font-family: var(--font-mono);
-  font-variant-numeric: tabular-nums;
-  text-align: right;
-}
-
-.nav-btn:active,
-.nav-filter-btn:active {
+.nav-btn:active {
   transform: scale(0.98);
 }
 
 /* Focus rings (app-quality) */
 .nav-btn:focus-visible,
-.nav-filter-btn:focus-visible,
 button:focus-visible,
 select:focus-visible,
 a:focus-visible {
   outline: none;
   box-shadow: 0 0 0 2px rgba(11,13,18,0.9), 0 0 0 4px rgba(10,132,255,0.55);
-}
-
-/* Uniform control sizing */
-:root {
-  --ctl-radius: 10px;
-  --ctl-pad-y: 8px;
-  --ctl-pad-x: 12px;
-  --ctl-font: 12px;
-}
-
-.ctl {
-  border-radius: var(--ctl-radius) !important;
-  padding: var(--ctl-pad-y) var(--ctl-pad-x) !important;
-  font-size: var(--ctl-font) !important;
-  line-height: 1.1;
 }
 
 /* Text clamping for premium uniformity */
@@ -332,13 +281,6 @@ a:focus-visible {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.clamp-3 {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
 .view-enter {
   animation: viewEnter 220ms cubic-bezier(0.2, 0.9, 0.4, 1) both;
 }
@@ -365,15 +307,4 @@ a:focus-visible {
   100% { background-position: -200% 0; }
 }
 
-/* Density mode */
-.density-compact .bet-grid {
-  gap: 14px;
-}
 
-.density-compact .app-surface {
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
-}
-
-.density-compact .app-empty {
-  padding: 20px 12px;
-}

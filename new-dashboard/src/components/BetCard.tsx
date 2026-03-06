@@ -5,13 +5,10 @@
 
 import React, { useMemo } from 'react';
 import { Bet } from '../utils/api-new';
+import { cleanSportName } from '../utils/format';
 
 // Card chrome (border/shadow) is result-driven — tells you at a glance if it won or lost
 // Bet type color is preserved inside the card (badge, pick label, footer)
-
-
-const cleanSportName = (sport: string | undefined): string =>
-  (sport ?? '').trim();
 
 // Condensed score for card view — just "Player: 20 PTS" or short game score
 const formatScoreCard = (raw: string | null): string => {
@@ -293,7 +290,7 @@ const BetCard: React.FC<BetCardProps> = ({ bet, onClick, showScore = true }) => 
         <div style={{
           paddingTop: 8,
           borderTop: '1px solid rgba(255,255,255,0.08)',
-          fontSize: 11,
+          fontSize: 14,
           color: 'var(--color-text-tertiary)',
           fontWeight: 700,
           textAlign: 'center',
@@ -303,9 +300,7 @@ const BetCard: React.FC<BetCardProps> = ({ bet, onClick, showScore = true }) => 
           justifyContent: 'center',
           gap: 6,
         }}>
-          <span>TAP FOR FULL DETAILS</span>
-          <span style={{ opacity: 0.5 }}>·</span>
-          <span>why this pick, stats</span>
+          <span style={{ fontWeight: 700 }}>Tap For Full Details</span>
         </div>
       )}
     </div>

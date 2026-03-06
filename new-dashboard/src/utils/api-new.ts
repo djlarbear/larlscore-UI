@@ -33,7 +33,7 @@ const getAPIBase = (): string => {
 };
 
 const API_BASE = getAPIBase();
-export { getAPIBase, STATIC_MODE };
+
 
 // Debug logging (no-op in production)
 const debug = (_msg: string, _data?: unknown) => {
@@ -129,57 +129,13 @@ export interface DateStat {
   win_rate: number;
 }
 
-export interface Phase3Payload {
-  generated_at?: string;
-  strategy?: string;
-  active?: { bets?: Bet[]; [key: string]: unknown };
-  ranked?: { top_10?: Bet[]; rest?: Bet[]; [key: string]: unknown };
-  learning?: Record<string, unknown>;
-  weights?: Record<string, number>;
-  observability?: Record<string, unknown>;
-  comparison?: Record<string, unknown>;
-  thresholds?: Record<string, number>;
-
-  // allow extra fields from export
-  [key: string]: unknown;
-}
-
 export interface DashboardStatus {
   status: string;
   timestamp: string;
-  files?: {
-    ranked_bets?: boolean;
-    tracker?: boolean;
-    active_bets?: boolean;
-    parlays?: boolean;
-    espn_down_flag?: boolean;
-  };
   last_updates?: {
     ranked_bets?: string | null;
-    tracker?: string | null;
     active_bets?: string | null;
-    parlays?: string | null;
-    espn_down_flag?: string | null;
   };
-  health_strip?: {
-    parlays?: {
-      generated_at?: string | null;
-      count?: number;
-      primary_odds?: number | null;
-      primary_in_band?: boolean | null;
-    } | null;
-    odds_coverage_today?: {
-      date?: string;
-      total?: number;
-      with_odds?: number;
-      pct?: number | null;
-    } | null;
-    espn?: {
-      down_flag?: boolean;
-      down_flag_mtime?: string | null;
-    } | null;
-  };
-  uptime?: string;
 }
 
 
@@ -382,34 +338,6 @@ export class BettingAPI {
   }
 
   /**
-   * Get a specific bet by ID
-   */
-  static async getBetDetail(betId: string): Promise<Bet> {
-    // STATIC MODE: Find in snapshot
-    if (STATIC_MODE) {
-      const data = await loadStaticData();
-      const bet = data.bets?.find((b: Bet) => b.id === betId);
-      if (!bet) {
-        throw new Error(`Bet not found: ${betId}`);
-      }
-      return bet;
-    }
-
-    // LIVE MODE: Call Flask API
-    const url = `${API_BASE}/api/bets/${betId}`;
-    debug(`Fetching bet: ${url}`);
-
-    try {
-      const response = await fetch(url);
-      if (!response.ok) throw new Error('Failed to fetch bet details');
-      return response.json();
-    } catch (err) {
-      debugError('Failed to fetch bet details', err);
-      throw err;
-    }
-  }
-
-  /**
    * Get all available dates with stats
    */
   static async getAvailableDates(): Promise<DateStat[]> {
@@ -542,20 +470,6 @@ export class BettingAPI {
     });
   }
 
-  /**
-   * Get learning insights
-   */
-  static async getParlays(): Promise<any> {
-    if (STATIC_MODE) {
-      const data = await loadStaticData();
-      return data.parlays || null;
-    }
-    // In live mode, the backend serves dashboard public assets as static files.
-    const response = await fetch('/dashboard-parlays.json');
-    if (!response.ok) throw new Error('Failed to fetch parlays');
-    return response.json();
-  }
-
   static async getSpecials(): Promise<any> {
     if (STATIC_MODE) {
       const data = await loadStaticData();
@@ -577,60 +491,18 @@ export class BettingAPI {
   }
 
   /**
-   * Get Phase 3 shadow strategy payload (served from dashboard public assets)
-   */
-  static async getPhase3Data(): Promise<Phase3Payload> {
-    const cacheKey = 'phase3-data';
-    const cached = this.getCached<Phase3Payload>(cacheKey, 30000);
-    if (cached) return cached;
-
-    return this.dedupe(cacheKey, async () => {
-      const response = await fetch('/dashboard-data-phase3.json');
-      if (!response.ok) throw new Error('Failed to fetch phase3 data');
-      const data = await response.json();
-      this.setCached(cacheKey, data);
-      return data;
-    });
-  }
-
-  /**
    * Get backend status and data freshness timestamps
    */
   static async getStatus(): Promise<DashboardStatus> {
     if (STATIC_MODE) {
       const data = await loadStaticData();
-      const parlaysPayload = data.parlays || null;
-      const parlaysList = parlaysPayload && Array.isArray(parlaysPayload.parlays) ? parlaysPayload.parlays : [];
-      const primary = parlaysList.find((p: any) => String(p?.name || '').toLowerCase().startsWith('daily high-probability parlay'));
-      const primaryOdds = primary?.est_odds != null ? Number(primary.est_odds) : null;
-      const inBand = primaryOdds != null ? (primaryOdds >= 250 && primaryOdds <= 600) : null;
-
       return {
         status: 'ok',
         timestamp: data.generated_at || new Date().toISOString(),
-        files: {
-          ranked_bets: true,
-          active_bets: true,
-          tracker: true,
-          parlays: !!parlaysPayload,
-        },
         last_updates: {
           ranked_bets: data.generated_at || null,
           active_bets: data.generated_at || null,
-          tracker: data.generated_at || null,
-          parlays: parlaysPayload?.generated_at || data.generated_at || null,
         },
-        health_strip: {
-          parlays: {
-            generated_at: parlaysPayload?.generated_at || null,
-            count: parlaysList.length,
-            primary_odds: primaryOdds,
-            primary_in_band: inBand,
-          },
-          odds_coverage_today: null,
-          espn: null,
-        },
-        uptime: 'static'
       };
     }
 
@@ -647,28 +519,6 @@ export class BettingAPI {
     });
   }
 
-  /**
-   * Test API connectivity
-   */
-  static async testConnection(): Promise<boolean> {
-    // STATIC MODE: Always return true (snapshot is always available)
-    if (STATIC_MODE) {
-      debug('Static mode - always connected');
-      return true;
-    }
-
-    // LIVE MODE: Test Flask API
-    try {
-      debug(`Testing connection to ${API_BASE}`);
-      const response = await fetch(`${API_BASE}/api/health`);
-      const isOk = response.ok;
-      debug(`Connection test: ${isOk ? 'SUCCESS' : 'FAILED'}`);
-      return isOk;
-    } catch (err) {
-      debugError('Connection test failed', err);
-      return false;
-    }
-  }
 }
 
 // Log the resolved base URL on load (no extra network call - APIStatus handles health check)

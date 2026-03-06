@@ -9,8 +9,6 @@ import BetCard from '../components/BetCard';
 
 interface Props {
   todaysPicks: Bet[];
-  todaysPicksDate: string;
-  isMobile: boolean;
   homeRenderCount: number;
   setHomeRenderCount: React.Dispatch<React.SetStateAction<number>>;
   betKey: (bet: Bet, idx: number) => string;
@@ -31,8 +29,6 @@ const EmptyPicksState: React.FC = () => (
 
 const HomeView: React.FC<Props> = ({
   todaysPicks,
-  todaysPicksDate,
-  isMobile,
   homeRenderCount,
   setHomeRenderCount,
   betKey,
@@ -40,76 +36,8 @@ const HomeView: React.FC<Props> = ({
 }) => {
   if (todaysPicks.length === 0) return <EmptyPicksState />;
 
-  const todayStr = new Date().toISOString().split('T')[0];
-  const isToday = !todaysPicksDate || todaysPicksDate === todayStr;
-
-  const title = isToday
-    ? "Today's Picks"
-    : (() => {
-        const d = new Date(todaysPicksDate + 'T12:00:00');
-        return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) + ' Picks';
-      })();
-
-  const subtitle = isToday
-    ? 'Top plays across all bet types'
-    : `${todaysPicksDate} · New picks generate at 7:00 AM EST`;
-
   return (
-    <div
-      className="app-surface"
-      style={{
-        borderRadius: 16,
-        padding: '14px',
-        border: '1px solid rgba(142,197,255,0.24)',
-        background: 'linear-gradient(145deg, rgba(26,26,26,0.96), rgba(20,24,30,0.92))',
-      }}
-    >
-      {/* Section header */}
-      <div
-        style={{
-          border: '1px solid rgba(255,255,255,0.14)',
-          borderRadius: 12,
-          padding: '10px 12px',
-          marginBottom: 12,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: isMobile ? 'center' : 'space-between',
-          textAlign: isMobile ? 'center' : 'left',
-          gap: 10,
-          flexWrap: 'wrap',
-          background: 'linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03))',
-        }}
-      >
-        <div>
-          <div
-            style={{
-              fontSize: '24px',
-              fontWeight: '800',
-              color: 'var(--color-text-primary)',
-              letterSpacing: '-0.01em',
-            }}
-          >
-            {title}
-          </div>
-          <div style={{ fontSize: 12, color: 'var(--color-text-secondary)', marginTop: 2 }}>
-            {subtitle}
-          </div>
-        </div>
-        <span
-          className="app-chip"
-          style={{
-            padding: '6px 10px',
-            fontSize: 12,
-            fontWeight: 700,
-            color: 'var(--color-text-primary)',
-            border: '1px solid rgba(255,255,255,0.16)',
-            background: 'rgba(255,255,255,0.06)',
-          }}
-        >
-          {todaysPicks.length} picks
-        </span>
-      </div>
-
+    <div style={{ padding: '0 0 10px' }}>
       {/* Bet cards */}
       <div className="bet-grid" style={{ marginBottom: 10 }}>
         {todaysPicks.slice(0, homeRenderCount).map((bet, idx) => (

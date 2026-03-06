@@ -23,8 +23,8 @@ const SummaryBubble: React.FC<{ label: string; value: string | number; color: st
     padding: '10px 8px', borderRadius: '10px', gap: '4px', minWidth: 0,
     background: 'rgba(255,255,255,0.04)', border: '1px solid var(--color-border)',
   }}>
-    <span style={{ fontSize: 'clamp(18px, 3.5vw, 26px)', fontWeight: '800', color, fontFamily: 'var(--font-display)', lineHeight: 1 }}>{value}</span>
     <span style={{ fontSize: 'clamp(9px, 1.8vw, 11px)', color: 'var(--color-text-tertiary)', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px', textAlign: 'center' }}>{label}</span>
+    <span style={{ fontSize: 'clamp(18px, 3.5vw, 26px)', fontWeight: '800', color, fontFamily: 'var(--font-display)', lineHeight: 1 }}>{value}</span>
   </div>
 );
 
@@ -79,37 +79,43 @@ const Dashboard: React.FC = () => {
         <div style={{ position: 'absolute', bottom: -140, right: '10%', width: 300, height: 300, borderRadius: '50%', background: 'radial-gradient(circle, rgba(52,199,89,0.16) 0%, rgba(52,199,89,0) 70%)' }} />
       </div>
 
-      {/* Floating top identity card */}
+      {/* Floating top identity — pill matches nav */}
       <div style={{
         position: 'fixed',
-        top: ds.isMobile ? '8px' : '14px',
+        top: ds.isMobile ? '14px' : '18px',
         left: '50%',
         transform: 'translateX(-50%)',
-        width: ds.isMobile ? 'calc(100% - 14px)' : 'min(1100px, calc(100% - 24px))',
         zIndex: 950,
       }}>
-        <div className="app-surface" style={{
-          backgroundColor: 'rgba(26, 26, 26, 0.96)',
-          backdropFilter: 'blur(20px)',
-          borderRadius: ds.isMobile ? '12px' : '16px',
-          border: `1.5px solid ${ds.overdue24h ? 'rgba(var(--color-destructive-rgb), 0.55)' : 'rgba(var(--color-primary-rgb), 0.35)'}`,
-          boxShadow: '0 10px 30px rgba(0, 0, 0, 0.45)',
-          padding: ds.isMobile ? '8px 10px' : '10px 12px',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: ds.isMobile ? '6px' : '8px',
+        <div style={{
+          position: 'relative',
+          display: 'inline-flex',
           alignItems: 'center',
+          gap: 10,
+          padding: ds.isMobile ? '8px 16px' : '10px 20px',
         }}>
-          <LarlScoreLogo size={ds.isMobile ? 'medium' : 'large'} />
-          {ds.overdue24h && (
-            <div style={{
-              padding: '8px 12px', borderRadius: '8px',
-              backgroundColor: 'rgba(255,59,48,0.14)', border: '1px solid rgba(255,59,48,0.55)',
-              color: 'var(--color-destructive)', fontSize: '12px', fontWeight: 600,
-            }}>
-              Update overdue (24h+)
-            </div>
-          )}
+          {/* Pill backdrop — same as nav */}
+          <div style={{
+            position: 'absolute',
+            inset: 0,
+            backgroundColor: 'rgba(26, 26, 26, 0.97)',
+            backdropFilter: 'blur(24px)',
+            borderRadius: '20px',
+            border: `1.5px solid ${ds.overdue24h ? 'rgba(255,59,48,0.55)' : 'rgba(10, 132, 255, 0.35)'}`,
+            boxShadow: '0 12px 40px rgba(0, 0, 0, 0.6), 0 4px 16px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.08)',
+          }} />
+          <div style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', gap: 10 }}>
+            <LarlScoreLogo size={ds.isMobile ? 'medium' : 'large'} />
+            {ds.overdue24h && (
+              <span style={{
+                padding: '4px 10px', borderRadius: '8px',
+                backgroundColor: 'rgba(255,59,48,0.14)', border: '1px solid rgba(255,59,48,0.55)',
+                color: 'var(--color-destructive)', fontSize: '11px', fontWeight: 600,
+              }}>
+                Update overdue
+              </span>
+            )}
+          </div>
         </div>
       </div>
 
@@ -119,31 +125,22 @@ const Dashboard: React.FC = () => {
         backgroundColor: 'var(--color-background)',
         paddingTop: ds.isMobile ? '132px' : '126px',
         paddingBottom: '24px',
-        borderBottom: '1px solid var(--color-border)',
       }}>
         <div style={{ padding: '0 clamp(16px, 3vw, 80px)' }}>
           {ds.summary && (
             <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
               <div className="app-surface" style={{ flex: '1 1 300px', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--color-border)', borderRadius: '12px', padding: '12px', textAlign: 'center' }}>
                 <div style={{ fontSize: '12px', fontWeight: '700', color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '10px' }}>Record</div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px' }}>
-                  <SummaryBubble label="Total Bets" value={ds.summary.total_bets}              color="var(--color-primary)" />
-                  <SummaryBubble label="Wins"       value={ds.summary.wins}                   color="var(--color-success)" />
-                  <SummaryBubble label="Losses"     value={ds.summary.losses}                 color="var(--color-destructive)" />
-                  <SummaryBubble label="Win Rate"   value={`${ds.winRate}%`}                  color="var(--color-caution)" />
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
+                  <SummaryBubble label="Wins"       value={ds.summary.wins}       color="var(--color-success)" />
+                  <SummaryBubble label="Losses"     value={ds.summary.losses}     color="var(--color-destructive)" />
+                  <SummaryBubble label="Win Rate"   value={`${ds.winRate}%`}      color="var(--color-caution)" />
                 </div>
               </div>
-              <div className="app-surface" style={{ flex: '1 1 300px', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--color-border)', borderRadius: '12px', padding: '12px', textAlign: 'center' }}>
-                <div style={{ fontSize: '12px', fontWeight: '700', color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '10px' }}>Bet Types</div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px' }}>
-                  <SummaryBubble label="SPREAD"    value={ds.summary.spread_count    || 0} color="var(--color-spread)" />
-                  <SummaryBubble label="TOTAL"     value={ds.summary.total_count     || 0} color="var(--color-total)" />
-                  <SummaryBubble label="MONEYLINE" value={ds.summary.moneyline_count || 0} color="var(--color-moneyline)" />
-                  <SummaryBubble label="PROP"      value={ds.summary.prop_count      || 0} color="var(--color-primary)" />
-                </div>
-              </div>
+
             </div>
           )}
+          <div style={{ borderTop: '1px solid var(--color-border)', margin: '24px 0 0 0' }} />
         </div>
       </div>
 
@@ -167,18 +164,29 @@ const Dashboard: React.FC = () => {
           <ViewButton className="nav-btn" label="History"  icon={<HistoryIcon size={18} />}  active={ds.view === 'history'}  onClick={() => { ds.setView('history');  ds.setShowMenu(false); }} />
         </div>
 
-        {/* Filter overlay — rendered here so it floats above the nav */}
-        {ds.showMenu && ds.view === 'history' && (
-          <>
-            <div onClick={() => ds.setShowMenu(false)} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: 899 }} />
-            <div className="nav-filter-panel app-surface" style={{
-              position: 'fixed', bottom: '116px', left: '50%', transform: 'translateX(-50%)',
-              backgroundColor: 'rgba(26, 26, 26, 0.9)', backdropFilter: 'blur(12px)',
-              border: '1px solid rgba(42, 42, 42, 0.5)', borderRadius: '16px', padding: '24px',
-              width: '90%', maxWidth: '420px',
-              boxShadow: '0 24px 60px rgba(0, 0, 0, 0.8)',
-              zIndex: 1000, maxHeight: '65vh', overflowY: 'auto',
-            }}>
+        {/* Secondary floating pill — History page only (Prev / Filters / Next) */}
+        {ds.view === 'history' && (() => {
+          const activeFilterCount = [ds.filters.date, ds.filters.sport, ds.filters.bet_type].filter(Boolean).length;
+          const pillBtnBase: React.CSSProperties = {
+            background: 'none', border: 'none', color: 'var(--color-text-primary)',
+            fontWeight: 700, fontSize: 14, cursor: 'pointer', padding: '6px 14px',
+            borderRadius: '12px', transition: 'background 150ms',
+            display: 'flex', alignItems: 'center', gap: 5,
+          };
+          return (
+            <>
+              {/* Filter panel — spawns above secondary pill */}
+              {ds.showMenu && (
+                <>
+                  <div onClick={() => ds.setShowMenu(false)} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: 899 }} />
+                  <div className="nav-filter-panel app-surface" style={{
+                    position: 'fixed', bottom: '134px', left: '50%', transform: 'translateX(-50%)',
+                    backgroundColor: 'rgba(26, 26, 26, 0.97)', backdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(42, 42, 42, 0.6)', borderRadius: '16px', padding: '24px',
+                    width: '90%', maxWidth: '420px',
+                    boxShadow: '0 24px 60px rgba(0, 0, 0, 0.8)',
+                    zIndex: 1000, maxHeight: '60vh', overflowY: 'auto',
+                  }}>
               <FilterBar
                 onFilterChange={ds.handleFilterChange}
                 dates={ds.dates}
@@ -205,22 +213,67 @@ const Dashboard: React.FC = () => {
                 </select>
               </div>
             </div>
-          </>
-        )}
+                </>
+              )}
+
+              {/* Secondary pill */}
+              <div style={{
+                position: 'fixed', bottom: '78px', left: '50%', transform: 'translateX(-50%)',
+                zIndex: 900, display: 'flex', alignItems: 'center',
+              }}>
+                {/* pill background */}
+                <div style={{
+                  position: 'absolute', inset: 0,
+                  backgroundColor: 'rgba(26,26,26,0.97)', backdropFilter: 'blur(24px)',
+                  borderRadius: '20px', border: '1.5px solid rgba(10,132,255,0.25)',
+                  boxShadow: '0 8px 32px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.06)',
+                }} />
+                <div style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', gap: 2, padding: '4px 6px' }}>
+                  <button
+                    onClick={() => { if (ds.currentPage > 1) { ds.setCurrentPage(ds.currentPage - 1); } }}
+                    disabled={ds.currentPage <= 1}
+                    style={{ ...pillBtnBase, opacity: ds.currentPage <= 1 ? 0.3 : 1 }}
+                  >
+                    ← Prev
+                  </button>
+                  <div style={{ width: '1px', height: '20px', background: 'rgba(255,255,255,0.12)' }} />
+                  <button
+                    onClick={() => ds.setShowMenu(!ds.showMenu)}
+                    style={{
+                      ...pillBtnBase,
+                      background: ds.showMenu ? 'rgba(10,132,255,0.2)' : 'none',
+                      color: ds.showMenu ? 'var(--color-primary)' : activeFilterCount > 0 ? 'var(--color-primary)' : 'var(--color-text-primary)',
+                    }}
+                  >
+                    {activeFilterCount > 0 ? `Filters (${activeFilterCount})` : 'Filters'}
+                  </button>
+                  <div style={{ width: '1px', height: '20px', background: 'rgba(255,255,255,0.12)' }} />
+                  <button
+                    onClick={() => { if (ds.currentPage < ds.totalPages) { ds.setCurrentPage(ds.currentPage + 1); } }}
+                    disabled={ds.currentPage >= ds.totalPages}
+                    style={{ ...pillBtnBase, opacity: ds.currentPage >= ds.totalPages ? 0.3 : 1 }}
+                  >
+                    Next →
+                  </button>
+                </div>
+              </div>
+            </>
+          );
+        })()}
       </div>
 
       {/* Main content */}
       <div className="view-enter" style={{
         position: 'relative', zIndex: 1,
-        padding: '24px clamp(16px, 3vw, 80px) 100px',
+        padding: '24px clamp(16px, 3vw, 80px) 32px',
         opacity: ds.viewAnim,
         transform: `translateY(${ds.viewAnim ? 0 : 4}px)`,
         transition: 'opacity 180ms ease, transform 180ms ease',
       }}>
         {ds.loading ? (
           <div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, minmax(120px,1fr))', gap: '10px', marginBottom: '18px' }}>
-              {[...Array(4)].map((_, i) => (
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(120px,1fr))', gap: '10px', marginBottom: '18px' }}>
+              {[...Array(3)].map((_, i) => (
                 <div key={`s-${i}`} className="skeleton-shimmer" style={{ height: '78px', borderRadius: '12px', border: '1px solid var(--color-border)' }} />
               ))}
             </div>
@@ -231,22 +284,16 @@ const Dashboard: React.FC = () => {
             </div>
           </div>
         ) : ds.view === 'insights' ? (
-          <div className="app-surface" style={{ borderRadius: 16, padding: '14px', border: '1px solid rgba(255,255,255,0.14)', background: 'linear-gradient(145deg, rgba(26,26,26,0.96), rgba(22,22,22,0.92))' }}>
-            <div style={{ border: '1px solid rgba(255,255,255,0.14)', borderRadius: 12, padding: '10px 12px', marginBottom: 12, background: 'linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03))' }}>
-              <div style={{ fontSize: '24px', fontWeight: 800, color: 'var(--color-text-primary)' }}>Insights</div>
-              <div style={{ fontSize: 12, color: 'var(--color-text-secondary)', marginTop: 2 }}>Model learning, trends, and diagnostics</div>
-            </div>
+          <div style={{ padding: '0 0 10px' }}>
             <InsightsView key="insights" />
           </div>
         ) : ds.view === 'specials' ? (
-          <div className="app-surface" style={{ borderRadius: 16, padding: '14px', border: '1px solid rgba(168,85,247,0.24)', background: 'linear-gradient(145deg, rgba(26,26,26,0.96), rgba(22,22,22,0.92))' }}>
-            <SpecialsView specials={ds.specialsData as Parameters<typeof SpecialsView>[0]['specials']} />
+          <div style={{ padding: '0 0 10px' }}>
+            <SpecialsView specials={ds.specialsData} />
           </div>
         ) : ds.view === 'home' ? (
           <HomeView
             todaysPicks={ds.todaysPicks}
-            todaysPicksDate={ds.todaysPicksDate}
-            isMobile={ds.isMobile}
             homeRenderCount={ds.homeRenderCount}
             setHomeRenderCount={ds.setHomeRenderCount}
             betKey={ds.betKey}
@@ -259,31 +306,20 @@ const Dashboard: React.FC = () => {
             displayedHistoryBets={ds.displayedHistoryBets}
             historyRenderCount={ds.historyRenderCount}
             setHistoryRenderCount={ds.setHistoryRenderCount}
-            totalPages={ds.totalPages}
-            currentPage={ds.currentPage}
-            setCurrentPage={ds.setCurrentPage}
-            sort={ds.sort}
-            filters={ds.filters}
-            showMenu={ds.showMenu}
-            setShowMenu={ds.setShowMenu}
-            isMobile={ds.isMobile}
             setSelectedBet={ds.setSelectedBet}
             betKey={ds.betKey}
-            dates={ds.dates}
-            sports={ds.sports}
-            betTypes={ds.betTypes}
           />
         )}
       </div>
 
       {/* Grade Guide footer */}
       <div style={{ padding: '0 clamp(16px, 3vw, 80px) 120px' }}>
-        <div style={{ borderTop: '1px solid var(--color-border)', margin: '0 0 24px 0' }} />
+        <div style={{ borderTop: '1px solid var(--color-border)', margin: '8px 0 24px 0' }} />
         <div className="app-surface" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--color-border)', borderRadius: '12px', padding: '14px 16px' }}>
-          <div style={{ fontSize: '13px', fontWeight: '700', color: 'var(--color-text-secondary)', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '14px' }}>
+          <div style={{ fontSize: '17px', fontWeight: '700', color: 'var(--color-text-secondary)', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '14px', textAlign: 'center' }}>
             LarlScore Grade Guide
           </div>
-          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: ds.isMobile ? '1fr' : 'repeat(5, 1fr)', gap: '8px' }}>
             {[
               { grade: 'S', color: 'var(--color-success)',         rgb: '52, 199, 89',    range: '2.0+',    label: 'Elite' },
               { grade: 'A', color: 'var(--color-confidence-high)', rgb: '90, 200, 250',   range: '1.5–2.0', label: 'Strong' },
@@ -294,19 +330,17 @@ const Dashboard: React.FC = () => {
               <div key={grade} style={{
                 display: 'flex', alignItems: 'center', gap: '12px',
                 background: `rgba(${rgb}, 0.08)`, border: `1px solid rgba(${rgb}, 0.30)`,
-                borderRadius: '12px', padding: '10px 16px', flex: '1 1 150px',
+                borderRadius: '12px', padding: '12px 14px',
               }}>
-                <span style={{ fontSize: '32px', fontWeight: '900', color, fontFamily: 'var(--font-display)', minWidth: '24px', lineHeight: 1, letterSpacing: '-0.02em' }}>{grade}</span>
+                <span style={{ fontSize: '44px', fontWeight: '900', color, fontFamily: 'var(--font-display)', lineHeight: 1, letterSpacing: '-0.02em', flexShrink: 0, width: '44px', textAlign: 'center' }}>{grade}</span>
                 <div>
-                  <div style={{ fontSize: '17px', fontWeight: '700', color: 'var(--color-text-primary)', fontFamily: 'var(--font-display)' }}>{label}</div>
-                  <div style={{ fontSize: '14px', color, fontWeight: '600', fontFamily: 'var(--font-display)', marginTop: '3px', opacity: 0.85 }}>{range}</div>
+                  <div style={{ fontSize: '15px', fontWeight: '700', color: 'var(--color-text-primary)', fontFamily: 'var(--font-display)' }}>{label}</div>
+                  <div style={{ fontSize: '13px', color, fontWeight: '600', fontFamily: 'var(--font-display)', marginTop: '3px', opacity: 0.85 }}>{range}</div>
                 </div>
               </div>
             ))}
           </div>
-          <div style={{ fontSize: '13px', color: 'var(--color-text-secondary)', marginTop: '12px', lineHeight: 1.6 }}>
-            LarlScore = (confidence) × edge × (historical WR / break-even) × adaptive weight. Higher = better expected value per unit risk.
-          </div>
+
         </div>
       </div>
 

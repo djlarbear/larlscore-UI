@@ -30,7 +30,7 @@ interface Q3Specials {
   parlays?: Q3Parlay[];
 }
 
-interface SpecialsData {
+export interface SpecialsData {
   q3_100?: Q3Specials;
 }
 
@@ -80,13 +80,6 @@ export default function SpecialsView({ specials }: SpecialsViewProps) {
 
   return (
     <div style={{ padding: '0 0 32px 0' }}>
-      {/* Header */}
-      <div style={{ marginBottom: '20px' }}>
-        <div style={{ fontSize: '24px', fontWeight: 800, color: '#fff' }}>Specials</div>
-        <div style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)', marginTop: '4px' }}>
-          Long-shot parlays & specialty props
-        </div>
-      </div>
 
       {/* Q1-Q3 100+ Section */}
       <div style={{ ...sectionStyle, borderColor: 'rgba(168,85,247,0.3)', background: 'rgba(168,85,247,0.05)' }}>
