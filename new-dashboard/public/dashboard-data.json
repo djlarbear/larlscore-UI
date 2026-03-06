@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-03-06T06:00:04.610900",
+  "generated_at": "2026-03-06T11:17:26.851817",
   "export_meta": {
-    "exported_at": "2026-03-06T06:00:04.604616",
+    "exported_at": "2026-03-06T11:17:26.846067",
     "cloudflare_pages": "https://larlscore.pages.dev/",
-    "betting_repo_commit": "dfdff1d"
+    "betting_repo_commit": "586ac74"
   },
   "picks": [
     {
@@ -399,32 +399,34 @@
   ],
   "stats": {},
   "summary": {
-    "total_bets": 135,
-    "wins": 66,
-    "losses": 66,
+    "total_bets": 143,
+    "wins": 69,
+    "losses": 71,
     "cancelled": 1,
-    "win_rate": 50.0,
-    "decided": 132,
-    "net_units": -7.67,
-    "roi_pct": -5.8,
+    "win_rate": 49.3,
+    "decided": 140,
+    "net_units": -10.03,
+    "roi_pct": -7.2,
     "by_sport": {
-      "NBA": 49,
-      "NCAA Basketball": 86
+      "NBA": 53,
+      "NCAA Basketball": 88,
+      "NHL": 2
     },
     "by_bet_type": {
-      "PROP": 47,
-      "TOTAL": 29,
+      "TOTAL": 34,
+      "PROP": 50,
       "SPREAD": 51,
       "MONEYLINE": 8
     },
     "by_result": {
-      "WIN": 66,
-      "LOSS": 66,
+      "WIN": 69,
+      "LOSS": 71,
       "PUSH": 1,
       "CANCELLED": 1,
       "VOID": 1
     },
     "by_date": {
+      "2026-03-05": 8,
       "2026-03-04": 6,
       "2026-03-01": 8,
       "2026-02-27": 6,
@@ -440,11 +442,163 @@
       "2026-02-14": 15
     },
     "spread_count": 51,
-    "total_count": 29,
+    "total_count": 34,
     "moneyline_count": 8,
-    "prop_count": 47
+    "prop_count": 50
   },
   "bets": [
+    {
+      "id": "3fc7d2ffb9b70062",
+      "date": "2026-03-05",
+      "game": "Chicago Bulls @ Phoenix Suns",
+      "sport": "NBA",
+      "bet_type": "TOTAL",
+      "recommendation": "UNDER 224.5",
+      "edge": -6.9,
+      "confidence": 66.0,
+      "larlscore": 7.87,
+      "result": "WIN",
+      "actual_score": "Total: 208",
+      "game_result": "Total: 208",
+      "american_odds": -106.0,
+      "fanduel_line": "Over 224.5 (-114) / Under 224.5 (-106)",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "c836a16fc96116ab",
+      "date": "2026-03-05",
+      "game": "Michigan Wolverines @ Iowa Hawkeyes",
+      "sport": "NCAA Basketball",
+      "bet_type": "TOTAL",
+      "recommendation": "UNDER 145.5",
+      "edge": -3.5,
+      "confidence": 63.0,
+      "larlscore": 1.9,
+      "result": "WIN",
+      "actual_score": "71-68",
+      "game_result": "71-68",
+      "american_odds": -108.0,
+      "fanduel_line": "Over 145.5 (-112) / Under 145.5 (-108)",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "ebb22e70e92c5876",
+      "date": "2026-03-05",
+      "game": "Tulane Green Wave @ Temple Owls",
+      "sport": "NCAA Basketball",
+      "bet_type": "TOTAL",
+      "recommendation": "UNDER 144.5",
+      "edge": -2.7,
+      "confidence": 59.0,
+      "larlscore": 1.6,
+      "result": "LOSS",
+      "actual_score": "60-89",
+      "game_result": "60-89",
+      "american_odds": -105.0,
+      "fanduel_line": "Over 144.5 (-115) / Under 144.5 (-105)",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "a13b876744a7dec6",
+      "date": "2026-03-05",
+      "game": "Brooklyn Nets @ Miami Heat",
+      "sport": "NBA",
+      "bet_type": "PROP",
+      "recommendation": "Andrew Wiggins OVER 22.5 Points Rebounds Assists",
+      "edge": 3.8533333600000006,
+      "confidence": 62.0,
+      "larlscore": 1.41,
+      "result": "LOSS",
+      "actual_score": "Andrew Wiggins: PTS=8 REB=4 AST=1 (PRA=13 vs line 22.5)",
+      "game_result": "Andrew Wiggins: PTS=8 REB=4 AST=1 (PRA=13 vs line 22.5)",
+      "american_odds": -125.0,
+      "fanduel_line": "OVER 22.5",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "75ba78653f2c6afa",
+      "date": "2026-03-05",
+      "game": "New Orleans Pelicans @ Sacramento Kings",
+      "sport": "NBA",
+      "bet_type": "PROP",
+      "recommendation": "DeMar DeRozan OVER 20.5 Points Rebounds Assists",
+      "edge": 3.887792080000004,
+      "confidence": 51.0,
+      "larlscore": 1.39,
+      "result": "LOSS",
+      "actual_score": "DeMar DeRozan: PTS=15 REB=2 AST=2 (PRA=19 vs line 20.5)",
+      "game_result": "DeMar DeRozan: PTS=15 REB=2 AST=2 (PRA=19 vs line 20.5)",
+      "american_odds": -125.0,
+      "fanduel_line": "OVER 20.5",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "b4215336ad3dfa65",
+      "date": "2026-03-05",
+      "game": "Los Angeles Lakers @ Denver Nuggets",
+      "sport": "NBA",
+      "bet_type": "PROP",
+      "recommendation": "Christian Braun OVER 19.5 Points Rebounds Assists",
+      "edge": 3.221012639999998,
+      "confidence": 57.0,
+      "larlscore": 1.23,
+      "result": "WIN",
+      "actual_score": "Christian Braun: PTS=15 REB=5 AST=4 (PRA=24 vs line 19.5)",
+      "game_result": "Christian Braun: PTS=15 REB=5 AST=4 (PRA=24 vs line 19.5)",
+      "american_odds": -130.0,
+      "fanduel_line": "OVER 19.5",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "534792566f71eb1a",
+      "date": "2026-03-05",
+      "game": "Utah Mammoth @ Philadelphia Flyers",
+      "sport": "NHL",
+      "bet_type": "TOTAL",
+      "recommendation": "OVER 5.5",
+      "edge": 0.8,
+      "confidence": 58.0,
+      "larlscore": 0.43,
+      "result": "LOSS",
+      "actual_score": "Total: 3",
+      "game_result": "Total: 3",
+      "american_odds": -128.0,
+      "fanduel_line": "Over 5.5 / Under 5.5",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "3f4921aca61aa64a",
+      "date": "2026-03-05",
+      "game": "Boston Bruins @ Nashville Predators",
+      "sport": "NHL",
+      "bet_type": "TOTAL",
+      "recommendation": "UNDER 6.5",
+      "edge": 0.5,
+      "confidence": 53.0,
+      "larlscore": 0.26,
+      "result": "LOSS",
+      "actual_score": "Total: 9",
+      "game_result": "Total: 9",
+      "american_odds": -112.0,
+      "fanduel_line": "Over 6.5 / Under 6.5",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
     {
       "id": "bd2f2d8ab5dd9662",
       "date": "2026-03-04",
@@ -3013,6 +3167,13 @@
   ],
   "dates": [
     {
+      "date": "2026-03-05",
+      "total": 8,
+      "wins": 3,
+      "losses": 5,
+      "win_rate": 37.5
+    },
+    {
       "date": "2026-03-04",
       "total": 6,
       "wins": 1,
@@ -3106,7 +3267,8 @@
   ],
   "sports": [
     "NBA",
-    "NCAA Basketball"
+    "NCAA Basketball",
+    "NHL"
   ],
   "bet_types": [
     "MONEYLINE",
@@ -3115,35 +3277,42 @@
     "TOTAL"
   ],
   "insights": {
-    "generated_at": "2026-03-06T04:03:47.899604",
-    "total_bets_analyzed": 132,
-    "overall_win_rate": 50.0,
+    "generated_at": "2026-03-06T09:07:06.786434",
+    "total_bets_analyzed": 140,
+    "overall_win_rate": 49.3,
     "roi": {
       "juice": -110,
-      "units_wagered": 132.0,
-      "units_returned": 124.33,
-      "net_units": -7.67,
-      "roi_pct": -5.81,
-      "win_rate_pct": 50.0,
+      "units_wagered": 140.0,
+      "units_returned": 129.97,
+      "net_units": -10.03,
+      "roi_pct": -7.17,
+      "win_rate_pct": 49.3,
       "breakeven_win_rate_pct": 52.4,
-      "above_breakeven": -2.4,
-      "record": "66W-66L-0P",
+      "above_breakeven": -3.1,
+      "record": "69W-71L-0P",
       "note": "Flat betting 1 unit per bet at stated juice"
     },
     "by_sport": {
       "NCAA Basketball": {
-        "wins": 42,
-        "losses": 44,
-        "total": 86,
-        "win_rate": 48.8,
-        "record": "42-44"
+        "wins": 43,
+        "losses": 45,
+        "total": 88,
+        "win_rate": 48.9,
+        "record": "43-45"
       },
       "NBA": {
-        "wins": 24,
-        "losses": 22,
-        "total": 46,
-        "win_rate": 52.2,
-        "record": "24-22"
+        "wins": 26,
+        "losses": 24,
+        "total": 50,
+        "win_rate": 52.0,
+        "record": "26-24"
+      },
+      "NHL": {
+        "wins": 0,
+        "losses": 2,
+        "total": 2,
+        "win_rate": 0.0,
+        "record": "0-2"
       }
     },
     "by_bet_type": {
@@ -3162,29 +3331,29 @@
         "record": "1-7"
       },
       "TOTAL": {
-        "wins": 19,
-        "losses": 10,
-        "total": 29,
-        "win_rate": 65.5,
-        "record": "19-10"
+        "wins": 21,
+        "losses": 13,
+        "total": 34,
+        "win_rate": 61.8,
+        "record": "21-13"
       },
       "PROP": {
-        "wins": 23,
-        "losses": 21,
-        "total": 44,
-        "win_rate": 52.3,
-        "record": "23-21"
+        "wins": 24,
+        "losses": 23,
+        "total": 47,
+        "win_rate": 51.1,
+        "record": "24-23"
       }
     },
     "moneyline_status": "DISABLED",
     "moneyline_reason": "ml_bad_or_insufficient: n=8 wr=12.5%",
     "by_risk_tier": {
       "Unknown": {
-        "wins": 66,
-        "losses": 66,
-        "total": 132,
-        "win_rate": 50.0,
-        "record": "66-66"
+        "wins": 69,
+        "losses": 71,
+        "total": 140,
+        "win_rate": 49.3,
+        "record": "69-71"
       }
     },
     "by_confidence": {
@@ -3213,20 +3382,20 @@
         "record": "28-24"
       },
       "60-69%": {
-        "wins": 16,
-        "losses": 15,
-        "total": 31,
-        "win_rate": 51.6,
+        "wins": 18,
+        "losses": 16,
+        "total": 34,
+        "win_rate": 52.9,
         "avg_confidence": 64.4,
-        "record": "16-15"
+        "record": "18-16"
       },
       "50-59%": {
-        "wins": 9,
-        "losses": 9,
-        "total": 18,
-        "win_rate": 50.0,
-        "avg_confidence": 54.9,
-        "record": "9-9"
+        "wins": 10,
+        "losses": 13,
+        "total": 23,
+        "win_rate": 43.5,
+        "avg_confidence": 55.1,
+        "record": "10-13"
       }
     },
     "by_edge": {
@@ -3247,12 +3416,12 @@
         "record": "13-15"
       },
       "3-4.9 pts": {
-        "wins": 20,
-        "losses": 20,
-        "total": 40,
-        "win_rate": 50.0,
-        "avg_edge": 4.0,
-        "record": "20-20"
+        "wins": 21,
+        "losses": 22,
+        "total": 43,
+        "win_rate": 48.8,
+        "avg_edge": 3.9,
+        "record": "21-22"
       },
       "1-2.9 pts": {
         "wins": 6,
@@ -3263,12 +3432,12 @@
         "record": "6-8"
       },
       "0-0.9 pts": {
-        "wins": 1,
-        "losses": 7,
-        "total": 8,
-        "win_rate": 12.5,
-        "avg_edge": 0.5,
-        "record": "1-7"
+        "wins": 3,
+        "losses": 10,
+        "total": 13,
+        "win_rate": 23.1,
+        "avg_edge": -0.6,
+        "record": "3-10"
       }
     },
     "by_pinnacle": {
@@ -3328,7 +3497,7 @@
         "type": "THRESHOLD",
         "priority": "MEDIUM",
         "action": "Raise minimum edge threshold for 3-4.9 pts range",
-        "reason": "Only 50.0% win rate with edge range 3-4.9 pts"
+        "reason": "Only 48.8% win rate with edge range 3-4.9 pts"
       },
       {
         "type": "THRESHOLD",
@@ -3340,7 +3509,7 @@
         "type": "THRESHOLD",
         "priority": "MEDIUM",
         "action": "Raise minimum edge threshold for 0-0.9 pts range",
-        "reason": "Only 12.5% win rate with edge range 0-0.9 pts"
+        "reason": "Only 23.1% win rate with edge range 0-0.9 pts"
       }
     ],
     "optimal_thresholds": {
@@ -3373,8 +3542,8 @@
       }
     },
     "result_attribution": {
-      "generated_at": "2026-03-06T04:03:47.899475",
-      "sample_size": 132,
+      "generated_at": "2026-03-06T09:07:06.786312",
+      "sample_size": 140,
       "confidence_attribution": {
         "SPREAD": {
           "50-59": {
@@ -3399,14 +3568,14 @@
         "TOTAL": {
           "50-59": {
             "wins": 4,
-            "losses": 3,
-            "wr": 0.571,
-            "flag": false
+            "losses": 6,
+            "wr": 0.4,
+            "flag": true
           },
           "60-69": {
-            "wins": 2,
+            "wins": 4,
             "losses": 1,
-            "wr": 0.667,
+            "wr": 0.8,
             "flag": false
           },
           "70+": {
@@ -3418,15 +3587,15 @@
         },
         "PROP": {
           "50-59": {
-            "wins": 2,
-            "losses": 5,
-            "wr": 0.286,
+            "wins": 3,
+            "losses": 6,
+            "wr": 0.333,
             "flag": true
           },
           "60-69": {
             "wins": 10,
-            "losses": 6,
-            "wr": 0.625,
+            "losses": 7,
+            "wr": 0.588,
             "flag": false
           },
           "70+": {
@@ -3467,9 +3636,9 @@
         "TOTAL": {
           "0-2.9": {
             "wins": 0,
-            "losses": 0,
-            "wr": null,
-            "flag": false
+            "losses": 2,
+            "wr": 0.0,
+            "flag": true
           },
           "3-4.9": {
             "wins": 0,
@@ -3498,9 +3667,9 @@
             "flag": false
           },
           "3-4.9": {
-            "wins": 13,
-            "losses": 9,
-            "wr": 0.591,
+            "wins": 14,
+            "losses": 11,
+            "wr": 0.56,
             "flag": false
           },
           "5-9.9": {
@@ -3532,7 +3701,8 @@
       "key_findings": [
         "SPREAD 60-69% conf has 42.9% WR (3-4) \u2014 confidence bucket underperforming",
         "SPREAD 70+% conf has 43.9% WR (18-23) \u2014 high confidence is INVERSE signal",
-        "PROP 50-59% conf has 28.6% WR (2-5) \u2014 confidence bucket underperforming",
+        "TOTAL 50-59% conf has 40.0% WR (4-6) \u2014 confidence bucket underperforming",
+        "PROP 50-59% conf has 33.3% WR (3-6) \u2014 confidence bucket underperforming",
         "SPREAD edge 0-2.9 has 42.9% WR (6-8) \u2014 below break-even 52.4%",
         "SPREAD edge 3-4.9 has 38.9% WR (7-11) \u2014 below break-even 52.4%",
         "SPREAD edge 5-9.9 has 50.0% WR (4-4) \u2014 below break-even 52.4%",
@@ -3552,13 +3722,13 @@
       },
       "TOTAL": {
         "assumed": 0.64,
-        "actual": 0.6552,
-        "actual_pct": 65.5,
+        "actual": 0.6176,
+        "actual_pct": 61.8,
         "assumed_pct": 64.0,
-        "deviation_pp": 1.52,
+        "deviation_pp": -2.24,
         "status": "GREEN",
-        "n_bets": 29,
-        "record": "19W-10L"
+        "n_bets": 34,
+        "record": "21W-13L"
       },
       "MONEYLINE": {
         "assumed": 0.0,
@@ -3572,13 +3742,13 @@
       },
       "PROP": {
         "assumed": 0.5,
-        "actual": 0.5227,
-        "actual_pct": 52.3,
+        "actual": 0.5106,
+        "actual_pct": 51.1,
         "assumed_pct": 50.0,
-        "deviation_pp": 2.27,
+        "deviation_pp": 1.06,
         "status": "GREEN",
-        "n_bets": 44,
-        "record": "23W-21L"
+        "n_bets": 47,
+        "record": "24W-23L"
       }
     },
     "deviation_alerts": [
@@ -3590,10 +3760,10 @@
         "actual_wr_pct": 12.5,
         "n_bets_sampled": 8,
         "recommendation": "Keep DISABLED \u2014 actual WR too low",
-        "generated_at": "2026-03-06T04:03:47.902554"
+        "generated_at": "2026-03-06T09:07:06.789435"
       }
     ],
-    "assumption_audit_at": "2026-03-06T04:03:47.902736",
+    "assumption_audit_at": "2026-03-06T09:07:06.789633",
     "quality": {
       "overall": {
         "window_days": null,
@@ -3645,9 +3815,9 @@
       }
     },
     "export_meta": {
-      "exported_at": "2026-03-06T06:00:04.604616",
+      "exported_at": "2026-03-06T11:17:26.846067",
       "cloudflare_pages": "https://larlscore.pages.dev/",
-      "betting_repo_commit": "dfdff1d"
+      "betting_repo_commit": "586ac74"
     }
   },
   "bonus_bets": [],
@@ -3698,29 +3868,37 @@
       "boost_status": "INSUFFICIENT",
       "penalty_status": "INSUFFICIENT"
     },
-    "instructions": "Use these weights in bet_ranker.py when calculating LARLScore"
+    "instructions": "Use these weights in bet_ranker.py when calculating LARLScore",
+    "by_sport": {
+      "NHL": {
+        "TOTAL": {
+          "weight": 1.0,
+          "win_rate": 0.0,
+          "sample_count": 2,
+          "note": "bootstrap"
+        },
+        "MONEYLINE": {
+          "weight": 1.0,
+          "win_rate": null,
+          "sample_count": 0,
+          "note": "bootstrap"
+        },
+        "SPREAD": {
+          "weight": 1.0,
+          "win_rate": null,
+          "sample_count": 0,
+          "note": "bootstrap"
+        }
+      }
+    }
   },
   "specials": {
     "q3_100": {
-      "date": "2026-03-03",
-      "generated_at": "2026-03-04T03:25:58.653843Z",
-      "league_context": {
-        "avg_q1q3": 86.53,
-        "base_hit_rate_100": 0.127
-      },
-      "games_analyzed": 4,
+      "date": "2026-03-06",
       "picks": [],
       "parlays": [],
-      "model_params": {
-        "blend_weights": {
-          "season": 0.35,
-          "recent": 0.65
-        },
-        "opp_defense_weight": 0.35,
-        "home_boost": 2.5,
-        "min_prob_single": 0.28,
-        "min_prob_parlay": 0.35
-      }
+      "note": "No NBA games scheduled today",
+      "generated_at": "2026-03-06T12:02:08.957367Z"
     }
   }
 }
