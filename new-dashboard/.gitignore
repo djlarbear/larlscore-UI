@@ -38,3 +38,5 @@ src/**/*.js
 src/**/*.js.map
 src/**/*.d.ts
 src/**/*.d.ts.map
+# Exception: vite-env.d.ts is hand-written (not compiled) — must be committed for CF Pages build
+!src/vite-env.d.ts
