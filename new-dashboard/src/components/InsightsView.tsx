@@ -41,12 +41,18 @@ interface Insights {
     min_edge: number;
     max_high_risk_pct: number;
   };
-  optimal_thresholds_by_type?: any;
+  optimal_thresholds_by_type?: Record<string, { min_confidence?: number; min_edge?: number }>;
   moneyline_status?: string;
   moneyline_reason?: string;
 
   // Optional export-time instrumentation (static dashboard ops)
-  quality?: any;
+  quality?: {
+    last7?: {
+      pinnacle?: { coverage_pct?: number; agree_pct?: number };
+      consensus?: { coverage_pct?: number };
+      clv_proxy?: { avg_abs?: number };
+    };
+  };
   export_meta?: {
     exported_at?: string;
     betting_repo_commit?: string | null;
@@ -54,23 +60,25 @@ interface Insights {
   };
 }
 
+// Win rate → grade color (matches LarlScore grade palette: green/blue/yellow/orange/red)
 function winRateColor(rate: number): string {
-  if (rate >= 55) return 'var(--color-success)';
-  if (rate >= 52.4) return 'var(--color-caution)';
-  if (rate >= 45) return 'var(--color-pending)';
-  return 'var(--color-destructive)';
+  if (rate >= 57) return 'var(--color-success)';           // S-tier: clearly profitable
+  if (rate >= 52.4) return 'var(--color-confidence-high)'; // A-tier: above break-even (sky blue)
+  if (rate >= 48) return 'var(--color-grade-b)';           // B-tier: marginal (yellow)
+  if (rate >= 43) return 'var(--color-caution)';           // C-tier: below b/e (orange)
+  return 'var(--color-destructive)';                        // D-tier: losing (red)
 }
 
 const CompactBubble: React.FC<{ label: string; record: string; rate: number }> = ({ label, record, rate }) => (
   <div className="app-card app-surface" style={{ borderRadius: 14, padding: '12px 14px', gap: 10, display: 'grid', gridTemplateColumns: '1fr auto' }}>
     <div>
-      <div style={{ fontSize: 15, fontWeight: 720, color: 'var(--color-text-primary)', letterSpacing: '0.01em' }}>{label}</div>
+      <div style={{ fontSize: 15, fontWeight: 720, color: 'var(--color-text-primary)', letterSpacing: '-0.01em', fontFamily: 'var(--font-display)' }}>{label}</div>
       <div style={{ fontSize: 13, color: 'var(--color-text-secondary)', marginTop: 3 }}>{record}</div>
       <div style={{ marginTop: 8, height: 6, background: 'rgba(255,255,255,0.1)', borderRadius: 999, overflow: 'hidden' }}>
         <div style={{ width: `${Math.max(0, Math.min(100, rate))}%`, height: '100%', background: winRateColor(rate) }} />
       </div>
     </div>
-    <div style={{ alignSelf: 'center', fontSize: 22, fontWeight: 780, color: winRateColor(rate), fontFamily: 'var(--font-mono)', fontVariantNumeric: 'tabular-nums' }}>{rate.toFixed(1)}%</div>
+    <div style={{ alignSelf: 'center', fontSize: 24, fontWeight: 800, color: winRateColor(rate), fontFamily: 'var(--font-display)', letterSpacing: '-0.02em' }}>{rate.toFixed(1)}%</div>
   </div>
 );
 
@@ -85,7 +93,24 @@ const CompactSection: React.FC<{ title: string; data: Record<string, { record: s
 
 const InsightsView: React.FC = () => {
   const [data, setData] = useState<Insights | null>(null);
-  const [status, setStatus] = useState<any>(null);
+  const [status, setStatus] = useState<{
+    health_strip?: {
+      parlays?: {
+        count?: number;
+        primary_odds?: number | null;
+        primary_in_band?: boolean | null;
+      } | null;
+      odds_coverage_today?: {
+        pct?: number | null;
+        with_odds?: number;
+        total?: number;
+      } | null;
+      espn?: {
+        down_flag?: boolean;
+        down_flag_mtime?: string | null;
+      } | null;
+    };
+  } | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [retry, setRetry] = useState(0);
@@ -125,13 +150,13 @@ const InsightsView: React.FC = () => {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0,1fr))', gap: 12 }}>
           <div>
             <div style={{ fontSize: 12, color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 720 }}>Overall WR</div>
-            <div style={{ fontSize: 30, fontWeight: 820, color: winRateColor(data.overall_win_rate), fontFamily: 'var(--font-mono)', fontVariantNumeric: 'tabular-nums' }}>{data.overall_win_rate.toFixed(1)}%</div>
-            <div style={{ fontSize: 13, color: 'var(--color-text-secondary)', fontWeight: 520 }}>{data.roi.record}</div>
+            <div style={{ fontSize: 36, fontWeight: 800, color: winRateColor(data.overall_win_rate), fontFamily: 'var(--font-display)', letterSpacing: '-0.03em', lineHeight: 1.1 }}>{data.overall_win_rate.toFixed(1)}%</div>
+            <div style={{ fontSize: 14, color: 'var(--color-text-secondary)', fontWeight: 600, marginTop: 2 }}>{data.roi.record}</div>
           </div>
           <div style={{ textAlign: 'right' }}>
             <div style={{ fontSize: 12, color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 720 }}>ROI @ -110</div>
-            <div style={{ fontSize: 30, fontWeight: 820, color: roiPositive ? 'var(--color-success)' : 'var(--color-destructive)', fontFamily: 'var(--font-mono)', fontVariantNumeric: 'tabular-nums' }}>{data.roi.roi_pct.toFixed(1)}%</div>
-            <div style={{ fontSize: 13, color: 'var(--color-text-secondary)', fontWeight: 520 }}>{data.roi.net_units.toFixed(1)}u net</div>
+            <div style={{ fontSize: 36, fontWeight: 800, color: roiPositive ? 'var(--color-success)' : 'var(--color-destructive)', fontFamily: 'var(--font-display)', letterSpacing: '-0.03em', lineHeight: 1.1 }}>{data.roi.roi_pct.toFixed(1)}%</div>
+            <div style={{ fontSize: 14, color: 'var(--color-text-secondary)', fontWeight: 600, marginTop: 2 }}>{data.roi.net_units.toFixed(1)}u net</div>
           </div>
         </div>
         <div style={{ marginTop: 8, display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -225,7 +250,7 @@ const InsightsView: React.FC = () => {
         className="insights-grid"
         style={{
           gap: 12,
-          gridTemplateColumns: 'repeat(4, minmax(240px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
           alignItems: 'start',
         }}
       >

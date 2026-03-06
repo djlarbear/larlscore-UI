@@ -38,10 +38,10 @@ interface SpecialsViewProps {
   specials?: SpecialsData;
 }
 
-const trendEmoji = (trend: string) => {
-  if (trend === 'hot') return '🔥';
-  if (trend === 'cold') return '❄️';
-  return '➡️';
+const trendLabel = (trend: string) => {
+  if (trend === 'hot') return 'HOT';
+  if (trend === 'cold') return 'COLD';
+  return '';
 };
 
 const probColor = (prob: number) => {
@@ -82,7 +82,7 @@ export default function SpecialsView({ specials }: SpecialsViewProps) {
     <div style={{ padding: '0 0 32px 0' }}>
       {/* Header */}
       <div style={{ marginBottom: '20px' }}>
-        <div style={{ fontSize: '24px', fontWeight: 800, color: '#fff' }}>⚡ Specials</div>
+        <div style={{ fontSize: '24px', fontWeight: 800, color: '#fff' }}>Specials</div>
         <div style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)', marginTop: '4px' }}>
           Long-shot parlays & specialty props
         </div>
@@ -91,7 +91,6 @@ export default function SpecialsView({ specials }: SpecialsViewProps) {
       {/* Q1-Q3 100+ Section */}
       <div style={{ ...sectionStyle, borderColor: 'rgba(168,85,247,0.3)', background: 'rgba(168,85,247,0.05)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
-          <span style={{ fontSize: '20px' }}>🏀</span>
           <div>
             <div style={{ fontSize: '16px', fontWeight: 700, color: '#fff' }}>Team Scores 100+ in Q1–Q3</div>
             <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.45)' }}>
@@ -107,7 +106,7 @@ export default function SpecialsView({ specials }: SpecialsViewProps) {
         {parlays.length > 0 ? (
           <div style={{ marginBottom: '16px' }}>
             <div style={{ fontSize: '13px', fontWeight: 700, color: 'rgba(255,255,255,0.7)', marginBottom: '8px' }}>
-              🎯 Recommended Parlays
+              Recommended Parlays
             </div>
             {parlays.map((parlay, i) => (
               <div key={i} style={{
@@ -146,7 +145,7 @@ export default function SpecialsView({ specials }: SpecialsViewProps) {
         {picks.length > 0 ? (
           <div>
             <div style={{ fontSize: '13px', fontWeight: 700, color: 'rgba(255,255,255,0.7)', marginBottom: '8px' }}>
-              📋 Top Candidates
+              Top Candidates
             </div>
             {picks.map((pick, i) => (
               <div key={i} style={{
@@ -159,7 +158,7 @@ export default function SpecialsView({ specials }: SpecialsViewProps) {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                   <div>
                     <div style={{ fontWeight: 700, color: '#fff', fontSize: '14px' }}>
-                      {trendEmoji(pick.trend)} {pick.team}
+                      {trendLabel(pick.trend) && <span style={{ fontSize: '10px', fontWeight: 700, color: '#FF9500', marginRight: '4px' }}>{trendLabel(pick.trend)}</span>}{pick.team}
                       <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', fontWeight: 400, marginLeft: '6px' }}>
                         ({pick.home_away})
                       </span>
@@ -207,7 +206,6 @@ export default function SpecialsView({ specials }: SpecialsViewProps) {
             color: 'rgba(255,255,255,0.35)',
             fontSize: '14px',
           }}>
-            <div style={{ fontSize: '28px', marginBottom: '8px' }}>🎲</div>
             <div>No picks today — threshold not met</div>
             <div style={{ fontSize: '12px', marginTop: '4px' }}>Refreshes daily at 5 AM with tomorrow's games</div>
           </div>
@@ -217,7 +215,7 @@ export default function SpecialsView({ specials }: SpecialsViewProps) {
       {/* Future specials placeholder */}
       <div style={{ ...sectionStyle, opacity: 0.5 }}>
         <div style={{ fontSize: '14px', fontWeight: 600, color: 'rgba(255,255,255,0.5)', textAlign: 'center', padding: '8px' }}>
-          ➕ More specialty props coming soon
+          More specialty props coming soon
         </div>
       </div>
     </div>

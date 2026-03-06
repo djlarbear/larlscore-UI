@@ -3,7 +3,7 @@
  * Layout: Team @ Team (big) → Sport · Time → Pick (2 lines) → Stats → Why This Pick
  */
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Bet } from '../utils/api-new';
 
 // Card chrome (border/shadow) is result-driven — tells you at a glance if it won or lost
@@ -51,7 +51,7 @@ const Squircle: React.FC<{ label: string; value: string; color: string }> = ({ l
 );
 
 interface BetCardProps {
-  bet: Bet | any;
+  bet: Bet;
   onClick?: () => void;
   showScore?: boolean;
 }
@@ -69,7 +69,7 @@ const BetCard: React.FC<BetCardProps> = ({ bet, onClick, showScore = true }) => 
   const game_time      = bet.game_time      || '';
   const fanduel_line   = bet.fanduel_line   || '';
 
-  const scheduleText = (() => {
+  const scheduleText = useMemo(() => {
     const displayDate = (() => {
       if (!bet?.date) return '';
       try {
@@ -95,14 +95,16 @@ const BetCard: React.FC<BetCardProps> = ({ bet, onClick, showScore = true }) => 
 
     if (displayDate) return `${displayDate} · Time TBD EST`;
     return 'Time TBD EST';
-  })();
+  }, [bet?.date, game_time]);
 
-  const getBetTypeColor = (type: string): string => {
+  // Returns hard RGB values so we can safely do rgba() and hex-alpha bg/border
+  const getBetTypeStyle = (type: string): { color: string; bg: string; border: string } => {
     switch (type?.toUpperCase()) {
-      case 'TOTAL':     return 'var(--color-total)';
-      case 'SPREAD':    return 'var(--color-spread)';
-      case 'MONEYLINE': return 'var(--color-moneyline)';
-      default:          return 'var(--color-primary)';
+      case 'TOTAL':     return { color: '#34C759', bg: 'rgba(52,199,89,0.14)',    border: 'rgba(52,199,89,0.45)' };
+      case 'SPREAD':    return { color: '#FF9500', bg: 'rgba(255,149,0,0.14)',    border: 'rgba(255,149,0,0.45)' };
+      case 'PROP':      return { color: '#5AC8FA', bg: 'rgba(90,200,250,0.14)',   border: 'rgba(90,200,250,0.45)' };
+      case 'MONEYLINE': return { color: '#FF3B30', bg: 'rgba(255,59,48,0.14)',    border: 'rgba(255,59,48,0.45)' };
+      default:          return { color: '#0A84FF', bg: 'rgba(10,132,255,0.14)',   border: 'rgba(10,132,255,0.45)' };
     }
   };
 
@@ -116,12 +118,32 @@ const BetCard: React.FC<BetCardProps> = ({ bet, onClick, showScore = true }) => 
     }
   };
 
-  const betTypeColor = getBetTypeColor(bet_type);
+  const betTypeStyle = getBetTypeStyle(bet_type);
   const resultInfo   = getResultDisplay(result);
   const resultRgb = resultInfo.rgbVar;
 
-  const edgeColor   = edge >= 20 ? 'var(--color-success)' : edge >= 10 ? 'var(--color-caution)' : 'var(--color-pending)';
-  const confColor   = confidence >= 75 ? 'var(--color-confidence-high)' : confidence >= 65 ? 'var(--color-caution)' : 'var(--color-pending)';
+  // Stats: only LarlScore gets grade color — everything else is neutral
+  const neutralColor = 'var(--color-text-secondary)';
+
+  // Odds display: prefer american_odds field; extract from fanduel_line if needed; else N/A
+  const oddsDisplay = useMemo(() => {
+    const ao = bet.american_odds ?? null;
+    if (ao != null) {
+      const formatted = ao > 0 ? `+${ao}` : String(ao);
+      // If fanduel_line has context not already in recommendation, prefix it
+      const lineExtra = fanduel_line && !recommendation.toLowerCase().includes(fanduel_line.toLowerCase().trim());
+      // But if fanduel_line already has embedded odds, just use fanduel_line
+      const lineHasOdds = fanduel_line && /\([+-]?\d+\)/.test(fanduel_line);
+      if (lineHasOdds && lineExtra) return fanduel_line;
+      return lineExtra ? `${fanduel_line} (${formatted})` : `Odds: ${formatted}`;
+    }
+    // Try to extract from fanduel_line
+    if (fanduel_line) {
+      if (/\([+-]?\d+\)/.test(fanduel_line)) return fanduel_line;
+      return fanduel_line; // show even without odds
+    }
+    return 'Odds N/A';
+  }, [bet.american_odds, fanduel_line, recommendation]);
 
   // LARLScore grade: S=2.0+ A=1.5-2.0 B=1.0-1.5 C=0.5-1.0 D=<0.5
   const getLarlGrade = (s: number): { grade: string; color: string } => {
@@ -165,8 +187,8 @@ const BetCard: React.FC<BetCardProps> = ({ bet, onClick, showScore = true }) => 
         el.style.borderColor = `rgba(var(${resultRgb}),0.18)`;
       }}
     >
-      {/* ── Row 1: Sport chip + status/bet-type chip ── */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      {/* ── Row 1: Sport chip | Bet Type chip (always) + Result chip (if graded) ── */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 8 }}>
         <div style={{
           background: 'rgba(255,255,255,0.06)',
           border: '1px solid rgba(255,255,255,0.14)',
@@ -176,39 +198,44 @@ const BetCard: React.FC<BetCardProps> = ({ bet, onClick, showScore = true }) => 
           fontWeight: 650,
           color: 'var(--color-text-tertiary)',
           letterSpacing: '0.2px',
+          flexShrink: 0,
         }}>
           {cleanSportName(sport) || 'Basketball'}
         </div>
 
-        {result ? (
+        {/* Right side: always show bet type, optionally also show result */}
+        <div style={{ display: 'flex', gap: 6, alignItems: 'center', flexShrink: 0 }}>
+          {/* Bet type — always visible */}
           <div style={{
-            background: resultInfo.bg,
-            border: `2px solid ${resultInfo.color}`,
+            background: betTypeStyle.bg,
+            border: `1px solid ${betTypeStyle.border}`,
             borderRadius: 8,
             padding: '4px 10px',
             fontSize: 11,
             fontWeight: 700,
-            color: resultInfo.color,
-            textTransform: 'uppercase',
-            letterSpacing: '0.3px',
-          }}>
-            {resultInfo.text}
-          </div>
-        ) : (
-          <div style={{
-            background: `${betTypeColor}22`,
-            border: `1px solid ${betTypeColor}55`,
-            borderRadius: 8,
-            padding: '4px 10px',
-            fontSize: 11,
-            fontWeight: 700,
-            color: betTypeColor,
+            color: betTypeStyle.color,
             textTransform: 'uppercase',
             letterSpacing: '0.4px',
           }}>
             {bet_type}
           </div>
-        )}
+          {/* Result badge — only for WIN/LOSS/PUSH/CANCELLED (not for PENDING or null) */}
+          {result && result !== 'PENDING' && (
+            <div style={{
+              background: resultInfo.bg,
+              border: `1.5px solid ${resultInfo.color}`,
+              borderRadius: 8,
+              padding: '4px 10px',
+              fontSize: 11,
+              fontWeight: 700,
+              color: resultInfo.color,
+              textTransform: 'uppercase',
+              letterSpacing: '0.3px',
+            }}>
+              {resultInfo.text}
+            </div>
+          )}
+        </div>
       </div>
 
       {/* ── Row 2: Game + Time (centered) ── */}
@@ -221,23 +248,21 @@ const BetCard: React.FC<BetCardProps> = ({ bet, onClick, showScore = true }) => 
         </div>
       </div>
 
-      {/* ── Row 3: Pick bubble (2-line) ── */}
+      {/* ── Row 3: Pick bubble — recommendation + odds ── */}
       <div style={{
         background: 'rgba(255,255,255,0.06)',
         borderRadius: 10,
         padding: '10px 14px',
       }}>
-        <div style={{ fontSize: 10, color: betTypeColor, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.4px', marginBottom: 6 }}>
+        <div style={{ fontSize: 10, color: 'var(--color-text-tertiary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.4px', marginBottom: 6 }}>
           Pick
         </div>
-        <div className="clamp-2" style={{ fontSize: 15, fontWeight: 700, color: 'var(--color-text-primary)', marginBottom: fanduel_line ? 6 : 0 }}>
+        <div className="clamp-2" style={{ fontSize: 15, fontWeight: 700, color: 'var(--color-text-primary)', marginBottom: 6 }}>
           {recommendation}
         </div>
-        {fanduel_line && (
-          <div style={{ fontSize: 12, color: 'var(--color-text-tertiary)' }}>
-            {fanduel_line}
-          </div>
-        )}
+        <div style={{ fontSize: 12, color: 'var(--color-text-tertiary)', fontVariantNumeric: 'tabular-nums' }}>
+          {oddsDisplay}
+        </div>
       </div>
 
       {/* ── Row 4: Final Score (History only) ── */}
@@ -254,10 +279,10 @@ const BetCard: React.FC<BetCardProps> = ({ bet, onClick, showScore = true }) => 
         </div>
       )}
 
-      {/* ── Row 5: Stats bubbles ── */}
+      {/* ── Row 5: Stats bubbles — only LarlScore is colored ── */}
       <div style={{ display: 'flex', gap: 8 }}>
-        <Squircle label="Confidence" value={`${Math.round(confidence)}%`} color={confColor} />
-        <Squircle label="Edge"       value={`${typeof edge === 'number' ? edge.toFixed(1) : '0.0'}`} color={edgeColor} />
+        <Squircle label="Confidence" value={`${Math.round(confidence)}%`} color={neutralColor} />
+        <Squircle label="Edge"       value={`${typeof edge === 'number' ? edge.toFixed(1) : '0.0'}`} color={neutralColor} />
         <Squircle label="LarlScore"  value={typeof larlscore === 'number' ? `${larlscore.toFixed(2)} (${larlGrade.grade})` : '— (D)'} color={larlColor} />
       </div>
 
@@ -278,7 +303,7 @@ const BetCard: React.FC<BetCardProps> = ({ bet, onClick, showScore = true }) => 
           justifyContent: 'center',
           gap: 6,
         }}>
-          <span style={{ color: betTypeColor }}>TAP FOR FULL DETAILS</span>
+          <span>TAP FOR FULL DETAILS</span>
           <span style={{ opacity: 0.5 }}>·</span>
           <span>why this pick, stats</span>
         </div>

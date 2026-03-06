@@ -85,21 +85,21 @@ const FilterBar: React.FC<FilterBarProps> = ({
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          backgroundColor: 'rgba(10, 132, 255, 0.1)',
-          border: '1px solid #0A84FF',
+          backgroundColor: 'rgba(var(--color-primary-rgb), 0.1)',
+          border: '1px solid var(--color-primary)',
           borderRadius: '8px',
           padding: '8px 12px',
         }}>
-          <p style={{ fontSize: '12px', fontWeight: '600', color: '#0A84FF', margin: 0 }}>
+          <p style={{ fontSize: '12px', fontWeight: '600', color: 'var(--color-primary)', margin: 0 }}>
             {activeCount} filter{activeCount !== 1 ? 's' : ''} active
           </p>
           <button
             onClick={clearAll}
             style={{
               background: 'rgba(255,69,58,0.15)',
-              border: '1px solid #ff453a',
+              border: '1px solid var(--color-destructive)',
               borderRadius: '6px',
-              color: '#ff453a',
+              color: 'var(--color-destructive)',
               fontSize: '11px',
               fontWeight: '600',
               padding: '3px 10px',
@@ -117,7 +117,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
         <label style={{ 
           fontSize: '12px', 
           fontWeight: '600', 
-          color: date ? '#0A84FF' : '#A0A0A0', 
+          color: date ? 'var(--color-primary)' : '#A0A0A0', 
           display: 'flex',
           alignItems: 'center',
           gap: '6px',
@@ -125,7 +125,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
           textTransform: 'uppercase', 
           letterSpacing: '0.5px' 
         }}>
-          Date {date && <span style={{ color: '#0A84FF', fontSize: '10px' }}>✓</span>}
+          Date {date && <span style={{ color: 'var(--color-primary)', fontSize: '10px' }}>✓</span>}
         </label>
         <select
           value={date}
@@ -134,8 +134,8 @@ const FilterBar: React.FC<FilterBarProps> = ({
             width: '100%',
             padding: '8px 12px',
             backgroundColor: '#0d0d0d',
-            color: date ? '#0A84FF' : '#FFFFFF',
-            border: date ? '1px solid #0A84FF' : '1px solid #2a2a2a',
+            color: date ? 'var(--color-primary)' : '#FFFFFF',
+            border: date ? '1px solid var(--color-primary)' : '1px solid var(--color-border)',
             borderRadius: '8px',
             fontSize: '13px',
             fontWeight: '500',
@@ -156,7 +156,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
         <label style={{ 
           fontSize: '12px', 
           fontWeight: '600', 
-          color: sport ? '#0A84FF' : '#A0A0A0', 
+          color: sport ? 'var(--color-primary)' : '#A0A0A0', 
           display: 'flex',
           alignItems: 'center',
           gap: '6px',
@@ -164,7 +164,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
           textTransform: 'uppercase', 
           letterSpacing: '0.5px' 
         }}>
-          Sport {sport && <span style={{ color: '#0A84FF', fontSize: '10px' }}>●</span>}
+          Sport {sport && <span style={{ color: 'var(--color-primary)', fontSize: '10px' }}>●</span>}
         </label>
         <select
           value={sport}
@@ -173,8 +173,8 @@ const FilterBar: React.FC<FilterBarProps> = ({
             width: '100%',
             padding: '8px 12px',
             backgroundColor: '#0d0d0d',
-            color: sport ? '#0A84FF' : '#FFFFFF',
-            border: sport ? '1px solid #0A84FF' : '1px solid #2a2a2a',
+            color: sport ? 'var(--color-primary)' : '#FFFFFF',
+            border: sport ? '1px solid var(--color-primary)' : '1px solid var(--color-border)',
             borderRadius: '8px',
             fontSize: '13px',
             fontWeight: '500',
@@ -195,7 +195,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
         <label style={{ 
           fontSize: '12px', 
           fontWeight: '600', 
-          color: betType ? '#0A84FF' : '#A0A0A0', 
+          color: betType ? 'var(--color-primary)' : '#A0A0A0', 
           display: 'flex',
           alignItems: 'center',
           gap: '6px',
@@ -203,7 +203,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
           textTransform: 'uppercase', 
           letterSpacing: '0.5px' 
         }}>
-          Bet Type {betType && <span style={{ color: '#0A84FF', fontSize: '10px' }}>✓</span>}
+          Bet Type {betType && <span style={{ color: 'var(--color-primary)', fontSize: '10px' }}>✓</span>}
         </label>
         <select
           value={betType}
@@ -212,8 +212,8 @@ const FilterBar: React.FC<FilterBarProps> = ({
             width: '100%',
             padding: '8px 12px',
             backgroundColor: '#0d0d0d',
-            color: betType ? '#0A84FF' : '#FFFFFF',
-            border: betType ? '1px solid #0A84FF' : '1px solid #2a2a2a',
+            color: betType ? 'var(--color-primary)' : '#FFFFFF',
+            border: betType ? '1px solid var(--color-primary)' : '1px solid var(--color-border)',
             borderRadius: '8px',
             fontSize: '13px',
             fontWeight: '500',
@@ -252,7 +252,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
             padding: '8px 12px',
             backgroundColor: '#0d0d0d',
             color: sort !== 'date-desc' ? '#FF9500' : '#FFFFFF',
-            border: sort !== 'date-desc' ? '1px solid #FF9500' : '1px solid #2a2a2a',
+            border: sort !== 'date-desc' ? '1px solid #FF9500' : '1px solid var(--color-border)',
             borderRadius: '8px',
             fontSize: '13px',
             fontWeight: '600',

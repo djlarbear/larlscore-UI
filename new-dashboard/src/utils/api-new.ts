@@ -35,15 +35,13 @@ const getAPIBase = (): string => {
 const API_BASE = getAPIBase();
 export { getAPIBase, STATIC_MODE };
 
-// Debug logging
-const debug = (msg: string, data?: any) => {
-  const prefix = STATIC_MODE ? '[BettingAPI:STATIC]' : '[BettingAPI]';
-  console.log(`${prefix} ${msg}`, data || '');
+// Debug logging (no-op in production)
+const debug = (_msg: string, _data?: unknown) => {
+  // no-op
 };
 
-const debugError = (msg: string, error?: any) => {
-  const prefix = STATIC_MODE ? '[BettingAPI:STATIC]' : '[BettingAPI]';
-  console.error(`${prefix} ERROR: ${msg}`, error || '');
+const debugError = (_msg: string, _error?: unknown) => {
+  // no-op
 };
 
 // Static data cache
@@ -87,21 +85,11 @@ export interface Bet {
   result: 'WIN' | 'LOSS' | 'CANCELLED' | 'PENDING' | null;
   actual_score: string | null;
   why_this_pick?: string;
-  why_this_pick_full?: string;
-  reason?: string;
-  full_bet?: {
-    why_this_pick_full?: string;
-    reason?: string;
-    [key: string]: unknown;
-  };
   game_result?: string;
   game_time?: string;
   fanduel_line?: string;
   risk_tier?: string;
   american_odds?: number;
-  larlscore_grade?: string;
-  larlscore_flag?: string;
-  score?: number;
 }
 
 export interface BetFilters {
@@ -144,16 +132,16 @@ export interface DateStat {
 export interface Phase3Payload {
   generated_at?: string;
   strategy?: string;
-  active?: { bets?: Bet[]; [key: string]: any };
-  ranked?: { top_10?: Bet[]; rest?: Bet[]; [key: string]: any };
-  learning?: any;
-  weights?: any;
-  observability?: any;
-  comparison?: any;
-  thresholds?: any;
+  active?: { bets?: Bet[]; [key: string]: unknown };
+  ranked?: { top_10?: Bet[]; rest?: Bet[]; [key: string]: unknown };
+  learning?: Record<string, unknown>;
+  weights?: Record<string, number>;
+  observability?: Record<string, unknown>;
+  comparison?: Record<string, unknown>;
+  thresholds?: Record<string, number>;
 
   // allow extra fields from export
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export interface DashboardStatus {
@@ -323,6 +311,20 @@ export class BettingAPI {
 
       const data = await response.json();
       debug(`Got ${data.bets?.length || 0} bets`);
+
+      // Normalize: Flask returns { total, page, limit, has_more } with no pagination object.
+      // Static mode already returns { pagination: { page, pages, total, limit } }.
+      // Ensure both paths return the same shape so Dashboard.tsx can rely on pagination.pages.
+      if (!data.pagination) {
+        const limit = filters?.limit || 50;
+        const total = data.total || 0;
+        data.pagination = {
+          page: data.page || 1,
+          pages: Math.max(1, Math.ceil(total / limit)),
+          total,
+          limit,
+        };
+      }
 
       // Cache the successful response
       this.requestCache.set(cacheKey, { data, timestamp: Date.now() });
@@ -510,12 +512,12 @@ export class BettingAPI {
       };
     }
 
-    // LIVE MODE: Call Flask API
+    // LIVE MODE: Call Flask API — use /api/bets/today which serves today's PENDING bets
     const cacheKey = 'todays-picks';
     const cached = this.getCached<any>(cacheKey, 30000);
     if (cached) return cached;
 
-    const url = `${API_BASE}/api/ranked-bets`;
+    const url = `${API_BASE}/api/bets/today`;
     debug(`Fetching today's picks from: ${url}`);
 
     return this.dedupe(cacheKey, async () => {
@@ -523,8 +525,16 @@ export class BettingAPI {
         const response = await fetch(url);
         if (!response.ok) throw new Error('Failed to fetch today\'s picks');
         const data = await response.json();
-        this.setCached(cacheKey, data);
-        return data;
+        // Normalize: /api/bets/today returns { bets: [...], date, source }
+        // Wrap to match expected shape: active_top10 used by Dashboard.tsx
+        const normalized = {
+          active_top10: data.bets || [],
+          bets: data.bets || [],
+          date: data.date,
+          source: data.source,
+        };
+        this.setCached(cacheKey, normalized);
+        return normalized;
       } catch (err) {
         debugError('Failed to fetch today\'s picks', err);
         throw err;
