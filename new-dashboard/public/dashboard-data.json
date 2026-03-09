@@ -1,100 +1,38 @@
 {
-  "generated_at": "2026-03-08T12:00:01.239667",
+  "generated_at": "2026-03-09T06:00:04.266419",
   "export_meta": {
-    "exported_at": "2026-03-08T12:00:01.232572",
+    "exported_at": "2026-03-09T06:00:04.260190",
     "cloudflare_pages": "https://larlscore.pages.dev/",
-    "betting_repo_commit": "e48ed8d"
+    "betting_repo_commit": "fd352fa"
   },
   "picks": [
     {
       "rank": 1,
-      "score": 9.4206,
-      "larlscore": 9.4206,
-      "game": "Boston Celtics @ Cleveland Cavaliers",
+      "score": 5.541,
+      "larlscore": 5.541,
+      "game": "Philadelphia 76ers @ Cleveland Cavaliers",
       "bet_type": "TOTAL",
-      "recommendation": "UNDER 224.5",
+      "recommendation": "UNDER 227.5",
       "confidence": 66,
-      "edge": -9.0,
+      "edge": -7.6,
       "risk_tier": "\ud83d\udd34 HIGH RISK",
-      "game_time": "12:10 PM EST",
-      "reason": "\u2022 Injuries: Vucevic out (-5.5), Allen out (-4.0), Mitchell out (-7.2), Strus out (-2.8) \u2192 -19.5 pt adjustment (capped)\n\u2022 Projected: ~215 points (under 224.5)\n\u2022 Slower pace favors under",
+      "game_time": "06:10 PM EST",
+      "reason": "\u2022 Injuries: Strus out (-2.8), Maxey out (-7.9), Embiid out (-7.1), George out (-4.9) \u2192 -22.7 pt adjustment (capped)\n\u2022 Projected: ~219 points (under 227.5)\n\u2022 Slower pace favors under",
       "full_bet": {
-        "game": "Boston Celtics @ Cleveland Cavaliers",
+        "game": "Philadelphia 76ers @ Cleveland Cavaliers",
         "sport": "NBA",
         "bet_type": "TOTAL",
-        "recommendation": "UNDER 224.5",
-        "fanduel_line": "Over 224.5 (-106) / Under 224.5 (-114)",
-        "edge": -9.0,
+        "recommendation": "UNDER 227.5",
+        "fanduel_line": "Over 227.5 (-108) / Under 227.5 (-112)",
+        "edge": -7.6,
         "confidence": 66,
         "risk_tier": "\ud83d\udd34 HIGH RISK",
-        "game_time": "12:10 PM EST",
-        "reason": "\u2022 Injuries: Vucevic out (-5.5), Allen out (-4.0), Mitchell out (-7.2), Strus out (-2.8) \u2192 -19.5 pt adjustment (capped)\n\u2022 Projected: ~215 points (under 224.5)\n\u2022 Slower pace favors under",
+        "game_time": "06:10 PM EST",
+        "reason": "\u2022 Injuries: Strus out (-2.8), Maxey out (-7.9), Embiid out (-7.1), George out (-4.9) \u2192 -22.7 pt adjustment (capped)\n\u2022 Projected: ~219 points (under 227.5)\n\u2022 Slower pace favors under",
         "model_version": "REAL v1.0 (Live OddsAPI)",
         "data_source": "OddsAPI",
-        "bet_instructions": "PLACE BET ON FanDuel: UNDER 224.5 (O/U 224.5) | Model predicts ~215 combined points; UNDER favored vs market 224.5 | Confidence: 63%",
-        "bet_explanation": "Model predicts ~215 combined points; UNDER favored vs market 224.5",
-        "bookmaker_source": "FanDuel",
-        "prop_type": null,
-        "player": null,
-        "player_team": null,
-        "injury_role_shift_flag": false,
-        "american_odds": -114,
-        "pinnacle_agrees": null,
-        "pinnacle_line": null,
-        "pinnacle_gap": 0.0,
-        "injury_impact_score": 5,
-        "injury_freshness_minutes": 0,
-        "injury_confidence": "medium",
-        "consensus_line": 224.5,
-        "consensus_gap": 0.0,
-        "consensus_books_count": 10,
-        "market_alignment": "agree",
-        "snapshot_ts": "2026-03-08T09:00:17.042895+00:00",
-        "why_this_pick_full": null,
-        "smart_edge": 38.7,
-        "smart_edge_quality": "Excellent",
-        "smart_edge_confidence": 85,
-        "smart_edge_reasoning": "Edge Assessment: Excellent edge detected | Pace-adjusted total favors: UNDER | Multiple factors support this edge",
-        "edge_components": {
-          "pace_edge": -38.400000000000006,
-          "data_quality": "HIGH",
-          "weather_edge": 0,
-          "historical_edge": -0.24999999999999994
-        },
-        "data_quality": "HIGH",
-        "calibrated_confidence": 58.1,
-        "larlscore": 9.42,
-        "larlscore_grade": "S",
-        "larlscore_flag": "MANUAL_REVIEW"
-      }
-    },
-    {
-      "rank": 2,
-      "score": 8.2045,
-      "larlscore": 8.2045,
-      "game": "Detroit Pistons @ Miami Heat",
-      "bet_type": "TOTAL",
-      "recommendation": "UNDER 229.5",
-      "confidence": 64,
-      "edge": -8.0,
-      "risk_tier": "\ud83d\udd34 HIGH RISK",
-      "game_time": "05:10 PM EST",
-      "reason": "\u2022 Injuries: Thompson out (-3.0), Jovic out (-3.2), Powell out (-6.5), Rozier out (-3.2) \u2192 -15.9 pt adjustment (capped)\n\u2022 Projected: ~221 points (under 229.5)\n\u2022 Slower pace favors under",
-      "full_bet": {
-        "game": "Detroit Pistons @ Miami Heat",
-        "sport": "NBA",
-        "bet_type": "TOTAL",
-        "recommendation": "UNDER 229.5",
-        "fanduel_line": "Over 229.5 (-108) / Under 229.5 (-112)",
-        "edge": -8.0,
-        "confidence": 64,
-        "risk_tier": "\ud83d\udd34 HIGH RISK",
-        "game_time": "05:10 PM EST",
-        "reason": "\u2022 Injuries: Thompson out (-3.0), Jovic out (-3.2), Powell out (-6.5), Rozier out (-3.2) \u2192 -15.9 pt adjustment (capped)\n\u2022 Projected: ~221 points (under 229.5)\n\u2022 Slower pace favors under",
-        "model_version": "REAL v1.0 (Live OddsAPI)",
-        "data_source": "OddsAPI",
-        "bet_instructions": "PLACE BET ON FanDuel: UNDER 229.5 (O/U 229.5) | Model predicts ~221 combined points; UNDER favored vs market 229.5 | Confidence: 61%",
-        "bet_explanation": "Model predicts ~221 combined points; UNDER favored vs market 229.5",
+        "bet_instructions": "PLACE BET ON FanDuel: UNDER 227.5 (O/U 227.5) | Model predicts ~219 combined points; UNDER favored vs market 227.5 | Confidence: 63%",
+        "bet_explanation": "Model predicts ~219 combined points; UNDER favored vs market 227.5",
         "bookmaker_source": "FanDuel",
         "prop_type": null,
         "player": null,
@@ -107,183 +45,60 @@
         "injury_impact_score": 5,
         "injury_freshness_minutes": 0,
         "injury_confidence": "medium",
-        "consensus_line": 230.0,
-        "consensus_gap": -0.5,
-        "consensus_books_count": 10,
+        "consensus_line": 227.0,
+        "consensus_gap": 0.5,
+        "consensus_books_count": 11,
         "market_alignment": "agree",
-        "snapshot_ts": "2026-03-08T09:00:17.047674+00:00",
+        "snapshot_ts": "2026-03-09T09:00:13.237107+00:00",
         "why_this_pick_full": null,
-        "smart_edge": 41.2,
+        "smart_edge": 40.2,
         "smart_edge_quality": "Excellent",
         "smart_edge_confidence": 85,
         "smart_edge_reasoning": "Edge Assessment: Excellent edge detected | Pace-adjusted total favors: UNDER | Multiple factors support this edge",
         "edge_components": {
-          "pace_edge": -40.900000000000006,
+          "pace_edge": -39.900000000000006,
           "data_quality": "HIGH",
           "weather_edge": 0,
           "historical_edge": -0.24999999999999994
         },
         "data_quality": "HIGH",
-        "calibrated_confidence": 57.3,
-        "larlscore": 8.2,
+        "calibrated_confidence": 55.8,
+        "larlscore": 5.54,
         "larlscore_grade": "S",
         "larlscore_flag": "MANUAL_REVIEW"
-      }
-    },
-    {
-      "rank": 3,
-      "score": 7.7499,
-      "larlscore": 7.7499,
-      "game": "Chicago Bulls @ Sacramento Kings",
-      "bet_type": "TOTAL",
-      "recommendation": "UNDER 234.5",
-      "confidence": 67,
-      "edge": -7.3,
-      "risk_tier": "\ud83d\udd34 HIGH RISK",
-      "game_time": "08:10 PM EST",
-      "reason": "\u2022 Injuries: Smith out (-2.5), Simons out (-5.8), Williams out (-2.7), Ivey out (-5.3), Murray out (-3.7), Hunter out (-5.1), Sabonis out (-5.7), LaVine out (-7.0) \u2192 -37.8 pt adjustment (capped)\n\u2022 Projected: ~227 points (under 234.5)\n\u2022 Slower pace favors under",
-      "full_bet": {
-        "game": "Chicago Bulls @ Sacramento Kings",
-        "sport": "NBA",
-        "bet_type": "TOTAL",
-        "recommendation": "UNDER 234.5",
-        "fanduel_line": "Over 234.5 (-106) / Under 234.5 (-114)",
-        "edge": -7.3,
-        "confidence": 67,
-        "risk_tier": "\ud83d\udd34 HIGH RISK",
-        "game_time": "08:10 PM EST",
-        "reason": "\u2022 Injuries: Smith out (-2.5), Simons out (-5.8), Williams out (-2.7), Ivey out (-5.3), Murray out (-3.7), Hunter out (-5.1), Sabonis out (-5.7), LaVine out (-7.0) \u2192 -37.8 pt adjustment (capped)\n\u2022 Projected: ~227 points (under 234.5)\n\u2022 Slower pace favors under",
-        "model_version": "REAL v1.0 (Live OddsAPI)",
-        "data_source": "OddsAPI",
-        "bet_instructions": "PLACE BET ON FanDuel: UNDER 234.5 (O/U 234.5) | Model predicts ~227 combined points; UNDER favored vs market 234.5 | Confidence: 64%",
-        "bet_explanation": "Model predicts ~227 combined points; UNDER favored vs market 234.5",
-        "bookmaker_source": "FanDuel",
-        "prop_type": null,
-        "player": null,
-        "player_team": null,
-        "injury_role_shift_flag": false,
-        "american_odds": -114,
-        "pinnacle_agrees": null,
-        "pinnacle_line": null,
-        "pinnacle_gap": 0.0,
-        "injury_impact_score": 9,
-        "injury_freshness_minutes": 0,
-        "injury_confidence": "medium",
-        "consensus_line": 234.5,
-        "consensus_gap": 0.0,
-        "consensus_books_count": 10,
-        "market_alignment": "agree",
-        "snapshot_ts": "2026-03-08T09:00:17.053614+00:00",
-        "why_this_pick_full": null,
-        "smart_edge": 43.7,
-        "smart_edge_quality": "Excellent",
-        "smart_edge_confidence": 85,
-        "smart_edge_reasoning": "Edge Assessment: Excellent edge detected | Pace-adjusted total favors: UNDER | Multiple factors support this edge",
-        "edge_components": {
-          "pace_edge": -43.400000000000006,
-          "data_quality": "HIGH",
-          "weather_edge": 0,
-          "historical_edge": -0.24999999999999994
-        },
-        "data_quality": "HIGH",
-        "calibrated_confidence": 58.5,
-        "larlscore": 7.75,
-        "larlscore_grade": "S",
-        "larlscore_flag": "MANUAL_REVIEW"
-      }
-    },
-    {
-      "rank": 4,
-      "score": 2.5519,
-      "larlscore": 2.5519,
-      "game": "Iowa Hawkeyes @ Nebraska Cornhuskers",
-      "bet_type": "TOTAL",
-      "recommendation": "UNDER 134.5",
-      "confidence": 66,
-      "edge": -4.7,
-      "risk_tier": "\ud83d\udd34 HIGH RISK",
-      "game_time": "05:00 PM EST",
-      "reason": "\u2022 Model finds 4.7 pt under signal vs market line 134.5\n\u2022 Recent form trending under season avg \u2014 pace leans slow\n\u2022 4.7 points edge vs market",
-      "full_bet": {
-        "game": "Iowa Hawkeyes @ Nebraska Cornhuskers",
-        "sport": "NCAA Basketball",
-        "bet_type": "TOTAL",
-        "recommendation": "UNDER 134.5",
-        "fanduel_line": "Over 134.5 (-115) / Under 134.5 (-105)",
-        "edge": -4.7,
-        "confidence": 66,
-        "risk_tier": "\ud83d\udd34 HIGH RISK",
-        "game_time": "05:00 PM EST",
-        "reason": "\u2022 Model finds 4.7 pt under signal vs market line 134.5\n\u2022 Recent form trending under season avg \u2014 pace leans slow\n\u2022 4.7 points edge vs market",
-        "model_version": "REAL v1.0 (Live OddsAPI)",
-        "data_source": "OddsAPI",
-        "bet_instructions": "PLACE BET ON FanDuel: UNDER 134.5 (O/U 134.5) | Model predicts ~129 combined points; UNDER favored vs market 134.5 | Confidence: 63%",
-        "bet_explanation": "Model predicts ~129 combined points; UNDER favored vs market 134.5",
-        "bookmaker_source": "FanDuel",
-        "prop_type": null,
-        "player": null,
-        "player_team": null,
-        "injury_role_shift_flag": false,
-        "american_odds": -105,
-        "pinnacle_agrees": null,
-        "pinnacle_line": null,
-        "pinnacle_gap": 0.0,
-        "injury_impact_score": 0,
-        "injury_freshness_minutes": 0,
-        "injury_confidence": "low",
-        "consensus_line": 134.5,
-        "consensus_gap": 0.0,
-        "consensus_books_count": 10,
-        "market_alignment": "agree",
-        "snapshot_ts": "2026-03-08T09:00:16.607723+00:00",
-        "why_this_pick_full": null,
-        "smart_edge": 6.3,
-        "smart_edge_quality": "Excellent",
-        "smart_edge_confidence": 85,
-        "smart_edge_reasoning": "Edge Assessment: Excellent edge detected | Pace-adjusted total favors: OVER | Multiple factors support this edge",
-        "edge_components": {
-          "pace_edge": 6.599999999999994,
-          "data_quality": "HIGH",
-          "weather_edge": 0,
-          "historical_edge": -0.24999999999999994
-        },
-        "data_quality": "HIGH",
-        "calibrated_confidence": 58.1,
-        "larlscore": 2.55,
-        "larlscore_grade": "S",
-        "larlscore_flag": null
       }
     }
   ],
   "stats": {},
   "summary": {
-    "total_bets": 156,
-    "wins": 75,
-    "losses": 78,
+    "total_bets": 160,
+    "wins": 76,
+    "losses": 81,
     "cancelled": 1,
-    "win_rate": 49.0,
-    "decided": 153,
-    "net_units": -11.77,
-    "roi_pct": -7.7,
+    "win_rate": 48.4,
+    "decided": 157,
+    "net_units": -13.89,
+    "roi_pct": -8.8,
     "by_sport": {
-      "NBA": 61,
-      "NCAA Basketball": 93,
+      "NBA": 64,
+      "NCAA Basketball": 94,
       "NHL": 2
     },
     "by_bet_type": {
-      "TOTAL": 41,
+      "TOTAL": 45,
       "PROP": 56,
       "SPREAD": 51,
       "MONEYLINE": 8
     },
     "by_result": {
-      "WIN": 75,
-      "LOSS": 78,
+      "WIN": 76,
+      "LOSS": 81,
       "PUSH": 1,
       "CANCELLED": 1,
       "VOID": 1
     },
     "by_date": {
+      "2026-03-08": 4,
       "2026-03-07": 6,
       "2026-03-06": 7,
       "2026-03-05": 8,
@@ -302,11 +117,87 @@
       "2026-02-14": 15
     },
     "spread_count": 51,
-    "total_count": 41,
+    "total_count": 45,
     "moneyline_count": 8,
     "prop_count": 56
   },
   "bets": [
+    {
+      "id": "c4ad4b44d021a830",
+      "date": "2026-03-08",
+      "game": "Boston Celtics @ Cleveland Cavaliers",
+      "sport": "NBA",
+      "bet_type": "TOTAL",
+      "recommendation": "UNDER 224.5",
+      "edge": -9.0,
+      "confidence": 66.0,
+      "larlscore": 9.42,
+      "result": "WIN",
+      "actual_score": "109-98",
+      "game_result": "109-98",
+      "american_odds": -114.0,
+      "fanduel_line": "Over 224.5 (-106) / Under 224.5 (-114)",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "c7c9555f6566a16a",
+      "date": "2026-03-08",
+      "game": "Detroit Pistons @ Miami Heat",
+      "sport": "NBA",
+      "bet_type": "TOTAL",
+      "recommendation": "UNDER 229.5",
+      "edge": -8.0,
+      "confidence": 64.0,
+      "larlscore": 8.2,
+      "result": "LOSS",
+      "actual_score": "110-121",
+      "game_result": "110-121",
+      "american_odds": -112.0,
+      "fanduel_line": "Over 229.5 (-108) / Under 229.5 (-112)",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "bf4c0926438b7185",
+      "date": "2026-03-08",
+      "game": "Chicago Bulls @ Sacramento Kings",
+      "sport": "NBA",
+      "bet_type": "TOTAL",
+      "recommendation": "UNDER 234.5",
+      "edge": -7.3,
+      "confidence": 67.0,
+      "larlscore": 7.75,
+      "result": "LOSS",
+      "actual_score": "110-126",
+      "game_result": "110-126",
+      "american_odds": -114.0,
+      "fanduel_line": "Over 234.5 (-106) / Under 234.5 (-114)",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
+    {
+      "id": "0c5cf63ee7ab9404",
+      "date": "2026-03-08",
+      "game": "Iowa Hawkeyes @ Nebraska Cornhuskers",
+      "sport": "NCAA Basketball",
+      "bet_type": "TOTAL",
+      "recommendation": "UNDER 134.5",
+      "edge": -4.7,
+      "confidence": 66.0,
+      "larlscore": 2.55,
+      "result": "LOSS",
+      "actual_score": "75-84",
+      "game_result": "75-84",
+      "american_odds": -105.0,
+      "fanduel_line": "Over 134.5 (-115) / Under 134.5 (-105)",
+      "why_this_pick": null,
+      "game_time": null,
+      "risk_tier": null
+    },
     {
       "id": "d6a66a806de74a68",
       "date": "2026-03-07",
@@ -3274,6 +3165,13 @@
   ],
   "dates": [
     {
+      "date": "2026-03-08",
+      "total": 4,
+      "wins": 1,
+      "losses": 3,
+      "win_rate": 25.0
+    },
+    {
       "date": "2026-03-07",
       "total": 6,
       "wins": 4,
@@ -3398,35 +3296,35 @@
     "TOTAL"
   ],
   "insights": {
-    "generated_at": "2026-03-08T04:04:10.652589",
-    "total_bets_analyzed": 140,
-    "overall_win_rate": 49.3,
+    "generated_at": "2026-03-09T04:04:08.895109",
+    "total_bets_analyzed": 157,
+    "overall_win_rate": 48.4,
     "roi": {
       "juice": -110,
-      "units_wagered": 140.0,
-      "units_returned": 129.97,
-      "net_units": -10.03,
-      "roi_pct": -7.17,
-      "win_rate_pct": 49.3,
+      "units_wagered": 157.0,
+      "units_returned": 143.11,
+      "net_units": -13.89,
+      "roi_pct": -8.85,
+      "win_rate_pct": 48.4,
       "breakeven_win_rate_pct": 52.4,
-      "above_breakeven": -3.1,
-      "record": "69W-71L-0P",
+      "above_breakeven": -4.0,
+      "record": "76W-81L-0P",
       "note": "Flat betting 1 unit per bet at stated juice"
     },
     "by_sport": {
       "NCAA Basketball": {
-        "wins": 43,
-        "losses": 45,
-        "total": 88,
-        "win_rate": 48.9,
-        "record": "43-45"
+        "wins": 44,
+        "losses": 50,
+        "total": 94,
+        "win_rate": 46.8,
+        "record": "44-50"
       },
       "NBA": {
-        "wins": 26,
-        "losses": 24,
-        "total": 50,
-        "win_rate": 52.0,
-        "record": "26-24"
+        "wins": 32,
+        "losses": 29,
+        "total": 61,
+        "win_rate": 52.5,
+        "record": "32-29"
       },
       "NHL": {
         "wins": 0,
@@ -3452,29 +3350,29 @@
         "record": "1-7"
       },
       "TOTAL": {
-        "wins": 21,
-        "losses": 13,
-        "total": 34,
-        "win_rate": 61.8,
-        "record": "21-13"
+        "wins": 25,
+        "losses": 20,
+        "total": 45,
+        "win_rate": 55.6,
+        "record": "25-20"
       },
       "PROP": {
-        "wins": 24,
-        "losses": 23,
-        "total": 47,
-        "win_rate": 51.1,
-        "record": "24-23"
+        "wins": 27,
+        "losses": 26,
+        "total": 53,
+        "win_rate": 50.9,
+        "record": "27-26"
       }
     },
     "moneyline_status": "DISABLED",
     "moneyline_reason": "ml_bad_or_insufficient: n=8 wr=12.5%",
     "by_risk_tier": {
       "Unknown": {
-        "wins": 69,
-        "losses": 71,
-        "total": 140,
-        "win_rate": 49.3,
-        "record": "69-71"
+        "wins": 76,
+        "losses": 81,
+        "total": 157,
+        "win_rate": 48.4,
+        "record": "76-81"
       }
     },
     "by_confidence": {
@@ -3503,12 +3401,12 @@
         "record": "28-24"
       },
       "60-69%": {
-        "wins": 18,
-        "losses": 16,
-        "total": 34,
-        "win_rate": 52.9,
+        "wins": 25,
+        "losses": 26,
+        "total": 51,
+        "win_rate": 49.0,
         "avg_confidence": 64.4,
-        "record": "18-16"
+        "record": "25-26"
       },
       "50-59%": {
         "wins": 10,
@@ -3537,12 +3435,12 @@
         "record": "13-15"
       },
       "3-4.9 pts": {
-        "wins": 21,
-        "losses": 22,
-        "total": 43,
-        "win_rate": 48.8,
+        "wins": 24,
+        "losses": 25,
+        "total": 49,
+        "win_rate": 49.0,
         "avg_edge": 3.9,
-        "record": "21-22"
+        "record": "24-25"
       },
       "1-2.9 pts": {
         "wins": 6,
@@ -3553,28 +3451,28 @@
         "record": "6-8"
       },
       "0-0.9 pts": {
-        "wins": 3,
-        "losses": 10,
-        "total": 13,
-        "win_rate": 23.1,
-        "avg_edge": -0.6,
-        "record": "3-10"
+        "wins": 7,
+        "losses": 17,
+        "total": 24,
+        "win_rate": 29.2,
+        "avg_edge": -2.8,
+        "record": "7-17"
       }
     },
     "by_pinnacle": {
       "agree": {
-        "wins": 1,
-        "losses": 0,
-        "total": 1,
-        "win_rate": 100.0,
-        "record": "1-0"
+        "wins": 3,
+        "losses": 2,
+        "total": 5,
+        "win_rate": 60.0,
+        "record": "3-2"
       },
       "disagree": {
-        "wins": 1,
-        "losses": 1,
-        "total": 2,
-        "win_rate": 50.0,
-        "record": "1-1"
+        "wins": 3,
+        "losses": 6,
+        "total": 9,
+        "win_rate": 33.3,
+        "record": "3-6"
       }
     },
     "recommendations": [
@@ -3609,6 +3507,12 @@
         "reason": "Model is overconfident by 16.2%"
       },
       {
+        "type": "CALIBRATE",
+        "priority": "HIGH",
+        "action": "Lower confidence for 60-69% bucket (actual: 49.0% vs expected: 60%+)",
+        "reason": "Model is overconfident by 11.0%"
+      },
+      {
         "type": "THRESHOLD",
         "priority": "MEDIUM",
         "action": "Raise minimum edge threshold for 5-9.9 pts range",
@@ -3618,7 +3522,7 @@
         "type": "THRESHOLD",
         "priority": "MEDIUM",
         "action": "Raise minimum edge threshold for 3-4.9 pts range",
-        "reason": "Only 48.8% win rate with edge range 3-4.9 pts"
+        "reason": "Only 49.0% win rate with edge range 3-4.9 pts"
       },
       {
         "type": "THRESHOLD",
@@ -3630,7 +3534,7 @@
         "type": "THRESHOLD",
         "priority": "MEDIUM",
         "action": "Raise minimum edge threshold for 0-0.9 pts range",
-        "reason": "Only 23.1% win rate with edge range 0-0.9 pts"
+        "reason": "Only 29.2% win rate with edge range 0-0.9 pts"
       }
     ],
     "optimal_thresholds": {
@@ -3663,8 +3567,8 @@
       }
     },
     "result_attribution": {
-      "generated_at": "2026-03-08T04:04:10.652452",
-      "sample_size": 140,
+      "generated_at": "2026-03-09T04:04:08.894978",
+      "sample_size": 157,
       "confidence_attribution": {
         "SPREAD": {
           "50-59": {
@@ -3694,9 +3598,9 @@
             "flag": true
           },
           "60-69": {
-            "wins": 4,
-            "losses": 1,
-            "wr": 0.8,
+            "wins": 8,
+            "losses": 8,
+            "wr": 0.5,
             "flag": false
           },
           "70+": {
@@ -3714,9 +3618,9 @@
             "flag": true
           },
           "60-69": {
-            "wins": 10,
-            "losses": 7,
-            "wr": 0.588,
+            "wins": 13,
+            "losses": 10,
+            "wr": 0.565,
             "flag": false
           },
           "70+": {
@@ -3788,9 +3692,9 @@
             "flag": false
           },
           "3-4.9": {
-            "wins": 14,
-            "losses": 11,
-            "wr": 0.56,
+            "wins": 17,
+            "losses": 14,
+            "wr": 0.548,
             "flag": false
           },
           "5-9.9": {
@@ -3843,13 +3747,13 @@
       },
       "TOTAL": {
         "assumed": 0.64,
-        "actual": 0.6176,
-        "actual_pct": 61.8,
+        "actual": 0.5556,
+        "actual_pct": 55.6,
         "assumed_pct": 64.0,
-        "deviation_pp": -2.24,
-        "status": "GREEN",
-        "n_bets": 34,
-        "record": "21W-13L"
+        "deviation_pp": -8.44,
+        "status": "RED",
+        "n_bets": 45,
+        "record": "25W-20L"
       },
       "MONEYLINE": {
         "assumed": 0.0,
@@ -3863,16 +3767,26 @@
       },
       "PROP": {
         "assumed": 0.5,
-        "actual": 0.5106,
-        "actual_pct": 51.1,
+        "actual": 0.5094,
+        "actual_pct": 50.9,
         "assumed_pct": 50.0,
-        "deviation_pp": 1.06,
+        "deviation_pp": 0.94,
         "status": "GREEN",
-        "n_bets": 47,
-        "record": "24W-23L"
+        "n_bets": 53,
+        "record": "27W-26L"
       }
     },
     "deviation_alerts": [
+      {
+        "bet_type": "TOTAL",
+        "severity": "RED",
+        "deviation_pp": -8.44,
+        "assumed_wr_pct": 64.0,
+        "actual_wr_pct": 55.6,
+        "n_bets_sampled": 45,
+        "recommendation": "UPDATE RANKER: Lower assumed WR for TOTAL (actual 55.6% << assumed 64.0%). Run full forensic audit and recalibrate multipliers.",
+        "generated_at": "2026-03-09T04:04:08.898106"
+      },
       {
         "bet_type": "MONEYLINE",
         "severity": "RED",
@@ -3881,23 +3795,23 @@
         "actual_wr_pct": 12.5,
         "n_bets_sampled": 8,
         "recommendation": "Keep DISABLED \u2014 actual WR too low",
-        "generated_at": "2026-03-08T04:04:10.655602"
+        "generated_at": "2026-03-09T04:04:08.898114"
       }
     ],
-    "assumption_audit_at": "2026-03-08T04:04:10.655784",
+    "assumption_audit_at": "2026-03-09T04:04:08.898290",
     "quality": {
       "overall": {
         "window_days": null,
         "pinnacle": {
-          "n": 96,
-          "coverage_pct": 14.6,
-          "agree_known_pct": 14.6,
-          "agree_pct": 35.7
+          "n": 97,
+          "coverage_pct": 15.5,
+          "agree_known_pct": 15.5,
+          "agree_pct": 40.0
         },
         "consensus": {
-          "n": 96,
-          "coverage_pct": 28.1,
-          "books_avg": 2.3
+          "n": 97,
+          "coverage_pct": 28.9,
+          "books_avg": 2.4
         },
         "injury_nba_spread": {
           "n": 2,
@@ -3905,23 +3819,23 @@
           "freshness_known_pct": 0.0
         },
         "clv_proxy": {
-          "n": 9,
-          "avg": -0.94,
-          "avg_abs": 0.94
+          "n": 12,
+          "avg": -0.33,
+          "avg_abs": 1.08
         }
       },
       "last7": {
         "window_days": 7,
         "pinnacle": {
-          "n": 16,
-          "coverage_pct": 68.8,
-          "agree_known_pct": 68.8,
-          "agree_pct": 36.4
+          "n": 17,
+          "coverage_pct": 70.6,
+          "agree_known_pct": 70.6,
+          "agree_pct": 41.7
         },
         "consensus": {
-          "n": 16,
-          "coverage_pct": 87.5,
-          "books_avg": 8.3
+          "n": 17,
+          "coverage_pct": 88.2,
+          "books_avg": 8.5
         },
         "injury_nba_spread": {
           "n": 0,
@@ -3929,21 +3843,21 @@
           "freshness_known_pct": 0.0
         },
         "clv_proxy": {
-          "n": 9,
-          "avg": -0.94,
-          "avg_abs": 0.94
+          "n": 12,
+          "avg": -0.33,
+          "avg_abs": 1.08
         }
       }
     },
     "export_meta": {
-      "exported_at": "2026-03-08T12:00:01.232572",
+      "exported_at": "2026-03-09T06:00:04.260190",
       "cloudflare_pages": "https://larlscore.pages.dev/",
-      "betting_repo_commit": "e48ed8d"
+      "betting_repo_commit": "fd352fa"
     }
   },
   "bonus_bets": [],
   "weights": {
-    "generated_at": "2026-03-08T04:04:10.690158",
+    "generated_at": "2026-03-09T04:04:08.931674",
     "source": "learning_insights.json",
     "weights": {
       "SPREAD": {
@@ -3963,18 +3877,18 @@
         "confidence_level": "LIMITED"
       },
       "TOTAL": {
-        "weight": 1.33,
-        "win_rate": 60.53,
-        "sample_count": 34,
-        "adjustment": 0.325,
+        "weight": 1.11,
+        "win_rate": 55.1,
+        "sample_count": 45,
+        "adjustment": 0.108,
         "stability_factor": 1.0,
         "confidence_level": "HIGH"
       },
       "PROP": {
         "weight": 0.94,
-        "win_rate": 50.98,
-        "sample_count": 47,
-        "adjustment": -0.057,
+        "win_rate": 50.88,
+        "sample_count": 53,
+        "adjustment": -0.061,
         "stability_factor": 1.0,
         "confidence_level": "HIGH"
       }
@@ -3982,10 +3896,10 @@
     "pinnacle": {
       "boost_multiplier": 1.15,
       "penalty_multiplier": 0.85,
-      "agree_win_rate": 100.0,
-      "disagree_win_rate": 50.0,
-      "agree_samples": 1,
-      "disagree_samples": 2,
+      "agree_win_rate": 60.0,
+      "disagree_win_rate": 33.3,
+      "agree_samples": 5,
+      "disagree_samples": 9,
       "boost_status": "INSUFFICIENT",
       "penalty_status": "INSUFFICIENT"
     },
@@ -3993,11 +3907,108 @@
   },
   "specials": {
     "q3_100": {
-      "date": "2026-03-08",
+      "date": "2026-03-09",
       "picks": [],
       "parlays": [],
       "note": "No NBA games scheduled today",
-      "generated_at": "2026-03-08T14:00:20.048825Z"
+      "generated_at": "2026-03-09T09:00:20.859420Z"
+    }
+  },
+  "live_games": {},
+  "stream_health": {
+    "tested_at": "2026-03-08T23:40:00",
+    "summary": {
+      "total": 5,
+      "working": 4,
+      "dead": 1,
+      "uptime_percent": 80.0,
+      "fastest_ms": 145,
+      "slowest_ms": 892
+    },
+    "best_streams": [
+      {
+        "url": "https://cdn.streamhost-1.com/nba/game123.m3u8",
+        "final_url": "https://cdn.streamhost-1.com/nba/game123.m3u8",
+        "working": true,
+        "response_time_ms": 145,
+        "cdn_host": "cdn.streamhost-1.com",
+        "status_code": 200,
+        "content_type": "application/vnd.apple.mpegurl",
+        "last_tested": "2026-03-08T23:40:00"
+      },
+      {
+        "url": "https://cdn.streamhost-2.com/nba/broadcast.m3u8",
+        "final_url": "https://cdn.streamhost-2.com/nba/broadcast.m3u8",
+        "working": true,
+        "response_time_ms": 287,
+        "cdn_host": "cdn.streamhost-2.com",
+        "status_code": 200,
+        "content_type": "application/vnd.apple.mpegurl",
+        "last_tested": "2026-03-08T23:40:00"
+      },
+      {
+        "url": "https://cdn.streamhost-3.com/sports/live.m3u8",
+        "final_url": "https://cdn.streamhost-3.com/sports/live.m3u8",
+        "working": true,
+        "response_time_ms": 356,
+        "cdn_host": "cdn.streamhost-3.com",
+        "status_code": 200,
+        "content_type": "application/vnd.apple.mpegurl",
+        "last_tested": "2026-03-08T23:40:00"
+      }
+    ],
+    "all_results": {
+      "working": [
+        {
+          "url": "https://cdn.streamhost-1.com/nba/game123.m3u8",
+          "final_url": "https://cdn.streamhost-1.com/nba/game123.m3u8",
+          "working": true,
+          "response_time_ms": 145,
+          "cdn_host": "cdn.streamhost-1.com",
+          "status_code": 200,
+          "content_type": "application/vnd.apple.mpegurl",
+          "last_tested": "2026-03-08T23:40:00"
+        },
+        {
+          "url": "https://cdn.streamhost-2.com/nba/broadcast.m3u8",
+          "final_url": "https://cdn.streamhost-2.com/nba/broadcast.m3u8",
+          "working": true,
+          "response_time_ms": 287,
+          "cdn_host": "cdn.streamhost-2.com",
+          "status_code": 200,
+          "content_type": "application/vnd.apple.mpegurl",
+          "last_tested": "2026-03-08T23:40:00"
+        },
+        {
+          "url": "https://cdn.streamhost-3.com/sports/live.m3u8",
+          "final_url": "https://cdn.streamhost-3.com/sports/live.m3u8",
+          "working": true,
+          "response_time_ms": 356,
+          "cdn_host": "cdn.streamhost-3.com",
+          "status_code": 200,
+          "content_type": "application/vnd.apple.mpegurl",
+          "last_tested": "2026-03-08T23:40:00"
+        },
+        {
+          "url": "https://cdn.streamhost-4.com/game/nba.m3u8",
+          "final_url": "https://cdn.streamhost-4.com/game/nba.m3u8",
+          "working": true,
+          "response_time_ms": 892,
+          "cdn_host": "cdn.streamhost-4.com",
+          "status_code": 200,
+          "content_type": "application/vnd.apple.mpegurl",
+          "last_tested": "2026-03-08T23:40:00"
+        }
+      ],
+      "dead": [
+        {
+          "url": "https://cdn.dead-mirror.com/stream.m3u8",
+          "working": false,
+          "response_time_ms": 5000,
+          "error": "timeout",
+          "last_tested": "2026-03-08T23:40:00"
+        }
+      ]
     }
   }
 }
