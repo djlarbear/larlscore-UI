@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-03-12T12:00:01.478083",
+  "generated_at": "2026-03-13T06:00:04.288316",
   "export_meta": {
-    "exported_at": "2026-03-12T12:00:01.470838",
+    "exported_at": "2026-03-13T06:00:04.281991",
     "cloudflare_pages": "https://larlscore.pages.dev/",
-    "betting_repo_commit": "2941ee9"
+    "betting_repo_commit": "3a2d144"
   },
   "picks": [
     {
@@ -3484,7 +3484,7 @@
     "TOTAL"
   ],
   "insights": {
-    "generated_at": "2026-03-12T04:03:55.009931",
+    "generated_at": "2026-03-13T04:03:49.324954",
     "total_bets_analyzed": 165,
     "overall_win_rate": 49.7,
     "roi": {
@@ -3749,7 +3749,7 @@
       }
     },
     "result_attribution": {
-      "generated_at": "2026-03-12T04:03:55.009799",
+      "generated_at": "2026-03-13T04:03:49.324820",
       "sample_size": 165,
       "confidence_attribution": {
         "SPREAD": {
@@ -3967,7 +3967,7 @@
         "actual_wr_pct": 58.5,
         "n_bets_sampled": 53,
         "recommendation": "UPDATE RANKER: Lower assumed WR for TOTAL (actual 58.5% << assumed 64.0%). Run full forensic audit and recalibrate multipliers.",
-        "generated_at": "2026-03-12T04:03:55.013303"
+        "generated_at": "2026-03-13T04:03:49.328351"
       },
       {
         "bet_type": "MONEYLINE",
@@ -3977,10 +3977,10 @@
         "actual_wr_pct": 12.5,
         "n_bets_sampled": 8,
         "recommendation": "Keep DISABLED \u2014 actual WR too low",
-        "generated_at": "2026-03-12T04:03:55.013311"
+        "generated_at": "2026-03-13T04:03:49.328359"
       }
     ],
-    "assumption_audit_at": "2026-03-12T04:03:55.013505",
+    "assumption_audit_at": "2026-03-13T04:03:49.328553",
     "quality": {
       "overall": {
         "window_days": null,
@@ -4009,15 +4009,15 @@
       "last7": {
         "window_days": 7,
         "pinnacle": {
-          "n": 24,
-          "coverage_pct": 54.2,
-          "agree_known_pct": 54.2,
+          "n": 19,
+          "coverage_pct": 68.4,
+          "agree_known_pct": 68.4,
           "agree_pct": 38.5
         },
         "consensus": {
-          "n": 24,
-          "coverage_pct": 91.7,
-          "books_avg": 8.3
+          "n": 19,
+          "coverage_pct": 100.0,
+          "books_avg": 8.8
         },
         "injury_nba_spread": {
           "n": 0,
@@ -4025,21 +4025,21 @@
           "freshness_known_pct": 0.0
         },
         "clv_proxy": {
-          "n": 22,
-          "avg": -5.35,
-          "avg_abs": 5.85
+          "n": 19,
+          "avg": -6.2,
+          "avg_abs": 6.76
         }
       }
     },
     "export_meta": {
-      "exported_at": "2026-03-12T12:00:01.470838",
+      "exported_at": "2026-03-13T06:00:04.281991",
       "cloudflare_pages": "https://larlscore.pages.dev/",
-      "betting_repo_commit": "2941ee9"
+      "betting_repo_commit": "3a2d144"
     }
   },
   "bonus_bets": [],
   "weights": {
-    "generated_at": "2026-03-12T04:03:55.047095",
+    "generated_at": "2026-03-13T04:03:49.361970",
     "source": "learning_insights.json",
     "weights": {
       "SPREAD": {
