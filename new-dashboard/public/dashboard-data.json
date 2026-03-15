@@ -1,11 +1,248 @@
 {
-  "generated_at": "2026-03-14T12:00:01.388070",
+  "generated_at": "2026-03-15T06:00:05.264025",
   "export_meta": {
-    "exported_at": "2026-03-14T12:00:01.378582",
+    "exported_at": "2026-03-15T06:00:05.257897",
     "cloudflare_pages": "https://larlscore.pages.dev/",
-    "betting_repo_commit": "019e9e9"
+    "betting_repo_commit": "8c327cf"
   },
-  "picks": [],
+  "picks": [
+    {
+      "rank": 1,
+      "score": 11.7944,
+      "larlscore": 11.7944,
+      "game": "Dallas Mavericks @ Cleveland Cavaliers",
+      "bet_type": "TOTAL",
+      "recommendation": "UNDER 236.5",
+      "confidence": 65,
+      "edge": -9.7,
+      "risk_tier": "\ud83d\udd34 HIGH RISK",
+      "game_time": "02:40 PM EST",
+      "reason": "\u2022 Injuries: Allen out (-4.0), Strus out (-2.8), Irving out (-7.4), II out (-2.6) \u2192 -16.8 pt adjustment (capped)\n\u2022 Projected: ~226 points (under 236.5)\n\u2022 Slower pace favors under",
+      "full_bet": {
+        "game": "Dallas Mavericks @ Cleveland Cavaliers",
+        "sport": "NBA",
+        "bet_type": "TOTAL",
+        "recommendation": "UNDER 236.5",
+        "fanduel_line": "Over 236.5 (-114) / Under 236.5 (-106)",
+        "edge": -9.7,
+        "confidence": 65,
+        "risk_tier": "\ud83d\udd34 HIGH RISK",
+        "game_time": "02:40 PM EST",
+        "reason": "\u2022 Injuries: Allen out (-4.0), Strus out (-2.8), Irving out (-7.4), II out (-2.6) \u2192 -16.8 pt adjustment (capped)\n\u2022 Projected: ~226 points (under 236.5)\n\u2022 Slower pace favors under",
+        "model_version": "REAL v1.0 (Live OddsAPI)",
+        "data_source": "OddsAPI",
+        "bet_instructions": "PLACE BET ON FanDuel: UNDER 236.5 (O/U 236.5) | Model predicts ~226 combined points; UNDER favored vs market 236.5 | Confidence: 62%",
+        "bet_explanation": "Model predicts ~226 combined points; UNDER favored vs market 236.5",
+        "bookmaker_source": "FanDuel",
+        "prop_type": null,
+        "player": null,
+        "player_team": null,
+        "injury_role_shift_flag": false,
+        "american_odds": -106,
+        "pinnacle_agrees": null,
+        "pinnacle_line": null,
+        "pinnacle_gap": 0.0,
+        "injury_impact_score": 5,
+        "injury_freshness_minutes": 0,
+        "injury_confidence": "medium",
+        "consensus_line": 237.0,
+        "consensus_gap": -0.5,
+        "consensus_books_count": 11,
+        "market_alignment": "agree",
+        "snapshot_ts": "2026-03-15T09:00:13.812216+00:00",
+        "why_this_pick_full": null,
+        "smart_edge": 44.7,
+        "smart_edge_quality": "Excellent",
+        "smart_edge_confidence": 85,
+        "smart_edge_reasoning": "Edge Assessment: Excellent edge detected | Pace-adjusted total favors: UNDER | Multiple factors support this edge",
+        "edge_components": {
+          "pace_edge": -44.400000000000006,
+          "data_quality": "HIGH",
+          "weather_edge": 0,
+          "historical_edge": -0.24999999999999994
+        },
+        "data_quality": "HIGH",
+        "calibrated_confidence": 66.0,
+        "calibration_bucket": "65-69",
+        "calibration_actual_wr": 66.7,
+        "calibration_bet_type": "TOTAL",
+        "public_bet_pct": null,
+        "public_money_pct": null,
+        "opposing_public_bet_pct": null,
+        "rlm_signal": false,
+        "rlm_details": [],
+        "line_movement": 0.5,
+        "larlscore": 11.79,
+        "larlscore_grade": "S",
+        "larlscore_flag": "MANUAL_REVIEW",
+        "recommended_stake": 7.49,
+        "stake_pct": "7.5%",
+        "bankroll_assumed": 100
+      },
+      "recommended_stake": 6.62,
+      "stake_pct": "6.6%",
+      "bankroll_assumed": 100.0,
+      "line_movement": 0,
+      "sharp_signal": false
+    },
+    {
+      "rank": 2,
+      "score": 9.8111,
+      "larlscore": 9.8111,
+      "game": "Golden State Warriors @ New York Knicks",
+      "bet_type": "TOTAL",
+      "recommendation": "UNDER 217.5",
+      "confidence": 66,
+      "edge": -8.2,
+      "risk_tier": "\ud83d\udd34 HIGH RISK",
+      "game_time": "07:10 PM EST",
+      "reason": "\u2022 Injuries: Horford out (-2.7), Green out (-2.7), Porzingis out (-5.8), Moody out (-2.9), Curry out (-7.4), III out (-5.3), McBride out (-2.9) \u2192 -29.7 pt adjustment (capped)\n\u2022 Projected: ~209 points (under 217.5)\n\u2022 Slower pace favors under",
+      "full_bet": {
+        "game": "Golden State Warriors @ New York Knicks",
+        "sport": "NBA",
+        "bet_type": "TOTAL",
+        "recommendation": "UNDER 217.5",
+        "fanduel_line": "Over 217.5 (-106) / Under 217.5 (-114)",
+        "edge": -8.2,
+        "confidence": 66,
+        "risk_tier": "\ud83d\udd34 HIGH RISK",
+        "game_time": "07:10 PM EST",
+        "reason": "\u2022 Injuries: Horford out (-2.7), Green out (-2.7), Porzingis out (-5.8), Moody out (-2.9), Curry out (-7.4), III out (-5.3), McBride out (-2.9) \u2192 -29.7 pt adjustment (capped)\n\u2022 Projected: ~209 points (under 217.5)\n\u2022 Slower pace favors under",
+        "model_version": "REAL v1.0 (Live OddsAPI)",
+        "data_source": "OddsAPI",
+        "bet_instructions": "PLACE BET ON FanDuel: UNDER 217.5 (O/U 217.5) | Model predicts ~209 combined points; UNDER favored vs market 217.5 | Confidence: 63%",
+        "bet_explanation": "Model predicts ~209 combined points; UNDER favored vs market 217.5",
+        "bookmaker_source": "FanDuel",
+        "prop_type": null,
+        "player": null,
+        "player_team": null,
+        "injury_role_shift_flag": false,
+        "american_odds": -114,
+        "pinnacle_agrees": null,
+        "pinnacle_line": null,
+        "pinnacle_gap": 0.0,
+        "injury_impact_score": 8,
+        "injury_freshness_minutes": 0,
+        "injury_confidence": "medium",
+        "consensus_line": 217.0,
+        "consensus_gap": 0.5,
+        "consensus_books_count": 11,
+        "market_alignment": "agree",
+        "snapshot_ts": "2026-03-15T09:00:13.820896+00:00",
+        "why_this_pick_full": null,
+        "smart_edge": 35.2,
+        "smart_edge_quality": "Excellent",
+        "smart_edge_confidence": 85,
+        "smart_edge_reasoning": "Edge Assessment: Excellent edge detected | Pace-adjusted total favors: UNDER | Multiple factors support this edge",
+        "edge_components": {
+          "pace_edge": -34.900000000000006,
+          "data_quality": "HIGH",
+          "weather_edge": 0,
+          "historical_edge": -0.24999999999999994
+        },
+        "data_quality": "HIGH",
+        "calibrated_confidence": 66.4,
+        "calibration_bucket": "65-69",
+        "calibration_actual_wr": 66.7,
+        "calibration_bet_type": "TOTAL",
+        "public_bet_pct": null,
+        "public_money_pct": null,
+        "opposing_public_bet_pct": null,
+        "rlm_signal": false,
+        "rlm_details": [],
+        "larlscore": 9.81,
+        "larlscore_grade": "S",
+        "larlscore_flag": "MANUAL_REVIEW",
+        "recommended_stake": 7.02,
+        "stake_pct": "7.0%",
+        "bankroll_assumed": 100
+      },
+      "recommended_stake": 7.15,
+      "stake_pct": "7.2%",
+      "bankroll_assumed": 100.0,
+      "line_movement": 0,
+      "sharp_signal": false
+    },
+    {
+      "rank": 3,
+      "score": 7.191,
+      "larlscore": 7.191,
+      "game": "Portland Trail Blazers @ Philadelphia 76ers",
+      "bet_type": "TOTAL",
+      "recommendation": "UNDER 228.5",
+      "confidence": 65,
+      "edge": -6.0,
+      "risk_tier": "\ud83d\udd34 HIGH RISK",
+      "game_time": "05:10 PM EST",
+      "reason": "\u2022 Injuries: Embiid out (-7.1), Jr. out (-4.5), Maxey out (-7.9), George out (-4.9), Sharpe out (-5.6), Lillard out (-7.5) \u2192 -37.5 pt adjustment (capped)\n\u2022 Projected: ~222 points (under 228.5)\n\u2022 Slower pace favors under",
+      "full_bet": {
+        "game": "Portland Trail Blazers @ Philadelphia 76ers",
+        "sport": "NBA",
+        "bet_type": "TOTAL",
+        "recommendation": "UNDER 228.5",
+        "fanduel_line": "Over 228.5 (-110) / Under 228.5 (-110)",
+        "edge": -6.0,
+        "confidence": 65,
+        "risk_tier": "\ud83d\udd34 HIGH RISK",
+        "game_time": "05:10 PM EST",
+        "reason": "\u2022 Injuries: Embiid out (-7.1), Jr. out (-4.5), Maxey out (-7.9), George out (-4.9), Sharpe out (-5.6), Lillard out (-7.5) \u2192 -37.5 pt adjustment (capped)\n\u2022 Projected: ~222 points (under 228.5)\n\u2022 Slower pace favors under",
+        "model_version": "REAL v1.0 (Live OddsAPI)",
+        "data_source": "OddsAPI",
+        "bet_instructions": "PLACE BET ON FanDuel: UNDER 228.5 (O/U 228.5) | Model predicts ~222 combined points; UNDER favored vs market 228.5 | Confidence: 62%",
+        "bet_explanation": "Model predicts ~222 combined points; UNDER favored vs market 228.5",
+        "bookmaker_source": "FanDuel",
+        "prop_type": null,
+        "player": null,
+        "player_team": null,
+        "injury_role_shift_flag": false,
+        "american_odds": -110,
+        "pinnacle_agrees": null,
+        "pinnacle_line": null,
+        "pinnacle_gap": 0.0,
+        "injury_impact_score": 7,
+        "injury_freshness_minutes": 0,
+        "injury_confidence": "medium",
+        "consensus_line": 228.5,
+        "consensus_gap": 0.0,
+        "consensus_books_count": 11,
+        "market_alignment": "agree",
+        "snapshot_ts": "2026-03-15T09:00:13.818050+00:00",
+        "why_this_pick_full": null,
+        "smart_edge": 40.7,
+        "smart_edge_quality": "Excellent",
+        "smart_edge_confidence": 85,
+        "smart_edge_reasoning": "Edge Assessment: Excellent edge detected | Pace-adjusted total favors: UNDER | Multiple factors support this edge",
+        "edge_components": {
+          "pace_edge": -40.400000000000006,
+          "data_quality": "HIGH",
+          "weather_edge": 0,
+          "historical_edge": -0.24999999999999994
+        },
+        "data_quality": "HIGH",
+        "calibrated_confidence": 66.0,
+        "calibration_bucket": "65-69",
+        "calibration_actual_wr": 66.7,
+        "calibration_bet_type": "TOTAL",
+        "public_bet_pct": null,
+        "public_money_pct": null,
+        "opposing_public_bet_pct": null,
+        "rlm_signal": false,
+        "rlm_details": [],
+        "line_movement": 0.2,
+        "larlscore": 7.19,
+        "larlscore_grade": "S",
+        "larlscore_flag": "MANUAL_REVIEW",
+        "recommended_stake": 7.15,
+        "stake_pct": "7.2%",
+        "bankroll_assumed": 100
+      },
+      "recommended_stake": 6.62,
+      "stake_pct": "6.6%",
+      "bankroll_assumed": 100.0,
+      "line_movement": 0,
+      "sharp_signal": false
+    }
+  ],
   "stats": {},
   "summary": {
     "total_bets": 168,
@@ -3409,7 +3646,7 @@
     "TOTAL"
   ],
   "insights": {
-    "generated_at": "2026-03-14T04:03:51.450703",
+    "generated_at": "2026-03-15T04:04:18.408261",
     "total_bets_analyzed": 165,
     "overall_win_rate": 49.7,
     "roi": {
@@ -3674,7 +3911,7 @@
       }
     },
     "result_attribution": {
-      "generated_at": "2026-03-14T04:03:51.450571",
+      "generated_at": "2026-03-15T04:04:18.408118",
       "sample_size": 165,
       "confidence_attribution": {
         "SPREAD": {
@@ -3892,7 +4129,7 @@
         "actual_wr_pct": 58.5,
         "n_bets_sampled": 53,
         "recommendation": "UPDATE RANKER: Lower assumed WR for TOTAL (actual 58.5% << assumed 64.0%). Run full forensic audit and recalibrate multipliers.",
-        "generated_at": "2026-03-14T04:03:51.454088"
+        "generated_at": "2026-03-15T04:04:18.411633"
       },
       {
         "bet_type": "MONEYLINE",
@@ -3902,23 +4139,23 @@
         "actual_wr_pct": 12.5,
         "n_bets_sampled": 8,
         "recommendation": "Keep DISABLED \u2014 actual WR too low",
-        "generated_at": "2026-03-14T04:03:51.454096"
+        "generated_at": "2026-03-15T04:04:18.411640"
       }
     ],
-    "assumption_audit_at": "2026-03-14T04:03:51.454278",
+    "assumption_audit_at": "2026-03-15T04:04:18.411823",
     "quality": {
       "overall": {
         "window_days": null,
         "pinnacle": {
-          "n": 104,
-          "coverage_pct": 15.4,
-          "agree_known_pct": 15.4,
-          "agree_pct": 37.5
+          "n": 107,
+          "coverage_pct": 17.8,
+          "agree_known_pct": 17.8,
+          "agree_pct": 36.8
         },
         "consensus": {
-          "n": 104,
-          "coverage_pct": 33.7,
-          "books_avg": 2.8
+          "n": 107,
+          "coverage_pct": 35.5,
+          "books_avg": 3.0
         },
         "injury_nba_spread": {
           "n": 2,
@@ -3934,15 +4171,15 @@
       "last7": {
         "window_days": 7,
         "pinnacle": {
-          "n": 16,
-          "coverage_pct": 62.5,
-          "agree_known_pct": 62.5,
-          "agree_pct": 40.0
+          "n": 15,
+          "coverage_pct": 60.0,
+          "agree_known_pct": 60.0,
+          "agree_pct": 33.3
         },
         "consensus": {
-          "n": 16,
+          "n": 15,
           "coverage_pct": 100.0,
-          "books_avg": 8.7
+          "books_avg": 9.3
         },
         "injury_nba_spread": {
           "n": 0,
@@ -3950,21 +4187,21 @@
           "freshness_known_pct": 0.0
         },
         "clv_proxy": {
-          "n": 16,
-          "avg": -7.22,
-          "avg_abs": 7.88
+          "n": 12,
+          "avg": -9.09,
+          "avg_abs": 9.96
         }
       }
     },
     "export_meta": {
-      "exported_at": "2026-03-14T12:00:01.378582",
+      "exported_at": "2026-03-15T06:00:05.257897",
       "cloudflare_pages": "https://larlscore.pages.dev/",
-      "betting_repo_commit": "019e9e9"
+      "betting_repo_commit": "8c327cf"
     }
   },
   "bonus_bets": [],
   "weights": {
-    "generated_at": "2026-03-14T04:03:51.487717",
+    "generated_at": "2026-03-15T04:04:18.445156",
     "source": "learning_insights.json",
     "weights": {
       "SPREAD": {
